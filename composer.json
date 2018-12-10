@@ -1,0 +1,35 @@
+{
+  "name": "neighborhoods/bradfab",
+  "type": "library",
+  "description": "Bradfab builds actor machinery.",
+  "license": "proprietary",
+  "keywords": [],
+  "bin": [
+    "bin/bradfab"
+  ],
+  "authors": [
+    {
+      "name": "Brad Wilson",
+      "email": "brad@rhift.com"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "symfony/config": "^4.0",
+    "symfony/console": "^4.1",
+    "symfony/dependency-injection": "^4.0",
+    "symfony/expression-language": "^4.0",
+    "symfony/filesystem": "^4.0",
+    "symfony/finder": "^4.0",
+    "symfony/yaml": "^4.0",
+    "zendframework/zend-code": "^3.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rhift\\Bradfab\\": [
+        "fab",
+        "src"
+      ]
+    }
+  }
+}
