@@ -1,7 +1,11 @@
+#!/usr/bin/env php
 <?php
 declare(strict_types=1);
+
+use Rhift\Bradfab\Bradfab;
+
 error_reporting(E_ALL);
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../../../vendor/autoload.php';
 set_error_handler(function (
     int $errorNumber,
     string $errorString,
@@ -11,3 +15,6 @@ set_error_handler(function (
 ) {
     throw new \ErrorException($errorString, $errorNumber, $errorNumber, $errorFile, $errorLine);
 });
+
+$bradfab = new Bradfab();
+$bradfab->fabricate();
