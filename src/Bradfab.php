@@ -51,7 +51,7 @@ class Bradfab implements BradfabInterface
         $actorNamePath = str_replace('.fabricate.yml', '', $fabricateYamlFilePath);
         $actorNamePath = str_replace($this->getContractNamespaceSourcePath() . '/', '', $actorNamePath);
         $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
-        foreach ($fabricateYaml['build'] as $supportingActorKey => $buildSupportingActor) {
+        foreach ($fabricateYaml['fabricate'] as $supportingActorKey => $buildSupportingActor) {
             if ($buildSupportingActor === true) {
                 $supportingActorFilePath = $this->getSupportingActorFilePath(
                     $fabricateYamlFilePath,

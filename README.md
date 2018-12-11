@@ -3,7 +3,7 @@
 ## Exmaple Fabrication File
 ```yml
 # src/V2/Toes.fabricate.yml
-build:
+fabricate:
   AwareTrait: true
   Factory: true
   FactoryInterface: true
