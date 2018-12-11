@@ -52,30 +52,32 @@ class Bradfab implements BradfabInterface
         $actorNamePath = str_replace($this->getContractNamespaceSourcePath() . '/', '', $actorNamePath);
         $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
         foreach ($fabricateYaml['build'] as $supportingActorKey => $buildSupportingActor) {
-            $supportingActorFilePath = $this->getSupportingActorFilePath(
-                $fabricateYamlFilePath,
-                $supportingActorKey,
-                '.php'
-            );
-            $supportingActorTemplate = $this->getSupportingActorTemplate(
-                $supportingActorKey,
-                $actorNameSpace,
-                '.php');
-            $this->writeActor($supportingActorTemplate, $actorNamePath, $supportingActorFilePath);
-            if (
-                strpos($supportingActorKey, 'AwareTrait') === false
-                && strpos($supportingActorKey, 'Interface') === false
-            ) {
+            if ($buildSupportingActor === true) {
                 $supportingActorFilePath = $this->getSupportingActorFilePath(
                     $fabricateYamlFilePath,
                     $supportingActorKey,
-                    '.yml'
+                    '.php'
                 );
                 $supportingActorTemplate = $this->getSupportingActorTemplate(
                     $supportingActorKey,
                     $actorNameSpace,
-                    '.yml');
+                    '.php');
                 $this->writeActor($supportingActorTemplate, $actorNamePath, $supportingActorFilePath);
+                if (
+                    strpos($supportingActorKey, 'AwareTrait') === false
+                    && strpos($supportingActorKey, 'Interface') === false
+                ) {
+                    $supportingActorFilePath = $this->getSupportingActorFilePath(
+                        $fabricateYamlFilePath,
+                        $supportingActorKey,
+                        '.yml'
+                    );
+                    $supportingActorTemplate = $this->getSupportingActorTemplate(
+                        $supportingActorKey,
+                        $actorNameSpace,
+                        '.yml');
+                    $this->writeActor($supportingActorTemplate, $actorNamePath, $supportingActorFilePath);
+                }
             }
         }
 
