@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Rhift\Bradfab;
 
-use Rhift\Bradfab\Template\Actor\BuilderInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
