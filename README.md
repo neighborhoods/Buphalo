@@ -27,6 +27,12 @@ fabricate:
   Map\Factory: true
   Map\FactoryInterface: true
   Map\Factory\AwareTrait: true
+  Map\Builder: true
+  Map\BuilderInterface: true
+  Map\Builder\AwareTrait: true
+  Map\Builder\Factory: true
+  Map\Builder\FactoryInterface: true
+  Map\Builder\Factory\AwareTrait: true
 ```
 ```yml
 # src/V2/Toe/Nail.fabricate.yml
