@@ -10,10 +10,10 @@ Implementing well designed patterns can become tedious and laborious.
 Use an easy to change code generation tool to generate well designed patterns for you.
 
 ## Fabrication Files
-* A `Fabrication File` contains the instructions for fabricating a [`Fablet`](#fablets) for any arbitrary `<Object>`.
-* The [`Fablet`](#fablets) `<Object>` is identified by the `Fabrication File` file name, and the location of the `Fabrication File` within the directory structure that it resides.
-* In the below examples one [`Fablet`](#fablets) `<Object>` is `Toe` and another [`Fablet`](#fablets) `<Object>` is `Toe\Nail`.
-* A [`Fablet`](#fablets) `<Object>` can be any PHP object.
+* A `Fabrication File` contains the instructions for fabricating a [`Fablet`](#fablet) for any arbitrary `<Object>`.
+* The [`Fablet`](#fablet) `<Object>` is identified by the `Fabrication File` file name, and the location of the `Fabrication File` within the directory structure that it resides.
+* In the below examples one [`Fablet`](#fablet) `<Object>` is `Toe` and another [`Fablet`](#fablet) `<Object>` is `Toe\Nail`.
+* A [`Fablet`](#fablet) `<Object>` can be any PHP object.
 
 ## Example Fabrication Files
 * Relative to the root of your software product.
