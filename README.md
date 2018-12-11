@@ -7,14 +7,14 @@ Anything good I stole from someone else. Anything bad is mine.
 * [Problem](#problem)
 * [Proposed Solution](#proposed-solution)
 * [Getting Started](#getting-started) 
-* [Defintions](#definitions) 
+* [Definitions](#definitions) 
 * [Contributing To Bradfab](#contributing-to-bradfab) 
 
 ## Problem
 Implementing well designed patterns can become tedious and laborious which discourages their implementation in favor of patterns that are less well designed but have a faster development velocity.
 
 ## Proposed Solution
-Employ an easy to change code generation tool to generate well designed patterns so that the development velocity is equivalent or as fast as less well designed patterns.
+Employ an easy to change code generation tool to generate well designed patterns so that the development velocity is equivalent or faster than less well designed patterns.
 
 ## Getting Started
 
@@ -71,18 +71,16 @@ fabricate:
 
 ### Adding A New Template
 * Add the appropriate PHP and DI service definition YAML files in the position that you want them under `src/Template/Actor`.
-* `Actor` is a reserved word.
 
 ### Updating An Existing Template
 * Update the PHP and/or DI service definition YAML files under `src/Template/Actor`.
-* `Actor` is a reserved word.
 
 ## Definitions
 
-### Fabrication Files
+### Fabrication File
 * A `Fabrication File` contains the instructions for fabricating a [`Fablet`](#fablet) for any arbitrary `<Object>`.
 * The [`Fablet`](#fablet) `<Object>` is identified by the `Fabrication File` file name, and the location of the `Fabrication File` within the directory structure that it resides.
-* In the below examples one [`Fablet`](#fablet) `<Object>` is `Toe` and another [`Fablet`](#fablet) `<Object>` is `Toe\Nail`.
+* In the [Example Fabrication Files](#example-fabrication-files) section one [`Fablet`](#fablet) `<Object>` is `Toe` and another [`Fablet`](#fablet) `<Object>` is `Toe\Nail`.
 * A [`Fablet`](#fablet) `<Object>` can be any PHP object.
 
 ### Fablet
