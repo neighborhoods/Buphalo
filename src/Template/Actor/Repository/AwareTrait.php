@@ -7,38 +7,38 @@ use Rhift\Bradfab\Template\Actor\RepositoryInterface;
 
 trait AwareTrait
 {
-    protected $RhiftBradfabTemplateActorRepository;
+    protected $ActorRepository;
 
-    public function setBradfabTemplateActorRepository(RepositoryInterface $bradfabTemplateActorRepository): self
+    public function setActorRepository(RepositoryInterface $ActorRepository): self
     {
-        if ($this->hasBradfabTemplateActorRepository()) {
-            throw new \LogicException('RhiftBradfabTemplateActorRepository is already set.');
+        if ($this->hasActorRepository()) {
+            throw new \LogicException('ActorRepository is already set.');
         }
-        $this->RhiftBradfabTemplateActorRepository = $bradfabTemplateActorRepository;
+        $this->ActorRepository = $ActorRepository;
 
         return $this;
     }
 
-    protected function getBradfabTemplateActorRepository(): RepositoryInterface
+    protected function getActorRepository(): RepositoryInterface
     {
-        if (!$this->hasBradfabTemplateActorRepository()) {
-            throw new \LogicException('RhiftBradfabTemplateActorRepository is not set.');
+        if (!$this->hasActorRepository()) {
+            throw new \LogicException('ActorRepository is not set.');
         }
 
-        return $this->RhiftBradfabTemplateActorRepository;
+        return $this->ActorRepository;
     }
 
-    protected function hasBradfabTemplateActorRepository(): bool
+    protected function hasActorRepository(): bool
     {
-        return isset($this->RhiftBradfabTemplateActorRepository);
+        return isset($this->ActorRepository);
     }
 
-    protected function unsetBradfabTemplateActorRepository(): self
+    protected function unsetActorRepository(): self
     {
-        if (!$this->hasBradfabTemplateActorRepository()) {
-            throw new \LogicException('RhiftBradfabTemplateActorRepository is not set.');
+        if (!$this->hasActorRepository()) {
+            throw new \LogicException('ActorRepository is not set.');
         }
-        unset($this->RhiftBradfabTemplateActorRepository);
+        unset($this->ActorRepository);
 
         return $this;
     }

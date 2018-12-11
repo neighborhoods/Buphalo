@@ -7,38 +7,38 @@ use Rhift\Bradfab\Template\Actor\MapInterface;
 
 trait AwareTrait
 {
-    protected $RhiftBradfabTemplateActorMap;
+    protected $ActorMap;
 
-    public function setBradfabTemplateActorMap(MapInterface $bradfabTemplateActorMap): self
+    public function setActorMap(MapInterface $ActorMap): self
     {
-        if ($this->hasBradfabTemplateActorMap()) {
-            throw new \LogicException('RhiftBradfabTemplateActorMap is already set.');
+        if ($this->hasActorMap()) {
+            throw new \LogicException('ActorMap is already set.');
         }
-        $this->RhiftBradfabTemplateActorMap = $bradfabTemplateActorMap;
+        $this->ActorMap = $ActorMap;
 
         return $this;
     }
 
-    protected function getBradfabTemplateActorMap(): MapInterface
+    protected function getActorMap(): MapInterface
     {
-        if (!$this->hasBradfabTemplateActorMap()) {
-            throw new \LogicException('RhiftBradfabTemplateActorMap is not set.');
+        if (!$this->hasActorMap()) {
+            throw new \LogicException('ActorMap is not set.');
         }
 
-        return $this->RhiftBradfabTemplateActorMap;
+        return $this->ActorMap;
     }
 
-    protected function hasBradfabTemplateActorMap(): bool
+    protected function hasActorMap(): bool
     {
-        return isset($this->RhiftBradfabTemplateActorMap);
+        return isset($this->ActorMap);
     }
 
-    protected function unsetBradfabTemplateActorMap(): self
+    protected function unsetActorMap(): self
     {
-        if (!$this->hasBradfabTemplateActorMap()) {
-            throw new \LogicException('RhiftBradfabTemplateActorMap is not set.');
+        if (!$this->hasActorMap()) {
+            throw new \LogicException('ActorMap is not set.');
         }
-        unset($this->RhiftBradfabTemplateActorMap);
+        unset($this->ActorMap);
 
         return $this;
     }

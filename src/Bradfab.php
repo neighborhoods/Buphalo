@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Rhift\Bradfab;
 
+use Rhift\Bradfab\Template\Actor\BuilderInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -20,29 +21,78 @@ class Bradfab implements BradfabInterface
     /** @var Filesystem */
     protected $filesystem;
 
-    public function fabricate(): BradfabInterface
+    protected function encapsulatedNoBueno(): BradfabInterface
     {
         $this->setFinder(new Finder());
         $this->setFilesystem(new Filesystem());
         $this->setContractNamespaceSourcePath(realpath(__DIR__ . '/../../../../src/V2'));
+        $this->getFilesystem()->mkdir(__DIR__ . '/../../../../fab/V2');
         $this->setContractNamespaceFabPath(realpath(__DIR__ . '/../../../../fab/V2'));
         $this->getFilesystem()->remove($this->getContractNamespaceFabPath());
+
+        return $this;
+    }
+
+    public function fabricate(): BradfabInterface
+    {
+        $this->encapsulatedNoBueno();
+
         foreach ($this->getFabricateYamlFilePaths() as $fabricateYamlFilePath => $fabricateYamlFileName) {
-            $fabricateYaml = (new Yaml())->parseFile($fabricateYamlFilePath);
-            foreach ($fabricateYaml['build'] as $supportingActorKey => $buildSupportingActor) {
-                $supportingActorTemplateFilePath = realpath(__DIR__ . '/Template/Actor/' . $supportingActorKey . '.php');
-                $supportingActorTemplate = file_get_contents($supportingActorTemplateFilePath);
-                $supportingActorFilePath = str_replace('src', 'fab', $fabricateYamlFilePath);
-                $supportingActorDirectoryPath = str_replace('Interface.fabricate.yml', '/', $supportingActorFilePath);
-                $this->getFilesystem()->mkdir($supportingActorDirectoryPath);
-                $supportingActorDirectoryPath .= $supportingActorKey . '.php';
-                file_put_contents($supportingActorDirectoryPath, $supportingActorTemplate);
-            }
+            $this->writeActors($fabricateYamlFilePath);
         }
 
         return $this;
     }
 
+    protected function writeActors($fabricateYamlFilePath): void
+    {
+        $fabricateYaml = (new Yaml())->parseFile($fabricateYamlFilePath);
+        $actorNamePath = str_replace('.fabricate.yml', '', $fabricateYamlFilePath);
+        $actorNamePath = str_replace($this->getContractNamespaceSourcePath() . '/', '', $actorNamePath);
+        $actorNameSpace = 'Neighborhood\RETSMaterialization\\' . $actorNamePath;
+        foreach ($fabricateYaml['build'] as $supportingActorKey => $buildSupportingActor) {
+            $supportingActorFilePath = str_replace('src', 'fab', $fabricateYamlFilePath);
+            $supportingActorFilePath = str_replace('.fabricate.yml', '/', $supportingActorFilePath);
+            $supportingActorFilePath .= str_replace(
+                '\\',
+                '/',
+                $supportingActorKey . '.php'
+            );
+            $this->writeActor($supportingActorKey, $actorNameSpace, $actorNamePath, $supportingActorFilePath);
+            $supportingActorFilePath = str_replace('src', 'fab', $fabricateYamlFilePath);
+            $supportingActorFilePath = str_replace('.fabricate.yml', '/', $supportingActorFilePath);
+            $supportingActorFilePath .= str_replace(
+                '\\',
+                '/',
+                $supportingActorKey . 'Interface.php'
+            );
+            $this->writeActor($supportingActorKey, $actorNameSpace, $actorNamePath, $supportingActorFilePath);
+        }
+    }
+
+    protected function writeActor(
+        string $supportingActorKey,
+        string $actorNameSpace,
+        string $actorNamePath,
+        string $supportingActorFilePath
+    ): BradfabInterface {
+        $supportingActorTemplateFilePath = realpath(
+            __DIR__
+            . '/Template/Actor/'
+            . str_replace('\\', '/', $supportingActorKey) . '.php');
+        $supportingActorTemplate = file_get_contents($supportingActorTemplateFilePath);
+        $supportingActorTemplate = str_replace(
+            'Rhift\Bradfab\Template\Actor',
+            $actorNameSpace,
+            $supportingActorTemplate
+        );
+        $supportingActorTemplate = str_replace('Actor', $actorNamePath, $supportingActorTemplate);
+
+        $this->getFilesystem()->mkdir(dirname($supportingActorFilePath));
+        file_put_contents($supportingActorFilePath, $supportingActorTemplate);
+
+        return $this;
+    }
 
     protected function getFabricateYamlFilePaths(): array
     {

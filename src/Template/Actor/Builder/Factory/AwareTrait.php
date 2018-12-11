@@ -7,38 +7,38 @@ use Rhift\Bradfab\Template\Actor\Builder\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $RhiftBradfabTemplateActorBuilderFactory;
+    protected $ActorBuilderFactory;
 
-    public function setBradfabTemplateActorBuilderFactory(FactoryInterface $bradfabTemplateActorBuilderFactory): self
+    public function setActorBuilderFactory(FactoryInterface $ActorBuilderFactory): self
     {
-        if ($this->hasBradfabTemplateActorBuilderFactory()) {
-            throw new \LogicException('RhiftBradfabTemplateActorBuilderFactory is already set.');
+        if ($this->hasActorBuilderFactory()) {
+            throw new \LogicException('ActorBuilderFactory is already set.');
         }
-        $this->RhiftBradfabTemplateActorBuilderFactory = $bradfabTemplateActorBuilderFactory;
+        $this->ActorBuilderFactory = $ActorBuilderFactory;
 
         return $this;
     }
 
-    protected function getBradfabTemplateActorBuilderFactory(): FactoryInterface
+    protected function getActorBuilderFactory(): FactoryInterface
     {
-        if (!$this->hasBradfabTemplateActorBuilderFactory()) {
-            throw new \LogicException('RhiftBradfabTemplateActorBuilderFactory is not set.');
+        if (!$this->hasActorBuilderFactory()) {
+            throw new \LogicException('ActorBuilderFactory is not set.');
         }
 
-        return $this->RhiftBradfabTemplateActorBuilderFactory;
+        return $this->ActorBuilderFactory;
     }
 
-    protected function hasBradfabTemplateActorBuilderFactory(): bool
+    protected function hasActorBuilderFactory(): bool
     {
-        return isset($this->RhiftBradfabTemplateActorBuilderFactory);
+        return isset($this->ActorBuilderFactory);
     }
 
-    protected function unsetBradfabTemplateActorBuilderFactory(): self
+    protected function unsetActorBuilderFactory(): self
     {
-        if (!$this->hasBradfabTemplateActorBuilderFactory()) {
-            throw new \LogicException('RhiftBradfabTemplateActorBuilderFactory is not set.');
+        if (!$this->hasActorBuilderFactory()) {
+            throw new \LogicException('ActorBuilderFactory is not set.');
         }
-        unset($this->RhiftBradfabTemplateActorBuilderFactory);
+        unset($this->ActorBuilderFactory);
 
         return $this;
     }

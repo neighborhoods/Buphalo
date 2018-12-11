@@ -7,38 +7,38 @@ use Rhift\Bradfab\Template\ActorInterface;
 
 trait AwareTrait
 {
-    protected $RhiftBradfabTemplateActor;
+    protected $Actor;
 
-    public function setBradfabTemplateActor(ActorInterface $bradfabTemplateActor): self
+    public function setActor(ActorInterface $Actor): self
     {
-        if ($this->hasBradfabTemplateActor()) {
-            throw new \LogicException('RhiftBradfabTemplateActor is already set.');
+        if ($this->Actor()) {
+            throw new \LogicException('Actor is already set.');
         }
-        $this->RhiftBradfabTemplateActor = $bradfabTemplateActor;
+        $this->Actor = $Actor;
 
         return $this;
     }
 
-    protected function getBradfabTemplateActor(): ActorInterface
+    protected function getActor(): ActorInterface
     {
-        if (!$this->hasBradfabTemplateActor()) {
-            throw new \LogicException('RhiftBradfabTemplateActor is not set.');
+        if (!$this->Actor()) {
+            throw new \LogicException('Actor is not set.');
         }
 
-        return $this->RhiftBradfabTemplateActor;
+        return $this->Actor;
     }
 
-    protected function hasBradfabTemplateActor(): bool
+    protected function Actor(): bool
     {
-        return isset($this->RhiftBradfabTemplateActor);
+        return isset($this->Actor);
     }
 
-    protected function unsetBradfabTemplateActor(): self
+    protected function unsetActor(): self
     {
-        if (!$this->hasBradfabTemplateActor()) {
-            throw new \LogicException('RhiftBradfabTemplateActor is not set.');
+        if (!$this->Actor()) {
+            throw new \LogicException('Actor is not set.');
         }
-        unset($this->RhiftBradfabTemplateActor);
+        unset($this->Actor);
 
         return $this;
     }

@@ -12,6 +12,6 @@ class Repository implements RepositoryInterface
 
     public function get(AskInterface $ask): MapInterface
     {
-        return $actor = $this->getBradfabTemplateActorBuilderFactory()->create()->setRecord($records)->build();
+        return $actor = $this->getActorBuilderFactory()->create()->setRecord($records)->build();
     }
 }

@@ -5,21 +5,20 @@ namespace Rhift\Bradfab\Template\Actor;
 
 use Rhift\Bradfab\Template\ActorInterface;
 
-/** @codeCoverageIgnore */
 class Map extends \ArrayIterator implements MapInterface
 {
-    /** @param ActorInterface ...$actors */
-    public function __construct(array $actors = array(), int $flags = 0)
+    /** @param ActorInterface ...$Actors */
+    public function __construct(array $Actors = array(), int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new \LogicException('Map is not empty.');
         }
 
-        if (!empty($actors)) {
-            $this->assertValidArrayType(...array_values($actors));
+        if (!empty($Actors)) {
+            $this->assertValidArrayType(...array_values($Actors));
         }
 
-        parent::__construct($actors, $flags);
+        parent::__construct($Actors, $flags);
     }
 
     public function offsetGet($index): ActorInterface
@@ -27,17 +26,17 @@ class Map extends \ArrayIterator implements MapInterface
         return $this->assertValidArrayItemType(parent::offsetGet($index));
     }
 
-    /** @param ActorInterface $actor */
-    public function offsetSet($index, $actor)
+    /** @param ActorInterface $Actor */
+    public function offsetSet($index, $Actor)
     {
-        parent::offsetSet($index, $this->assertValidArrayItemType($actor));
+        parent::offsetSet($index, $this->assertValidArrayItemType($Actor));
     }
 
-    /** @param ActorInterface $actor */
-    public function append($actor)
+    /** @param ActorInterface $Actor */
+    public function append($Actor)
     {
-        $this->assertValidArrayItemType($actor);
-        parent::append($actor);
+        $this->assertValidArrayItemType($Actor);
+        parent::append($Actor);
     }
 
     public function current(): ActorInterface
@@ -45,12 +44,12 @@ class Map extends \ArrayIterator implements MapInterface
         return parent::current();
     }
 
-    protected function assertValidArrayItemType(ActorInterface $actor)
+    protected function assertValidArrayItemType(ActorInterface $Actor)
     {
-        return $actor;
+        return $Actor;
     }
 
-    protected function assertValidArrayType(ActorInterface ...$actors): MapInterface
+    protected function assertValidArrayType(ActorInterface ...$Actors): MapInterface
     {
         return $this;
     }

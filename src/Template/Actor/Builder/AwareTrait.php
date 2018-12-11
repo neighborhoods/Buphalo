@@ -5,41 +5,40 @@ namespace Rhift\Bradfab\Template\Actor\Builder;
 
 use Rhift\Bradfab\Template\Actor\BuilderInterface;
 
-/** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $RhiftBradfabTemplateActorBuilder;
+    protected $ActorBuilder;
 
-    public function setBradfabTemplateActorBuilder(BuilderInterface $bradfabTemplateActorBuilder): self
+    public function setActorBuilder(BuilderInterface $ActorBuilder): self
     {
-        if ($this->hasBradfabTemplateActorBuilder()) {
-            throw new \LogicException('RhiftBradfabTemplateActorBuilder is already set.');
+        if ($this->hasActorBuilder()) {
+            throw new \LogicException('ActorBuilder is already set.');
         }
-        $this->RhiftBradfabTemplateActorBuilder = $bradfabTemplateActorBuilder;
+        $this->ActorBuilder = $ActorBuilder;
 
         return $this;
     }
 
-    protected function getBradfabTemplateActorBuilder(): BuilderInterface
+    protected function getActorBuilder(): BuilderInterface
     {
-        if (!$this->hasBradfabTemplateActorBuilder()) {
-            throw new \LogicException('RhiftBradfabTemplateActorBuilder is not set.');
+        if (!$this->hasActorBuilder()) {
+            throw new \LogicException('ActorBuilder is not set.');
         }
 
-        return $this->RhiftBradfabTemplateActorBuilder;
+        return $this->ActorBuilder;
     }
 
-    protected function hasBradfabTemplateActorBuilder(): bool
+    protected function hasActorBuilder(): bool
     {
-        return isset($this->RhiftBradfabTemplateActorBuilder);
+        return isset($this->ActorBuilder);
     }
 
-    protected function unsetBradfabTemplateActorBuilder(): self
+    protected function unsetActorBuilder(): self
     {
-        if (!$this->hasBradfabTemplateActorBuilder()) {
-            throw new \LogicException('RhiftBradfabTemplateActorBuilder is not set.');
+        if (!$this->hasActorBuilder()) {
+            throw new \LogicException('ActorBuilder is not set.');
         }
-        unset($this->RhiftBradfabTemplateActorBuilder);
+        unset($this->ActorBuilder);
 
         return $this;
     }

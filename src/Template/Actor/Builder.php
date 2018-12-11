@@ -13,7 +13,7 @@ class Builder implements BuilderInterface
 
     public function build(): ActorInterface
     {
-        $actor = $this->getBradfabTemplateActorFactory()->create();
+        $actor = $this->getActorFactory()->create();
 
         // @TODO - build the object.
 

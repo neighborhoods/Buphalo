@@ -5,41 +5,40 @@ namespace Rhift\Bradfab\Template\Actor\Map\Factory;
 
 use Rhift\Bradfab\Template\Actor\Map\FactoryInterface;
 
-/** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $RhiftBradfabTemplateActorMapFactory;
+    protected $ActorMapFactory;
 
-    public function setBradfabTemplateActorMapFactory(FactoryInterface $bradfabTemplateActorMapFactory): self
+    public function setActorMapFactory(FactoryInterface $ActorMapFactory): self
     {
-        if ($this->hasBradfabTemplateActorMapFactory()) {
-            throw new \LogicException('RhiftBradfabTemplateActorMapFactory is already set.');
+        if ($this->hasActorMapFactory()) {
+            throw new \LogicException('ActorMapFactory is already set.');
         }
-        $this->RhiftBradfabTemplateActorMapFactory = $bradfabTemplateActorMapFactory;
+        $this->ActorMapFactory = $ActorMapFactory;
 
         return $this;
     }
 
-    protected function getBradfabTemplateActorMapFactory(): FactoryInterface
+    protected function getActorMapFactory(): FactoryInterface
     {
-        if (!$this->hasBradfabTemplateActorMapFactory()) {
-            throw new \LogicException('RhiftBradfabTemplateActorMapFactory is not set.');
+        if (!$this->hasActorMapFactory()) {
+            throw new \LogicException('ActorMapFactory is not set.');
         }
 
-        return $this->RhiftBradfabTemplateActorMapFactory;
+        return $this->ActorMapFactory;
     }
 
-    protected function hasBradfabTemplateActorMapFactory(): bool
+    protected function hasActorMapFactory(): bool
     {
-        return isset($this->RhiftBradfabTemplateActorMapFactory);
+        return isset($this->ActorMapFactory);
     }
 
-    protected function unsetBradfabTemplateActorMapFactory(): self
+    protected function unsetActorMapFactory(): self
     {
-        if (!$this->hasBradfabTemplateActorMapFactory()) {
-            throw new \LogicException('RhiftBradfabTemplateActorMapFactory is not set.');
+        if (!$this->hasActorMapFactory()) {
+            throw new \LogicException('ActorMapFactory is not set.');
         }
-        unset($this->RhiftBradfabTemplateActorMapFactory);
+        unset($this->ActorMapFactory);
 
         return $this;
     }

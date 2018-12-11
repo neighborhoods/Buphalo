@@ -7,38 +7,38 @@ use Rhift\Bradfab\Template\Actor\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $RhiftBradfabTemplateActorFactory;
+    protected $ActorFactory;
 
-    public function setBradfabTemplateActorFactory(FactoryInterface $bradfabTemplateActorFactory): self
+    public function setActorFactory(FactoryInterface $ActorFactory): self
     {
-        if ($this->hasBradfabTemplateActorFactory()) {
-            throw new \LogicException('RhiftBradfabTemplateActorFactory is already set.');
+        if ($this->hasActorFactory()) {
+            throw new \LogicException('ActorFactory is already set.');
         }
-        $this->RhiftBradfabTemplateActorFactory = $bradfabTemplateActorFactory;
+        $this->ActorFactory = $ActorFactory;
 
         return $this;
     }
 
-    protected function getBradfabTemplateActorFactory(): FactoryInterface
+    protected function getActorFactory(): FactoryInterface
     {
-        if (!$this->hasBradfabTemplateActorFactory()) {
-            throw new \LogicException('RhiftBradfabTemplateActorFactory is not set.');
+        if (!$this->hasActorFactory()) {
+            throw new \LogicException('ActorFactory is not set.');
         }
 
-        return $this->RhiftBradfabTemplateActorFactory;
+        return $this->ActorFactory;
     }
 
-    protected function hasBradfabTemplateActorFactory(): bool
+    protected function hasActorFactory(): bool
     {
-        return isset($this->RhiftBradfabTemplateActorFactory);
+        return isset($this->ActorFactory);
     }
 
-    protected function unsetBradfabTemplateActorFactory(): self
+    protected function unsetActorFactory(): self
     {
-        if (!$this->hasBradfabTemplateActorFactory()) {
-            throw new \LogicException('RhiftBradfabTemplateActorFactory is not set.');
+        if (!$this->hasActorFactory()) {
+            throw new \LogicException('ActorFactory is not set.');
         }
-        unset($this->RhiftBradfabTemplateActorFactory);
+        unset($this->ActorFactory);
 
         return $this;
     }
