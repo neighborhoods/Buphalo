@@ -1,10 +1,12 @@
 # Bradfab
 
-## Example Fabrication Files
+## Fabrication Files
 * A Fabrication File builds a [`Fablet`](#fablets) for any arbitrary `<Object>`.
 * The [`Fablet`](#fablets) `<Object>` is identified by the Fabrication File name and the location in the directory structure.
 * In the below exmaples one [`Fablet`](#fablets) `<Object>` is `Toe` and another [`Fablet`](#fablets) `<Object>` is `Toes\Nail`.
 * A [`Fablet`](#fablets) `<Object>` can be any PHP object.
+
+## Example Fabrication Files
 ```yml
 # src/V2/Toe.fabricate.yml
 fabricate:
