@@ -45,7 +45,7 @@ class Bradfab implements BradfabInterface
         return $this;
     }
 
-    protected function writeActors($fabricateYamlFilePath): void
+    protected function writeActors($fabricateYamlFilePath): BradfabInterface
     {
         $fabricateYaml = (new Yaml())->parseFile($fabricateYamlFilePath);
         $actorNamePath = str_replace('.fabricate.yml', '', $fabricateYamlFilePath);
@@ -62,7 +62,24 @@ class Bradfab implements BradfabInterface
                 $actorNameSpace,
                 '.php');
             $this->writeActor($supportingActorTemplate, $actorNamePath, $supportingActorFilePath);
+            if (
+                strpos($supportingActorKey, 'AwareTrait') === false
+                && strpos($supportingActorKey, 'Interface') === false
+            ) {
+                $supportingActorFilePath = $this->getSupportingActorFilePath(
+                    $fabricateYamlFilePath,
+                    $supportingActorKey,
+                    '.yml'
+                );
+                $supportingActorTemplate = $this->getSupportingActorTemplate(
+                    $supportingActorKey,
+                    $actorNameSpace,
+                    '.yml');
+                $this->writeActor($supportingActorTemplate, $actorNamePath, $supportingActorFilePath);
+            }
         }
+
+        return $this;
     }
 
     protected function getSupportingActorTemplate(
