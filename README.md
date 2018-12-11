@@ -24,3 +24,9 @@ build:
   Map\FactoryInterface: true
   Map\Factory\AwareTrait: true
 ```
+
+## Adding a new template
+* Add the appropriate PHP and DI service definition YAML files in the position that you want them under `src/Template/Actor`.
+
+## Updating tempaltes
+* Update the PHP and/or DI service definition YAML files under `src/Template/Actor`.
