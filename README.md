@@ -1,8 +1,8 @@
 # Bradfab
 
 ## Fabrication Files
-* A Fabrication File builds a [`Fablet`](#fablets) for any arbitrary `<Object>`.
-* The [`Fablet`](#fablets) `<Object>` is identified by the Fabrication File name and the location of the Fabrication File within the directory structure.
+* A `Fabrication File` contains the instructions for fabricating a [`Fablet`](#fablets) for any arbitrary `<Object>`.
+* The [`Fablet`](#fablets) `<Object>` is identified by the `Fabrication File` file name, and the location of the `Fabrication File` within the directory structure that it resides.
 * In the below examples one [`Fablet`](#fablets) `<Object>` is `Toe` and another [`Fablet`](#fablets) `<Object>` is `Toe\Nail`.
 * A [`Fablet`](#fablets) `<Object>` can be any PHP object.
 
@@ -52,9 +52,9 @@ fabricate:
 ```
 
 ## Turning Off Fabrication Of A Supporting Actor For An `<Object>`
-* Remove the Supporting Actor entry from the Fabrication File.
-* Comment the Supporting Actor entry from the Fabrication File.
-* Set the value of the Supporting Actor in the Fabricatio File to `false`.
+* Remove the Supporting Actor entry from the `Fabrication File`.
+* Comment the Supporting Actor entry from the `Fabrication File`.
+* Set the value of the Supporting Actor in the `Fabricatio File` to `false`.
 
 ## Adding A New Template
 * Add the appropriate PHP and DI service definition YAML files in the position that you want them under `src/Template/Actor`.
