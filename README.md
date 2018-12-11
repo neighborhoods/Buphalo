@@ -7,7 +7,7 @@ Anything good I stole from someone else. Anything bad is mine.
 Implementing well designed patterns can become tedious and laborious.
 
 ## Proposed Solution
-Use an easy to change code generation tool to generate good patterns for you.
+Use an easy to change code generation tool to generate well designed patterns for you.
 
 ## Fabrication Files
 * A `Fabrication File` contains the instructions for fabricating a [`Fablet`](#fablets) for any arbitrary `<Object>`.
