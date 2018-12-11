@@ -36,3 +36,6 @@ fabricate:
 
 ## Updating A Template
 * Update the PHP and/or DI service definition YAML files under `src/Template/Actor`.
+
+## `Fablet`s
+* A Fablet is the collection of Supporting Actors that are built from the Fabrication File.
