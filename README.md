@@ -72,5 +72,6 @@ fabricate:
 ## Updating An Existing Template
 * Update the PHP and/or DI service definition YAML files under `src/Template/Actor`.
 
-## `Fablet`s (credit [Mucha](https://github.com/pmucha-55places))
+## `Fablet`
+(credit [Mucha](https://github.com/pmucha-55places))
 * A `Fablet` is the collection of Supporting Actors that are built from the Fabrication File for an `<Object>`.
