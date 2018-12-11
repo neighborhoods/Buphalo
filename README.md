@@ -14,7 +14,7 @@ Anything good I stole from someone else. Anything bad is mine.
 Implementing well designed patterns can become tedious and laborious which discourages their implementation in favor of patterns that are less well designed but have a faster development velocity.
 
 ## Proposed Solution
-Employ an easy to change code generation tool to generate well designed patterns so that the development velocity is equivalent or as fast as less well designed patterns.
+Employ an easy to change code generation tool to generate well designed patterns so that the development velocity is equivalent or faster than less well designed patterns.
 
 ## Getting Started
 
