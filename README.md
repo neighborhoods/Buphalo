@@ -4,10 +4,10 @@ Fabricates patterns.
 Anything good I stole from someone else. Anything bad is mine.
 
 ## Problem
-Implementing well designed patterns can become tedious and laborious.
+Implementing well designed patterns can become tedious and laborious which discourages their implementation in favor of patterns that are less well designed but have a faster development velocity.
 
 ## Proposed Solution
-Use an easy to change code generation tool to generate well designed patterns for you.
+Employ an easy to change code generation tool to generate well designed patterns so that the development velocity is equivalent or as fast as less well designed patterns.
 
 ## Fabrication Files
 * A `Fabrication File` contains the instructions for fabricating a [`Fablet`](#fablet) for any arbitrary `<Object>`.
