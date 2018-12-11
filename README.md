@@ -16,6 +16,7 @@ Use an easy to change code generation tool to generate well designed patterns fo
 * A [`Fablet`](#fablets) `<Object>` can be any PHP object.
 
 ## Example Fabrication Files
+* Relative to the root of your software product.
 ```yml
 # src/V2/Toe.fabricate.yml
 fabricate:
