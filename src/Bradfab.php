@@ -26,11 +26,11 @@ class Bradfab implements BradfabInterface
     {
         $this->setFinder(new Finder());
         $this->setFilesystem(new Filesystem());
-        $this->setContractNamespaceSourcePath(realpath(__DIR__ . '/../../../../src/V2'));
-        $this->getFilesystem()->mkdir(__DIR__ . '/../../../../fab/V2');
-        $this->setContractNamespaceFabPath(realpath(__DIR__ . '/../../../../fab/V2'));
+        $this->setContractNamespaceSourcePath(realpath(__DIR__ . '/../../../../src'));
+        $this->getFilesystem()->mkdir(__DIR__ . '/../../../../fab');
+        $this->setContractNamespaceFabPath(realpath(__DIR__ . '/../../../../fab'));
         $this->getFilesystem()->remove($this->getContractNamespaceFabPath());
-        $this->setTargetNamespace('Neighborhood\RETSMaterialization\\');
+        $this->setTargetNamespace('Neighborhoods\RETSMaterializationService\\');
 
         return $this;
     }
@@ -51,32 +51,35 @@ class Bradfab implements BradfabInterface
         $actorNamePath = str_replace('.fabricate.yml', '', $fabricateYamlFilePath);
         $actorNamePath = str_replace($this->getContractNamespaceSourcePath() . '/', '', $actorNamePath);
         $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
-        foreach ($fabricateYaml['fabricate'] as $supportingActorKey => $buildSupportingActor) {
-            if ($buildSupportingActor === true) {
-                $supportingActorFilePath = $this->getSupportingActorFilePath(
-                    $fabricateYamlFilePath,
-                    $supportingActorKey,
-                    '.php'
-                );
-                $supportingActorTemplate = $this->getSupportingActorTemplate(
-                    $supportingActorKey,
-                    $actorNameSpace,
-                    '.php');
-                $this->writeActor($supportingActorTemplate, $actorNamePath, $supportingActorFilePath);
-                if (
-                    strpos($supportingActorKey, 'AwareTrait') === false
-                    && strpos($supportingActorKey, 'Interface') === false
-                ) {
+        $actorNameSpace = str_replace('/', '\\', $actorNameSpace);
+        if (isset($fabricateYaml['fabricate']) && is_array($fabricateYaml['fabricate'])) {
+            foreach ($fabricateYaml['fabricate'] as $supportingActorKey => $buildSupportingActor) {
+                if ($buildSupportingActor === true) {
                     $supportingActorFilePath = $this->getSupportingActorFilePath(
                         $fabricateYamlFilePath,
                         $supportingActorKey,
-                        '.yml'
+                        '.php'
                     );
                     $supportingActorTemplate = $this->getSupportingActorTemplate(
                         $supportingActorKey,
                         $actorNameSpace,
-                        '.yml');
+                        '.php');
                     $this->writeActor($supportingActorTemplate, $actorNamePath, $supportingActorFilePath);
+                    if (
+                        strpos($supportingActorKey, 'AwareTrait') === false
+                        && strpos($supportingActorKey, 'Interface') === false
+                    ) {
+                        $supportingActorFilePath = $this->getSupportingActorFilePath(
+                            $fabricateYamlFilePath,
+                            $supportingActorKey,
+                            '.yml'
+                        );
+                        $supportingActorTemplate = $this->getSupportingActorTemplate(
+                            $supportingActorKey,
+                            $actorNameSpace,
+                            '.yml');
+                        $this->writeActor($supportingActorTemplate, $actorNamePath, $supportingActorFilePath);
+                    }
                 }
             }
         }
@@ -125,6 +128,7 @@ class Bradfab implements BradfabInterface
         string $supportingActorFilePath
     ): BradfabInterface {
 
+        $actorNamePath = trim(substr($actorNamePath, strrpos($actorNamePath, '/') + 1));
         $supportingActorTemplate = str_replace('Actor', $actorNamePath, $supportingActorTemplate);
 
         $this->getFilesystem()->mkdir(dirname($supportingActorFilePath));
