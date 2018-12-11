@@ -1,7 +1,7 @@
 {
   "name": "rhift/bradfab",
   "type": "library",
-  "description": "Bradfab builds actor machinery.",
+  "description": "Bradfab builds fabricates patterns.",
   "license": "proprietary",
   "keywords": [],
   "bin": [
@@ -21,8 +21,7 @@
     "symfony/expression-language": "^4.0",
     "symfony/filesystem": "^4.0",
     "symfony/finder": "^4.0",
-    "symfony/yaml": "^4.0",
-    "zendframework/zend-code": "^3.3"
+    "symfony/yaml": "^4.0"
   },
   "autoload": {
     "psr-4": {
