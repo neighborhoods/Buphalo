@@ -25,6 +25,10 @@ build:
   Map\Factory\AwareTrait: true
 ```
 
+## Turning Off Fabrication Of A Supporting Actor For An `<Object>`
+* Remove the entry from teh Fabrication File.
+* Set the value of the Supporting Actor in the Fabricatio File to `false`.
+
 ## Adding A New Template
 * Add the appropriate PHP and DI service definition YAML files in the position that you want them under `src/Template/Actor`.
 
