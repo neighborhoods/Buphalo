@@ -3,6 +3,13 @@ Fabricates patterns.
 
 Anything good I stole from someone else. Anything bad is mine.
 
+##### Table of Contents  
+[Problem](#problem)
+[Solution](#solution)
+[Getting Started](#getting-started)
+[Defintions](#definitions)
+[Contributing To Bradfab](#contributing-to-bradfab)
+
 ## Problem
 Implementing well designed patterns can become tedious and laborious which discourages their implementation in favor of patterns that are less well designed but have a faster development velocity.
 
