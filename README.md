@@ -82,7 +82,7 @@ fabricate:
 ### Fabrication Files
 * A `Fabrication File` contains the instructions for fabricating a [`Fablet`](#fablet) for any arbitrary `<Object>`.
 * The [`Fablet`](#fablet) `<Object>` is identified by the `Fabrication File` file name, and the location of the `Fabrication File` within the directory structure that it resides.
-* In the below examples one [`Fablet`](#fablet) `<Object>` is `Toe` and another [`Fablet`](#fablet) `<Object>` is `Toe\Nail`.
+* In the [Example Fabrication Files](#example-fabrication-files) section one [`Fablet`](#fablet) `<Object>` is `Toe` and another [`Fablet`](#fablet) `<Object>` is `Toe\Nail`.
 * A [`Fablet`](#fablet) `<Object>` can be any PHP object.
 
 ### Fablet
