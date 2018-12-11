@@ -7,7 +7,7 @@ Anything good I stole from someone else. Anything bad is mine.
 * [Problem](#problem)
 * [Proposed Solution](#proposed-solution)
 * [Getting Started](#getting-started) 
-* [Defintions](#definitions) 
+* [Definitions](#definitions) 
 * [Contributing To Bradfab](#contributing-to-bradfab) 
 
 ## Problem
