@@ -1,5 +1,13 @@
 # Bradfab
 
+Anything good I stole from someone else. Anything bad is mine.
+
+## Problem
+Implementing well designed patterns can become tedious and laborious.
+
+## Proposed Solution
+Use an easy to change code generation tool to generate good patterns for you.
+
 ## Fabrication Files
 * A `Fabrication File` contains the instructions for fabricating a [`Fablet`](#fablets) for any arbitrary `<Object>`.
 * The [`Fablet`](#fablets) `<Object>` is identified by the `Fabrication File` file name, and the location of the `Fabrication File` within the directory structure that it resides.
@@ -62,5 +70,5 @@ fabricate:
 ## Updating An Existing Template
 * Update the PHP and/or DI service definition YAML files under `src/Template/Actor`.
 
-## `Fablet`s
+## `Fablet`s (credit [Mucha](https://github.com/pmucha-55places))
 * A `Fablet` is the collection of Supporting Actors that are built from the Fabrication File for an `<Object>`.
