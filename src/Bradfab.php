@@ -19,6 +19,8 @@ class Bradfab implements BradfabInterface
     protected $fabricateYamlFilePaths;
     /** @var Filesystem */
     protected $filesystem;
+    /** @var string */
+    protected $targetNamespace;
 
     protected function encapsulatedNoBueno(): BradfabInterface
     {
@@ -28,6 +30,7 @@ class Bradfab implements BradfabInterface
         $this->getFilesystem()->mkdir(__DIR__ . '/../../../../fab/V2');
         $this->setContractNamespaceFabPath(realpath(__DIR__ . '/../../../../fab/V2'));
         $this->getFilesystem()->remove($this->getContractNamespaceFabPath());
+        $this->setTargetNamespace('Neighborhood\RETSMaterialization\\');
 
         return $this;
     }
@@ -35,7 +38,6 @@ class Bradfab implements BradfabInterface
     public function fabricate(): BradfabInterface
     {
         $this->encapsulatedNoBueno();
-
         foreach ($this->getFabricateYamlFilePaths() as $fabricateYamlFilePath => $fabricateYamlFileName) {
             $this->writeActors($fabricateYamlFilePath);
         }
@@ -48,35 +50,62 @@ class Bradfab implements BradfabInterface
         $fabricateYaml = (new Yaml())->parseFile($fabricateYamlFilePath);
         $actorNamePath = str_replace('.fabricate.yml', '', $fabricateYamlFilePath);
         $actorNamePath = str_replace($this->getContractNamespaceSourcePath() . '/', '', $actorNamePath);
-        $actorNameSpace = 'Neighborhood\RETSMaterialization\\' . $actorNamePath;
+        $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
         foreach ($fabricateYaml['build'] as $supportingActorKey => $buildSupportingActor) {
-            $supportingActorFilePath = str_replace('src', 'fab', $fabricateYamlFilePath);
-            $supportingActorFilePath = str_replace('.fabricate.yml', '/', $supportingActorFilePath);
-            $supportingActorFilePath .= str_replace(
-                '\\',
-                '/',
-                $supportingActorKey . '.php'
+            $supportingActorFilePath = $this->getSupportingActorFilePath(
+                $fabricateYamlFilePath,
+                $supportingActorKey,
+                '.php'
             );
-            $this->writeActor($supportingActorKey, $actorNameSpace, $actorNamePath, $supportingActorFilePath);
+            $supportingActorTemplate = $this->getSupportingActorTemplate(
+                $supportingActorKey,
+                $actorNameSpace,
+                '.php');
+            $this->writeActor($supportingActorTemplate, $actorNamePath, $supportingActorFilePath);
         }
     }
 
-    protected function writeActor(
+    protected function getSupportingActorTemplate(
         string $supportingActorKey,
         string $actorNameSpace,
-        string $actorNamePath,
-        string $supportingActorFilePath
-    ): BradfabInterface {
+        string $extension
+    ): string {
         $supportingActorTemplateFilePath = realpath(
             __DIR__
             . '/Template/Actor/'
-            . str_replace('\\', '/', $supportingActorKey) . '.php');
+            . str_replace('\\', '/', $supportingActorKey) . $extension);
         $supportingActorTemplate = file_get_contents($supportingActorTemplateFilePath);
         $supportingActorTemplate = str_replace(
             'Rhift\Bradfab\Template\Actor',
             $actorNameSpace,
             $supportingActorTemplate
         );
+
+        return $supportingActorTemplate;
+    }
+
+    protected function getSupportingActorFilePath(
+        string $fabricateYamlFilePath,
+        string $supportingActorKey,
+        string $extension
+    ): string {
+        $supportingActorFilePath = str_replace('src', 'fab', $fabricateYamlFilePath);
+        $supportingActorFilePath = str_replace('.fabricate.yml', '/', $supportingActorFilePath);
+        $supportingActorFilePath .= str_replace(
+            '\\',
+            '/',
+            $supportingActorKey . $extension
+        );
+
+        return $supportingActorFilePath;
+    }
+
+    protected function writeActor(
+        string $supportingActorTemplate,
+        string $actorNamePath,
+        string $supportingActorFilePath
+    ): BradfabInterface {
+
         $supportingActorTemplate = str_replace('Actor', $actorNamePath, $supportingActorTemplate);
 
         $this->getFilesystem()->mkdir(dirname($supportingActorFilePath));
@@ -175,6 +204,26 @@ class Bradfab implements BradfabInterface
         }
 
         $this->filesystem = $filesystem;
+
+        return $this;
+    }
+
+    public function getTargetNamespace(): string
+    {
+        if ($this->targetNamespace === null) {
+            throw new \LogicException('Bradfab targetNamespace has not been set.');
+        }
+
+        return $this->targetNamespace;
+    }
+
+    public function setTargetNamespace(string $targetNamespace): BradfabInterface
+    {
+        if ($this->targetNamespace !== null) {
+            throw new \LogicException('Bradfab targetNamespace is already set.');
+        }
+
+        $this->targetNamespace = $targetNamespace;
 
         return $this;
     }
