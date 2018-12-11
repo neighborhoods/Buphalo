@@ -2,7 +2,7 @@
 
 ## Example Fabrication Files
 * A Fabrication File builds a [`Fablet`](#fablets) for any arbitrary `<Object>`
-* The `Fablet` `<Object>` is identified by the Fabrication File name and the location in the directory structure.
+* The [`Fablet`](#fablets) `<Object>` is identified by the Fabrication File name and the location in the directory structure.
 ```yml
 # src/V2/Toes.fabricate.yml
 fabricate:
