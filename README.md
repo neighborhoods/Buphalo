@@ -75,3 +75,13 @@ fabricate:
 ## Fablet
 (credit [Mucha](https://github.com/pmucha-55places))
 * A `Fablet` is the collection of Supporting Actors that are built from the Fabrication File for an `<Object>`.
+
+## Contributing to Bradfab
+The `1.x` feature series establishes the fitness precedence of `Bradfab` for all future feature versions of `Bradfab`. All of the following fitness requirements MUST be met for all future versions. 
+* Any Supporting Actors (and any associated files) MUST be as easy to add/update/remove as they are in `1.x`.
+* Fabrication must be as fast as it is in `1.x`.
+* The `source` target, `fabrication` target, and `Template Tree` target MUST be user defined so that `Bradfab` can be composed and used to build any arbitrary Template Tree.
+* `Method Fill` MUST be as easy to add/update/remove as it is in `1.x`.
+* `Method Fill` MUST be as transparent and flexible to user space as it is in `1.x`.
+* `Fabrication File`s MUST be as easy to add/update/remove as they are in `1.x`.
+* Future versions of `Bradfab` can add to the `1.x` fitness requirements but not alter or remove a member of the `1.x` fitness requirements as it is the definition of the mission of `Bradfab`.
