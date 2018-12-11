@@ -11,25 +11,25 @@ use Symfony\Component\Yaml\Yaml;
 class Bradfab implements BradfabInterface
 {
     /** @var string */
-    protected $contractNamespaceSourcePath;
+    protected $source_path;
     /** @var string */
-    protected $contractNamespaceFabPath;
+    protected $fabrication_path;
     /** @var Finder */
     protected $finder;
-    protected $fabricateYamlFilePaths;
+    protected $fabricate_yaml_file_paths;
     /** @var Filesystem */
     protected $filesystem;
     /** @var string */
-    protected $targetNamespace;
+    protected $target_namespace;
 
     protected function encapsulatedNoBueno(): BradfabInterface
     {
         $this->setFinder(new Finder());
         $this->setFilesystem(new Filesystem());
-        $this->setContractNamespaceSourcePath(realpath(__DIR__ . '/../../../../src'));
+        $this->setSourcePath(realpath(__DIR__ . '/../../../../src'));
         $this->getFilesystem()->mkdir(__DIR__ . '/../../../../fab');
-        $this->setContractNamespaceFabPath(realpath(__DIR__ . '/../../../../fab'));
-        $this->getFilesystem()->remove($this->getContractNamespaceFabPath());
+        $this->setFabricationPath(realpath(__DIR__ . '/../../../../fab'));
+        $this->getFilesystem()->remove($this->getFabricationPath());
         $this->setTargetNamespace('Neighborhoods\RETSMaterializationService\\');
 
         return $this;
@@ -49,7 +49,7 @@ class Bradfab implements BradfabInterface
     {
         $fabricateYaml = (new Yaml())->parseFile($fabricateYamlFilePath);
         $actorNamePath = str_replace('.fabricate.yml', '', $fabricateYamlFilePath);
-        $actorNamePath = str_replace($this->getContractNamespaceSourcePath() . '/', '', $actorNamePath);
+        $actorNamePath = str_replace($this->getSourcePath() . '/', '', $actorNamePath);
         $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
         $actorNameSpace = str_replace('/', '\\', $actorNameSpace);
         if (isset($fabricateYaml['fabricate']) && is_array($fabricateYaml['fabricate'])) {
@@ -139,16 +139,16 @@ class Bradfab implements BradfabInterface
 
     protected function getFabricateYamlFilePaths(): array
     {
-        if ($this->fabricateYamlFilePaths === null) {
-            $finder = $this->getFinder()->in($this->getContractNamespaceSourcePath());
+        if ($this->fabricate_yaml_file_paths === null) {
+            $finder = $this->getFinder()->in($this->getSourcePath());
             $finder->name('*.fabricate.yml');
             /** @var $file SplFileInfo */
             foreach ($finder as $directoryPath => $file) {
-                $this->fabricateYamlFilePaths[$file->getPathname()] = $file->getFilename();
+                $this->fabricate_yaml_file_paths[$file->getPathname()] = $file->getFilename();
             }
         }
 
-        return $this->fabricateYamlFilePaths;
+        return $this->fabricate_yaml_file_paths;
     }
 
     protected function getFinder(): Finder
@@ -171,42 +171,42 @@ class Bradfab implements BradfabInterface
         return $this;
     }
 
-    protected function getContractNamespaceSourcePath(): string
+    protected function getSourcePath(): string
     {
-        if ($this->contractNamespaceSourcePath === null) {
-            throw new \LogicException('Bradfab contractNamespacePath has not been set.');
+        if ($this->source_path === null) {
+            throw new \LogicException('Bradfab source_path has not been set.');
         }
 
-        return $this->contractNamespaceSourcePath;
+        return $this->source_path;
     }
 
-    public function setContractNamespaceSourcePath(string $contractNamespacePath): BradfabInterface
+    public function setSourcePath(string $source_path): BradfabInterface
     {
-        if ($this->contractNamespaceSourcePath !== null) {
-            throw new \LogicException('Bradfab contractNamespacePath is already set.');
+        if ($this->source_path !== null) {
+            throw new \LogicException('Bradfab source_path is already set.');
         }
 
-        $this->contractNamespaceSourcePath = $contractNamespacePath;
+        $this->source_path = $source_path;
 
         return $this;
     }
 
-    public function getContractNamespaceFabPath(): string
+    public function getFabricationPath(): string
     {
-        if ($this->contractNamespaceFabPath === null) {
-            throw new \LogicException('Bradfab contractNamespaceFabPath has not been set.');
+        if ($this->fabrication_path === null) {
+            throw new \LogicException('Bradfab fabrication_path has not been set.');
         }
 
-        return $this->contractNamespaceFabPath;
+        return $this->fabrication_path;
     }
 
-    public function setContractNamespaceFabPath(string $contractNamespaceFabPath): BradfabInterface
+    public function setFabricationPath(string $fabrication_path): BradfabInterface
     {
-        if ($this->contractNamespaceFabPath !== null) {
-            throw new \LogicException('Bradfab contractNamespaceFabPath is already set.');
+        if ($this->fabrication_path !== null) {
+            throw new \LogicException('Bradfab fabrication_path is already set.');
         }
 
-        $this->contractNamespaceFabPath = $contractNamespaceFabPath;
+        $this->fabrication_path = $fabrication_path;
 
         return $this;
     }
@@ -233,20 +233,20 @@ class Bradfab implements BradfabInterface
 
     public function getTargetNamespace(): string
     {
-        if ($this->targetNamespace === null) {
-            throw new \LogicException('Bradfab targetNamespace has not been set.');
+        if ($this->target_namespace === null) {
+            throw new \LogicException('Bradfab target_namespace has not been set.');
         }
 
-        return $this->targetNamespace;
+        return $this->target_namespace;
     }
 
-    public function setTargetNamespace(string $targetNamespace): BradfabInterface
+    public function setTargetNamespace(string $target_namespace): BradfabInterface
     {
-        if ($this->targetNamespace !== null) {
-            throw new \LogicException('Bradfab targetNamespace is already set.');
+        if ($this->target_namespace !== null) {
+            throw new \LogicException('Bradfab target_namespace is already set.');
         }
 
-        $this->targetNamespace = $targetNamespace;
+        $this->target_namespace = $target_namespace;
 
         return $this;
     }
