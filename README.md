@@ -27,7 +27,7 @@ fabricate:
   Map\Factory\AwareTrait: true
 ```
 ```yml
-src/V2/Toes/Nail.fabricate.yml
+# src/V2/Toes/Nail.fabricate.yml
 fabricate:
   AwareTrait: true
   Factory: true
