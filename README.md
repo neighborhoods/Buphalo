@@ -1,6 +1,8 @@
 # Bradfab
 
 ## Exmaple Fabrication File
+* A Fabrication File builds a `Fablet` for any arbitrary `<Object>`
+* The `Fablet` `<Object>` is identified by the Fabrication File name and the location in the directory structure.
 ```yml
 # src/V2/Toes.fabricate.yml
 fabricate:
@@ -34,3 +36,6 @@ fabricate:
 
 ## Updating A Template
 * Update the PHP and/or DI service definition YAML files under `src/Template/Actor`.
+
+## `Fablet`s
+* A Fablet is the collection of Supporting Actors that are built from the Fabrication File.
