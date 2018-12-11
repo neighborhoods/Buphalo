@@ -61,10 +61,10 @@ fabricate:
   Builder\Factory\AwareTrait: true
 ```
 
-## Turning Off Fabrication Of A Supporting Actor For An <Object>
-* Remove the Supporting Actor entry from the `Fabrication File`.
-* Comment the Supporting Actor entry from the `Fabrication File`.
-* Set the value of the Supporting Actor in the `Fabricatio File` to `false`.
+## Turning Off Fabrication Of A Supporting Actor
+* Remove the Supporting Actor entry from the `Fabrication File` for the `<Object>`.
+* Comment the Supporting Actor entry from the `Fabrication File` for the `<Object>`.
+* Set the value of the Supporting Actor in the `Fabricatio File` for the `<Object>` to `false`.
 
 ## Adding A New Template
 * Add the appropriate PHP and DI service definition YAML files in the position that you want them under `src/Template/Actor`.
