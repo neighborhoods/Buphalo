@@ -61,7 +61,7 @@ fabricate:
   Builder\Factory\AwareTrait: true
 ```
 
-## Turning Off Fabrication Of A Supporting Actor For An `<Object>`
+## Turning Off Fabrication Of A Supporting Actor For An <Object>
 * Remove the Supporting Actor entry from the `Fabrication File`.
 * Comment the Supporting Actor entry from the `Fabrication File`.
 * Set the value of the Supporting Actor in the `Fabricatio File` to `false`.
@@ -72,6 +72,6 @@ fabricate:
 ## Updating An Existing Template
 * Update the PHP and/or DI service definition YAML files under `src/Template/Actor`.
 
-## `Fablet`
+## Fablet
 (credit [Mucha](https://github.com/pmucha-55places))
 * A `Fablet` is the collection of Supporting Actors that are built from the Fabrication File for an `<Object>`.
