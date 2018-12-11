@@ -59,14 +59,6 @@ class Bradfab implements BradfabInterface
                 $supportingActorKey . '.php'
             );
             $this->writeActor($supportingActorKey, $actorNameSpace, $actorNamePath, $supportingActorFilePath);
-            $supportingActorFilePath = str_replace('src', 'fab', $fabricateYamlFilePath);
-            $supportingActorFilePath = str_replace('.fabricate.yml', '/', $supportingActorFilePath);
-            $supportingActorFilePath .= str_replace(
-                '\\',
-                '/',
-                $supportingActorKey . 'Interface.php'
-            );
-            $this->writeActor($supportingActorKey, $actorNameSpace, $actorNamePath, $supportingActorFilePath);
         }
     }
 
