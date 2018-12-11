@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Template\Actor;
+namespace Rhift\Bradfab\Template\Actor\Map;
 
-use Rhift\Bradfab\Template\ActorInterface;
+use Rhift\Bradfab\Template\Actor\MapInterface;
 
 class Builder implements BuilderInterface
 {
@@ -11,14 +11,14 @@ class Builder implements BuilderInterface
     /** @var array */
     protected $record;
 
-    public function build(): ActorInterface
+    public function build(): MapInterface
     {
-        $actor = $this->getActorFactory()->create();
+        $map = $this->getActorMapFactory()->create();
 
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
 
-        return $actor;
+        return $map;
     }
 
     protected function getRecord(): array
