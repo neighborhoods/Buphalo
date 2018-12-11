@@ -10,6 +10,8 @@ use Symfony\Component\Yaml\Yaml;
 
 class Fabricator implements FabricatorInterface
 {
+    const FILE_EXTENSION_FABRICATE = '.fabricate.yml';
+    const DIRECTIVE_FABRICATE = 'fabricate';
     /** @var string */
     protected $source_path;
     /** @var string */
@@ -53,12 +55,12 @@ class Fabricator implements FabricatorInterface
     protected function writeActors($fabricateYamlFilePath): FabricatorInterface
     {
         $fabricateYaml = (new Yaml())->parseFile($fabricateYamlFilePath);
-        $actorNamePath = str_replace('.fabricate.yml', '', $fabricateYamlFilePath);
+        $actorNamePath = str_replace(self::FILE_EXTENSION_FABRICATE, '', $fabricateYamlFilePath);
         $actorNamePath = str_replace($this->getSourcePath() . '/', '', $actorNamePath);
         $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
         $actorNameSpace = str_replace('/', '\\', $actorNameSpace);
-        if (isset($fabricateYaml['fabricate']) && is_array($fabricateYaml['fabricate'])) {
-            foreach ($fabricateYaml['fabricate'] as $supportingActorKey => $buildSupportingActor) {
+        if (isset($fabricateYaml[self::DIRECTIVE_FABRICATE]) && is_array($fabricateYaml[self::DIRECTIVE_FABRICATE])) {
+            foreach ($fabricateYaml[self::DIRECTIVE_FABRICATE] as $supportingActorKey => $buildSupportingActor) {
                 if ($buildSupportingActor === true) {
                     $supportingActorFilePath = $this->getSupportingActorFilePath(
                         $fabricateYamlFilePath,
@@ -67,10 +69,14 @@ class Fabricator implements FabricatorInterface
                     );
                     $supportingActorTemplate = $this->getSupportingActorTemplate(
                         $supportingActorKey,
-                        $actorNameSpace,
                         '.php'
                     );
-                    $this->writeActor($supportingActorTemplate, $actorNamePath, $supportingActorFilePath);
+                    $this->writeActor(
+                        $supportingActorTemplate,
+                        $actorNamePath,
+                        $supportingActorFilePath,
+                        $actorNameSpace
+                    );
                     if (
                         strpos($supportingActorKey, 'AwareTrait') === false
                         && strpos($supportingActorKey, 'Interface') === false
@@ -82,10 +88,14 @@ class Fabricator implements FabricatorInterface
                         );
                         $supportingActorTemplate = $this->getSupportingActorTemplate(
                             $supportingActorKey,
-                            $actorNameSpace,
                             '.yml'
                         );
-                        $this->writeActor($supportingActorTemplate, $actorNamePath, $supportingActorFilePath);
+                        $this->writeActor(
+                            $supportingActorTemplate,
+                            $actorNamePath,
+                            $supportingActorFilePath,
+                            $actorNameSpace
+                        );
                     }
                 }
             }
@@ -96,7 +106,6 @@ class Fabricator implements FabricatorInterface
 
     protected function getSupportingActorTemplate(
         string $supportingActorKey,
-        string $actorNameSpace,
         string $extension
     ): string {
         $supportingActorTemplateFilePath = realpath(
@@ -108,7 +117,7 @@ class Fabricator implements FabricatorInterface
         $supportingActorTemplate = file_get_contents($supportingActorTemplateFilePath);
         $supportingActorTemplate = str_replace(
             'Rhift\Bradfab\Template\Actor',
-            $actorNameSpace,
+            '**NAMESPACE_TOKEN**',
             $supportingActorTemplate
         );
 
@@ -121,7 +130,7 @@ class Fabricator implements FabricatorInterface
         string $extension
     ): string {
         $supportingActorFilePath = str_replace('src', 'fab', $fabricateYamlFilePath);
-        $supportingActorFilePath = str_replace('.fabricate.yml', '/', $supportingActorFilePath);
+        $supportingActorFilePath = str_replace(self::FILE_EXTENSION_FABRICATE, '/', $supportingActorFilePath);
         $supportingActorFilePath .= str_replace(
             '\\',
             '/',
@@ -134,12 +143,22 @@ class Fabricator implements FabricatorInterface
     protected function writeActor(
         string $supportingActorTemplate,
         string $actorNamePath,
-        string $supportingActorFilePath
+        string $supportingActorFilePath,
+        string $actorNamespace
     ): FabricatorInterface {
 
-        $actorNamePath = trim(substr($actorNamePath, strrpos($actorNamePath, '/') + 1));
+        $start = 0;
+        $position = strrpos($actorNamePath, '/');
+        if ($position !== false) {
+            $start = $position + 1;
+        }
+        $actorNamePath = trim(substr($actorNamePath, $start));
         $supportingActorTemplate = str_replace('Actor', $actorNamePath, $supportingActorTemplate);
-
+        $supportingActorTemplate = str_replace(
+            '**NAMESPACE_TOKEN**',
+            $actorNamespace,
+            $supportingActorTemplate
+        );
         $this->getFilesystem()->mkdir(dirname($supportingActorFilePath));
         file_put_contents($supportingActorFilePath, $supportingActorTemplate);
 

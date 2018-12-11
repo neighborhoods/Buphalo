@@ -9,8 +9,8 @@ trait AwareTrait
 {
     protected $ActorMapBuilderFactory;
 
-    public function setActorMapBuilderFactory(FactoryInterface $ActorMapBuilderFactory
-    ): self {
+    public function setActorMapBuilderFactory(FactoryInterface $ActorMapBuilderFactory): self
+    {
         if ($this->hasActorMapBuilderFactory()) {
             throw new \LogicException('ActorMapBuilderFactory is already set.');
         }
