@@ -2,7 +2,7 @@
 
 ## Fabrication Files
 * A Fabrication File builds a [`Fablet`](#fablets) for any arbitrary `<Object>`.
-* The [`Fablet`](#fablets) `<Object>` is identified by the Fabrication File name and the location in the directory structure.
+* The [`Fablet`](#fablets) `<Object>` is identified by the Fabrication File name and the location of the Fabrication File within the directory structure.
 * In the below examples one [`Fablet`](#fablets) `<Object>` is `Toe` and another [`Fablet`](#fablets) `<Object>` is `Toe\Nail`.
 * A [`Fablet`](#fablets) `<Object>` can be any PHP object.
 
