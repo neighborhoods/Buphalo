@@ -1,6 +1,6 @@
 # Bradfab
 
-## Exmaple Fabrication Files
+## Example Fabrication Files
 * A Fabrication File builds a `Fablet` for any arbitrary `<Object>`
 * The `Fablet` `<Object>` is identified by the Fabrication File name and the location in the directory structure.
 ```yml
