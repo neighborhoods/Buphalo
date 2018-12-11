@@ -1,20 +1,17 @@
 #!/usr/bin/env php
 <?php
 declare(strict_types=1);
-
-use Rhift\Bradfab\Bradfab;
-
 error_reporting(E_ALL);
 require_once __DIR__ . '/../../../../vendor/autoload.php';
-set_error_handler(function (
-    int $errorNumber,
-    string $errorString,
-    string $errorFile,
-    int $errorLine,
-    array $errorContext
-) {
-    throw new \ErrorException($errorString, $errorNumber, $errorNumber, $errorFile, $errorLine);
-});
 
-$bradfab = new Bradfab();
-$bradfab->fabricate();
+use Rhift\Bradfab\Bradfab;
+use Rhift\Bradfab\Protean\Container\Builder;
+use Rhift\Bradfab\ErrorHandler;
+use Rhift\Bradfab\ExceptionHandler;
+
+set_exception_handler(new ExceptionHandler());
+set_error_handler(new ErrorHandler());
+$proteanContainerBuilder = (new Builder())->setApplicationRootDirectoryPath(realpath(__DIR__ . '/../'));
+
+$bradfab = (new Bradfab())->setProteanContainerBuilder($proteanContainerBuilder);
+$bradfab->run();

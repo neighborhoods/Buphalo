@@ -1,0 +1,11 @@
+fabricate:
+  AwareTrait: true
+  Factory: true
+  FactoryInterface: true
+  Factory\AwareTrait: true
+  Builder: true
+  BuilderInterface: true
+  Builder\AwareTrait: true
+  Builder\Factory: true
+  Builder\FactoryInterface: true
+  Builder\Factory\AwareTrait: true
