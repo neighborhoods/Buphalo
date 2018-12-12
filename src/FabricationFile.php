@@ -5,4 +5,5 @@ namespace Rhift\Bradfab;
 
 class FabricationFile implements FabricationFileInterface
 {
+
 }

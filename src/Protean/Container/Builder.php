@@ -113,7 +113,7 @@ class Builder implements BuilderInterface
 
     protected function getFabricationDirectoryPath(): string
     {
-        return realpath($this->getApplicationRootDirectoryPath() . '/fab');
+        return realpath($this->getApplicationRootDirectoryPath() . '/gab');
     }
 
     protected function getSourceDirectoryPath(): string

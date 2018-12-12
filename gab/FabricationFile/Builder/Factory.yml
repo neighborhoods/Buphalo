@@ -1,0 +1,7 @@
+services:
+  Rhift\BradFab\FabricationFile\Builder\FactoryInterface:
+    class: Rhift\BradFab\FabricationFile\Builder\Factory
+    calls:
+      - [setFabricationFileBuilder, ['@Rhift\BradFab\FabricationFile\BuilderInterface']]
+    shared: true
+    public: false

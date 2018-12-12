@@ -1,0 +1,5 @@
+services:
+  Rhift\BradFab\FabricationFile\SupportingActor\MapInterface:
+    class: Rhift\BradFab\FabricationFile\SupportingActor\Map
+    shared: false
+    public: false
