@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\BradFab\FabricationFile\SupportingActor\Map;
+namespace Rhift\Bradfab\FabricationFile\SupportingActor\Map;
 
-use Rhift\BradFab\FabricationFile\SupportingActor\MapInterface;
+use Rhift\Bradfab\FabricationFile\SupportingActor\MapInterface;
 
 interface FactoryInterface
 {

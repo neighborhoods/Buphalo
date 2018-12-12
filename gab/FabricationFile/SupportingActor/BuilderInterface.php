@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\BradFab\FabricationFile\SupportingActor;
+namespace Rhift\Bradfab\FabricationFile\SupportingActor;
 
 interface BuilderInterface
 {

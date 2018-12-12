@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\BradFab\FabricationFile\Map;
+namespace Rhift\Bradfab\FabricationFile\Map;
 
-use Rhift\BradFab\FabricationFile\MapInterface;
+use Rhift\Bradfab\FabricationFile\MapInterface;
 
 interface BuilderInterface
 {

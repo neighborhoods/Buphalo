@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\BradFab\FabricationFile\SupportingActor;
+namespace Rhift\Bradfab\FabricationFile\SupportingActor;
 
-use Rhift\BradFab\FabricationFile\SupportingActorInterface;
+use Rhift\Bradfab\FabricationFile\SupportingActorInterface;
 
 interface FactoryInterface
 {

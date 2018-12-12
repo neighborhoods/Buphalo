@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\BradFab\FabricationFile\SupportingActor\Map\Factory;
+namespace Rhift\Bradfab\FabricationFile\SupportingActor\Map\Factory;
 
-use Rhift\BradFab\FabricationFile\SupportingActor\Map\FactoryInterface;
+use Rhift\Bradfab\FabricationFile\SupportingActor\Map\FactoryInterface;
 
 trait AwareTrait
 {

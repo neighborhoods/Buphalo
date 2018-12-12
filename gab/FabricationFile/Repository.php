@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\BradFab\FabricationFile;
+namespace Rhift\Bradfab\FabricationFile;
 
-use Rhift\BradFab\FabricationFile;
-use Rhift\BradFab\FabricationFileInterface;
+use Rhift\Bradfab\FabricationFile;
+use Rhift\Bradfab\FabricationFileInterface;
 
 class Repository implements RepositoryInterface
 {
