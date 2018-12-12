@@ -28,8 +28,8 @@
   "autoload": {
     "psr-4": {
       "Rhift\\Bradfab\\": [
-        "gab",
-        "src"
+        "src",
+        "gab"
       ]
     }
   }
