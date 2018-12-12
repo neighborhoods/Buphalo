@@ -12,4 +12,6 @@ interface BuilderInterface
     public function registerServiceAsPublic(string $serviceId): BuilderInterface;
 
     public function setBuildZendExpressive(bool $build_zend_expressive): BuilderInterface;
+
+    public function setCacheContainer($cache_container): BuilderInterface;
 }

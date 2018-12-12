@@ -18,6 +18,7 @@ class Builder implements BuilderInterface
     protected $symfonyContainerBuilder;
     protected $serviceIdsRegisteredForPublicAccess = [];
     protected $build_zend_expressive;
+    protected $cache_container;
 
     public function build(): ContainerInterface
     {
@@ -37,7 +38,9 @@ class Builder implements BuilderInterface
                 if ($this->getBuildZendExpressive()) {
                     $this->buildZendExpressive();
                 }
-                $this->cacheSymfonyContainerBuilder();
+                if ($this->getCacheContainer()) {
+                    $this->cacheSymfonyContainerBuilder();
+                }
                 $containerBuilder = $this->getSymfonyContainerBuilder();
             }
             $this->container = $containerBuilder;
@@ -94,6 +97,26 @@ class Builder implements BuilderInterface
     {
         $containerBuilder = $this->getSymfonyContainerBuilder();
         file_put_contents($this->getSymfonyContainerFilePath(), (new PhpDumper($containerBuilder))->dump());
+
+        return $this;
+    }
+
+    protected function getCacheContainer()
+    {
+        if ($this->cache_container === null) {
+            throw new \LogicException('Builder cache_container has not been set.');
+        }
+
+        return $this->cache_container;
+    }
+
+    public function setCacheContainer($cache_container): BuilderInterface
+    {
+        if ($this->cache_container !== null) {
+            throw new \LogicException('Builder cache_container is already set.');
+        }
+
+        $this->cache_container = $cache_container;
 
         return $this;
     }
