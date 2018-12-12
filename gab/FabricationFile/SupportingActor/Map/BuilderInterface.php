@@ -11,3 +11,4 @@ interface BuilderInterface
 
     public function setRecord(array $record): BuilderInterface;
 }
+

@@ -20,7 +20,7 @@ class Fabricator implements FabricatorInterface
     protected $fabrication_path;
     /** @var Finder */
     protected $finder;
-    protected $fabricate_yaml_file_paths;
+    protected $fabricate_yaml_files;
     /** @var Filesystem */
     protected $filesystem;
     /** @var string */
@@ -47,9 +47,11 @@ class Fabricator implements FabricatorInterface
     public function fabricate(): FabricatorInterface
     {
         $this->encapsulatedNoBueno();
-        foreach ($this->getFabricateYamlFilePaths() as $fabricateYamlFilePath => $fabricateYamlFileName) {
-            $this->getFabricationFileBuilderFactory()->create()->setRecord([$fabricateYamlFileName]);
-            $this->writeActors($fabricateYamlFilePath);
+        /** @var SplFileInfo $fabricateYamlFile */
+        foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlFile) {
+            $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
+            $fabricationFile = $fabricationFileBuilder->setRecord([$fabricateYamlFile]);
+            $this->writeActors($fabricateYamlFilePathname);
         }
 
         return $this;
@@ -168,18 +170,23 @@ class Fabricator implements FabricatorInterface
         return $this;
     }
 
-    protected function getFabricateYamlFilePaths(): array
+    protected function getFabricateYamlFiles(): array
     {
-        if ($this->fabricate_yaml_file_paths === null) {
+        if ($this->fabricate_yaml_files === null) {
             $finder = $this->getFinder()->in($this->getSourcePath());
             $finder->name('*.fabricate.yml');
             /** @var $file SplFileInfo */
             foreach ($finder as $directoryPath => $file) {
-                $this->fabricate_yaml_file_paths[$file->getPathname()] = $file->getFilename();
+                $pathname = $file->getPathname();
+                if (isset($this->fabricate_yaml_files[$pathname])) {
+                    $message = sprintf('Fabricate yaml file with pathname[%s] is already set.', $pathname);
+                    throw new \LogicException($message);
+                }
+                $this->fabricate_yaml_files[$pathname] = $file;
             }
         }
 
-        return $this->fabricate_yaml_file_paths;
+        return $this->fabricate_yaml_files;
     }
 
     protected function getFinder(): Finder
