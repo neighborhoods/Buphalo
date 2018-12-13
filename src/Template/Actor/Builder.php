@@ -9,7 +9,6 @@ class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
 
-    /** @var array */
     protected $record;
 
     public function build(): ActorInterface

@@ -3,5 +3,6 @@ services:
     class: Rhift\Bradfab\FabricationFile\Builder
     calls:
       - [setFabricationFileFactory, ['@Rhift\Bradfab\FabricationFile\FactoryInterface']]
+      - [setSupportingActorMapBuilderFactory, ['@Rhift\Bradfab\FabricationFile\SupportingActor\Map\Builder\FactoryInterface']]
     shared: false
     public: false

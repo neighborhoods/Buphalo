@@ -1,9 +1,9 @@
 services:
   Rhift\Bradfab\FabricatorInterface:
     class: Rhift\Bradfab\Fabricator
+    public: false
+    shared: false
     calls:
       - [setFilesystem, ['@Symfony\Component\Filesystem\FilesystemInterface']]
       - [setFinder, ['@Symfony\Component\Finder\FinderInterface']]
-      - [setFabricationFileBuilderFactory, ['@Rhift\Bradfab\FabricationFile\Builder\FactoryInterface']]
-    public: false
-    shared: false
+#      - [setFabricationFileBuilderFactory, ['@Rhift\Bradfab\FabricationFile\Builder\FactoryInterface']]

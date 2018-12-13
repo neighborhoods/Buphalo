@@ -1,26 +1,53 @@
-fabricate:
-  AwareTrait: true
-  Factory: true
-  FactoryInterface: true
-  Factory\AwareTrait: true
-  Builder: true
-  BuilderInterface: true
-  Builder\AwareTrait: true
-  Builder\Factory: true
-  Builder\FactoryInterface: true
-  Builder\Factory\AwareTrait: true
-  Repository: true
-  RepositoryInterface: true
-  Repository\AwareTrait: true
-  Map: true
-  MapInterface: true
-  Map\AwareTrait: true
-  Map\Factory: true
-  Map\FactoryInterface: true
-  Map\Factory\AwareTrait: true
-  Map\Builder: true
-  Map\BuilderInterface: true
-  Map\Builder\AwareTrait: true
-  Map\Builder\Factory: true
-  Map\Builder\FactoryInterface: true
-  Map\Builder\Factory\AwareTrait: true
+supporting_actors:
+  AwareTrait:
+    enabled: true
+  Factory:
+    enabled: true
+  FactoryInterface:
+    enabled: true
+  Factory\AwareTrait:
+    enabled: true
+  Builder:
+    enabled: true
+  BuilderInterface:
+    enabled: true
+  Builder\AwareTrait:
+    enabled: true
+  Builder\Factory:
+    enabled: true
+  Builder\FactoryInterface:
+    enabled: true
+  Builder\Factory\AwareTrait:
+    enabled: true
+  Repository:
+    enabled: true
+    aware:
+      - VENDOR\PRODUCT\V2\Toe
+  RepositoryInterface:
+    enabled: true
+  Repository\AwareTrait:
+    enabled: true
+  Map:
+    enabled: true
+  MapInterface:
+    enabled: true
+  Map\AwareTrait:
+    enabled: true
+  Map\Factory:
+    enabled: true
+  Map\FactoryInterface:
+    enabled: true
+  Map\Factory\AwareTrait:
+    enabled: true
+  Map\Builder:
+    enabled: true
+  Map\BuilderInterface:
+    enabled: true
+  Map\Builder\AwareTrait:
+    enabled: true
+  Map\Builder\Factory:
+    enabled: true
+  Map\Builder\FactoryInterface:
+    enabled: true
+  Map\Builder\Factory\AwareTrait:
+    enabled: true

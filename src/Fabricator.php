@@ -13,7 +13,7 @@ class Fabricator implements FabricatorInterface
     use FabricationFile\Builder\Factory\AwareTrait;
 
     const FILE_EXTENSION_FABRICATE = '.fabricate.yml';
-    const DIRECTIVE_FABRICATE = 'fabricate';
+    const SUPPORTING_ACTORS = 'supporting_actors';
     /** @var string */
     protected $source_path;
     /** @var string */
@@ -49,8 +49,8 @@ class Fabricator implements FabricatorInterface
         $this->encapsulatedNoBueno();
         /** @var SplFileInfo $fabricateYamlFile */
         foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlFile) {
-            $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
-            $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlFile)->build();
+//            $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
+//            $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlFile)->build();
             $this->writeActors($fabricateYamlFilePathname);
         }
 
@@ -59,14 +59,14 @@ class Fabricator implements FabricatorInterface
 
     protected function writeActors($fabricateYamlFilePath): FabricatorInterface
     {
-        $fabricateYaml = (new Yaml())->parseFile($fabricateYamlFilePath);
+        $fabricateYaml = Yaml::parseFile($fabricateYamlFilePath);
         $actorNamePath = str_replace(self::FILE_EXTENSION_FABRICATE, '', $fabricateYamlFilePath);
         $actorNamePath = str_replace($this->getSourcePath() . '/', '', $actorNamePath);
         $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
         $actorNameSpace = str_replace('/', '\\', $actorNameSpace);
-        if (isset($fabricateYaml[self::DIRECTIVE_FABRICATE]) && is_array($fabricateYaml[self::DIRECTIVE_FABRICATE])) {
-            foreach ($fabricateYaml[self::DIRECTIVE_FABRICATE] as $supportingActorKey => $buildSupportingActor) {
-                if ($buildSupportingActor === true) {
+        if (isset($fabricateYaml[self::SUPPORTING_ACTORS]) && is_array($fabricateYaml[self::SUPPORTING_ACTORS])) {
+            foreach ($fabricateYaml[self::SUPPORTING_ACTORS] as $supportingActorKey => $supportingActorProperties) {
+                if ($supportingActorProperties['enabled'] === true) {
                     $supportingActorFilePath = $this->getSupportingActorFilePath(
                         $fabricateYamlFilePath,
                         $supportingActorKey,
@@ -159,7 +159,7 @@ class Fabricator implements FabricatorInterface
         if ($position !== false) {
             $start = $position + 1;
         }
-        $actorNamePath = trim(substr($actorNamePath, $start));
+        $actorNamePath = str_replace('/', '', $actorNamePath);//trim(substr($actorNamePath, $start));
         $supportingActorTemplate = str_replace('Actor', $actorNamePath, $supportingActorTemplate);
         $supportingActorTemplate = str_replace(
             '**NAMESPACE_TOKEN**',

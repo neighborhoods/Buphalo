@@ -6,6 +6,7 @@ namespace Rhift\Bradfab\FabricationFile;
 use Rhift\Bradfab\FabricationFileInterface;
 use Rhift\Bradfab\FabricationFile;
 use Symfony\Component\Finder\SplFileInfo;
+use Symfony\Component\Yaml\Yaml;
 
 class Builder implements BuilderInterface
 {
@@ -16,12 +17,13 @@ class Builder implements BuilderInterface
 
     public function build(): FabricationFileInterface
     {
-        $FabricationFile = $this->getFabricationFileFactory()->create();
-        $supportingActorMapBuilder = $this->getSupportingActorMapBuilderFactory()->create();
-        // @TODO - build the object.
-        throw new \LogicException('Unimplemented build method.');
+        $fabricationFileContents = Yaml::parseFile($this->getSPLFileInfo()->getPathname());
+        $fabricationFile = $this->getFabricationFileFactory()->create();
+        $supportingActorMapBuilder = $this->getFabricationFileSupportingActorMapBuilderFactory()->create();
+        $supportingActorMap = $supportingActorMapBuilder->setRecords($fabricationFileContents)->build();
+        $fabricationFile->setSupportingActors($supportingActorMap);
 
-        return $actor;
+        return $fabricationFile;
     }
 
     protected function getSPLFileInfo(): SplFileInfo
