@@ -87,6 +87,28 @@ fabricate:
 (credit [Mucha](https://github.com/pmucha-55places))
 * A `Fablet` is the collection of Supporting Actors that are built from the Fabrication File for an `<Object>`.
 
+## Features
+* Only fabricates files that do not exist in `src`
+
+### Annotation Replacement
+
+### AutoAware
+
+#### AutoAware Example
+```yml
+# src/V2/Toe/Nail.fabricate.yml
+fabricate:
+  AwareTrait: true
+  .
+  .
+  . 
+  Factory\AwareTrait: true
+  Builder: true
+      aware:
+        - VENDOR\PRODUCT\V2\Toe
+  BuilderInterface: true
+```
+
 ## Contributing to Bradfab
 The `1.x` feature series establishes the fitness precedence of `Bradfab` for all future feature versions of `Bradfab`. All of the following fitness requirements MUST be met for all future versions. 
 * Any Supporting Actors (and any associated files) MUST be as easy to add/update/remove as they are in `1.x`.
