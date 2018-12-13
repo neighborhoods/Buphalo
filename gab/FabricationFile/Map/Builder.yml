@@ -1,7 +1,0 @@
-services:
-  Rhift\Bradfab\FabricationFile\Map\BuilderInterface:
-    class: Rhift\Bradfab\FabricationFile\Map\Builder
-    calls:
-      - [setFabricationFileMapFactory, ['@Rhift\Bradfab\FabricationFile\Map\FactoryInterface']]
-    shared: false
-    public: false

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\FabricationFile\SupportingActor;
+namespace Rhift\Bradfab\FabricationFile;
 
-use Rhift\Bradfab\FabricationFile\SupportingActorInterface;
+use Rhift\Bradfab\FabricationFileInterface;
 
 class Builder implements BuilderInterface
 {
@@ -11,9 +11,9 @@ class Builder implements BuilderInterface
     /** @var array */
     protected $record;
 
-    public function build(): SupportingActorInterface
+    public function build(): FabricationFileInterface
     {
-        $actor = $this->getSupportingActorFactory()->create();
+        $FabricationFile = $this->getFabricationFileFactory()->create();
 
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');

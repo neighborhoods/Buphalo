@@ -13,7 +13,7 @@ class Builder implements BuilderInterface
 
     public function build(): ActorInterface
     {
-        $actor = $this->getActorFactory()->create();
+        $Actor = $this->getActorFactory()->create();
 
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
