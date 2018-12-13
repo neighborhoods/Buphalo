@@ -10,7 +10,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class Fabricator implements FabricatorInterface
 {
-//    use FabricationFile\Builder\Factory\AwareTrait;
+    use FabricationFile\Builder\Factory\AwareTrait;
 
     const FILE_EXTENSION_FABRICATE = '.fabricate.yml';
     const DIRECTIVE_FABRICATE = 'fabricate';
@@ -49,8 +49,8 @@ class Fabricator implements FabricatorInterface
         $this->encapsulatedNoBueno();
         /** @var SplFileInfo $fabricateYamlFile */
         foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlFile) {
-//            $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
-//            $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlFile)->build();
+            $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
+            $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlFile)->build();
             $this->writeActors($fabricateYamlFilePathname);
         }
 

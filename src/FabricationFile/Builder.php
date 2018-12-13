@@ -4,39 +4,42 @@ declare(strict_types=1);
 namespace Rhift\Bradfab\FabricationFile;
 
 use Rhift\Bradfab\FabricationFileInterface;
+use Rhift\Bradfab\FabricationFile;
+use Symfony\Component\Finder\SplFileInfo;
 
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
-    /** @var array */
-    protected $record;
+    use FabricationFile\SupportingActor\Map\Builder\Factory\AwareTrait;
+
+    protected $spl_file_info;
 
     public function build(): FabricationFileInterface
     {
         $FabricationFile = $this->getFabricationFileFactory()->create();
-
+        $supportingActorMapBuilder = $this->getSupportingActorMapBuilderFactory()->create();
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
 
         return $actor;
     }
 
-    protected function getRecord(): array
+    protected function getSPLFileInfo(): SplFileInfo
     {
-        if ($this->record === null) {
-            throw new \LogicException('Builder record has not been set.');
+        if ($this->spl_file_info === null) {
+            throw new \LogicException('Builder spl_file_info has not been set.');
         }
 
-        return $this->record;
+        return $this->spl_file_info;
     }
 
-    public function setRecord(array $record): BuilderInterface
+    public function setSplFileInfo(SplFileInfo $spl_file_info): BuilderInterface
     {
-        if ($this->record !== null) {
-            throw new \LogicException('Builder record is already set.');
+        if ($this->spl_file_info !== null) {
+            throw new \LogicException('Builder spl_file_info is already set.');
         }
 
-        $this->record = $record;
+        $this->spl_file_info = $spl_file_info;
 
         return $this;
     }

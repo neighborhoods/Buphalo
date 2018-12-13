@@ -4,6 +4,6 @@ services:
     calls:
       - [setFilesystem, ['@Symfony\Component\Filesystem\FilesystemInterface']]
       - [setFinder, ['@Symfony\Component\Finder\FinderInterface']]
-#      - [setFabricationFileBuilderFactory, ['@Rhift\Bradfab\FabricationFile\Builder\FactoryInterface']]
+      - [setFabricationFileBuilderFactory, ['@Rhift\Bradfab\FabricationFile\Builder\FactoryInterface']]
     public: false
     shared: false

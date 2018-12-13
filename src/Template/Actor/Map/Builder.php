@@ -8,6 +8,7 @@ use Rhift\Bradfab\Template\Actor\MapInterface;
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
+
     /** @var array */
     protected $record;
 

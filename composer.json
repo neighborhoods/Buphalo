@@ -29,7 +29,7 @@
     "psr-4": {
       "Rhift\\Bradfab\\": [
         "src",
-        "gab"
+        "fab"
       ]
     }
   }
