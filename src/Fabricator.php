@@ -14,6 +14,7 @@ class Fabricator implements FabricatorInterface
 
     const FILE_EXTENSION_FABRICATE = '.fabricate.yml';
     const SUPPORTING_ACTORS = 'supporting_actors';
+    const NAMESPACE_TOKEN = '**NAMESPACE_TOKEN**';
     /** @var string */
     protected $source_path;
     /** @var string */
@@ -124,7 +125,7 @@ class Fabricator implements FabricatorInterface
         $supportingActorTemplate = file_get_contents($supportingActorTemplateFilePath);
         $supportingActorTemplate = str_replace(
             'Rhift\Bradfab\Template\Actor',
-            '**NAMESPACE_TOKEN**',
+            self::NAMESPACE_TOKEN,
             $supportingActorTemplate
         );
 
@@ -157,7 +158,7 @@ class Fabricator implements FabricatorInterface
         $actorNamePath = str_replace('/', '', $actorNamePath);//trim(substr($actorNamePath, $start));
         $supportingActorTemplate = str_replace('Actor', $actorNamePath, $supportingActorTemplate);
         $supportingActorTemplate = str_replace(
-            '**NAMESPACE_TOKEN**',
+            self::NAMESPACE_TOKEN,
             $actorNamespace,
             $supportingActorTemplate
         );
