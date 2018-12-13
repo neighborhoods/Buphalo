@@ -154,11 +154,6 @@ class Fabricator implements FabricatorInterface
         string $actorNamespace
     ): FabricatorInterface {
 
-        $start = 0;
-        $position = strrpos($actorNamePath, '/');
-        if ($position !== false) {
-            $start = $position + 1;
-        }
         $actorNamePath = str_replace('/', '', $actorNamePath);//trim(substr($actorNamePath, $start));
         $supportingActorTemplate = str_replace('Actor', $actorNamePath, $supportingActorTemplate);
         $supportingActorTemplate = str_replace(
