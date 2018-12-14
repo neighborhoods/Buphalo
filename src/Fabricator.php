@@ -5,6 +5,7 @@ namespace Rhift\Bradfab;
 
 use Rhift\Bradfab\FabricationFile\SupportingActor\Map;
 use Rhift\Bradfab\FabricationFile\SupportingActor\BuilderInterface;
+use Rhift\Bradfab\SupportingActor\Template\TokenizerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -15,10 +16,6 @@ class Fabricator implements FabricatorInterface
     use FabricationFile\Builder\Factory\AwareTrait;
 
     public const FILE_EXTENSION_FABRICATION = '.fabrication.yml';
-    public const NAMESPACE_TOKEN = '**NAMESPACE_TOKEN**';
-    public const VARIABLE_TOKEN = '**VARIABLE_TOKEN**';
-    public const PROPERTY_REFERENCE_TOKEN = '**PROPERTY_REFERENCE_TOKEN**';
-    const PROPERTY_TOKEN = '**PROPERTY_TOKEN**';
     /** @var string */
     protected $source_path;
     /** @var string */
@@ -130,22 +127,32 @@ class Fabricator implements FabricatorInterface
         $supportingActorTemplate = file_get_contents($supportingActorTemplateFilePath);
         $supportingActorTemplate = str_replace(
             'Rhift\Bradfab\Template\Actor',
-            self::NAMESPACE_TOKEN,
+            TokenizerInterface::NAMESPACE_TOKEN,
             $supportingActorTemplate
         );
         $supportingActorTemplate = str_replace(
             'protected $Actor',
-            self::PROPERTY_TOKEN,
+            TokenizerInterface::PROPERTY_TOKEN,
             $supportingActorTemplate
         );
         $supportingActorTemplate = str_replace(
             '$this->Actor',
-            self::PROPERTY_REFERENCE_TOKEN,
+            TokenizerInterface::PROPERTY_REFERENCE_TOKEN,
             $supportingActorTemplate
         );
         $supportingActorTemplate = str_replace(
             '$Actor',
-            self::VARIABLE_TOKEN,
+            TokenizerInterface::VARIABLE_TOKEN,
+            $supportingActorTemplate
+        );
+        $supportingActorTemplate = str_replace(
+            'ActorInterface',
+            TokenizerInterface::INTERFACE_TOKEN,
+            $supportingActorTemplate
+        );
+        $supportingActorTemplate = str_replace(
+            'Actor',
+            TokenizerInterface::METHOD_AND_COMMENT_TOKEN,
             $supportingActorTemplate
         );
 
@@ -183,23 +190,32 @@ class Fabricator implements FabricatorInterface
         $variableReplacement = trim(substr($propertyReplacement, $start));
         $propertyReplacement = str_replace('/', '', $propertyReplacement);//trim(substr($actorNamePath, $start));
         $supportingActorFileContents = str_replace(
-            self::VARIABLE_TOKEN,
+            TokenizerInterface::VARIABLE_TOKEN,
             '$' . $variableReplacement,
             $supportingActorTemplate
         );
         $supportingActorFileContents = str_replace(
-            self::PROPERTY_TOKEN,
+            TokenizerInterface::PROPERTY_TOKEN,
             'protected $' . $propertyReplacement,
             $supportingActorFileContents
         );
         $supportingActorFileContents = str_replace(
-            self::PROPERTY_REFERENCE_TOKEN,
+            TokenizerInterface::PROPERTY_REFERENCE_TOKEN,
             '$this->' . $propertyReplacement,
             $supportingActorFileContents
         );
-        $supportingActorFileContents = str_replace('Actor', $variableReplacement, $supportingActorFileContents);
         $supportingActorFileContents = str_replace(
-            self::NAMESPACE_TOKEN,
+            TokenizerInterface::INTERFACE_TOKEN,
+            $variableReplacement . 'Interface',
+            $supportingActorFileContents
+        );
+        $supportingActorFileContents = str_replace(
+            TokenizerInterface::METHOD_AND_COMMENT_TOKEN,
+            $propertyReplacement,
+            $supportingActorFileContents
+        );
+        $supportingActorFileContents = str_replace(
+            TokenizerInterface::NAMESPACE_TOKEN,
             $actorNamespace,
             $supportingActorFileContents
         );

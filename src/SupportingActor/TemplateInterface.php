@@ -6,4 +6,5 @@ namespace Rhift\Bradfab\SupportingActor;
 interface TemplateInterface
 {
 
+    public function getContents(): string;
 }
