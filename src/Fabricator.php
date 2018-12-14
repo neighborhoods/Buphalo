@@ -14,7 +14,7 @@ class Fabricator implements FabricatorInterface
 {
     use FabricationFile\Builder\Factory\AwareTrait;
 
-    const FILE_EXTENSION_FABRICATE = '.fabricate.yml';
+    const FILE_EXTENSION_FABRICATION = '.fabrication.yml';
     const NAMESPACE_TOKEN = '**NAMESPACE_TOKEN**';
     /** @var string */
     protected $source_path;
@@ -51,9 +51,9 @@ class Fabricator implements FabricatorInterface
         $this->encapsulatedNoBueno();
         /** @var SplFileInfo $fabricateYamlFile */
         foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlFile) {
+            $this->writeActors($fabricateYamlFilePathname);
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
             $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlFile)->build();
-            $this->writeActors($fabricateYamlFilePathname);
         }
 
         return $this;
@@ -62,7 +62,7 @@ class Fabricator implements FabricatorInterface
     protected function writeActors($fabricateYamlFilePath): FabricatorInterface
     {
         $fabricateYaml = Yaml::parseFile($fabricateYamlFilePath);
-        $actorNamePath = str_replace(self::FILE_EXTENSION_FABRICATE, '', $fabricateYamlFilePath);
+        $actorNamePath = str_replace(self::FILE_EXTENSION_FABRICATION, '', $fabricateYamlFilePath);
         $actorNamePath = str_replace($this->getSourcePath() . '/', '', $actorNamePath);
         $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
         $actorNameSpace = str_replace('/', '\\', $actorNameSpace);
@@ -140,7 +140,7 @@ class Fabricator implements FabricatorInterface
         string $extension
     ): string {
         $supportingActorFilePath = str_replace('src', 'fab', $fabricateYamlFilePath);
-        $supportingActorFilePath = str_replace(self::FILE_EXTENSION_FABRICATE, '/', $supportingActorFilePath);
+        $supportingActorFilePath = str_replace(self::FILE_EXTENSION_FABRICATION, '/', $supportingActorFilePath);
         $supportingActorFilePath .= str_replace(
             '\\',
             '/',
@@ -174,7 +174,7 @@ class Fabricator implements FabricatorInterface
     {
         if ($this->fabricate_yaml_files === null) {
             $finder = $this->getFinder()->in($this->getSourcePath());
-            $finder->name('*.fabricate.yml');
+            $finder->name('*' . self::FILE_EXTENSION_FABRICATION);
             /** @var $file SplFileInfo */
             foreach ($finder as $directoryPath => $file) {
                 $pathname = $file->getPathname();

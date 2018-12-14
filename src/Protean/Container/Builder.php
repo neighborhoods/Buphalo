@@ -80,7 +80,7 @@ class Builder implements BuilderInterface
             $containerBuilderFacade->addFinder(
                 (new Finder())->name('*.yml')
                     ->notName('*.prefab.definition.yml')
-                    ->notName('*.fabricate.yml')
+                    ->notName('*.fabrication.yml')
                     ->files()
                     ->in($discoverableDirectories)
             );

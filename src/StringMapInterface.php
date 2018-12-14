@@ -22,5 +22,6 @@ interface StringMapInterface extends \SeekableIterator, \ArrayAccess, \Serializa
 
     public function toArray(): array;
 
-    public function hydrate(array $array): StringMapInterface;
+    /** @param string ...$Strings */
+    public function hydrate(array $Strings): StringMapInterface;
 }

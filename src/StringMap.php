@@ -5,18 +5,18 @@ namespace Rhift\Bradfab;
 
 class StringMap extends \ArrayIterator implements StringMapInterface
 {
-    /** @param string ...$string */
-    public function __construct(array $string = array(), int $flags = 0)
+    /** @param string ...$Strings */
+    public function __construct(array $Strings = array(), int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new \LogicException('Map is not empty.');
         }
 
-        if (!empty($string)) {
-            $this->assertValidArrayType(...array_values($string));
+        if (!empty($Strings)) {
+            $this->assertValidArrayType(...array_values($Strings));
         }
 
-        parent::__construct($string, $flags);
+        parent::__construct($Strings, $flags);
     }
 
     public function offsetGet($index): string
@@ -62,9 +62,10 @@ class StringMap extends \ArrayIterator implements StringMapInterface
         return (array)$this;
     }
 
-    public function hydrate(array $array): StringMapInterface
+    /** @param string ...$Strings */
+    public function hydrate(array $Strings): StringMapInterface
     {
-        $this->__construct($array);
+        $this->__construct($Strings);
 
         return $this;
     }

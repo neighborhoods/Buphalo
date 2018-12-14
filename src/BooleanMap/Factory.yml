@@ -1,0 +1,7 @@
+services:
+  Rhift\Bradfab\BooleanMap\FactoryInterface:
+    class: Rhift\Bradfab\BooleanMap\Factory
+    public: false
+    shared: true
+    calls:
+      - [setBooleanMap, ['@Rhift\Bradfab\BooleanMapInterface']]

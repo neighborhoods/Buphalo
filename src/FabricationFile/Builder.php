@@ -22,6 +22,10 @@ class Builder implements BuilderInterface
         $supportingActorMapBuilder = $this->getFabricationFileSupportingActorMapBuilderFactory()->create();
         $supportingActorMap = $supportingActorMapBuilder->setRecords($fabricationFileContents)->build();
         $fabricationFile->setSupportingActors($supportingActorMap);
+        $fabricationFile->setFileName($this->getSPLFileInfo()->getFilename());
+        $fabricationFile->setFilePath($this->getSPLFileInfo()->getPathname());
+        $fabricationFile->setRelativeDirectoryPath($this->getSPLFileInfo()->getRelativePath());
+        $fabricationFile->setRelativeFilePath($this->getSPLFileInfo()->getRelativePathname());
 
         return $fabricationFile;
     }

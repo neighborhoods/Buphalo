@@ -7,8 +7,8 @@ use Rhift\Bradfab\Template\ActorInterface;
 
 interface MapInterface extends \SeekableIterator, \ArrayAccess, \Serializable, \Countable
 {
-    /** @param ActorInterface ...$string */
-    public function __construct(array $string = array(), int $flags = 0);
+    /** @param ActorInterface ...$Actors */
+    public function __construct(array $Actors = array(), int $flags = 0);
 
     public function offsetGet($index): ActorInterface;
 
@@ -24,5 +24,6 @@ interface MapInterface extends \SeekableIterator, \ArrayAccess, \Serializable, \
 
     public function toArray(): array;
 
-    public function hydrate(array $array): MapInterface;
+    /** @param ActorInterface ...$Actors */
+    public function hydrate(array $Actors): MapInterface;
 }
