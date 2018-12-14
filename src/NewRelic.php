@@ -5,7 +5,6 @@ namespace Rhift\Bradfab;
 
 class NewRelic implements NewRelicInterface
 {
-    const EXTENSION_NAME_NEWRELIC = 'newrelic';
     protected $is_extension_loaded;
 
     public function isExtensionLoaded(): bool

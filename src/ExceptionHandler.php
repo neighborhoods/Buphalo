@@ -11,7 +11,7 @@ class ExceptionHandler implements ExceptionHandlerInterface
         if ($newRelic->isExtensionLoaded()) {
             $newRelic->noticeThrowable($throwable);
         } else {
-            throw $throwable;
+            fwrite(STDERR, $throwable->__toString() . PHP_EOL);
         }
 
         return $this;
