@@ -7,18 +7,18 @@ use Rhift\Bradfab\FabricationFile\SupportingActorInterface;
 
 class Map extends \ArrayIterator implements MapInterface
 {
-    /** @param SupportingActorInterface ...$SupportingStrings */
-    public function __construct(array $SupportingStrings = array(), int $flags = 0)
+    /** @param SupportingActorInterface ...$SupportingActors */
+    public function __construct(array $SupportingActors = array(), int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new \LogicException('Map is not empty.');
         }
 
-        if (!empty($SupportingStrings)) {
-            $this->assertValidArrayType(...array_values($SupportingStrings));
+        if (!empty($SupportingActors)) {
+            $this->assertValidArrayType(...array_values($SupportingActors));
         }
 
-        parent::__construct($SupportingStrings, $flags);
+        parent::__construct($SupportingActors, $flags);
     }
 
     public function offsetGet($index): SupportingActorInterface

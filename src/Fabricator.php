@@ -14,8 +14,11 @@ class Fabricator implements FabricatorInterface
 {
     use FabricationFile\Builder\Factory\AwareTrait;
 
-    const FILE_EXTENSION_FABRICATION = '.fabrication.yml';
-    const NAMESPACE_TOKEN = '**NAMESPACE_TOKEN**';
+    public const FILE_EXTENSION_FABRICATION = '.fabrication.yml';
+    public const NAMESPACE_TOKEN = '**NAMESPACE_TOKEN**';
+    public const VARIABLE_TOKEN = '**VARIABLE_TOKEN**';
+    public const PROPERTY_REFERENCE_TOKEN = '**PROPERTY_REFERENCE_TOKEN**';
+    const PROPERTY_TOKEN = '**PROPERTY_TOKEN**';
     /** @var string */
     protected $source_path;
     /** @var string */
@@ -41,14 +44,14 @@ class Fabricator implements FabricatorInterface
         $this->setFabricationPath(realpath($fabricationRelativePath));
         $this->setTemplateActorDirectoryPath(realpath(__DIR__ . '/Template/Actor/'));
 
-        $this->getFilesystem()->remove($this->getFabricationPath());
-
         return $this;
     }
 
     public function fabricate(): FabricatorInterface
     {
         $this->encapsulatedNoBueno();
+
+        $this->getFilesystem()->remove($this->getFabricationPath());
         /** @var SplFileInfo $fabricateYamlFile */
         foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlFile) {
             $this->writeActors($fabricateYamlFilePathname);
@@ -130,6 +133,21 @@ class Fabricator implements FabricatorInterface
             self::NAMESPACE_TOKEN,
             $supportingActorTemplate
         );
+        $supportingActorTemplate = str_replace(
+            'protected $Actor',
+            self::PROPERTY_TOKEN,
+            $supportingActorTemplate
+        );
+        $supportingActorTemplate = str_replace(
+            '$this->Actor',
+            self::PROPERTY_REFERENCE_TOKEN,
+            $supportingActorTemplate
+        );
+        $supportingActorTemplate = str_replace(
+            '$Actor',
+            self::VARIABLE_TOKEN,
+            $supportingActorTemplate
+        );
 
         return $supportingActorTemplate;
     }
@@ -152,20 +170,41 @@ class Fabricator implements FabricatorInterface
 
     protected function writeActor(
         string $supportingActorTemplate,
-        string $actorNamePath,
+        string $propertyReplacement,
         string $supportingActorFilePath,
         string $actorNamespace
     ): FabricatorInterface {
 
-        $actorNamePath = str_replace('/', '', $actorNamePath);//trim(substr($actorNamePath, $start));
-        $supportingActorTemplate = str_replace('Actor', $actorNamePath, $supportingActorTemplate);
-        $supportingActorTemplate = str_replace(
-            self::NAMESPACE_TOKEN,
-            $actorNamespace,
+        $start = 0;
+        $position = strrpos($propertyReplacement, '/');
+        if ($position !== false) {
+            $start = $position + 1;
+        }
+        $variableReplacement = trim(substr($propertyReplacement, $start));
+        $propertyReplacement = str_replace('/', '', $propertyReplacement);//trim(substr($actorNamePath, $start));
+        $supportingActorFileContents = str_replace(
+            self::VARIABLE_TOKEN,
+            '$' . $variableReplacement,
             $supportingActorTemplate
         );
+        $supportingActorFileContents = str_replace(
+            self::PROPERTY_TOKEN,
+            'protected $' . $propertyReplacement,
+            $supportingActorFileContents
+        );
+        $supportingActorFileContents = str_replace(
+            self::PROPERTY_REFERENCE_TOKEN,
+            '$this->' . $propertyReplacement,
+            $supportingActorFileContents
+        );
+        $supportingActorFileContents = str_replace('Actor', $variableReplacement, $supportingActorFileContents);
+        $supportingActorFileContents = str_replace(
+            self::NAMESPACE_TOKEN,
+            $actorNamespace,
+            $supportingActorFileContents
+        );
         $this->getFilesystem()->mkdir(dirname($supportingActorFilePath));
-        file_put_contents($supportingActorFilePath, $supportingActorTemplate);
+        file_put_contents($supportingActorFilePath, $supportingActorFileContents);
 
         return $this;
     }
