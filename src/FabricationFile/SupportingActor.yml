@@ -1,5 +1,5 @@
 services:
   Rhift\Bradfab\FabricationFile\SupportingActorInterface:
     class: Rhift\Bradfab\FabricationFile\SupportingActor
-    calls:
-      - [setAware, ['@Rhift\Bradfab\String\MapInterface']]
+    public: false
+    shared: false

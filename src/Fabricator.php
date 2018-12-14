@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Rhift\Bradfab;
 
+use Rhift\Bradfab\FabricationFile\SupportingActor\Map;
+use Rhift\Bradfab\FabricationFile\SupportingActor\BuilderInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -13,7 +15,6 @@ class Fabricator implements FabricatorInterface
     use FabricationFile\Builder\Factory\AwareTrait;
 
     const FILE_EXTENSION_FABRICATE = '.fabricate.yml';
-    const SUPPORTING_ACTORS = 'supporting_actors';
     const NAMESPACE_TOKEN = '**NAMESPACE_TOKEN**';
     /** @var string */
     protected $source_path;
@@ -50,8 +51,8 @@ class Fabricator implements FabricatorInterface
         $this->encapsulatedNoBueno();
         /** @var SplFileInfo $fabricateYamlFile */
         foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlFile) {
-//            $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
-//            $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlFile)->build();
+            $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
+            $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlFile)->build();
             $this->writeActors($fabricateYamlFilePathname);
         }
 
@@ -65,9 +66,10 @@ class Fabricator implements FabricatorInterface
         $actorNamePath = str_replace($this->getSourcePath() . '/', '', $actorNamePath);
         $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
         $actorNameSpace = str_replace('/', '\\', $actorNameSpace);
-        if (isset($fabricateYaml[self::SUPPORTING_ACTORS]) && is_array($fabricateYaml[self::SUPPORTING_ACTORS])) {
-            foreach ($fabricateYaml[self::SUPPORTING_ACTORS] as $supportingActorKey => $supportingActorProperties) {
-                if ($supportingActorProperties['enabled'] === true) {
+        if (is_array($fabricateYaml[Map\BuilderInterface::SUPPORTING_ACTORS])) {
+            $supportingActors = $fabricateYaml[Map\BuilderInterface::SUPPORTING_ACTORS];
+            foreach ($supportingActors as $supportingActorKey => $supportingActorProperties) {
+                if ($supportingActorProperties[BuilderInterface::FABRICATE] === true) {
                     $supportingActorFilePath = $this->getSupportingActorFilePath(
                         $fabricateYamlFilePath,
                         $supportingActorKey,

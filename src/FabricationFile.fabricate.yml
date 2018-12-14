@@ -1,53 +1,21 @@
 supporting_actors:
   AwareTrait:
-    enabled: true
+    fabricate: true
   Factory:
-    enabled: true
+    fabricate: true
   FactoryInterface:
-    enabled: true
+    fabricate: true
   Factory\AwareTrait:
-    enabled: true
+    fabricate: true
   Builder:
-    enabled: true
+    fabricate: true
   BuilderInterface:
-    enabled: true
+    fabricate: true
   Builder\AwareTrait:
-    enabled: true
+    fabricate: true
   Builder\Factory:
-    enabled: true
+    fabricate: true
   Builder\FactoryInterface:
-    enabled: true
+    fabricate: true
   Builder\Factory\AwareTrait:
-    enabled: true
-  Repository:
-    enabled: true
-    aware:
-      - VENDOR\PRODUCT\V2\Toe
-  RepositoryInterface:
-    enabled: true
-  Repository\AwareTrait:
-    enabled: true
-  Map:
-    enabled: true
-  MapInterface:
-    enabled: true
-  Map\AwareTrait:
-    enabled: true
-  Map\Factory:
-    enabled: true
-  Map\FactoryInterface:
-    enabled: true
-  Map\Factory\AwareTrait:
-    enabled: true
-  Map\Builder:
-    enabled: true
-  Map\BuilderInterface:
-    enabled: true
-  Map\Builder\AwareTrait:
-    enabled: true
-  Map\Builder\Factory:
-    enabled: true
-  Map\Builder\FactoryInterface:
-    enabled: true
-  Map\Builder\Factory\AwareTrait:
-    enabled: true
+    fabricate: true

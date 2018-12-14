@@ -11,6 +11,6 @@ class Factory implements FactoryInterface
 
     public function create(): StringMapInterface
     {
-        return clone $this->getStringMap();
+        return $this->getStringMap()->getArrayCopy();
     }
 }

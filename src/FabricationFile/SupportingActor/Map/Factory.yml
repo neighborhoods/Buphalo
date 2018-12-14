@@ -4,4 +4,4 @@ services:
     public: false
     shared: true
     calls:
-      - [setSupportingActorMap, ['@Rhift\Bradfab\FabricationFile\SupportingActor\MapInterface']]
+      - [setFabricationFileSupportingActorMap, ['@Rhift\Bradfab\FabricationFile\SupportingActor\MapInterface']]

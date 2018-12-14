@@ -10,7 +10,7 @@ class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
     use StringMap\Factory\AwareTrait;
-    /** @var array */
+
     protected $record;
 
     public function build(): SupportingActorInterface
@@ -18,10 +18,13 @@ class Builder implements BuilderInterface
         $record = $this->getRecord();
         $supportingActor = $this->getFabricationFileSupportingActorFactory()->create();
         $supportingActor->setRelativeClassName($record['relative_class_name']);
-        $stringMap = $this->getStringMapFactory()->create();
-
-        // @TODO - build the object.
-        throw new \LogicException('Unimplemented build method.');
+        $awareMap = $this->getStringMapFactory()->create();
+        if (isset($record[self::AWARE_OF]) && is_array($record[self::AWARE_OF])) {
+            foreach ($record[self::AWARE_OF] as $aware) {
+                $awareMap[$aware] = $aware;
+            }
+            $supportingActor->setAware($awareMap);
+        }
 
         return $supportingActor;
     }

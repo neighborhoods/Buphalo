@@ -4,4 +4,4 @@ services:
     public: false
     shared: true
     calls:
-      - [setSupportingActorBuilder, ['@Rhift\Bradfab\FabricationFile\SupportingActor\BuilderInterface']]
+      - [setFabricationFileSupportingActorBuilder, ['@Rhift\Bradfab\FabricationFile\SupportingActor\BuilderInterface']]

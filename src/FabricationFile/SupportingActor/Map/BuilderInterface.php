@@ -7,6 +7,8 @@ use Rhift\Bradfab\FabricationFile\SupportingActor\MapInterface;
 
 interface BuilderInterface
 {
+    public const SUPPORTING_ACTORS = 'supporting_actors';
+
     public function build(): MapInterface;
 
     public function setRecords(array $records): BuilderInterface;
