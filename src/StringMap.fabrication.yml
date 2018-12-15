@@ -1,9 +1,5 @@
 supporting_actors:
   AwareTrait:
-    fabricate: true
   Factory:
-    fabricate: true
   FactoryInterface:
-    fabricate: true
   Factory\AwareTrait:
-    fabricate: true

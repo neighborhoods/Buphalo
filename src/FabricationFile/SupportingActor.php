@@ -8,28 +8,7 @@ use Rhift\Bradfab\StringMapInterface;
 class SupportingActor implements SupportingActorInterface
 {
     protected $relative_class_name;
-    protected $enabled;
     protected $aware_of;
-
-    public function isEnabled(): bool
-    {
-        if ($this->enabled === null) {
-            throw new \LogicException('SupportingActor enabled has not been set.');
-        }
-
-        return $this->enabled;
-    }
-
-    public function setEnabled(bool $enabled): SupportingActorInterface
-    {
-        if ($this->enabled !== null) {
-            throw new \LogicException('SupportingActor enabled is already set.');
-        }
-
-        $this->enabled = $enabled;
-
-        return $this;
-    }
 
     public function getAwareOf(): StringMapInterface
     {

@@ -7,12 +7,7 @@ use Rhift\Bradfab\StringMapInterface;
 
 interface SupportingActorInterface
 {
-
     public function getRelativeClassName(): string;
-
-    public function isEnabled(): bool;
-
-    public function setEnabled(bool $enabled): SupportingActorInterface;
 
     public function getAwareOf(): StringMapInterface;
 

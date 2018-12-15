@@ -75,7 +75,7 @@ class Fabricator implements FabricatorInterface
 
     protected function writeActors($fabricateYamlFilePath): FabricatorInterface
     {
-        $fabricateYaml = Yaml::parseFile($fabricateYamlFilePath);
+        $fabricateYaml = Yaml::parseFile($fabricateYamlFilePath, Yaml::PARSE_CONSTANT);
         $actorNamePath = str_replace(self::FILE_EXTENSION_FABRICATION, '', $fabricateYamlFilePath);
         $actorNamePath = str_replace($this->getSourcePath() . '/', '', $actorNamePath);
         $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
@@ -83,16 +83,34 @@ class Fabricator implements FabricatorInterface
         if (is_array($fabricateYaml[Map\BuilderInterface::SUPPORTING_ACTORS])) {
             $supportingActors = $fabricateYaml[Map\BuilderInterface::SUPPORTING_ACTORS];
             foreach ($supportingActors as $supportingActorKey => $supportingActorProperties) {
-                if ($supportingActorProperties[BuilderInterface::FABRICATE] === true) {
-                    $supportingActorFilePath = $this->getSupportingActorFilePath(
-                        $fabricateYamlFilePath,
+                $supportingActorFilePath = $this->getSupportingActorFilePath(
+                    $fabricateYamlFilePath,
+                    $supportingActorKey,
+                    '.php'
+                );
+                if (!is_file(str_replace('/fab/', '/src/', $supportingActorFilePath))) {
+                    $supportingActorTemplate = $this->getSupportingActorTemplate(
                         $supportingActorKey,
                         '.php'
                     );
-                    if (!is_file(str_replace('/fab/', '/src/', $supportingActorFilePath))) {
+                    $this->writeActor(
+                        $supportingActorTemplate,
+                        $actorNamePath,
+                        $supportingActorFilePath,
+                        $actorNameSpace
+                    );
+                    if (
+                        strpos($supportingActorKey, 'AwareTrait') === false
+                        && strpos($supportingActorKey, 'Interface') === false
+                    ) {
+                        $supportingActorFilePath = $this->getSupportingActorFilePath(
+                            $fabricateYamlFilePath,
+                            $supportingActorKey,
+                            '.yml'
+                        );
                         $supportingActorTemplate = $this->getSupportingActorTemplate(
                             $supportingActorKey,
-                            '.php'
+                            '.yml'
                         );
                         $this->writeActor(
                             $supportingActorTemplate,
@@ -100,26 +118,6 @@ class Fabricator implements FabricatorInterface
                             $supportingActorFilePath,
                             $actorNameSpace
                         );
-                        if (
-                            strpos($supportingActorKey, 'AwareTrait') === false
-                            && strpos($supportingActorKey, 'Interface') === false
-                        ) {
-                            $supportingActorFilePath = $this->getSupportingActorFilePath(
-                                $fabricateYamlFilePath,
-                                $supportingActorKey,
-                                '.yml'
-                            );
-                            $supportingActorTemplate = $this->getSupportingActorTemplate(
-                                $supportingActorKey,
-                                '.yml'
-                            );
-                            $this->writeActor(
-                                $supportingActorTemplate,
-                                $actorNamePath,
-                                $supportingActorFilePath,
-                                $actorNameSpace
-                            );
-                        }
                     }
                 }
             }

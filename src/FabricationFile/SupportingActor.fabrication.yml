@@ -1,45 +1,23 @@
 supporting_actors:
   AwareTrait:
-    fabricate: true
   Factory:
-    fabricate: true
   FactoryInterface:
-    fabricate: true
   Factory\AwareTrait:
-    fabricate: true
   Builder:
-    fabricate: true
   BuilderInterface:
-    fabricate: true
   Builder\AwareTrait:
-    fabricate: true
   Builder\Factory:
-    fabricate: true
   Builder\FactoryInterface:
-    fabricate: true
   Builder\Factory\AwareTrait:
-    fabricate: true
   Map:
-    fabricate: true
   MapInterface:
-    fabricate: true
   Map\AwareTrait:
-    fabricate: true
   Map\Factory:
-    fabricate: true
   Map\FactoryInterface:
-    fabricate: true
   Map\Factory\AwareTrait:
-    fabricate: true
   Map\Builder:
-    fabricate: true
   Map\BuilderInterface:
-    fabricate: true
   Map\Builder\AwareTrait:
-    fabricate: true
   Map\Builder\Factory:
-    fabricate: true
   Map\Builder\FactoryInterface:
-    fabricate: true
   Map\Builder\Factory\AwareTrait:
-    fabricate: true
