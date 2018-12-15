@@ -4,4 +4,4 @@ services:
     public: false
     shared: true
     calls:
-      - [setTemplate, ['@Rhift\Bradfab\SupportingActor\TemplateInterface']]
+      - [setSupportingActorTemplate, ['@Rhift\Bradfab\SupportingActor\TemplateInterface']]

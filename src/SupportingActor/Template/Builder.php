@@ -13,12 +13,14 @@ class Builder implements BuilderInterface
 
     public function build(): TemplateInterface
     {
-        $Template = $this->getTemplateFactory()->create();
+        $template = $this->getSupportingActorTemplateFactory()->create();
+        $template;
+
 
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
 
-        return $Template;
+        return $template;
     }
 
     protected function getRecord(): array

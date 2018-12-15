@@ -1,0 +1,5 @@
+services:
+  Rhift\Bradfab\SupportingActor\Template\TokenizerInterface:
+    class: Rhift\Bradfab\SupportingActor\Template\Tokenizer
+    public: false
+    shared: false

@@ -7,38 +7,38 @@ use Rhift\Bradfab\SupportingActor\Template\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $SupportingTemplateTemplateFactory;
+    protected $SupportingActorTemplateFactory;
 
-    public function setTemplateFactory(FactoryInterface $TemplateFactory): self
+    public function setSupportingActorTemplateFactory(FactoryInterface $TemplateFactory): self
     {
-        if ($this->hasTemplateFactory()) {
-            throw new \LogicException('TemplateFactory is already set.');
+        if ($this->hasSupportingActorTemplateFactory()) {
+            throw new \LogicException('SupportingActorTemplateFactory is already set.');
         }
-        $this->SupportingTemplateTemplateFactory = $TemplateFactory;
+        $this->SupportingActorTemplateFactory = $TemplateFactory;
 
         return $this;
     }
 
-    protected function getTemplateFactory(): FactoryInterface
+    protected function getSupportingActorTemplateFactory(): FactoryInterface
     {
-        if (!$this->hasTemplateFactory()) {
-            throw new \LogicException('TemplateFactory is not set.');
+        if (!$this->hasSupportingActorTemplateFactory()) {
+            throw new \LogicException('SupportingActorTemplateFactory is not set.');
         }
 
-        return $this->SupportingTemplateTemplateFactory;
+        return $this->SupportingActorTemplateFactory;
     }
 
-    protected function hasTemplateFactory(): bool
+    protected function hasSupportingActorTemplateFactory(): bool
     {
-        return isset($this->SupportingTemplateTemplateFactory);
+        return isset($this->SupportingActorTemplateFactory);
     }
 
-    protected function unsetTemplateFactory(): self
+    protected function unsetSupportingActorTemplateFactory(): self
     {
-        if (!$this->hasTemplateFactory()) {
-            throw new \LogicException('TemplateFactory is not set.');
+        if (!$this->hasSupportingActorTemplateFactory()) {
+            throw new \LogicException('SupportingActorTemplateFactory is not set.');
         }
-        unset($this->SupportingTemplateTemplateFactory);
+        unset($this->SupportingActorTemplateFactory);
 
         return $this;
     }

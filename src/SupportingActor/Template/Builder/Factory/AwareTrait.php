@@ -7,38 +7,38 @@ use Rhift\Bradfab\SupportingActor\Template\Builder\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $SupportingTemplateTemplateBuilderFactory;
+    protected $SupportingActorTemplateBuilderFactory;
 
-    public function setTemplateBuilderFactory(FactoryInterface $TemplateBuilderFactory): self
+    public function setSupportingActorTemplateBuilderFactory(FactoryInterface $TemplateBuilderFactory): self
     {
-        if ($this->hasTemplateBuilderFactory()) {
-            throw new \LogicException('TemplateBuilderFactory is already set.');
+        if ($this->hasSupportingActorTemplateBuilderFactory()) {
+            throw new \LogicException('SupportingActorTemplateBuilderFactory is already set.');
         }
-        $this->SupportingTemplateTemplateBuilderFactory = $TemplateBuilderFactory;
+        $this->SupportingActorTemplateBuilderFactory = $TemplateBuilderFactory;
 
         return $this;
     }
 
-    protected function getTemplateBuilderFactory(): FactoryInterface
+    protected function getSupportingActorTemplateBuilderFactory(): FactoryInterface
     {
-        if (!$this->hasTemplateBuilderFactory()) {
-            throw new \LogicException('TemplateBuilderFactory is not set.');
+        if (!$this->hasSupportingActorTemplateBuilderFactory()) {
+            throw new \LogicException('SupportingActorTemplateBuilderFactory is not set.');
         }
 
-        return $this->SupportingTemplateTemplateBuilderFactory;
+        return $this->SupportingActorTemplateBuilderFactory;
     }
 
-    protected function hasTemplateBuilderFactory(): bool
+    protected function hasSupportingActorTemplateBuilderFactory(): bool
     {
-        return isset($this->SupportingTemplateTemplateBuilderFactory);
+        return isset($this->SupportingActorTemplateBuilderFactory);
     }
 
-    protected function unsetTemplateBuilderFactory(): self
+    protected function unsetSupportingActorTemplateBuilderFactory(): self
     {
-        if (!$this->hasTemplateBuilderFactory()) {
-            throw new \LogicException('TemplateBuilderFactory is not set.');
+        if (!$this->hasSupportingActorTemplateBuilderFactory()) {
+            throw new \LogicException('SupportingActorTemplateBuilderFactory is not set.');
         }
-        unset($this->SupportingTemplateTemplateBuilderFactory);
+        unset($this->SupportingActorTemplateBuilderFactory);
 
         return $this;
     }

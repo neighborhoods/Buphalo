@@ -11,6 +11,6 @@ class Factory implements FactoryInterface
 
     public function create(): TemplateInterface
     {
-        return clone $this->getTemplate();
+        return clone $this->getSupportingActorTemplate();
     }
 }

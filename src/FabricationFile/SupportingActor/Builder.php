@@ -23,7 +23,7 @@ class Builder implements BuilderInterface
             foreach ($record[self::AWARE_OF] as $aware) {
                 $awareMap[$aware] = $aware;
             }
-            $supportingActor->setAware($awareMap);
+            $supportingActor->setAwareOf($awareMap);
         }
 
         return $supportingActor;

@@ -7,3 +7,6 @@ services:
       - [setFilesystem, ['@Symfony\Component\Filesystem\FilesystemInterface']]
       - [setFinder, ['@Symfony\Component\Finder\FinderInterface']]
       - [setFabricationFileBuilderFactory, ['@Rhift\Bradfab\FabricationFile\Builder\FactoryInterface']]
+      - [setSupportingActorTemplateFactory, ['@Rhift\Bradfab\SupportingActor\Template\FactoryInterface']]
+      - [setSupportingActorTemplateTokenizerFactory, ['@Rhift\Bradfab\SupportingActor\Template\Tokenizer\FactoryInterface']]
+      - [setSupportingActorTemplateCompilerFactory, ['@Rhift\Bradfab\SupportingActor\Template\Compiler\FactoryInterface']]

@@ -1,0 +1,21 @@
+supporting_actors:
+  AwareTrait:
+    fabricate: true
+  Factory:
+    fabricate: true
+  FactoryInterface:
+    fabricate: true
+  Factory\AwareTrait:
+    fabricate: true
+  Builder:
+    fabricate: true
+  BuilderInterface:
+    fabricate: true
+  Builder\AwareTrait:
+    fabricate: true
+  Builder\Factory:
+    fabricate: true
+  Builder\FactoryInterface:
+    fabricate: true
+  Builder\Factory\AwareTrait:
+    fabricate: true

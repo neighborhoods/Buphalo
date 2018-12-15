@@ -8,45 +8,45 @@ use Rhift\Bradfab\SupportingActor;
 class Tokenizer implements TokenizerInterface
 {
     use SupportingActor\Template\AwareTrait;
-    protected $tokenized_template_contents;
+    protected $tokenized_contents;
 
-    public function getTokenizedTemplateContents(): string
+    public function getTokenizedContents(): string
     {
-        if ($this->tokenized_template_contents === null) {
-            $templateContents = $this->getTemplate()->getContents();
-            $tokenizedTemplateContents = str_replace(
+        if ($this->tokenized_contents === null) {
+            $templateContents = $this->getSupportingActorTemplate()->getContents();
+            $tokenizedContents = str_replace(
                 'Rhift\Bradfab\Template\Actor',
                 TokenizerInterface::NAMESPACE_TOKEN,
                 $templateContents
             );
-            $tokenizedTemplateContents = str_replace(
+            $tokenizedContents = str_replace(
                 'protected $Actor',
                 TokenizerInterface::PROPERTY_TOKEN,
-                $tokenizedTemplateContents
+                $tokenizedContents
             );
-            $tokenizedTemplateContents = str_replace(
+            $tokenizedContents = str_replace(
                 '$this->Actor',
                 TokenizerInterface::PROPERTY_REFERENCE_TOKEN,
-                $tokenizedTemplateContents
+                $tokenizedContents
             );
-            $tokenizedTemplateContents = str_replace(
+            $tokenizedContents = str_replace(
                 '$Actor',
                 TokenizerInterface::VARIABLE_TOKEN,
-                $tokenizedTemplateContents
+                $tokenizedContents
             );
-            $tokenizedTemplateContents = str_replace(
+            $tokenizedContents = str_replace(
                 'ActorInterface',
                 TokenizerInterface::INTERFACE_TOKEN,
-                $tokenizedTemplateContents
+                $tokenizedContents
             );
-            $tokenizedTemplateContents = str_replace(
+            $tokenizedContents = str_replace(
                 'Actor',
                 TokenizerInterface::METHOD_AND_COMMENT_TOKEN,
-                $tokenizedTemplateContents
+                $tokenizedContents
             );
-            $this->tokenized_template_contents = $tokenizedTemplateContents;
+            $this->tokenized_contents = $tokenizedContents;
         }
 
-        return $this->tokenized_template_contents;
+        return $this->tokenized_contents;
     }
 }

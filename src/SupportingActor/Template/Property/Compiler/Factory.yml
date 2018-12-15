@@ -1,0 +1,7 @@
+services:
+  Rhift\Bradfab\SupportingActor\Template\Property\Compiler\FactoryInterface:
+    class: Rhift\Bradfab\SupportingActor\Template\Property\Compiler\Factory
+    public: false
+    shared: true
+    calls:
+      - [setSupportingActorTemplatePropertyCompiler, ['@Rhift\Bradfab\SupportingActor\Template\Property\CompilerInterface']]

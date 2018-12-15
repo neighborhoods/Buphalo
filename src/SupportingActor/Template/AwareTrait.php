@@ -7,38 +7,38 @@ use Rhift\Bradfab\SupportingActor\TemplateInterface;
 
 trait AwareTrait
 {
-    protected $SupportingTemplateTemplate;
+    protected $SupportingActorTemplate;
 
-    public function setTemplate(TemplateInterface $Template): self
+    public function setSupportingActorTemplate(TemplateInterface $Template): self
     {
-        if ($this->hasTemplate()) {
-            throw new \LogicException('Template is already set.');
+        if ($this->hasSupportingActorTemplate()) {
+            throw new \LogicException('SupportingActorTemplate is already set.');
         }
-        $this->SupportingTemplateTemplate = $Template;
+        $this->SupportingActorTemplate = $Template;
 
         return $this;
     }
 
-    protected function getTemplate(): TemplateInterface
+    protected function getSupportingActorTemplate(): TemplateInterface
     {
-        if (!$this->hasTemplate()) {
-            throw new \LogicException('Template is not set.');
+        if (!$this->hasSupportingActorTemplate()) {
+            throw new \LogicException('SupportingActorTemplate is not set.');
         }
 
-        return $this->SupportingTemplateTemplate;
+        return $this->SupportingActorTemplate;
     }
 
-    protected function hasTemplate(): bool
+    protected function hasSupportingActorTemplate(): bool
     {
-        return isset($this->SupportingTemplateTemplate);
+        return isset($this->SupportingActorTemplate);
     }
 
-    protected function unsetTemplate(): self
+    protected function unsetSupportingActorTemplate(): self
     {
-        if (!$this->hasTemplate()) {
-            throw new \LogicException('Template is not set.');
+        if (!$this->hasSupportingActorTemplate()) {
+            throw new \LogicException('SupportingActorTemplate is not set.');
         }
-        unset($this->SupportingTemplateTemplate);
+        unset($this->SupportingActorTemplate);
 
         return $this;
     }

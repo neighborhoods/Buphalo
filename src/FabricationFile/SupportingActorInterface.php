@@ -14,9 +14,9 @@ interface SupportingActorInterface
 
     public function setEnabled(bool $enabled): SupportingActorInterface;
 
-    public function getAware(): StringMapInterface;
+    public function getAwareOf(): StringMapInterface;
 
     public function setRelativeClassName(string $relative_class_name): SupportingActorInterface;
 
-    public function setAware(StringMapInterface $aware): SupportingActorInterface;
+    public function setAwareOf(StringMapInterface $aware): SupportingActorInterface;
 }

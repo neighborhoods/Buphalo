@@ -7,38 +7,38 @@ use Rhift\Bradfab\SupportingActor\Template\BuilderInterface;
 
 trait AwareTrait
 {
-    protected $SupportingTemplateTemplateBuilder;
+    protected $SupportingActorTemplateBuilder;
 
-    public function setTemplateBuilder(BuilderInterface $TemplateBuilder): self
+    public function setSupportingActorTemplateBuilder(BuilderInterface $TemplateBuilder): self
     {
-        if ($this->hasTemplateBuilder()) {
-            throw new \LogicException('TemplateBuilder is already set.');
+        if ($this->hasSupportingActorTemplateBuilder()) {
+            throw new \LogicException('SupportingActorTemplateBuilder is already set.');
         }
-        $this->SupportingTemplateTemplateBuilder = $TemplateBuilder;
+        $this->SupportingActorTemplateBuilder = $TemplateBuilder;
 
         return $this;
     }
 
-    protected function getTemplateBuilder(): BuilderInterface
+    protected function getSupportingActorTemplateBuilder(): BuilderInterface
     {
-        if (!$this->hasTemplateBuilder()) {
-            throw new \LogicException('TemplateBuilder is not set.');
+        if (!$this->hasSupportingActorTemplateBuilder()) {
+            throw new \LogicException('SupportingActorTemplateBuilder is not set.');
         }
 
-        return $this->SupportingTemplateTemplateBuilder;
+        return $this->SupportingActorTemplateBuilder;
     }
 
-    protected function hasTemplateBuilder(): bool
+    protected function hasSupportingActorTemplateBuilder(): bool
     {
-        return isset($this->SupportingTemplateTemplateBuilder);
+        return isset($this->SupportingActorTemplateBuilder);
     }
 
-    protected function unsetTemplateBuilder(): self
+    protected function unsetSupportingActorTemplateBuilder(): self
     {
-        if (!$this->hasTemplateBuilder()) {
-            throw new \LogicException('TemplateBuilder is not set.');
+        if (!$this->hasSupportingActorTemplateBuilder()) {
+            throw new \LogicException('SupportingActorTemplateBuilder is not set.');
         }
-        unset($this->SupportingTemplateTemplateBuilder);
+        unset($this->SupportingActorTemplateBuilder);
 
         return $this;
     }

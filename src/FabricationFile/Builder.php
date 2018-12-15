@@ -20,8 +20,8 @@ class Builder implements BuilderInterface
         $fabricationFileContents = Yaml::parseFile($this->getSPLFileInfo()->getPathname());
         $fabricationFile = $this->getFabricationFileFactory()->create();
         $supportingActorMapBuilder = $this->getFabricationFileSupportingActorMapBuilderFactory()->create();
-        $supportingActorMap = $supportingActorMapBuilder->setRecords($fabricationFileContents)->build();
-        $fabricationFile->setSupportingActors($supportingActorMap);
+        $supportingActors = $supportingActorMapBuilder->setRecords($fabricationFileContents)->build();
+        $fabricationFile->setSupportingActors($supportingActors);
         $fabricationFile->setFileName($this->getSPLFileInfo()->getFilename());
         $fabricationFile->setFilePath($this->getSPLFileInfo()->getPathname());
         $fabricationFile->setRelativeDirectoryPath($this->getSPLFileInfo()->getRelativePath());

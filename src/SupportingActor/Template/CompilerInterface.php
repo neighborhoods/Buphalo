@@ -5,5 +5,5 @@ namespace Rhift\Bradfab\SupportingActor\Template;
 
 interface CompilerInterface
 {
-
+    public function setSupportingActorTemplateTokenizer(TokenizerInterface $Tokenizer);
 }

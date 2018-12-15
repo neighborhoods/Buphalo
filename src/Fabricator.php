@@ -14,6 +14,9 @@ use Symfony\Component\Yaml\Yaml;
 class Fabricator implements FabricatorInterface
 {
     use FabricationFile\Builder\Factory\AwareTrait;
+    use SupportingActor\Template\Factory\AwareTrait;
+    use SupportingActor\Template\Tokenizer\Factory\AwareTrait;
+    use SupportingActor\Template\Compiler\Factory\AwareTrait;
 
     public const FILE_EXTENSION_FABRICATION = '.fabrication.yml';
     /** @var string */
@@ -54,6 +57,17 @@ class Fabricator implements FabricatorInterface
             $this->writeActors($fabricateYamlFilePathname);
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
             $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlFile)->build();
+            foreach ($fabricationFile->getSupportingActors() as $supportingActor) {
+                $template = $this->getSupportingActorTemplateFactory()->create();
+                $template->setFabricationFileSupportingActor($supportingActor);
+                $template->setTemplateActorDirectoryPath($this->getTemplateActorDirectoryPath());
+                $template->setFileExtension('.php');
+                $tokenizer = $this->getSupportingActorTemplateTokenizerFactory()->create();
+                $tokenizer->setSupportingActorTemplate($template);
+                $tokenizedContents = $tokenizer->getTokenizedContents();
+                $compiler = $this->getSupportingActorTemplateCompilerFactory()->create();
+                $compiler->setSupportingActorTemplateTokenizer($tokenizer);
+            }
         }
 
         return $this;
@@ -188,7 +202,7 @@ class Fabricator implements FabricatorInterface
             $start = $position + 1;
         }
         $variableReplacement = trim(substr($propertyReplacement, $start));
-        $propertyReplacement = str_replace('/', '', $propertyReplacement);//trim(substr($actorNamePath, $start));
+        $propertyReplacement = str_replace('/', '', $propertyReplacement);
         $supportingActorFileContents = str_replace(
             TokenizerInterface::VARIABLE_TOKEN,
             '$' . $variableReplacement,

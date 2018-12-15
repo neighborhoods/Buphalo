@@ -9,7 +9,7 @@ class SupportingActor implements SupportingActorInterface
 {
     protected $relative_class_name;
     protected $enabled;
-    protected $aware;
+    protected $aware_of;
 
     public function isEnabled(): bool
     {
@@ -31,22 +31,22 @@ class SupportingActor implements SupportingActorInterface
         return $this;
     }
 
-    public function getAware(): StringMapInterface
+    public function getAwareOf(): StringMapInterface
     {
-        if ($this->aware === null) {
-            throw new \LogicException('SupportingActor aware has not been set.');
+        if ($this->aware_of === null) {
+            throw new \LogicException('SupportingActor aware_of has not been set.');
         }
 
-        return $this->aware;
+        return $this->aware_of;
     }
 
-    public function setAware(StringMapInterface $aware): SupportingActorInterface
+    public function setAwareOf(StringMapInterface $aware): SupportingActorInterface
     {
-        if ($this->aware !== null) {
-            throw new \LogicException('SupportingActor aware is already set.');
+        if ($this->aware_of !== null) {
+            throw new \LogicException('SupportingActor aware_of is already set.');
         }
 
-        $this->aware = $aware;
+        $this->aware_of = $aware;
 
         return $this;
     }

@@ -4,4 +4,4 @@ services:
     public: false
     shared: false
     calls:
-      - [setTemplateFactory, ['@Rhift\Bradfab\SupportingActor\Template\FactoryInterface']]
+      - [setSupportingActorTemplateFactory, ['@Rhift\Bradfab\SupportingActor\Template\FactoryInterface']]

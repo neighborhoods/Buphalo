@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Rhift\Bradfab\SupportingActor\Template;
 
+use Rhift\Bradfab\SupportingActor\TemplateInterface;
+
 interface TokenizerInterface
 {
     public const VARIABLE_TOKEN = '**VARIABLE_TOKEN**';
@@ -12,5 +14,7 @@ interface TokenizerInterface
     public const METHOD_AND_COMMENT_TOKEN = '**METHOD_AND_COMMENT_TOKEN**';
     public const INTERFACE_TOKEN = '**INTERFACE_TOKEN**';
 
-    public function getTokenizedTemplateContents(): string;
+    public function getTokenizedContents(): string;
+
+    public function setSupportingActorTemplate(TemplateInterface $Template);
 }
