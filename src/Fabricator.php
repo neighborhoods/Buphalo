@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Rhift\Bradfab;
 
 use Rhift\Bradfab\FabricationFile\SupportingActor\Map;
-use Rhift\Bradfab\FabricationFile\SupportingActor\BuilderInterface;
 use Rhift\Bradfab\SupportingActor\Template\TokenizerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
@@ -17,20 +16,15 @@ class Fabricator implements FabricatorInterface
     use SupportingActor\Template\Factory\AwareTrait;
     use SupportingActor\Template\Tokenizer\Factory\AwareTrait;
     use SupportingActor\Template\Compiler\Factory\AwareTrait;
+    use SupportingActor\Template\Compiler\Strategy\Factory\AwareTrait;
+    use TargetActor\Factory\AwareTrait;
 
-    public const FILE_EXTENSION_FABRICATION = '.fabrication.yml';
-    /** @var string */
     protected $source_path;
-    /** @var string */
     protected $fabrication_path;
-    /** @var Finder */
     protected $finder;
     protected $fabricate_yaml_files;
-    /** @var Filesystem */
     protected $filesystem;
-    /** @var string */
     protected $target_namespace;
-    /** @var string */
     protected $template_actor_directory_path;
 
     protected function encapsulatedNoBueno(): FabricatorInterface
@@ -52,11 +46,11 @@ class Fabricator implements FabricatorInterface
         $this->encapsulatedNoBueno();
 
         $this->getFilesystem()->remove($this->getFabricationPath());
-        /** @var SplFileInfo $fabricateYamlFile */
-        foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlFile) {
+        /** @var SplFileInfo $fabricateYamlSPLFileInfo */
+        foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlSPLFileInfo) {
             $this->writeActors($fabricateYamlFilePathname);
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
-            $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlFile)->build();
+            $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlSPLFileInfo)->build();
             foreach ($fabricationFile->getSupportingActors() as $supportingActor) {
                 $template = $this->getSupportingActorTemplateFactory()->create();
                 $template->setFabricationFileSupportingActor($supportingActor);
@@ -64,9 +58,15 @@ class Fabricator implements FabricatorInterface
                 $template->setFileExtension('.php');
                 $tokenizer = $this->getSupportingActorTemplateTokenizerFactory()->create();
                 $tokenizer->setSupportingActorTemplate($template);
-                $tokenizedContents = $tokenizer->getTokenizedContents();
+                $targetActor = $this->getTargetActorFactory()->create();
+                $targetActor->setFabricationFile($fabricationFile);
+                $targetActor->setFabricator($this);
+                $strategy = $this->getSupportingActorTemplateCompilerStrategyFactory()->create();
+                $strategy->setTargetActor($targetActor);
                 $compiler = $this->getSupportingActorTemplateCompilerFactory()->create();
                 $compiler->setSupportingActorTemplateTokenizer($tokenizer);
+                $compiler->setSupportingActorTemplateCompilerStrategy($strategy);
+                $compiledContents = $compiler->getCompiledContents();
             }
         }
 
@@ -76,7 +76,7 @@ class Fabricator implements FabricatorInterface
     protected function writeActors($fabricateYamlFilePath): FabricatorInterface
     {
         $fabricateYaml = Yaml::parseFile($fabricateYamlFilePath, Yaml::PARSE_CONSTANT);
-        $actorNamePath = str_replace(self::FILE_EXTENSION_FABRICATION, '', $fabricateYamlFilePath);
+        $actorNamePath = str_replace(FabricationFileInterface::FILE_EXTENSION_FABRICATION, '', $fabricateYamlFilePath);
         $actorNamePath = str_replace($this->getSourcePath() . '/', '', $actorNamePath);
         $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
         $actorNameSpace = str_replace('/', '\\', $actorNameSpace);
@@ -139,7 +139,7 @@ class Fabricator implements FabricatorInterface
         $supportingActorTemplate = file_get_contents($supportingActorTemplateFilePath);
         $supportingActorTemplate = str_replace(
             'Rhift\Bradfab\Template\Actor',
-            TokenizerInterface::NAMESPACE_TOKEN,
+            TokenizerInterface::FQCN_TOKEN,
             $supportingActorTemplate
         );
         $supportingActorTemplate = str_replace(
@@ -177,7 +177,8 @@ class Fabricator implements FabricatorInterface
         string $extension
     ): string {
         $supportingActorFilePath = str_replace('src', 'fab', $fabricateYamlFilePath);
-        $supportingActorFilePath = str_replace(self::FILE_EXTENSION_FABRICATION, '/', $supportingActorFilePath);
+        $supportingActorFilePath = str_replace(FabricationFileInterface::FILE_EXTENSION_FABRICATION, '/',
+            $supportingActorFilePath);
         $supportingActorFilePath .= str_replace(
             '\\',
             '/',
@@ -227,7 +228,7 @@ class Fabricator implements FabricatorInterface
             $supportingActorFileContents
         );
         $supportingActorFileContents = str_replace(
-            TokenizerInterface::NAMESPACE_TOKEN,
+            TokenizerInterface::FQCN_TOKEN,
             $actorNamespace,
             $supportingActorFileContents
         );
@@ -241,7 +242,7 @@ class Fabricator implements FabricatorInterface
     {
         if ($this->fabricate_yaml_files === null) {
             $finder = $this->getFinder()->in($this->getSourcePath());
-            $finder->name('*' . self::FILE_EXTENSION_FABRICATION);
+            $finder->name('*' . FabricationFileInterface::FILE_EXTENSION_FABRICATION);
             /** @var $file SplFileInfo */
             foreach ($finder as $directoryPath => $file) {
                 $pathname = $file->getPathname();
@@ -276,7 +277,7 @@ class Fabricator implements FabricatorInterface
         return $this;
     }
 
-    protected function getSourcePath(): string
+    public function getSourcePath(): string
     {
         if ($this->source_path === null) {
             throw new \LogicException('Bradfab source_path has not been set.');

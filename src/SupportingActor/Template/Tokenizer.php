@@ -16,7 +16,7 @@ class Tokenizer implements TokenizerInterface
             $templateContents = $this->getSupportingActorTemplate()->getContents();
             $tokenizedContents = str_replace(
                 'Rhift\Bradfab\Template\Actor',
-                TokenizerInterface::NAMESPACE_TOKEN,
+                TokenizerInterface::FQCN_TOKEN,
                 $templateContents
             );
             $tokenizedContents = str_replace(

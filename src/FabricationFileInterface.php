@@ -7,6 +7,8 @@ use Rhift\Bradfab\FabricationFile\SupportingActor\MapInterface;
 
 interface FabricationFileInterface
 {
+    public const FILE_EXTENSION_FABRICATION = '.fabrication.yml';
+
     public function getSupportingActors(): MapInterface;
 
     public function setSupportingActors(MapInterface $supporting_actors): FabricationFileInterface;

@@ -10,3 +10,5 @@ services:
       - [setSupportingActorTemplateFactory, ['@Rhift\Bradfab\SupportingActor\Template\FactoryInterface']]
       - [setSupportingActorTemplateTokenizerFactory, ['@Rhift\Bradfab\SupportingActor\Template\Tokenizer\FactoryInterface']]
       - [setSupportingActorTemplateCompilerFactory, ['@Rhift\Bradfab\SupportingActor\Template\Compiler\FactoryInterface']]
+      - [setSupportingActorTemplateCompilerStrategyFactory, ['@Rhift\Bradfab\SupportingActor\Template\Compiler\Strategy\FactoryInterface']]
+      - [setTargetActorFactory, ['@Rhift\Bradfab\TargetActor\FactoryInterface']]

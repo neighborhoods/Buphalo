@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\SupportingActor\Template\Compiler;
+namespace Rhift\Bradfab\SupportingActor\Template\Compiler\Strategy;
 
-use Rhift\Bradfab\SupportingActor\Template\CompilerInterface;
+use Rhift\Bradfab\SupportingActor\Template\Compiler\StrategyInterface;
 
 class Builder implements BuilderInterface
 {
@@ -11,15 +11,14 @@ class Builder implements BuilderInterface
 
     protected $record;
 
-    public function build(): CompilerInterface
+    public function build(): StrategyInterface
     {
-        $compiler = $this->getSupportingActorTemplateCompilerFactory()->create();
-
+        $Strategy = $this->getSupportingActorTemplateCompilerStrategyFactory()->create();
 
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
 
-        return $compiler;
+        return $Strategy;
     }
 
     protected function getRecord(): array

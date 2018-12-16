@@ -17,7 +17,7 @@ class Builder implements BuilderInterface
 
     public function build(): FabricationFileInterface
     {
-        $fabricationFileContents = Yaml::parseFile($this->getSPLFileInfo()->getPathname());
+        $fabricationFileContents = Yaml::parseFile($this->getSPLFileInfo()->getPathname(), YAML::PARSE_CONSTANT);
         $fabricationFile = $this->getFabricationFileFactory()->create();
         $supportingActorMapBuilder = $this->getFabricationFileSupportingActorMapBuilderFactory()->create();
         $supportingActors = $supportingActorMapBuilder->setRecords($fabricationFileContents)->build();

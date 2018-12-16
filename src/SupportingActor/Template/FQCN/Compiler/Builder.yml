@@ -1,7 +1,0 @@
-services:
-  Rhift\Bradfab\SupportingActor\Template\FQCN\Compiler\BuilderInterface:
-    class: Rhift\Bradfab\SupportingActor\Template\FQCN\Compiler\Builder
-    public: false
-    shared: false
-    calls:
-      - [setSupportingActorTemplateFQCNCompilerFactory, ['@Rhift\Bradfab\SupportingActor\Template\FQCN\Compiler\FactoryInterface']]

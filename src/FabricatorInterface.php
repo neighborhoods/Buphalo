@@ -25,4 +25,6 @@ interface FabricatorInterface
     public function setFabricationPath(string $fabrication_path): FabricatorInterface;
 
     public function getTargetNamespace(): string;
+
+    public function getSourcePath(): string;
 }

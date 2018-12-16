@@ -1,0 +1,7 @@
+services:
+  Rhift\Bradfab\SupportingActor\Template\Compiler\Strategy\BuilderInterface:
+    class: Rhift\Bradfab\SupportingActor\Template\Compiler\Strategy\Builder
+    public: false
+    shared: false
+    calls:
+      - [setSupportingActorTemplateCompilerStrategyFactory, ['@Rhift\Bradfab\SupportingActor\Template\Compiler\Strategy\FactoryInterface']]
