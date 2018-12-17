@@ -12,3 +12,4 @@ services:
       - [setSupportingActorTemplateCompilerFactory, ['@Rhift\Bradfab\SupportingActor\Template\Compiler\FactoryInterface']]
       - [setSupportingActorTemplateCompilerStrategyFactory, ['@Rhift\Bradfab\SupportingActor\Template\Compiler\Strategy\FactoryInterface']]
       - [setTargetActorFactory, ['@Rhift\Bradfab\TargetActor\FactoryInterface']]
+      - [setSupportingActorWriterFactory, ['@Rhift\Bradfab\SupportingActor\Writer\FactoryInterface']]

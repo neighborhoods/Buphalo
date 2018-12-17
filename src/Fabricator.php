@@ -18,13 +18,12 @@ class Fabricator implements FabricatorInterface
     use SupportingActor\Template\Compiler\Factory\AwareTrait;
     use SupportingActor\Template\Compiler\Strategy\Factory\AwareTrait;
     use TargetActor\Factory\AwareTrait;
-
-    protected $source_path;
+    use SupportingActor\Writer\Factory\AwareTrait;
+    use TargetApplication\AwareTrait;
     protected $fabrication_path;
     protected $finder;
     protected $fabricate_yaml_files;
     protected $filesystem;
-    protected $target_namespace;
     protected $template_actor_directory_path;
 
     protected function encapsulatedNoBueno(): FabricatorInterface
@@ -33,9 +32,9 @@ class Fabricator implements FabricatorInterface
         // Ensure that the fabrication file path exists so that realpath can verify it.
         $this->getFilesystem()->mkdir($fabricationRelativePath);
 
-        $this->setTargetNamespace('Rhift\Bradfab\\');
-        $this->setSourcePath(realpath(__DIR__ . '/../src'));
-        $this->setFabricationPath(realpath($fabricationRelativePath));
+        $this->getTargetApplication()->setFqcn('Rhift\Bradfab\\');
+        $this->getTargetApplication()->setSourcePath(realpath(__DIR__ . '/../src'));
+        $this->getTargetApplication()->setFabricationPath(realpath($fabricationRelativePath));
         $this->setTemplateActorDirectoryPath(realpath(__DIR__ . '/Template/Actor/'));
 
         return $this;
@@ -45,28 +44,31 @@ class Fabricator implements FabricatorInterface
     {
         $this->encapsulatedNoBueno();
 
-        $this->getFilesystem()->remove($this->getFabricationPath());
+        $this->getFilesystem()->remove($this->getTargetApplication()->getFabricationPath());
         /** @var SplFileInfo $fabricateYamlSPLFileInfo */
         foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlSPLFileInfo) {
-            $this->writeActors($fabricateYamlFilePathname);
+//            $this->writeActors($fabricateYamlFilePathname);
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
             $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlSPLFileInfo)->build();
             foreach ($fabricationFile->getSupportingActors() as $supportingActor) {
+                $targetActor = $this->getTargetActorFactory()->create();
+                $targetActor->setFabricationFile($fabricationFile);
+                $targetActor->setTargetApplication($this->getTargetApplication());
                 $template = $this->getSupportingActorTemplateFactory()->create();
                 $template->setFabricationFileSupportingActor($supportingActor);
                 $template->setTemplateActorDirectoryPath($this->getTemplateActorDirectoryPath());
                 $template->setFileExtension('.php');
                 $tokenizer = $this->getSupportingActorTemplateTokenizerFactory()->create();
                 $tokenizer->setSupportingActorTemplate($template);
-                $targetActor = $this->getTargetActorFactory()->create();
-                $targetActor->setFabricationFile($fabricationFile);
-                $targetActor->setFabricator($this);
                 $strategy = $this->getSupportingActorTemplateCompilerStrategyFactory()->create();
                 $strategy->setTargetActor($targetActor);
                 $compiler = $this->getSupportingActorTemplateCompilerFactory()->create();
                 $compiler->setSupportingActorTemplateTokenizer($tokenizer);
                 $compiler->setSupportingActorTemplateCompilerStrategy($strategy);
-                $compiledContents = $compiler->getCompiledContents();
+                $writer = $this->getSupportingActorWriterFactory()->create();
+                $writer->setSupportingActorTemplateCompiler($compiler);
+                $writer->setTargetApplication($this->getTargetApplication());
+                $writer->write();
             }
         }
 
@@ -77,8 +79,8 @@ class Fabricator implements FabricatorInterface
     {
         $fabricateYaml = Yaml::parseFile($fabricateYamlFilePath, Yaml::PARSE_CONSTANT);
         $actorNamePath = str_replace(FabricationFileInterface::FILE_EXTENSION_FABRICATION, '', $fabricateYamlFilePath);
-        $actorNamePath = str_replace($this->getSourcePath() . '/', '', $actorNamePath);
-        $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
+        $actorNamePath = str_replace($this->getTargetApplication()->getSourcePath() . '/', '', $actorNamePath);
+        $actorNameSpace = $this->getTargetApplication()->getFqcn() . $actorNamePath;
         $actorNameSpace = str_replace('/', '\\', $actorNameSpace);
         if (is_array($fabricateYaml[Map\BuilderInterface::SUPPORTING_ACTORS])) {
             $supportingActors = $fabricateYaml[Map\BuilderInterface::SUPPORTING_ACTORS];
@@ -241,7 +243,7 @@ class Fabricator implements FabricatorInterface
     protected function getFabricateYamlFiles(): array
     {
         if ($this->fabricate_yaml_files === null) {
-            $finder = $this->getFinder()->in($this->getSourcePath());
+            $finder = $this->getFinder()->in($this->getTargetApplication()->getSourcePath());
             $finder->name('*' . FabricationFileInterface::FILE_EXTENSION_FABRICATION);
             /** @var $file SplFileInfo */
             foreach ($finder as $directoryPath => $file) {
@@ -277,46 +279,6 @@ class Fabricator implements FabricatorInterface
         return $this;
     }
 
-    public function getSourcePath(): string
-    {
-        if ($this->source_path === null) {
-            throw new \LogicException('Bradfab source_path has not been set.');
-        }
-
-        return $this->source_path;
-    }
-
-    public function setSourcePath(string $source_path): FabricatorInterface
-    {
-        if ($this->source_path !== null) {
-            throw new \LogicException('Bradfab source_path is already set.');
-        }
-
-        $this->source_path = $source_path;
-
-        return $this;
-    }
-
-    public function getFabricationPath(): string
-    {
-        if ($this->fabrication_path === null) {
-            throw new \LogicException('Bradfab fabrication_path has not been set.');
-        }
-
-        return $this->fabrication_path;
-    }
-
-    public function setFabricationPath(string $fabrication_path): FabricatorInterface
-    {
-        if ($this->fabrication_path !== null) {
-            throw new \LogicException('Bradfab fabrication_path is already set.');
-        }
-
-        $this->fabrication_path = $fabrication_path;
-
-        return $this;
-    }
-
     public function getFilesystem(): Filesystem
     {
         if ($this->filesystem === null) {
@@ -333,26 +295,6 @@ class Fabricator implements FabricatorInterface
         }
 
         $this->filesystem = $filesystem;
-
-        return $this;
-    }
-
-    public function getTargetNamespace(): string
-    {
-        if ($this->target_namespace === null) {
-            throw new \LogicException('Bradfab target_namespace has not been set.');
-        }
-
-        return $this->target_namespace;
-    }
-
-    public function setTargetNamespace(string $target_namespace): FabricatorInterface
-    {
-        if ($this->target_namespace !== null) {
-            throw new \LogicException('Bradfab target_namespace is already set.');
-        }
-
-        $this->target_namespace = $target_namespace;
 
         return $this;
     }

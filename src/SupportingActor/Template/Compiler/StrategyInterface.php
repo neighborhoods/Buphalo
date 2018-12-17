@@ -9,6 +9,8 @@ interface StrategyInterface
 {
     public function setTargetActor(TargetActorInterface $TargetActor);
 
+    public function getTargetActor(): TargetActorInterface;
+
     public function getPropertyReplacement(): string;
 
     public function getFQCNReplacement(): string;
@@ -20,4 +22,6 @@ interface StrategyInterface
     public function getMethodAndCommentReplacement(): string;
 
     public function getInterfaceReplacement(): string;
+
+    public function getTraitReplacement(): string;
 }

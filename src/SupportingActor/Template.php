@@ -7,8 +7,9 @@ use Rhift\Bradfab\FabricationFile;
 
 class Template implements TemplateInterface
 {
-    use FabricationFile\SupportingActor\AwareTrait;
-    use FabricationFile\AwareTrait;
+    use FabricationFile\SupportingActor\AwareTrait {
+        getFabricationFileSupportingActor as public;
+    }
 
     protected $contents;
     protected $template_actor_directory_path;

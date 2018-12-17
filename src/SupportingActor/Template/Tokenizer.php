@@ -7,7 +7,9 @@ use Rhift\Bradfab\SupportingActor;
 
 class Tokenizer implements TokenizerInterface
 {
-    use SupportingActor\Template\AwareTrait;
+    use SupportingActor\Template\AwareTrait {
+        getSupportingActorTemplate as public;
+    }
     protected $tokenized_contents;
 
     public function getTokenizedContents(): string
@@ -37,6 +39,11 @@ class Tokenizer implements TokenizerInterface
             $tokenizedContents = str_replace(
                 'ActorInterface',
                 TokenizerInterface::INTERFACE_TOKEN,
+                $tokenizedContents
+            );
+            $tokenizedContents = str_replace(
+                'use Actor',
+                TokenizerInterface::TRAIT_TOKEN,
                 $tokenizedContents
             );
             $tokenizedContents = str_replace(

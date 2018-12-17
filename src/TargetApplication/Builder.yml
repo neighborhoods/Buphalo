@@ -1,0 +1,7 @@
+services:
+  Rhift\Bradfab\TargetApplication\BuilderInterface:
+    class: Rhift\Bradfab\TargetApplication\Builder
+    public: false
+    shared: false
+    calls:
+      - [setTargetApplicationFactory, ['@Rhift\Bradfab\TargetApplication\FactoryInterface']]

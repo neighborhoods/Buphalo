@@ -7,7 +7,7 @@ interface TargetActorInterface
 {
     public function setFabricationFile(FabricationFileInterface $FabricationFile);
 
-    public function setFabricator(FabricatorInterface $Fabricator);
+    public function setTargetApplication(TargetApplicationInterface $TargetApplication);
 
     public function getName(): string;
 
@@ -16,4 +16,6 @@ interface TargetActorInterface
     public function getShortName(): string;
 
     public function getRelativeNamePath(): string;
+
+    public function getFilePathPosition(): string;
 }

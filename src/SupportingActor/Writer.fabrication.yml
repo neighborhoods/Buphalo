@@ -1,0 +1,11 @@
+supporting_actors:
+  AwareTrait:
+  Factory:
+  FactoryInterface:
+  Factory\AwareTrait:
+  Builder:
+  BuilderInterface:
+  Builder\AwareTrait:
+  Builder\Factory:
+  Builder\FactoryInterface:
+  Builder\Factory\AwareTrait:

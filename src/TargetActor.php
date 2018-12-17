@@ -6,26 +6,22 @@ namespace Rhift\Bradfab;
 class TargetActor implements TargetActorInterface
 {
     use FabricationFile\AwareTrait;
-    use Fabricator\AwareTrait;
+    use TargetApplication\AwareTrait;
 
     protected $relative_name_path;
     protected $fqcn;
     protected $short_name;
     protected $name;
+    protected $file_path_position;
 
     public function getRelativeNamePath(): string
     {
         if ($this->relative_name_path === null) {
-            $fabricationFilePath = $this->getFabricationFile()->getFilePath();
-            $intermediary = str_replace(
-                FabricationFileInterface::FILE_EXTENSION_FABRICATION,
-                '',
-                $fabricationFilePath
-            );
+            $filePath = $this->getFilePathPosition();
             $relativeNamePath = str_replace(
-                $this->getFabricator()->getSourcePath() . '/',
+                $this->getTargetApplication()->getSourcePath() . '/',
                 '',
-                $intermediary
+                $filePath
             );
             $this->relative_name_path = $relativeNamePath;
         }
@@ -37,7 +33,7 @@ class TargetActor implements TargetActorInterface
     {
         if ($this->fqcn === null) {
             $relativeNamePath = $this->getRelativeNamePath();
-            $FQCN = $this->getFabricator()->getTargetNamespace() . $relativeNamePath;
+            $FQCN = $this->getTargetApplication()->getFqcn() . $relativeNamePath;
             $FQCN = str_replace('/', '\\', $FQCN);
             $this->fqcn = $FQCN;
         }
@@ -67,5 +63,20 @@ class TargetActor implements TargetActorInterface
         }
 
         return $this->name;
+    }
+
+    public function getFilePathPosition(): string
+    {
+        if ($this->file_path_position === null) {
+            $fabricationFilePath = $this->getFabricationFile()->getFilePath();
+            $filePath = str_replace(
+                FabricationFileInterface::FILE_EXTENSION_FABRICATION,
+                '',
+                $fabricationFilePath
+            );
+            $this->file_path_position = $filePath;
+        }
+
+        return $this->file_path_position;
     }
 }

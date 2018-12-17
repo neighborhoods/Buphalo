@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Rhift\Bradfab\SupportingActor;
 
 use Rhift\Bradfab\FabricationFile\SupportingActorInterface;
-use Rhift\Bradfab\FabricationFileInterface;
 
 interface TemplateInterface
 {
@@ -12,7 +11,7 @@ interface TemplateInterface
 
     public function setFabricationFileSupportingActor(SupportingActorInterface $FabricationFileSupportingActor);
 
-    public function setFabricationFile(FabricationFileInterface $FabricationFile);
+    public function getFabricationFileSupportingActor(): SupportingActorInterface;
 
     public function getTemplateActorDirectoryPath(): string;
 

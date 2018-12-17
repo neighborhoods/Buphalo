@@ -7,8 +7,12 @@ use Rhift\Bradfab\SupportingActor;
 
 class Compiler implements CompilerInterface
 {
-    use SupportingActor\Template\Tokenizer\AwareTrait;
-    use SupportingActor\Template\Compiler\Strategy\AwareTrait;
+    use SupportingActor\Template\Tokenizer\AwareTrait {
+        getSupportingActorTemplateTokenizer as public;
+    }
+    use SupportingActor\Template\Compiler\Strategy\AwareTrait {
+        getSupportingActorTemplateCompilerStrategy as public;
+    }
     protected $CompiledContents;
 
     public function getCompiledContents(): string
@@ -34,6 +38,11 @@ class Compiler implements CompilerInterface
             $compiledContents = str_replace(
                 TokenizerInterface::INTERFACE_TOKEN,
                 $this->getSupportingActorTemplateCompilerStrategy()->getInterfaceReplacement(),
+                $compiledContents
+            );
+            $compiledContents = str_replace(
+                TokenizerInterface::TRAIT_TOKEN,
+                $this->getSupportingActorTemplateCompilerStrategy()->getTraitReplacement(),
                 $compiledContents
             );
             $compiledContents = str_replace(

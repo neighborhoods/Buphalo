@@ -7,12 +7,15 @@ use Rhift\Bradfab\TargetActor;
 
 class Strategy implements StrategyInterface
 {
-    use TargetActor\AwareTrait;
+    use TargetActor\AwareTrait {
+        getTargetActor as public;
+    }
 
     protected $variable_replacement;
     protected $property_replacement;
     protected $property_reference_replacement;
     protected $interface_replacement;
+    protected $trait_replacement;
     protected $method_and_comment_replacement;
     protected $fqcn_replacement;
 
@@ -20,7 +23,7 @@ class Strategy implements StrategyInterface
     {
         if ($this->variable_replacement === null) {
             $targetActorName = $this->getTargetActor()->getShortName();
-            $this->variable_replacement = '$' . $targetActorName;
+            $this->variable_replacement = sprintf('$%s', $targetActorName);
         }
 
         return $this->variable_replacement;
@@ -29,7 +32,7 @@ class Strategy implements StrategyInterface
     public function getPropertyReplacement(): string
     {
         if ($this->property_replacement === null) {
-            $this->property_replacement = 'protected $' . $this->getTargetActor()->getName();
+            $this->property_replacement = sprintf('protected $%s', $this->getTargetActor()->getName());
         }
 
         return $this->property_replacement;
@@ -38,7 +41,7 @@ class Strategy implements StrategyInterface
     public function getPropertyReferenceReplacement(): string
     {
         if ($this->property_reference_replacement === null) {
-            $this->property_reference_replacement = '$this->' . $this->getTargetActor()->getName();
+            $this->property_reference_replacement = sprintf('$this->%s', $this->getTargetActor()->getName());
         }
 
         return $this->property_reference_replacement;
@@ -47,10 +50,19 @@ class Strategy implements StrategyInterface
     public function getInterfaceReplacement(): string
     {
         if ($this->interface_replacement === null) {
-            $this->interface_replacement = $this->getTargetActor()->getShortName() . 'Interface';
+            $this->interface_replacement = sprintf('%sInterface', $this->getTargetActor()->getShortName());
         }
 
         return $this->interface_replacement;
+    }
+
+    public function getTraitReplacement(): string
+    {
+        if ($this->trait_replacement === null) {
+            $this->trait_replacement = sprintf('use %s', $this->getTargetActor()->getShortName());
+        }
+
+        return $this->trait_replacement;
     }
 
     public function getMethodAndCommentReplacement(): string

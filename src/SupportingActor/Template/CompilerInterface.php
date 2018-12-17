@@ -9,7 +9,11 @@ interface CompilerInterface
 {
     public function setSupportingActorTemplateTokenizer(TokenizerInterface $Tokenizer);
 
+    public function getSupportingActorTemplateTokenizer(): TokenizerInterface;
+
     public function setSupportingActorTemplateCompilerStrategy(StrategyInterface $Strategy);
+
+    public function getSupportingActorTemplateCompilerStrategy(): StrategyInterface;
 
     public function getCompiledContents(): string;
 }

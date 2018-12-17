@@ -1,0 +1,11 @@
+<?php
+declare(strict_types=1);
+
+namespace Rhift\Bradfab\SupportingActor\Writer;
+
+use Rhift\Bradfab\SupportingActor\WriterInterface;
+
+interface FactoryInterface
+{
+    public function create(): WriterInterface;
+}
