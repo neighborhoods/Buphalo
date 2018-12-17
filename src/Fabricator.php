@@ -3,12 +3,9 @@ declare(strict_types=1);
 
 namespace Rhift\Bradfab;
 
-use Rhift\Bradfab\FabricationFile\SupportingActor\Map;
-use Rhift\Bradfab\SupportingActor\Template\TokenizerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
-use Symfony\Component\Yaml\Yaml;
 
 class Fabricator implements FabricatorInterface
 {
@@ -47,7 +44,6 @@ class Fabricator implements FabricatorInterface
         $this->getFilesystem()->remove($this->getTargetApplication()->getFabricationPath());
         /** @var SplFileInfo $fabricateYamlSPLFileInfo */
         foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlSPLFileInfo) {
-//            $this->writeActors($fabricateYamlFilePathname);
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
             $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlSPLFileInfo)->build();
             foreach ($fabricationFile->getSupportingActors() as $supportingActor) {
@@ -71,171 +67,6 @@ class Fabricator implements FabricatorInterface
                 $writer->write();
             }
         }
-
-        return $this;
-    }
-
-    protected function writeActors($fabricateYamlFilePath): FabricatorInterface
-    {
-        $fabricateYaml = Yaml::parseFile($fabricateYamlFilePath, Yaml::PARSE_CONSTANT);
-        $actorNamePath = str_replace(FabricationFileInterface::FILE_EXTENSION_FABRICATION, '', $fabricateYamlFilePath);
-        $actorNamePath = str_replace($this->getTargetApplication()->getSourcePath() . '/', '', $actorNamePath);
-        $actorNameSpace = $this->getTargetApplication()->getFqcn() . $actorNamePath;
-        $actorNameSpace = str_replace('/', '\\', $actorNameSpace);
-        if (is_array($fabricateYaml[Map\BuilderInterface::SUPPORTING_ACTORS])) {
-            $supportingActors = $fabricateYaml[Map\BuilderInterface::SUPPORTING_ACTORS];
-            foreach ($supportingActors as $supportingActorKey => $supportingActorProperties) {
-                $supportingActorFilePath = $this->getSupportingActorFilePath(
-                    $fabricateYamlFilePath,
-                    $supportingActorKey,
-                    '.php'
-                );
-                if (!is_file(str_replace('/fab/', '/src/', $supportingActorFilePath))) {
-                    $supportingActorTemplate = $this->getSupportingActorTemplate(
-                        $supportingActorKey,
-                        '.php'
-                    );
-                    $this->writeActor(
-                        $supportingActorTemplate,
-                        $actorNamePath,
-                        $supportingActorFilePath,
-                        $actorNameSpace
-                    );
-                    if (
-                        strpos($supportingActorKey, 'AwareTrait') === false
-                        && strpos($supportingActorKey, 'Interface') === false
-                    ) {
-                        $supportingActorFilePath = $this->getSupportingActorFilePath(
-                            $fabricateYamlFilePath,
-                            $supportingActorKey,
-                            '.yml'
-                        );
-                        $supportingActorTemplate = $this->getSupportingActorTemplate(
-                            $supportingActorKey,
-                            '.yml'
-                        );
-                        $this->writeActor(
-                            $supportingActorTemplate,
-                            $actorNamePath,
-                            $supportingActorFilePath,
-                            $actorNameSpace
-                        );
-                    }
-                }
-            }
-        }
-
-        return $this;
-    }
-
-    protected function getSupportingActorTemplate(
-        string $supportingActorKey,
-        string $extension
-    ): string {
-        $supportingActorTemplateFilePath = realpath(
-            $this->getTemplateActorDirectoryPath()
-            . '/'
-            . str_replace('\\', '/', $supportingActorKey)
-            . $extension
-        );
-        $supportingActorTemplate = file_get_contents($supportingActorTemplateFilePath);
-        $supportingActorTemplate = str_replace(
-            'Rhift\Bradfab\Template\Actor',
-            TokenizerInterface::FQCN_TOKEN,
-            $supportingActorTemplate
-        );
-        $supportingActorTemplate = str_replace(
-            'protected $Actor',
-            TokenizerInterface::PROPERTY_TOKEN,
-            $supportingActorTemplate
-        );
-        $supportingActorTemplate = str_replace(
-            '$this->Actor',
-            TokenizerInterface::PROPERTY_REFERENCE_TOKEN,
-            $supportingActorTemplate
-        );
-        $supportingActorTemplate = str_replace(
-            '$Actor',
-            TokenizerInterface::VARIABLE_TOKEN,
-            $supportingActorTemplate
-        );
-        $supportingActorTemplate = str_replace(
-            'ActorInterface',
-            TokenizerInterface::INTERFACE_TOKEN,
-            $supportingActorTemplate
-        );
-        $supportingActorTemplate = str_replace(
-            'Actor',
-            TokenizerInterface::METHOD_AND_COMMENT_TOKEN,
-            $supportingActorTemplate
-        );
-
-        return $supportingActorTemplate;
-    }
-
-    protected function getSupportingActorFilePath(
-        string $fabricateYamlFilePath,
-        string $supportingActorKey,
-        string $extension
-    ): string {
-        $supportingActorFilePath = str_replace('src', 'fab', $fabricateYamlFilePath);
-        $supportingActorFilePath = str_replace(FabricationFileInterface::FILE_EXTENSION_FABRICATION, '/',
-            $supportingActorFilePath);
-        $supportingActorFilePath .= str_replace(
-            '\\',
-            '/',
-            $supportingActorKey . $extension
-        );
-
-        return $supportingActorFilePath;
-    }
-
-    protected function writeActor(
-        string $supportingActorTemplate,
-        string $propertyReplacement,
-        string $supportingActorFilePath,
-        string $actorNamespace
-    ): FabricatorInterface {
-
-        $start = 0;
-        $position = strrpos($propertyReplacement, '/');
-        if ($position !== false) {
-            $start = $position + 1;
-        }
-        $variableReplacement = trim(substr($propertyReplacement, $start));
-        $propertyReplacement = str_replace('/', '', $propertyReplacement);
-        $supportingActorFileContents = str_replace(
-            TokenizerInterface::VARIABLE_TOKEN,
-            '$' . $variableReplacement,
-            $supportingActorTemplate
-        );
-        $supportingActorFileContents = str_replace(
-            TokenizerInterface::PROPERTY_TOKEN,
-            'protected $' . $propertyReplacement,
-            $supportingActorFileContents
-        );
-        $supportingActorFileContents = str_replace(
-            TokenizerInterface::PROPERTY_REFERENCE_TOKEN,
-            '$this->' . $propertyReplacement,
-            $supportingActorFileContents
-        );
-        $supportingActorFileContents = str_replace(
-            TokenizerInterface::INTERFACE_TOKEN,
-            $variableReplacement . 'Interface',
-            $supportingActorFileContents
-        );
-        $supportingActorFileContents = str_replace(
-            TokenizerInterface::METHOD_AND_COMMENT_TOKEN,
-            $propertyReplacement,
-            $supportingActorFileContents
-        );
-        $supportingActorFileContents = str_replace(
-            TokenizerInterface::FQCN_TOKEN,
-            $actorNamespace,
-            $supportingActorFileContents
-        );
-        $this->getFilesystem()->mkdir(dirname($supportingActorFilePath));
-        file_put_contents($supportingActorFilePath, $supportingActorFileContents);
 
         return $this;
     }
