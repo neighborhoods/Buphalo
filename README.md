@@ -65,6 +65,7 @@ fabricate:
 ```
 
 ### Turning Off Fabrication Of A Supporting Actor
+* Just don't include the Supporting Actor entry in the `Fabrication File` for the `<Object>` to begin with.
 * Remove the Supporting Actor entry from the `Fabrication File` for the `<Object>`.
 * Comment the Supporting Actor entry from the `Fabrication File` for the `<Object>`.
 * Set the value of the Supporting Actor in the `Fabricatio File` for the `<Object>` to `false`.
