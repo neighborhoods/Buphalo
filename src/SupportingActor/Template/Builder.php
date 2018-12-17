@@ -14,7 +14,6 @@ class Builder implements BuilderInterface
     public function build(): TemplateInterface
     {
         $template = $this->getSupportingActorTemplateFactory()->create();
-        $template;
 
 
         // @TODO - build the object.

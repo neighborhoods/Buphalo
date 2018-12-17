@@ -15,7 +15,7 @@ class Repository implements RepositoryInterface
         // TODO: Implement get() method.
         throw new \LogicException('Unimplemented get method.');
 
-        return $this;
+        return $Actor;
     }
 
     public function add(AskInterface $ask): RepositoryInterface
@@ -31,7 +31,7 @@ class Repository implements RepositoryInterface
         // TODO: Implement exists() method.
         throw new \LogicException('Unimplemented exists method.');
 
-        return $this;
+        return $exists;
     }
 
     public function replace(AskInterface $ask): RepositoryInterface

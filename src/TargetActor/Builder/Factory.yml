@@ -1,7 +1,0 @@
-services:
-  Rhift\Bradfab\TargetActor\Builder\FactoryInterface:
-    class: Rhift\Bradfab\TargetActor\Builder\Factory
-    public: false
-    shared: true
-    calls:
-      - [setTargetActorBuilder, ['@Rhift\Bradfab\TargetActor\BuilderInterface']]

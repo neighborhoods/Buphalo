@@ -17,7 +17,6 @@ class Fabricator implements FabricatorInterface
     use TargetActor\Factory\AwareTrait;
     use SupportingActor\Writer\Factory\AwareTrait;
     use TargetApplication\AwareTrait;
-    protected $fabrication_path;
     protected $finder;
     protected $fabricate_yaml_files;
     protected $filesystem;

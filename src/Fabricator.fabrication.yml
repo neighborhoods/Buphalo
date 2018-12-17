@@ -3,9 +3,3 @@ supporting_actors:
   Factory:
   FactoryInterface:
   Factory\AwareTrait:
-  Builder:
-  BuilderInterface:
-  Builder\AwareTrait:
-  Builder\Factory:
-  Builder\FactoryInterface:
-  Builder\Factory\AwareTrait:
