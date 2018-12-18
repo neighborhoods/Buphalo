@@ -52,7 +52,6 @@ class Fabricator implements FabricatorInterface
                 $template = $this->getSupportingActorTemplateFactory()->create();
                 $template->setFabricationFileSupportingActor($supportingActor);
                 $template->setTemplateActorDirectoryPath($this->getTemplateActorDirectoryPath());
-                $template->setFileExtension('.php');
                 $tokenizer = $this->getSupportingActorTemplateTokenizerFactory()->create();
                 $tokenizer->setSupportingActorTemplate($template);
                 $strategy = $this->getSupportingActorTemplateCompilerStrategyFactory()->create();

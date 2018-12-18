@@ -16,6 +16,7 @@ class Writer implements WriterInterface
     protected $supporting_actor_fabrication_file_path;
     protected $supporting_actor_template;
     protected $target_actor;
+    protected $FabricationFileSupportingActor;
 
     public function write(): WriterInterface
     {
@@ -39,7 +40,11 @@ class Writer implements WriterInterface
         if ($this->supporting_actor_source_file_path === null) {
             $targetActorFilePathPosition = $this->getTargetActor()->getFilePathPosition();
             $supportingActor = $this->getSupportingActorTemplate()->getFabricationFileSupportingActor();
-            $supportingActorRelativeFilePathPosition = str_replace('\\', '/', $supportingActor->getRelativeClassName());
+            $supportingActorRelativeFilePathPosition = str_replace(
+                '\\',
+                '/',
+                $supportingActor->getRelativeTemplatePath()
+            );
             $fileExtension = $this->getSupportingActorTemplate()->getFileExtension();
             $this->supporting_actor_source_file_path = sprintf(
                 '%s/%s%s',
@@ -106,5 +111,15 @@ class Writer implements WriterInterface
         }
 
         return $this->target_actor;
+    }
+
+    public function getFabricationFileSupportingActor()
+    {
+        if ($this->FabricationFileSupportingActor === null) {
+            $this->FabricationFileSupportingActor = $this->getSupportingActorTemplate()
+                ->getFabricationFileSupportingActor();
+        }
+
+        return $this->FabricationFileSupportingActor;
     }
 }

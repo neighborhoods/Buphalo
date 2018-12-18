@@ -1,5 +1,6 @@
 supporting_actors:
-  AwareTrait:
-  Factory:
-  FactoryInterface:
-  Factory\AwareTrait:
+  AwareTrait.php:
+  Factory.php:
+  Factory.yml:
+  FactoryInterface.php:
+  Factory\AwareTrait.php:

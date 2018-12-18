@@ -4,12 +4,10 @@ declare(strict_types=1);
 namespace Rhift\Bradfab\FabricationFile\SupportingActor;
 
 use Rhift\Bradfab\FabricationFile\SupportingActorInterface;
-use Rhift\Bradfab\StringMap;
 
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
-    use StringMap\Factory\AwareTrait;
 
     protected $record;
 
@@ -17,14 +15,17 @@ class Builder implements BuilderInterface
     {
         $record = $this->getRecord();
         $supportingActor = $this->getFabricationFileSupportingActorFactory()->create();
-        $supportingActor->setRelativeClassName($record['relative_class_name']);
-        $awareMap = $this->getStringMapFactory()->create();
-        if (isset($record[self::AWARE_OF]) && is_array($record[self::AWARE_OF])) {
-            foreach ($record[self::AWARE_OF] as $aware) {
-                $awareMap[$aware] = $aware;
-            }
-            $supportingActor->setAwareOf($awareMap);
-        }
+        $templateFileExtension = sprintf(
+            '.%s',
+            pathinfo($record[Map\BuilderInterface::RELATIVE_TEMPLATE_PATH], PATHINFO_EXTENSION)
+        );
+        $relativeTemplatePath = str_replace(
+            $templateFileExtension,
+            '',
+            $record[Map\BuilderInterface::RELATIVE_TEMPLATE_PATH]
+        );
+        $supportingActor->setRelativeTemplatePath($relativeTemplatePath);
+        $supportingActor->setTemplateFileExtension($templateFileExtension);
 
         return $supportingActor;
     }

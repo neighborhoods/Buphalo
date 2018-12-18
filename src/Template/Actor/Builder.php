@@ -15,6 +15,8 @@ class Builder implements BuilderInterface
     {
         $Actor = $this->getActorFactory()->create();
 
+        /** @rhift-bradfab:annotation-parser Rhift\Bradfab\Template\Actor\Builder.build */
+
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
 

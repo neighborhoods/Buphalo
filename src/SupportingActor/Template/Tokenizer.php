@@ -10,12 +10,20 @@ class Tokenizer implements TokenizerInterface
     use SupportingActor\Template\AwareTrait {
         getSupportingActorTemplate as public;
     }
+    use SupportingActor\Template\AnnotationTokenizer\Factory\AwareTrait;
+
     protected $tokenized_contents;
 
     public function getTokenizedContents(): string
     {
         if ($this->tokenized_contents === null) {
             $templateContents = $this->getSupportingActorTemplate()->getContents();
+
+            $numberOfAnnotations = preg_match_all(
+                '/(?<=\/\*\* @rhift-bradfab:annotation-parser)(.*)(?=\*\/)/',
+                $templateContents,
+                $annotations
+            );
             $tokenizedContents = str_replace(
                 'Rhift\Bradfab\Template\Actor',
                 TokenizerInterface::FQCN_TOKEN,
@@ -55,5 +63,12 @@ class Tokenizer implements TokenizerInterface
         }
 
         return $this->tokenized_contents;
+    }
+
+    protected function tokenizeAnnotations(): TokenizerInterface
+    {
+        $annotationTokenizer = $this->getSupportingActorTemplateAnnotationTokenizerFactory()->create();
+
+        return $this;
     }
 }

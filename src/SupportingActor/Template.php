@@ -21,7 +21,7 @@ class Template implements TemplateInterface
             $supportingActorTemplateFilePath = realpath(
                 $this->getTemplateActorDirectoryPath()
                 . '/'
-                . str_replace('\\', '/', $this->getFabricationFileSupportingActor()->getRelativeClassName())
+                . str_replace('\\', '/', $this->getFabricationFileSupportingActor()->getRelativeTemplatePath())
                 . $this->getFileExtension()
             );
             $this->contents = file_get_contents($supportingActorTemplateFilePath);
@@ -53,20 +53,9 @@ class Template implements TemplateInterface
     public function getFileExtension(): string
     {
         if ($this->file_extension === null) {
-            throw new \LogicException('Template file_extension has not been set.');
+            $this->file_extension = $this->getFabricationFileSupportingActor()->getTemplateFileExtension();
         }
 
         return $this->file_extension;
-    }
-
-    public function setFileExtension(string $file_extension): TemplateInterface
-    {
-        if ($this->file_extension !== null) {
-            throw new \LogicException('Template file_extension is already set.');
-        }
-
-        $this->file_extension = $file_extension;
-
-        return $this;
     }
 }

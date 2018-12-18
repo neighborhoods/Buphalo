@@ -5,4 +5,3 @@ services:
     shared: false
     calls:
       - [setFabricationFileSupportingActorFactory, ['@Rhift\Bradfab\FabricationFile\SupportingActor\FactoryInterface']]
-      - [setStringMapFactory, ['@Rhift\Bradfab\StringMap\FactoryInterface']]

@@ -17,7 +17,7 @@ class Builder implements BuilderInterface
         $map = $this->getFabricationFileSupportingActorMapFactory()->create();
         foreach ($this->getRecords()[self::SUPPORTING_ACTORS] as $relativeClassname => $supportingActorRecord) {
             $supportingActorBuilder = $this->getFabricationFileSupportingActorBuilderFactory()->create();
-            $supportingActorRecord['relative_class_name'] = $relativeClassname;
+            $supportingActorRecord[self::RELATIVE_TEMPLATE_PATH] = $relativeClassname;
             $supportingActor = $supportingActorBuilder->setRecord($supportingActorRecord)->build();
             $map[$relativeClassname] = $supportingActor;
         }

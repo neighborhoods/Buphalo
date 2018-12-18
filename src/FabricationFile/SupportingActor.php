@@ -3,49 +3,47 @@ declare(strict_types=1);
 
 namespace Rhift\Bradfab\FabricationFile;
 
-use Rhift\Bradfab\StringMapInterface;
-
 class SupportingActor implements SupportingActorInterface
 {
-    protected $relative_class_name;
-    protected $aware_of;
+    protected $relative_template_path;
+    protected $template_file_extension;
 
-    public function getAwareOf(): StringMapInterface
+    public function getRelativeTemplatePath(): string
     {
-        if ($this->aware_of === null) {
-            throw new \LogicException('SupportingActor aware_of has not been set.');
+        if ($this->relative_template_path === null) {
+            throw new \LogicException('SupportingActor relative_template_path has not been set.');
         }
 
-        return $this->aware_of;
+        return $this->relative_template_path;
     }
 
-    public function setAwareOf(StringMapInterface $aware): SupportingActorInterface
+    public function setRelativeTemplatePath(string $relative_template_path): SupportingActorInterface
     {
-        if ($this->aware_of !== null) {
-            throw new \LogicException('SupportingActor aware_of is already set.');
+        if ($this->relative_template_path !== null) {
+            throw new \LogicException('SupportingActor relative_template_path is already set.');
         }
 
-        $this->aware_of = $aware;
+        $this->relative_template_path = $relative_template_path;
 
         return $this;
     }
 
-    public function getRelativeClassName(): string
+    public function getTemplateFileExtension()
     {
-        if ($this->relative_class_name === null) {
-            throw new \LogicException('SupportingActor relative_class_name has not been set.');
+        if ($this->template_file_extension === null) {
+            throw new \LogicException('SupportingActor template_file_extension has not been set.');
         }
 
-        return $this->relative_class_name;
+        return $this->template_file_extension;
     }
 
-    public function setRelativeClassName(string $relative_class_name): SupportingActorInterface
+    public function setTemplateFileExtension($template_file_extension): SupportingActorInterface
     {
-        if ($this->relative_class_name !== null) {
-            throw new \LogicException('SupportingActor relative_class_name is already set.');
+        if ($this->template_file_extension !== null) {
+            throw new \LogicException('SupportingActor template_file_extension is already set.');
         }
 
-        $this->relative_class_name = $relative_class_name;
+        $this->template_file_extension = $template_file_extension;
 
         return $this;
     }
