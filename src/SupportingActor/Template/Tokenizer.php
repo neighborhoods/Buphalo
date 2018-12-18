@@ -13,17 +13,21 @@ class Tokenizer implements TokenizerInterface
     use SupportingActor\Template\AnnotationTokenizer\Factory\AwareTrait;
 
     protected $tokenized_contents;
+    protected $annotation_tokenizer;
+
+    public function tokenize(): TokenizerInterface
+    {
+        $this->getAnnotationTokenizer();
+
+        return $this;
+    }
 
     public function getTokenizedContents(): string
     {
         if ($this->tokenized_contents === null) {
-            $templateContents = $this->getSupportingActorTemplate()->getContents();
 
-            $numberOfAnnotations = preg_match_all(
-                '/(?<=\/\*\* @rhift-bradfab:annotation-parser)(.*)(?=\*\/)/',
-                $templateContents,
-                $annotations
-            );
+            $this->getAnnotationTokenizer()->tokenize();
+            $templateContents = $this->getSupportingActorTemplate()->getContents();
             $tokenizedContents = str_replace(
                 'Rhift\Bradfab\Template\Actor',
                 TokenizerInterface::FQCN_TOKEN,
@@ -59,16 +63,21 @@ class Tokenizer implements TokenizerInterface
                 TokenizerInterface::METHOD_AND_COMMENT_TOKEN,
                 $tokenizedContents
             );
-            $this->tokenized_contents = $tokenizedContents;
+            $this->getSupportingActorTemplate()->updateContents($tokenizedContents);
+            $this->tokenized_contents = $this->getSupportingActorTemplate()->getContents();
         }
 
         return $this->tokenized_contents;
     }
 
-    protected function tokenizeAnnotations(): TokenizerInterface
+    protected function getAnnotationTokenizer(): AnnotationTokenizerInterface
     {
-        $annotationTokenizer = $this->getSupportingActorTemplateAnnotationTokenizerFactory()->create();
+        if ($this->annotation_tokenizer === null) {
+            $annotationTokenizer = $this->getSupportingActorTemplateAnnotationTokenizerFactory()->create();
+            $annotationTokenizer->setSupportingActorTemplate($this->getSupportingActorTemplate());
+            $this->annotation_tokenizer = $annotationTokenizer;
+        }
 
-        return $this;
+        return $this->annotation_tokenizer;
     }
 }

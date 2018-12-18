@@ -18,4 +18,6 @@ interface TemplateInterface
     public function getFileExtension(): string;
 
     public function setTemplateActorDirectoryPath(string $template_actor_directory_path): TemplateInterface;
+
+    public function updateContents(string $contents): TemplateInterface;
 }

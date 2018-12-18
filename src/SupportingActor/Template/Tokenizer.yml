@@ -4,4 +4,4 @@ services:
     public: false
     shared: false
     calls:
-#      - [setSupportingActorTemplateAnnotationTokenizerFactory, ['@Annot']]
+      - [setSupportingActorTemplateAnnotationTokenizerFactory, ['@Rhift\Bradfab\SupportingActor\Template\AnnotationTokenizer\FactoryInterface']]

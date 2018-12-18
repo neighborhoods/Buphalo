@@ -30,6 +30,17 @@ class Template implements TemplateInterface
         return $this->contents;
     }
 
+    public function updateContents(string $contents): TemplateInterface
+    {
+        if ($this->contents === null) {
+            throw new \LogicException('Template contents has not been set.');
+        }
+
+        $this->contents = $contents;
+
+        return $this;
+    }
+
     public function getTemplateActorDirectoryPath(): string
     {
         if ($this->template_actor_directory_path === null) {

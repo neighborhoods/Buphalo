@@ -7,5 +7,11 @@ use Rhift\Bradfab\SupportingActor\TemplateInterface;
 
 interface AnnotationTokenizerInterface
 {
+    public const ANNOTATION_TOKEN = '/**ANNOTATION_TOKEN**/';
+
     public function setSupportingActorTemplate(TemplateInterface $Template);
+
+    public function tokenize(): AnnotationTokenizerInterface;
+
+    public function getTokenizedContents(): string;
 }
