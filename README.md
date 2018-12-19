@@ -7,7 +7,8 @@ Anything good I stole from someone else. Anything bad is mine.
 * [Problem](#problem)
 * [Proposed Solution](#proposed-solution)
 * [Getting Started](#getting-started) 
-* [Definitions](#definitions) 
+* [Definitions](#definitions)
+* [Features](#features)
 * [Contributing To Bradfab](#contributing-to-bradfab) 
 
 ## Problem
@@ -92,22 +93,8 @@ fabricate:
 
 ### Annotation Replacement
 
-### AutoAware
-
-#### AutoAware Example
-```yml
-# src/V2/Toe/Nail.fabricate.yml
-fabricate:
-  AwareTrait: true
-  .
-  .
-  . 
-  Factory\AwareTrait: true
-  Builder: true
-      aware:
-        - VENDOR\PRODUCT\V2\Toe
-  BuilderInterface: true
-```
+### User Space Template Trees
+* User space template trees are merged with the `Bradfab` template tree, collision precedence favors user space.
 
 ## Contributing to Bradfab
 The `1.x` feature series establishes the fitness precedence of `Bradfab` for all future feature versions of `Bradfab`. All of the following fitness requirements MUST be met for all future versions. 
