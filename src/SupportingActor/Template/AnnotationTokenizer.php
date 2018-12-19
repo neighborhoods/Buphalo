@@ -26,14 +26,17 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
                 $templateContents,
                 $annotations
             );
+            $tokenizedContents = $templateContents;
             if ($numberOfAnnotations > 0) {
-                $tokenizedContents = str_replace(
-                    sprintf('/** @rhift-bradfab:annotation-processor%s*/', $annotations[0][0]),
-                    self::ANNOTATION_TOKEN,
-                    $templateContents
-                );
-            } else {
-                $tokenizedContents = $templateContents;
+                foreach ($annotations[1] as $index => $tag) {
+                    if (trim($tag) === '@rhift-bradfab:annotation-processor') {
+                        $tokenizedContents = str_replace(
+                            sprintf('/**%s*/', $annotations[0][$index]),
+                            self::ANNOTATION_TOKEN,
+                            $tokenizedContents
+                        );
+                    }
+                }
             }
 
             $this->getSupportingActorTemplate()->updateContents($tokenizedContents);
