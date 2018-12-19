@@ -13,6 +13,7 @@ class Compiler implements CompilerInterface
     use SupportingActor\Template\Compiler\Strategy\AwareTrait {
         getSupportingActorTemplateCompilerStrategy as public;
     }
+
     protected $CompiledContents;
 
     public function getCompiledContents(): string

@@ -14,11 +14,13 @@ class Builder implements BuilderInterface
     public function build(): ActorInterface
     {
         $Actor = $this->getActorFactory()->create();
+        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build1
+         */
 
-        /** @rhift-bradfab:annotation-parser Rhift\Bradfab\Template\Actor\Builder.build */
-
+        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build2
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
+         */
 
         return $Actor;
     }

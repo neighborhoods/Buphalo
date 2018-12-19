@@ -22,13 +22,13 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
         if ($this->tokenized_contents === null) {
             $templateContents = $this->getSupportingActorTemplate()->getContents();
             $numberOfAnnotations = preg_match_all(
-                '/(?<=\/\*\* @rhift-bradfab:annotation-parser)(.*)(?=\*\/)/',
+                '/(?<=\/\*\*)(\s+@rhift-bradfab:annotation-processor)(.*)([\s\S]*?)(?=\*\/)/',
                 $templateContents,
                 $annotations
             );
             if ($numberOfAnnotations > 0) {
                 $tokenizedContents = str_replace(
-                    sprintf('/** @rhift-bradfab:annotation-parser%s*/', $annotations[0][0]),
+                    sprintf('/** @rhift-bradfab:annotation-processor%s*/', $annotations[0][0]),
                     self::ANNOTATION_TOKEN,
                     $templateContents
                 );
