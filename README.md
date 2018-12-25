@@ -129,11 +129,9 @@ interface AnnotationProcessorInterface
     public function getAnnotationProcessorContext(): ContextInterface;
 
     public function getReplacement(): string;
-
-    public function setAnnotationContents(string $annotation_contents): AnnotationProcessorInterface;
 }
 ```
-* Annotation processors have accesss to the static context and the Fabrication File by accessing the injected `\Rhift\Bradfab\AnnotationProcessor\ContextInterface` object.
+* Currently, annotation processors have accesss to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Rhift\Bradfab\AnnotationProcessor\ContextInterface` object.
 
 ### Example Annotation Processors
 * Annotation Tag: `@rhift-bradfab:annotation-processor`
