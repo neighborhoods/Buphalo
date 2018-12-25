@@ -172,15 +172,15 @@ supporting_actors:
 ```
 * If no annotation processors are defined then `\Rhift\Bradfab\AnnotationProcessor` is used and the above compiles as 
 ```php
-    public function build(): TestInterface
+    public function build(): PrimaryActorInterface
     {
-        $Test = $this->getFabricationFileSupportingActorTestFactory()->create();
+        $PrimaryActor = $this->getPrimaryActorFactory()->create();
         
         
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
 
-        return $Test;
+        return $PrimaryActor;
     }
 ```
 
