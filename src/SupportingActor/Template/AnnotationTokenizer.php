@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Rhift\Bradfab\SupportingActor\Template;
 
+use Rhift\Bradfab\AnnotationProcessorInterface;
 use Rhift\Bradfab\SupportingActor;
 use Rhift\Bradfab\AnnotationProcessor;
 
@@ -34,7 +35,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
                     if (trim($tag) === self::ANNOTATION_TAG) {
                         $supportingActor = $this->getSupportingActorTemplate()->getFabricationFileSupportingActor();
                         $repository = $this->getAnnotationProcessorRepository();
-                        $annotationProcessor = $repository->getByFQCN('\Rhift\Bradfab\AnnotationProcessor');
+                        $annotationProcessor = $repository->getByFQCN(AnnotationProcessorInterface::class);
                         if ($supportingActor->hasAnnotationProcessorMap()) {
                             $annotationProcessors = $supportingActor->getAnnotationProcessorMap();
                             $annotationProcessorIndex = trim($annotations[2][$index]);
