@@ -92,7 +92,7 @@ supporting_actors:
 * Only fabricates files that do not exist in `src`.
 
 ### Annotation Replacement
-* Default replacement is accomplished by the contents of the annotation.
+* Default replacement is accomplished by using the contents of the annotation.
 * `static_context_record` MUST resolve to a PHP `array`.
 * Annotation processors MUST implement `\Rhift\Bradfab\AnnotationProcessorInterface`
 ```php
