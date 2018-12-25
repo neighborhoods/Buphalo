@@ -112,7 +112,8 @@ supporting_actors:
 ## Features
 * Only fabricates files that do not exist in `src`.
 
-### Annotation Replacement
+### Annotation Processors
+* Annotation processors allow user space to define dynamic template content before tokenization or compilation of the template.
 * Default replacement is accomplished by using the contents of the annotation.
 * `static_context_record` MUST resolve to a PHP `array`.
 * Annotation processors MUST implement `\Rhift\Bradfab\AnnotationProcessorInterface`
@@ -134,7 +135,7 @@ interface AnnotationProcessorInterface
 ```
 * Annotation processors have accesss to the static context and the Fabrication File by accessing the injected `\Rhift\Bradfab\AnnotationProcessor\ContextInterface` object.
 
-### Example Annotation Replacement
+### Example Annotation Processors
 * Annotation Tag: `@rhift-bradfab:annotation-processor`
 * Annotation Processor Keys:
   * `Rhift\Bradfab\Template\Actor\Builder.build1`
