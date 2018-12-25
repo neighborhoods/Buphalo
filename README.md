@@ -24,45 +24,56 @@ Employ an easy to change code generation tool to generate well designed patterns
 ```yml
 # src/V2/Toe.fabricate.yml
 supporting_actors:
-  AwareTrait:
-  Factory:
-  FactoryInterface:
-  Factory\AwareTrait:
-  Builder:
-  BuilderInterface:
-  Builder\AwareTrait:
-  Builder\Factory:
-  Builder\FactoryInterface:
-  Builder\Factory\AwareTrait:
-  Repository:
-  RepositoryInterface:
-  Repository\AwareTrait:
-  Map:
-  MapInterface:
-  Map\AwareTrait:
-  Map\Factory:
-  Map\FactoryInterface:
-  Map\Factory\AwareTrait:
-  Map\Builder:
-  Map\BuilderInterface:
-  Map\Builder\AwareTrait:
-  Map\Builder\Factory:
-  Map\Builder\FactoryInterface:
-  Map\Builder\Factory\AwareTrait:
+  AwareTrait.php:
+  Factory.php:
+  Factory.yml:
+  FactoryInterface.php:
+  Factory\AwareTrait.php:
+  Builder.php:
+  Builder.yml:
+  BuilderInterface.php:
+  Builder\AwareTrait.php:
+  Builder\Factory.php:
+  Builder\Factory.yml:
+  Builder\FactoryInterface.php:
+  Builder\Factory\AwareTrait.php:
+  Repository.php:
+  Repository.yml:
+  RepositoryInterface.php:
+  Repository\AwareTrait.php:
+  Map.php:
+  Map.yml:
+  MapInterface.php:
+  Map\AwareTrait.php:
+  Map\Factory.php:
+  Map\Factory.yml:
+  Map\FactoryInterface.php:
+  Map\Factory\AwareTrait.php:
+  Map\Builder.php:
+  Map\Builder.yml:
+  Map\BuilderInterface.php:
+  Map\Builder\AwareTrait.php:
+  Map\Builder\Factory.php:
+  Map\Builder\Factory.yml:
+  Map\Builder\FactoryInterface.php:
+  Map\Builder\Factory\AwareTrait.php:
 ```
 ```yml
 # src/V2/Toe/Nail.fabricate.yml
 supporting_actors:
-  AwareTrait:
-  Factory:
-  FactoryInterface:
-  Factory\AwareTrait:
-  Builder:
-  BuilderInterface:
-  Builder\AwareTrait:
-  Builder\Factory:
-  Builder\FactoryInterface:
-  Builder\Factory\AwareTrait:
+  AwareTrait.php:
+  Factory.php:
+  Factory.yml:
+  FactoryInterface.php:
+  Factory\AwareTrait.php:
+  Builder.php:
+  Builder.yml:
+  BuilderInterface.php:
+  Builder\AwareTrait.php:
+  Builder\Factory.php:
+  Builder\Factory.yml:
+  Builder\FactoryInterface.php:
+  Builder\Factory\AwareTrait.php:
 ```
 
 ### Turning Off Fabrication Of A Supporting Actor
@@ -147,7 +158,7 @@ supporting_actors:
         static_context_record:
           head: 'shoulders'
           knees: 'fingers'
-  BuilderInterface:
+  Builder.yml:
 # ...
 ```
 * If no annotation processors are defined then `\Rhift\Bradfab\AnnotationProcessor` is used and the above compiles as 
