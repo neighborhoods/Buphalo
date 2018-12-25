@@ -65,7 +65,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
         if ($annotationProcessor === null) {
             $annotationProcessor = $repository->getByFQCN(AnnotationProcessor::class);
         }
-        $annotationProcessor->setAnnotationContents($annotations[3][$index]);
+        $annotationProcessor->getAnnotationProcessorContext()->setAnnotationContents($annotations[3][$index]);
 
         return $annotationProcessor;
     }

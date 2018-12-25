@@ -12,6 +12,4 @@ interface AnnotationProcessorInterface
     public function getAnnotationProcessorContext(): ContextInterface;
 
     public function getReplacement(): string;
-
-    public function setAnnotationContents(string $annotation_contents): AnnotationProcessorInterface;
 }

@@ -14,4 +14,8 @@ interface ContextInterface
     public function setStaticContextRecord(array $static_context_record): ContextInterface;
 
     public function hasStaticContextRecord(): bool;
+
+    public function setAnnotationContents(string $annotation_contents): ContextInterface;
+
+    public function getAnnotationContents(): string;
 }
