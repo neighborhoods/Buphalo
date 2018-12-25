@@ -24,6 +24,7 @@ Employ an easy to change code generation tool to generate well designed patterns
 ```yml
 # src/V2/Toe.fabricate.yml
 supporting_actors:
+# I WANT ALL THE ACTORS!
   AwareTrait.php:
   Factory.php:
   Factory.yml:
@@ -61,6 +62,7 @@ supporting_actors:
 ```yml
 # src/V2/Toe/Nail.fabricate.yml
 supporting_actors:
+# I only want SOME actors!
   AwareTrait.php:
   Factory.php:
   Factory.yml:
@@ -74,6 +76,14 @@ supporting_actors:
   Builder\Factory.yml:
   Builder\FactoryInterface.php:
   Builder\Factory\AwareTrait.php:
+  Map.php:
+  Map.yml:
+  MapInterface.php:
+  Map\AwareTrait.php:
+  Map\Factory.php:
+  Map\Factory.yml:
+  Map\FactoryInterface.php:
+  Map\Factory\AwareTrait.php:
 ```
 
 ### Turning Off Fabrication Of A Supporting Actor
