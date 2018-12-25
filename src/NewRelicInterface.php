@@ -5,6 +5,8 @@ namespace Rhift\Bradfab;
 
 interface NewRelicInterface
 {
+    public const EXTENSION_NAME_NEWRELIC = 'newrelic';
+
     public function addCustomParameter(string $key, $value): NewRelicInterface;
 
     public function addCustomTracer(string $function_name): NewRelicInterface;

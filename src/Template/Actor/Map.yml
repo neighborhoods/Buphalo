@@ -1,5 +1,5 @@
 services:
   Rhift\Bradfab\Template\Actor\MapInterface:
     class: Rhift\Bradfab\Template\Actor\Map
-    shared: false
     public: false
+    shared: false

@@ -1,0 +1,5 @@
+services:
+  Rhift\Bradfab\BooleanMapInterface:
+    class: Rhift\Bradfab\BooleanMap
+    public: falses
+    shared: false

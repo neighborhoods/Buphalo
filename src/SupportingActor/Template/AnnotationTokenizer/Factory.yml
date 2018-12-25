@@ -1,0 +1,7 @@
+services:
+  Rhift\Bradfab\SupportingActor\Template\AnnotationTokenizer\FactoryInterface:
+    class: Rhift\Bradfab\SupportingActor\Template\AnnotationTokenizer\Factory
+    public: false
+    shared: true
+    calls:
+      - [setSupportingActorTemplateAnnotationTokenizer, ['@Rhift\Bradfab\SupportingActor\Template\AnnotationTokenizerInterface']]

@@ -7,14 +7,14 @@ use Rhift\Bradfab\Template\Actor\MapInterface;
 
 trait AwareTrait
 {
-    protected $ActorMap;
+    protected $Actors;
 
-    public function setActorMap(MapInterface $ActorMap): self
+    public function setActorMap(MapInterface $Actors): self
     {
         if ($this->hasActorMap()) {
-            throw new \LogicException('ActorMap is already set.');
+            throw new \LogicException('Actors is already set.');
         }
-        $this->ActorMap = $ActorMap;
+        $this->Actors = $Actors;
 
         return $this;
     }
@@ -22,23 +22,23 @@ trait AwareTrait
     protected function getActorMap(): MapInterface
     {
         if (!$this->hasActorMap()) {
-            throw new \LogicException('ActorMap is not set.');
+            throw new \LogicException('Actors is not set.');
         }
 
-        return $this->ActorMap;
+        return $this->Actors;
     }
 
     protected function hasActorMap(): bool
     {
-        return isset($this->ActorMap);
+        return isset($this->Actors);
     }
 
     protected function unsetActorMap(): self
     {
         if (!$this->hasActorMap()) {
-            throw new \LogicException('ActorMap is not set.');
+            throw new \LogicException('Actors is not set.');
         }
-        unset($this->ActorMap);
+        unset($this->Actors);
 
         return $this;
     }

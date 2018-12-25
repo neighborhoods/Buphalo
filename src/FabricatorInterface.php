@@ -14,15 +14,5 @@ interface FabricatorInterface
 
     public function setFinder(Finder $finder): FabricatorInterface;
 
-    public function setTargetNamespace(string $target_namespace): FabricatorInterface;
-
     public function getFilesystem(): Filesystem;
-
-    public function getFabricationPath(): string;
-
-    public function setSourcePath(string $source_path): FabricatorInterface;
-
-    public function setFabricationPath(string $fabrication_path): FabricatorInterface;
-
-    public function getTargetNamespace(): string;
 }

@@ -8,8 +8,8 @@ use Rhift\Bradfab\Template\Actor\MapInterface;
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
-    /** @var array */
-    protected $record;
+
+    protected $records;
 
     public function build(): MapInterface
     {
@@ -21,22 +21,22 @@ class Builder implements BuilderInterface
         return $map;
     }
 
-    protected function getRecord(): array
+    protected function getRecords(): array
     {
-        if ($this->record === null) {
-            throw new \LogicException('Builder record has not been set.');
+        if ($this->records === null) {
+            throw new \LogicException('Builder records has not been set.');
         }
 
-        return $this->record;
+        return $this->records;
     }
 
-    public function setRecord(array $record): BuilderInterface
+    public function setRecords(array $records): BuilderInterface
     {
-        if ($this->record !== null) {
-            throw new \LogicException('Builder record is already set.');
+        if ($this->records !== null) {
+            throw new \LogicException('Builder records is already set.');
         }
 
-        $this->record = $record;
+        $this->records = $records;
 
         return $this;
     }

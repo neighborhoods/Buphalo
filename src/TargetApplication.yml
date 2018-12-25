@@ -1,0 +1,5 @@
+services:
+  Rhift\Bradfab\TargetApplicationInterface:
+    class: Rhift\Bradfab\TargetApplication
+    public: false
+    shared: false

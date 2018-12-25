@@ -24,5 +24,6 @@ interface MapInterface extends \SeekableIterator, \ArrayAccess, \Serializable, \
 
     public function toArray(): array;
 
-    public function hydrate(array $array): MapInterface;
+    /** @param ActorInterface ...$Actors */
+    public function hydrate(array $Actors): MapInterface;
 }

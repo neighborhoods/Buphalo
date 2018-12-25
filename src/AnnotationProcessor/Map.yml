@@ -1,0 +1,5 @@
+services:
+  Rhift\Bradfab\AnnotationProcessor\MapInterface:
+    class: Rhift\Bradfab\AnnotationProcessor\Map
+    public: false
+    shared: false

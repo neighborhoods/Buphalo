@@ -7,7 +7,8 @@ Anything good I stole from someone else. Anything bad is mine.
 * [Problem](#problem)
 * [Proposed Solution](#proposed-solution)
 * [Getting Started](#getting-started) 
-* [Definitions](#definitions) 
+* [Definitions](#definitions)
+* [Features](#features)
 * [Contributing To Bradfab](#contributing-to-bradfab) 
 
 ## Problem
@@ -23,52 +24,51 @@ Employ an easy to change code generation tool to generate well designed patterns
 ```yml
 # src/V2/Toe.fabricate.yml
 fabricate:
-  AwareTrait: true
-  Factory: true
-  FactoryInterface: true
-  Factory\AwareTrait: true
-  Builder: true
-  BuilderInterface: true
-  Builder\AwareTrait: true
-  Builder\Factory: true
-  Builder\FactoryInterface: true
-  Builder\Factory\AwareTrait: true
-  Repository: true
-  RepositoryInterface: true
-  Repository\AwareTrait: true
-  Map: true
-  MapInterface: true
-  Map\AwareTrait: true
-  Map\Factory: true
-  Map\FactoryInterface: true
-  Map\Factory\AwareTrait: true
-  Map\Builder: true
-  Map\BuilderInterface: true
-  Map\Builder\AwareTrait: true
-  Map\Builder\Factory: true
-  Map\Builder\FactoryInterface: true
-  Map\Builder\Factory\AwareTrait: true
+  AwareTrait:
+  Factory:
+  FactoryInterface:
+  Factory\AwareTrait:
+  Builder:
+  BuilderInterface:
+  Builder\AwareTrait:
+  Builder\Factory:
+  Builder\FactoryInterface:
+  Builder\Factory\AwareTrait:
+  Repository:
+  RepositoryInterface:
+  Repository\AwareTrait:
+  Map:
+  MapInterface:
+  Map\AwareTrait:
+  Map\Factory:
+  Map\FactoryInterface:
+  Map\Factory\AwareTrait:
+  Map\Builder:
+  Map\BuilderInterface:
+  Map\Builder\AwareTrait:
+  Map\Builder\Factory:
+  Map\Builder\FactoryInterface:
+  Map\Builder\Factory\AwareTrait:
 ```
 ```yml
 # src/V2/Toe/Nail.fabricate.yml
 fabricate:
-  AwareTrait: true
-  Factory: true
-  FactoryInterface: true
-  Factory\AwareTrait: true
-  Builder: true
-  BuilderInterface: true
-  Builder\AwareTrait: true
-  Builder\Factory: true
-  Builder\FactoryInterface: true
-  Builder\Factory\AwareTrait: true
+  AwareTrait:
+  Factory:
+  FactoryInterface:
+  Factory\AwareTrait:
+  Builder:
+  BuilderInterface:
+  Builder\AwareTrait:
+  Builder\Factory:
+  Builder\FactoryInterface:
+  Builder\Factory\AwareTrait:
 ```
 
 ### Turning Off Fabrication Of A Supporting Actor
 * Just don't include the Supporting Actor entry in the `Fabrication File` for the `<Object>` to begin with.
 * Remove the Supporting Actor entry from the `Fabrication File` for the `<Object>`.
 * Comment the Supporting Actor entry from the `Fabrication File` for the `<Object>`.
-* Set the value of the Supporting Actor in the `Fabricatio File` for the `<Object>` to `false`.
 
 ### Adding A New Template
 * Add the appropriate PHP and DI service definition YAML files in the position that you want them under `src/Template/Actor`.
@@ -87,6 +87,14 @@ fabricate:
 ### Fablet
 (credit [Mucha](https://github.com/pmucha-55places))
 * A `Fablet` is the collection of Supporting Actors that are built from the Fabrication File for an `<Object>`.
+
+## Features
+* Only fabricates files that do not exist in `src`
+
+### Annotation Replacement
+
+### User Space Template Trees
+* User space template trees are merged with the `Bradfab` template tree, collision precedence favors user space.
 
 ## Contributing to Bradfab
 The `1.x` feature series establishes the fitness precedence of `Bradfab` for all future feature versions of `Bradfab`. All of the following fitness requirements MUST be met for all future versions. 

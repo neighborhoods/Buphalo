@@ -1,0 +1,5 @@
+Rhift\Bradfab\TargetApplicationInterface:
+  namespace: 'Rhift\Bradfab\'
+  source_path: 'src'
+  fabrication_path: 'fab'
+  template_actor_directory_path: 'src/Template/Actor'

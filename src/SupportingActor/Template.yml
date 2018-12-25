@@ -1,0 +1,5 @@
+services:
+  Rhift\Bradfab\SupportingActor\TemplateInterface:
+    class: Rhift\Bradfab\SupportingActor\Template
+    public: false
+    shared: false

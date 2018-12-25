@@ -8,17 +8,20 @@ use Rhift\Bradfab\Template\ActorInterface;
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
-    /** @var array */
+
     protected $record;
 
     public function build(): ActorInterface
     {
-        $actor = $this->getActorFactory()->create();
-
+        $Actor = $this->getActorFactory()->create();
+        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build1
+         */
+        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build2
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
+         */
 
-        return $actor;
+        return $Actor;
     }
 
     protected function getRecord(): array

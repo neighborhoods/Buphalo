@@ -6,24 +6,20 @@ namespace Rhift\Bradfab;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
-use Symfony\Component\Yaml\Yaml;
 
 class Fabricator implements FabricatorInterface
 {
-    const FILE_EXTENSION_FABRICATE = '.fabricate.yml';
-    const DIRECTIVE_FABRICATE = 'fabricate';
-    /** @var string */
-    protected $source_path;
-    /** @var string */
-    protected $fabrication_path;
-    /** @var Finder */
+    use FabricationFile\Builder\Factory\AwareTrait;
+    use SupportingActor\Template\Factory\AwareTrait;
+    use SupportingActor\Template\Tokenizer\Factory\AwareTrait;
+    use SupportingActor\Template\Compiler\Factory\AwareTrait;
+    use SupportingActor\Template\Compiler\Strategy\Factory\AwareTrait;
+    use TargetActor\Factory\AwareTrait;
+    use SupportingActor\Writer\Factory\AwareTrait;
+    use TargetApplication\AwareTrait;
     protected $finder;
-    protected $fabricate_yaml_file_paths;
-    /** @var Filesystem */
+    protected $fabricate_yaml_files;
     protected $filesystem;
-    /** @var string */
-    protected $target_namespace;
-    /** @var string */
     protected $template_actor_directory_path;
 
     protected function encapsulatedNoBueno(): FabricatorInterface
@@ -32,12 +28,10 @@ class Fabricator implements FabricatorInterface
         // Ensure that the fabrication file path exists so that realpath can verify it.
         $this->getFilesystem()->mkdir($fabricationRelativePath);
 
-        $this->setTargetNamespace('Rhift\BradFab\\');
-        $this->setSourcePath(realpath(__DIR__ . '/../src'));
-        $this->setFabricationPath(realpath($fabricationRelativePath));
+        $this->getTargetApplication()->setNamespace('Rhift\Bradfab\\');
+        $this->getTargetApplication()->setSourcePath(realpath(__DIR__ . '/../src'));
+        $this->getTargetApplication()->setFabricationPath(realpath($fabricationRelativePath));
         $this->setTemplateActorDirectoryPath(realpath(__DIR__ . '/Template/Actor/'));
-
-        $this->getFilesystem()->remove($this->getFabricationPath());
 
         return $this;
     }
@@ -45,138 +39,53 @@ class Fabricator implements FabricatorInterface
     public function fabricate(): FabricatorInterface
     {
         $this->encapsulatedNoBueno();
-        foreach ($this->getFabricateYamlFilePaths() as $fabricateYamlFilePath => $fabricateYamlFileName) {
-            $this->writeActors($fabricateYamlFilePath);
-        }
 
-        return $this;
-    }
-
-    protected function writeActors($fabricateYamlFilePath): FabricatorInterface
-    {
-        $fabricateYaml = (new Yaml())->parseFile($fabricateYamlFilePath);
-        $actorNamePath = str_replace(self::FILE_EXTENSION_FABRICATE, '', $fabricateYamlFilePath);
-        $actorNamePath = str_replace($this->getSourcePath() . '/', '', $actorNamePath);
-        $actorNameSpace = $this->getTargetNamespace() . $actorNamePath;
-        $actorNameSpace = str_replace('/', '\\', $actorNameSpace);
-        if (isset($fabricateYaml[self::DIRECTIVE_FABRICATE]) && is_array($fabricateYaml[self::DIRECTIVE_FABRICATE])) {
-            foreach ($fabricateYaml[self::DIRECTIVE_FABRICATE] as $supportingActorKey => $buildSupportingActor) {
-                if ($buildSupportingActor === true) {
-                    $supportingActorFilePath = $this->getSupportingActorFilePath(
-                        $fabricateYamlFilePath,
-                        $supportingActorKey,
-                        '.php'
-                    );
-                    $supportingActorTemplate = $this->getSupportingActorTemplate(
-                        $supportingActorKey,
-                        '.php'
-                    );
-                    $this->writeActor(
-                        $supportingActorTemplate,
-                        $actorNamePath,
-                        $supportingActorFilePath,
-                        $actorNameSpace
-                    );
-                    if (
-                        strpos($supportingActorKey, 'AwareTrait') === false
-                        && strpos($supportingActorKey, 'Interface') === false
-                    ) {
-                        $supportingActorFilePath = $this->getSupportingActorFilePath(
-                            $fabricateYamlFilePath,
-                            $supportingActorKey,
-                            '.yml'
-                        );
-                        $supportingActorTemplate = $this->getSupportingActorTemplate(
-                            $supportingActorKey,
-                            '.yml'
-                        );
-                        $this->writeActor(
-                            $supportingActorTemplate,
-                            $actorNamePath,
-                            $supportingActorFilePath,
-                            $actorNameSpace
-                        );
-                    }
-                }
+        $this->getFilesystem()->remove($this->getTargetApplication()->getFabricationPath());
+        /** @var SplFileInfo $fabricateYamlSPLFileInfo */
+        foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlSPLFileInfo) {
+            $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
+            $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlSPLFileInfo)->build();
+            foreach ($fabricationFile->getSupportingActors() as $supportingActor) {
+                $targetActor = $this->getTargetActorFactory()->create();
+                $targetActor->setFabricationFile($fabricationFile);
+                $targetActor->setTargetApplication($this->getTargetApplication());
+                $template = $this->getSupportingActorTemplateFactory()->create();
+                $template->setFabricationFileSupportingActor($supportingActor);
+                $template->setTemplateActorDirectoryPath($this->getTemplateActorDirectoryPath());
+                $tokenizer = $this->getSupportingActorTemplateTokenizerFactory()->create();
+                $tokenizer->setSupportingActorTemplate($template);
+                $strategy = $this->getSupportingActorTemplateCompilerStrategyFactory()->create();
+                $strategy->setTargetActor($targetActor);
+                $compiler = $this->getSupportingActorTemplateCompilerFactory()->create();
+                $compiler->setSupportingActorTemplateTokenizer($tokenizer);
+                $compiler->setSupportingActorTemplateCompilerStrategy($strategy);
+                $writer = $this->getSupportingActorWriterFactory()->create();
+                $writer->setSupportingActorTemplateCompiler($compiler);
+                $writer->setTargetApplication($this->getTargetApplication());
+                $writer->write();
             }
         }
 
         return $this;
     }
 
-    protected function getSupportingActorTemplate(
-        string $supportingActorKey,
-        string $extension
-    ): string {
-        $supportingActorTemplateFilePath = realpath(
-            $this->getTemplateActorDirectoryPath()
-            . '/'
-            . str_replace('\\', '/', $supportingActorKey)
-            . $extension
-        );
-        $supportingActorTemplate = file_get_contents($supportingActorTemplateFilePath);
-        $supportingActorTemplate = str_replace(
-            'Rhift\Bradfab\Template\Actor',
-            '**NAMESPACE_TOKEN**',
-            $supportingActorTemplate
-        );
-
-        return $supportingActorTemplate;
-    }
-
-    protected function getSupportingActorFilePath(
-        string $fabricateYamlFilePath,
-        string $supportingActorKey,
-        string $extension
-    ): string {
-        $supportingActorFilePath = str_replace('src', 'fab', $fabricateYamlFilePath);
-        $supportingActorFilePath = str_replace(self::FILE_EXTENSION_FABRICATE, '/', $supportingActorFilePath);
-        $supportingActorFilePath .= str_replace(
-            '\\',
-            '/',
-            $supportingActorKey . $extension
-        );
-
-        return $supportingActorFilePath;
-    }
-
-    protected function writeActor(
-        string $supportingActorTemplate,
-        string $actorNamePath,
-        string $supportingActorFilePath,
-        string $actorNamespace
-    ): FabricatorInterface {
-
-        $start = 0;
-        $position = strrpos($actorNamePath, '/');
-        if ($position !== false) {
-            $start = $position + 1;
-        }
-        $actorNamePath = trim(substr($actorNamePath, $start));
-        $supportingActorTemplate = str_replace('Actor', $actorNamePath, $supportingActorTemplate);
-        $supportingActorTemplate = str_replace(
-            '**NAMESPACE_TOKEN**',
-            $actorNamespace,
-            $supportingActorTemplate
-        );
-        $this->getFilesystem()->mkdir(dirname($supportingActorFilePath));
-        file_put_contents($supportingActorFilePath, $supportingActorTemplate);
-
-        return $this;
-    }
-
-    protected function getFabricateYamlFilePaths(): array
+    protected function getFabricateYamlFiles(): array
     {
-        if ($this->fabricate_yaml_file_paths === null) {
-            $finder = $this->getFinder()->in($this->getSourcePath());
-            $finder->name('*.fabricate.yml');
+        if ($this->fabricate_yaml_files === null) {
+            $finder = $this->getFinder()->in($this->getTargetApplication()->getSourcePath());
+            $finder->name('*' . FabricationFileInterface::FILE_EXTENSION_FABRICATION);
             /** @var $file SplFileInfo */
             foreach ($finder as $directoryPath => $file) {
-                $this->fabricate_yaml_file_paths[$file->getPathname()] = $file->getFilename();
+                $pathname = $file->getPathname();
+                if (isset($this->fabricate_yaml_files[$pathname])) {
+                    $message = sprintf('Fabricate yaml file with pathname[%s] is already set.', $pathname);
+                    throw new \LogicException($message);
+                }
+                $this->fabricate_yaml_files[$pathname] = $file;
             }
         }
 
-        return $this->fabricate_yaml_file_paths;
+        return $this->fabricate_yaml_files;
     }
 
     protected function getFinder(): Finder
@@ -199,46 +108,6 @@ class Fabricator implements FabricatorInterface
         return $this;
     }
 
-    protected function getSourcePath(): string
-    {
-        if ($this->source_path === null) {
-            throw new \LogicException('Bradfab source_path has not been set.');
-        }
-
-        return $this->source_path;
-    }
-
-    public function setSourcePath(string $source_path): FabricatorInterface
-    {
-        if ($this->source_path !== null) {
-            throw new \LogicException('Bradfab source_path is already set.');
-        }
-
-        $this->source_path = $source_path;
-
-        return $this;
-    }
-
-    public function getFabricationPath(): string
-    {
-        if ($this->fabrication_path === null) {
-            throw new \LogicException('Bradfab fabrication_path has not been set.');
-        }
-
-        return $this->fabrication_path;
-    }
-
-    public function setFabricationPath(string $fabrication_path): FabricatorInterface
-    {
-        if ($this->fabrication_path !== null) {
-            throw new \LogicException('Bradfab fabrication_path is already set.');
-        }
-
-        $this->fabrication_path = $fabrication_path;
-
-        return $this;
-    }
-
     public function getFilesystem(): Filesystem
     {
         if ($this->filesystem === null) {
@@ -255,26 +124,6 @@ class Fabricator implements FabricatorInterface
         }
 
         $this->filesystem = $filesystem;
-
-        return $this;
-    }
-
-    public function getTargetNamespace(): string
-    {
-        if ($this->target_namespace === null) {
-            throw new \LogicException('Bradfab target_namespace has not been set.');
-        }
-
-        return $this->target_namespace;
-    }
-
-    public function setTargetNamespace(string $target_namespace): FabricatorInterface
-    {
-        if ($this->target_namespace !== null) {
-            throw new \LogicException('Bradfab target_namespace is already set.');
-        }
-
-        $this->target_namespace = $target_namespace;
 
         return $this;
     }

@@ -1,0 +1,7 @@
+services:
+  Rhift\Bradfab\IntegerMap\FactoryInterface:
+    class: Rhift\Bradfab\IntegerMap\Factory
+    public: false
+    shared: true
+    calls:
+      - [setIntegerMap, ['@Rhift\Bradfab\IntegerMapInterface']]

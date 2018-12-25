@@ -1,0 +1,7 @@
+services:
+  Rhift\Bradfab\SupportingActor\WriterInterface:
+    class: Rhift\Bradfab\SupportingActor\Writer
+    public: false
+    shared: false
+    calls:
+      - [setFilesystem, ['@Symfony\Component\Filesystem\FilesystemInterface']]

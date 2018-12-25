@@ -1,4 +1,5 @@
 services:
   Rhift\Bradfab\NewRelicInterface:
     class: Rhift\Bradfab\NewRelic
+    public: false
     shared: false

@@ -64,9 +64,10 @@ class Map extends \ArrayIterator implements MapInterface
         return (array)$this;
     }
 
-    public function hydrate(array $array): MapInterface
+    /** @param ActorInterface ...$Actors */
+    public function hydrate(array $Actors): MapInterface
     {
-        $this->__construct($array);
+        $this->__construct($Actors);
 
         return $this;
     }

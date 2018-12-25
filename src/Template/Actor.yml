@@ -1,5 +1,5 @@
 services:
   Rhift\Bradfab\Template\ActorInterface:
     class: Rhift\Bradfab\Template\Actor
-    shared: false
     public: false
+    shared: false
