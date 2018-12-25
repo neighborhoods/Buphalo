@@ -4,9 +4,11 @@ declare(strict_types=1);
 namespace Rhift\Bradfab\FabricationFile\SupportingActor;
 
 use Rhift\Bradfab\FabricationFile\SupportingActorInterface;
+use Rhift\Bradfab\AnnotationProcessor;
 
 class Builder implements BuilderInterface
 {
+    use AnnotationProcessor\Map\Builder\Factory\AwareTrait;
     use Factory\AwareTrait;
 
     protected $record;
@@ -26,6 +28,12 @@ class Builder implements BuilderInterface
         );
         $supportingActor->setRelativeTemplatePath($relativeTemplatePath);
         $supportingActor->setTemplateFileExtension($templateFileExtension);
+        if (isset($record['annotation_processors']) && is_array($record['annotation_processors'])) {
+            $annotationProcessorMapBuilder = $this->getAnnotationProcessorMapBuilderFactory()->create();
+            $annotationProcessorMapBuilder->setRecords($record['annotation_processors']);
+            $annotationProcessorMap = $annotationProcessorMapBuilder->build();
+            $supportingActor->setAnnotationProcessorMap($annotationProcessorMap);
+        }
 
         return $supportingActor;
     }

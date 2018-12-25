@@ -33,7 +33,7 @@ class TargetActor implements TargetActorInterface
     {
         if ($this->fqcn === null) {
             $relativeNamePath = $this->getRelativeNamePath();
-            $FQCN = $this->getTargetApplication()->getFqcn() . $relativeNamePath;
+            $FQCN = $this->getTargetApplication()->getNamespace() . $relativeNamePath;
             $FQCN = str_replace('/', '\\', $FQCN);
             $this->fqcn = $FQCN;
         }

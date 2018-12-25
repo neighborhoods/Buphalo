@@ -28,7 +28,7 @@ class Fabricator implements FabricatorInterface
         // Ensure that the fabrication file path exists so that realpath can verify it.
         $this->getFilesystem()->mkdir($fabricationRelativePath);
 
-        $this->getTargetApplication()->setFqcn('Rhift\Bradfab\\');
+        $this->getTargetApplication()->setNamespace('Rhift\Bradfab\\');
         $this->getTargetApplication()->setSourcePath(realpath(__DIR__ . '/../src'));
         $this->getTargetApplication()->setFabricationPath(realpath($fabricationRelativePath));
         $this->setTemplateActorDirectoryPath(realpath(__DIR__ . '/Template/Actor/'));

@@ -5,3 +5,5 @@ services:
     shared: false
     calls:
       - [setAnnotationProcessorFactory, ['@Rhift\Bradfab\AnnotationProcessor\FactoryInterface']]
+      - [setAnnotationProcessorRepository, ['@Rhift\Bradfab\AnnotationProcessor\RepositoryInterface']]
+      - [setAnnotationProcessorContextBuilderFactory, ['@Rhift\Bradfab\AnnotationProcessor\Context\Builder\FactoryInterface']]

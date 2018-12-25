@@ -17,8 +17,9 @@ class Builder implements BuilderInterface
     protected $applicationRootDirectoryPath;
     protected $symfonyContainerBuilder;
     protected $serviceIdsRegisteredForPublicAccess = [];
-    protected $build_zend_expressive;
-    protected $cache_container;
+    protected $can_build_zend_expressive;
+    protected $can_cache_container;
+    protected $cached_container_file_name;
 
     public function build(): ContainerInterface
     {
@@ -35,10 +36,10 @@ class Builder implements BuilderInterface
                 require_once $containerCacheFilePath;
                 $containerBuilder = new \ProjectServiceContainer();
             } else {
-                if ($this->getBuildZendExpressive()) {
+                if ($this->getCanBuildZendExpressive()) {
                     $this->buildZendExpressive();
                 }
-                if ($this->getCacheContainer()) {
+                if ($this->getCanCacheContainer()) {
                     $this->cacheSymfonyContainerBuilder();
                 }
                 $containerBuilder = $this->getSymfonyContainerBuilder();
@@ -49,24 +50,24 @@ class Builder implements BuilderInterface
         return $this->container;
     }
 
-    public function setBuildZendExpressive(bool $build_zend_expressive): BuilderInterface
+    public function setCanBuildZendExpressive(bool $can_build_zend_expressive): BuilderInterface
     {
-        if ($this->build_zend_expressive === null) {
-            $this->build_zend_expressive = $build_zend_expressive;
+        if ($this->can_build_zend_expressive === null) {
+            $this->can_build_zend_expressive = $can_build_zend_expressive;
         } else {
-            throw new \LogicException('Builder build_zend_expressive is already set.');
+            throw new \LogicException('Builder can_build_zend_expressive is already set.');
         }
 
         return $this;
     }
 
-    protected function getBuildZendExpressive(): bool
+    protected function getCanBuildZendExpressive(): bool
     {
-        if ($this->build_zend_expressive === null) {
-            throw new \LogicException('Builder build_zend_expressive is not set.');
+        if ($this->can_build_zend_expressive === null) {
+            throw new \LogicException('Builder can_build_zend_expressive is not set.');
         }
 
-        return $this->build_zend_expressive;
+        return $this->can_build_zend_expressive;
     }
 
     protected function getSymfonyContainerBuilder(): ContainerBuilder
@@ -101,22 +102,22 @@ class Builder implements BuilderInterface
         return $this;
     }
 
-    protected function getCacheContainer()
+    protected function getCanCacheContainer(): bool
     {
-        if ($this->cache_container === null) {
-            throw new \LogicException('Builder cache_container has not been set.');
+        if ($this->can_cache_container === null) {
+            throw new \LogicException('Builder can_cache_container has not been set.');
         }
 
-        return $this->cache_container;
+        return $this->can_cache_container;
     }
 
-    public function setCacheContainer($cache_container): BuilderInterface
+    public function setCanCacheContainer(bool $can_cache_container): BuilderInterface
     {
-        if ($this->cache_container !== null) {
-            throw new \LogicException('Builder cache_container is already set.');
+        if ($this->can_cache_container !== null) {
+            throw new \LogicException('Builder can_cache_container is already set.');
         }
 
-        $this->cache_container = $cache_container;
+        $this->can_cache_container = $can_cache_container;
 
         return $this;
     }
@@ -170,10 +171,16 @@ class Builder implements BuilderInterface
 
     protected function getSymfonyContainerFilePath(): string
     {
-        return $this->getApplicationRootDirectoryPath() . '/data/cache/container.php';
+        $symfonyContainerFilePath = sprintf(
+            '%/data/cache/%s',
+            $this->getApplicationRootDirectoryPath(),
+            $this->getCachedContainerFileName()
+        );
+
+        return $symfonyContainerFilePath;
     }
 
-    public function setApplicationRootDirectoryPath(string $applicationRootDirectoryPath)
+    public function setApplicationRootDirectoryPath(string $applicationRootDirectoryPath): BuilderInterface
     {
         if ($this->applicationRootDirectoryPath === null) {
             $applicationRootDirectoryPath = realpath(rtrim($applicationRootDirectoryPath, "/"));
@@ -224,6 +231,26 @@ class Builder implements BuilderInterface
         foreach ($this->getServiceIdsRegisteredForPublicAccess() as $serviceId) {
             $containerBuilder->getDefinition($serviceId)->setPublic(true);
         }
+
+        return $this;
+    }
+
+    protected function getCachedContainerFileName(): string
+    {
+        if ($this->cached_container_file_name === null) {
+            throw new \LogicException('Builder cached_container_file_name has not been set.');
+        }
+
+        return $this->cached_container_file_name;
+    }
+
+    public function setCachedContainerFileName(string $cached_container_file_name): BuilderInterface
+    {
+        if ($this->cached_container_file_name !== null) {
+            throw new \LogicException('Builder cached_container_file_name is already set.');
+        }
+
+        $this->cached_container_file_name = $cached_container_file_name;
 
         return $this;
     }

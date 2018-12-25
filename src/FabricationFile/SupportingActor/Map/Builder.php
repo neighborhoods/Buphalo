@@ -5,11 +5,13 @@ namespace Rhift\Bradfab\FabricationFile\SupportingActor\Map;
 
 use Rhift\Bradfab\FabricationFile\SupportingActor\MapInterface;
 use Rhift\Bradfab\FabricationFile;
+use Rhift\Bradfab\AnnotationProcessor;
 
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
     use FabricationFile\SupportingActor\Builder\Factory\AwareTrait;
+
     protected $records;
 
     public function build(): MapInterface

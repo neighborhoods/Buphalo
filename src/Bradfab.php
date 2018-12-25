@@ -12,8 +12,9 @@ class Bradfab implements BradfabInterface
 
     public function run(): BradfabInterface
     {
-        $this->getProteanContainerBuilder()->setBuildZendExpressive(false);
-        $this->getProteanContainerBuilder()->setCacheContainer(false);
+        $this->getProteanContainerBuilder()->setCachedContainerFileName((new \ReflectionClass($this))->getShortName());
+        $this->getProteanContainerBuilder()->setCanBuildZendExpressive(false);
+        $this->getProteanContainerBuilder()->setCanCacheContainer(false);
         $this->getProteanContainerBuilder()->registerServiceAsPublic(FabricatorInterface::class);
         $this->getProteanContainerBuilder()->registerServiceAsPublic(FactoryInterface::class);
         $container = $this->getProteanContainerBuilder()->build();

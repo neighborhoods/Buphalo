@@ -5,16 +5,15 @@ namespace Rhift\Bradfab;
 
 interface TargetApplicationInterface
 {
+    public function getNamespace(): string;
 
-    public function getFqcn();
+    public function setNamespace(string $namespace): TargetApplicationInterface;
 
-    public function setFqcn($fqcn): TargetApplicationInterface;
+    public function setSourcePath(string $source_path): TargetApplicationInterface;
 
-    public function setSourcePath($source_path): TargetApplicationInterface;
+    public function getSourcePath(): string;
 
-    public function getSourcePath();
+    public function setFabricationPath(string $fabrication_path): TargetApplicationInterface;
 
-    public function setFabricationPath($fabrication_path): TargetApplicationInterface;
-
-    public function getFabricationPath();
+    public function getFabricationPath(): string;
 }

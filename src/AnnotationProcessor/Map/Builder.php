@@ -4,19 +4,24 @@ declare(strict_types=1);
 namespace Rhift\Bradfab\AnnotationProcessor\Map;
 
 use Rhift\Bradfab\AnnotationProcessor\MapInterface;
+use Rhift\Bradfab\AnnotationProcessor;
 
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
+    use AnnotationProcessor\Builder\Factory\AwareTrait;
 
     protected $records;
 
     public function build(): MapInterface
     {
+        $records = $this->getRecords();
         $map = $this->getAnnotationProcessorMapFactory()->create();
-
-        // @TODO - build the object.
-        throw new \LogicException('Unimplemented build method.');
+        foreach ($records as $annotationProcessorKey => $annotationProcessorDefinition) {
+            $annotationProcessorBuilder = $this->getAnnotationProcessorBuilderFactory()->create();
+            $annotationProcessorBuilder->setRecord($annotationProcessorDefinition);
+            $map[$annotationProcessorKey] = $annotationProcessorBuilder->build();
+        }
 
         return $map;
     }

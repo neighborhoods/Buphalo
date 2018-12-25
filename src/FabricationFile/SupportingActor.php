@@ -3,8 +3,15 @@ declare(strict_types=1);
 
 namespace Rhift\Bradfab\FabricationFile;
 
+use Rhift\Bradfab\AnnotationProcessor;
+
 class SupportingActor implements SupportingActorInterface
 {
+    use AnnotationProcessor\Map\AwareTrait {
+        getAnnotationProcessorMap as public;
+        hasAnnotationProcessorMap as public;
+    }
+
     protected $relative_template_path;
     protected $template_file_extension;
 

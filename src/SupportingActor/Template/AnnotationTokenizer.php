@@ -30,9 +30,13 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
             if ($numberOfAnnotations > 0) {
                 foreach ($annotations[1] as $index => $tag) {
                     if (trim($tag) === '@rhift-bradfab:annotation-processor') {
+                        $supportingActor = $this->getSupportingActorTemplate()->getFabricationFileSupportingActor();
+                        $annotationProcessorIndex = trim($annotations[2][$index]);
+                        $annotationProcessor = $supportingActor->getAnnotationProcessorMap()[$annotationProcessorIndex];
+                        $annotationProcessor->setAnnotationContents($annotations[3][$index]);
                         $tokenizedContents = str_replace(
                             sprintf('/**%s*/', $annotations[0][$index]),
-                            self::ANNOTATION_TOKEN,
+                            $annotationProcessor->getReplacement(),
                             $tokenizedContents
                         );
                     }

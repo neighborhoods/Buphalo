@@ -12,6 +12,10 @@ supporting_actors:
   Builder\Factory.yml:
   Builder\FactoryInterface.php:
   Builder\Factory\AwareTrait.php:
+  Repository.php:
+  Repository.yml:
+  RepositoryInterface.php:
+  Repository\AwareTrait.php:
   Map.php:
   Map.yml:
   MapInterface.php:

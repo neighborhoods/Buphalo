@@ -4,25 +4,28 @@ declare(strict_types=1);
 namespace Rhift\Bradfab\AnnotationProcessor;
 
 use Rhift\Bradfab\AnnotationProcessorInterface;
+use Rhift\Bradfab\AnnotationProcessor;
 
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
+    use AnnotationProcessor\Repository\AwareTrait;
+    use AnnotationProcessor\Context\Builder\Factory\AwareTrait;
 
     protected $record;
 
     public function build(): AnnotationProcessorInterface
     {
-        $AnnotationProcessor = $this->getAnnotationProcessorFactory()->create();
-        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\AnnotationProcessor\Builder.build1
-         */
+        $annotationProcessorDefinition = $this->getRecord();
+        $fqcn = $annotationProcessorDefinition['processor_fqcn'];
+        $annotationProcessor = $this->getAnnotationProcessorRepository()->getByFQCN($fqcn);
+        $contextBuilder = $this->getAnnotationProcessorContextBuilderFactory()->create();
+        if(isset($annotationProcessorDefinition['static_context'])){
+            $contextBuilder->setRecord($annotationProcessorDefinition['static_context']);
+        }
+        $annotationProcessor->setAnnotationProcessorContext($contextBuilder->build());
 
-        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\AnnotationProcessor\Builder.build2
-        // @TODO - build the object.
-        throw new \LogicException('Unimplemented build method.');
-         */
-
-        return $AnnotationProcessor;
+        return $annotationProcessor;
     }
 
     protected function getRecord(): array

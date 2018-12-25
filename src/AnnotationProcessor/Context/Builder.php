@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Template\Actor;
+namespace Rhift\Bradfab\AnnotationProcessor\Context;
 
-use Rhift\Bradfab\Template\ActorInterface;
+use Rhift\Bradfab\AnnotationProcessor\ContextInterface;
 
 class Builder implements BuilderInterface
 {
@@ -11,17 +11,11 @@ class Builder implements BuilderInterface
 
     protected $record;
 
-    public function build(): ActorInterface
+    public function build(): ContextInterface
     {
-        $Actor = $this->getActorFactory()->create();
-        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build1
-         */
-        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build2
-        // @TODO - build the object.
-        throw new \LogicException('Unimplemented build method.');
-         */
+        $context = $this->getAnnotationProcessorContextFactory()->create();
 
-        return $Actor;
+        return $context;
     }
 
     protected function getRecord(): array

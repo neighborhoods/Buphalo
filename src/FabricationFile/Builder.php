@@ -21,6 +21,13 @@ class Builder implements BuilderInterface
         $fabricationFile = $this->getFabricationFileFactory()->create();
         $supportingActorMapBuilder = $this->getFabricationFileSupportingActorMapBuilderFactory()->create();
         $supportingActors = $supportingActorMapBuilder->setRecords($fabricationFileContents)->build();
+        foreach ($supportingActors as $supportingActor) {
+            if ($supportingActor->hasAnnotationProcessorMap()) {
+                foreach ($supportingActor->getAnnotationProcessorMap() as $annotationProcessor) {
+                    $annotationProcessor->getAnnotationProcessorContext()->setFabricationFile($fabricationFile);
+                }
+            }
+        }
         $fabricationFile->setSupportingActors($supportingActors);
         $fabricationFile->setFileName($this->getSPLFileInfo()->getFilename());
         $fabricationFile->setFilePath($this->getSPLFileInfo()->getPathname());
