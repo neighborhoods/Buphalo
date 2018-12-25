@@ -12,8 +12,8 @@ class Repository implements RepositoryInterface
 
     protected $map;
 
-    public function getByFQCN(string $fqcn): AnnotationProcessorInterface
+    public function getByFQCN(string $annotationProcessorFQCN): AnnotationProcessorInterface
     {
-        return new $fqcn;
+        return new $annotationProcessorFQCN;
     }
 }

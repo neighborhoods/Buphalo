@@ -7,5 +7,5 @@ use Rhift\Bradfab\AnnotationProcessorInterface;
 
 interface RepositoryInterface
 {
-    public function getByFQCN(string $fqcn): AnnotationProcessorInterface;
+    public function getByFQCN(string $annotationProcessorFQCN): AnnotationProcessorInterface;
 }
