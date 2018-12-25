@@ -7,7 +7,8 @@ use Rhift\Bradfab\SupportingActor\TemplateInterface;
 
 interface AnnotationTokenizerInterface
 {
-    public const ANNOTATION_REGEX = '/(?<=\/\*\*)(\s+@rhift-bradfab:annotation-processor)(.*)([\s\S]*?)(?=\*\/)/';
+    public const ANNOTATION_TAG = '@rhift-bradfab:annotation-processor';
+    public const ANNOTATION_REGEX = '/(?<=\/\*\*)(\s+' . self::ANNOTATION_TAG . ')(.*)([\s\S]*?)(?=\*\/)/';
 
     public function setSupportingActorTemplate(TemplateInterface $Template);
 

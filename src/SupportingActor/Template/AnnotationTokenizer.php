@@ -31,7 +31,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
             $tokenizedContents = $templateContents;
             if ($numberOfAnnotations > 0) {
                 foreach ($annotations[1] as $index => $tag) {
-                    if (trim($tag) === '@rhift-bradfab:annotation-processor') {
+                    if (trim($tag) === self::ANNOTATION_TAG) {
                         $supportingActor = $this->getSupportingActorTemplate()->getFabricationFileSupportingActor();
                         $repository = $this->getAnnotationProcessorRepository();
                         $annotationProcessor = $repository->getByFQCN('\Rhift\Bradfab\AnnotationProcessor');
