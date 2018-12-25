@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Rhift\Bradfab\SupportingActor\Template;
 
-use Rhift\Bradfab\AnnotationProcessor\RepositoryInterface;
 use Rhift\Bradfab\SupportingActor;
 use Rhift\Bradfab\AnnotationProcessor;
 
@@ -25,7 +24,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
         if ($this->tokenized_contents === null) {
             $templateContents = $this->getSupportingActorTemplate()->getContents();
             $numberOfAnnotations = preg_match_all(
-                '/(?<=\/\*\*)(\s+@rhift-bradfab:annotation-processor)(.*)([\s\S]*?)(?=\*\/)/',
+                self::ANNOTATION_REGEX,
                 $templateContents,
                 $annotations
             );
