@@ -14,6 +14,9 @@ class Builder implements BuilderInterface
     public function build(): ContextInterface
     {
         $context = $this->getAnnotationProcessorContextFactory()->create();
+        if ($this->hasRecord()) {
+            $context->setStaticContextRecord($this->getRecord());
+        }
 
         return $context;
     }
@@ -25,6 +28,11 @@ class Builder implements BuilderInterface
         }
 
         return $this->record;
+    }
+
+    protected function hasRecord(): bool
+    {
+        return !($this->record === null);
     }
 
     public function setRecord(array $record): BuilderInterface
