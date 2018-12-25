@@ -116,7 +116,7 @@ supporting_actors:
 * Annotation processors allow user space to define dynamic template content before tokenization or compilation of the template.
 * Annotation processors are optional.
 * Providing static context to the annotation processor is optional.
-* Default replacement is accomplished by using the contents of the annotation.
+* Default annotation replacement is accomplished by using the contents of the annotation.
 * `static_context_record` MUST resolve to a PHP `array`.
 * Annotation processors MUST implement `\Rhift\Bradfab\AnnotationProcessorInterface`
 ```php
