@@ -23,7 +23,7 @@ Employ an easy to change code generation tool to generate well designed patterns
 * Relative to the root of your software product.
 ```yml
 # src/V2/Toe.fabricate.yml
-fabricate:
+supporting_actors:
   AwareTrait:
   Factory:
   FactoryInterface:
@@ -52,7 +52,7 @@ fabricate:
 ```
 ```yml
 # src/V2/Toe/Nail.fabricate.yml
-fabricate:
+supporting_actors:
   AwareTrait:
   Factory:
   FactoryInterface:
@@ -89,9 +89,80 @@ fabricate:
 * A `Fablet` is the collection of Supporting Actors that are built from the Fabrication File for an `<Object>`.
 
 ## Features
-* Only fabricates files that do not exist in `src`
+* Only fabricates files that do not exist in `src`.
 
 ### Annotation Replacement
+* Default replacement is accomplished by the contents of the annotation.
+* `static_context_record` MUST resolve to a PHP `array`.
+* Annotation processors MUST implement `\Rhift\Bradfab\AnnotationProcessorInterface`
+```php
+namespace Rhift\Bradfab;
+
+use Rhift\Bradfab\AnnotationProcessor\ContextInterface;
+
+interface AnnotationProcessorInterface
+{
+    public function setAnnotationProcessorContext(ContextInterface $Context);
+
+    public function getAnnotationProcessorContext(): ContextInterface;
+
+    public function getReplacement(): string;
+
+    public function setAnnotationContents(string $annotation_contents): AnnotationProcessorInterface;
+}
+```
+* Annotation processors have accesss to the static context and the Fabrication File.
+
+### Example Annotation Replacement
+* Annotation Tag: `@rhift-bradfab:annotation-processor`
+* Annotation Processor Keys:
+  * `Rhift\Bradfab\Template\Actor\Builder.build1`
+  * `Rhift\Bradfab\Template\Actor\Builder.build2`
+* The keys above are named according to a collision avoidance convention. However, there is no requirement on the key name except for uniqueness.
+```php
+// src/Template/Actor/Builder.php
+    public function build(): ActorInterface
+    {
+        $Actor = $this->getActorFactory()->create();
+        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build1
+         */
+        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build2
+        // @TODO - build the object.
+        throw new \LogicException('Unimplemented build method.');
+         */
+
+        return $Actor;
+    }
+```
+```yml
+# src/V2/Toe.fabricate.yml
+supporting_actors:
+# ...
+  Builder.php:
+    annotation_processors:
+      Rhift\Bradfab\Template\Actor\Builder.build1:
+        processor_fqcn: \VENDOR\PRODUCT\AnAnnotationProcessor
+      Rhift\Bradfab\Template\Actor\Builder.build2:
+        processor_fqcn: \VENDOR\PRODUCT\AnotherAnnotationProcessor
+        static_context_record:
+          head: 'shoulders'
+          knees: 'fingers'
+  BuilderInterface:
+# ...
+```
+* If no annotation processors are defined then `\Rhift\Bradfab\AnnotationProcessor` is used and the above compiles as 
+```php
+    public function build(): TestInterface
+    {
+        $Test = $this->getFabricationFileSupportingActorTestFactory()->create();
+        
+        
+        // @TODO - build the object.
+        throw new \LogicException('Unimplemented build method.');
+
+        return $Test;
+    }
+```
 
 ### User Space Template Trees
 * User space template trees are merged with the `Bradfab` template tree, collision precedence favors user space.
