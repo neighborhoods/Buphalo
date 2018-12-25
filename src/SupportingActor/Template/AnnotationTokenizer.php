@@ -33,17 +33,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
             if ($numberOfAnnotations > 0) {
                 foreach ($annotations[1] as $index => $tag) {
                     if (trim($tag) === self::ANNOTATION_TAG) {
-                        $supportingActor = $this->getSupportingActorTemplate()->getFabricationFileSupportingActor();
-                        $repository = $this->getAnnotationProcessorRepository();
-                        $annotationProcessor = $repository->getByFQCN(AnnotationProcessorInterface::class);
-                        if ($supportingActor->hasAnnotationProcessorMap()) {
-                            $annotationProcessors = $supportingActor->getAnnotationProcessorMap();
-                            $annotationProcessorIndex = trim($annotations[2][$index]);
-                            if (isset($annotationProcessors[$annotationProcessorIndex])) {
-                                $annotationProcessor = $annotationProcessors[$annotationProcessorIndex];
-                            }
-                        }
-                        $annotationProcessor->setAnnotationContents($annotations[3][$index]);
+                        $annotationProcessor = $this->getAnnotationProcessor($annotations, $index);
                         $tokenizedContents = str_replace(
                             sprintf('/**%s*/', $annotations[0][$index]),
                             $annotationProcessor->getReplacement(),
@@ -58,5 +48,25 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
         }
 
         return $this->tokenized_contents;
+    }
+
+    protected function getAnnotationProcessor(array $annotations, int $index): AnnotationProcessorInterface
+    {
+        $supportingActor = $this->getSupportingActorTemplate()->getFabricationFileSupportingActor();
+        $repository = $this->getAnnotationProcessorRepository();
+        $annotationProcessor = null;
+        if ($supportingActor->hasAnnotationProcessorMap()) {
+            $annotationProcessors = $supportingActor->getAnnotationProcessorMap();
+            $annotationProcessorIndex = trim($annotations[2][$index]);
+            if (isset($annotationProcessors[$annotationProcessorIndex])) {
+                $annotationProcessor = $annotationProcessors[$annotationProcessorIndex];
+            }
+        }
+        if ($annotationProcessor === null) {
+            $annotationProcessor = $repository->getByFQCN(AnnotationProcessorInterface::class);
+        }
+        $annotationProcessor->setAnnotationContents($annotations[3][$index]);
+
+        return $annotationProcessor;
     }
 }
