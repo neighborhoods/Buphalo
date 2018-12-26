@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Rhift\Bradfab\SupportingActor\Template;
 
+use Rhift\Bradfab\AnnotationProcessor\BuilderInterface;
 use Rhift\Bradfab\AnnotationProcessorInterface;
 use Rhift\Bradfab\SupportingActor;
 use Rhift\Bradfab\AnnotationProcessor;
@@ -10,7 +11,7 @@ use Rhift\Bradfab\AnnotationProcessor;
 class AnnotationTokenizer implements AnnotationTokenizerInterface
 {
     use SupportingActor\Template\AwareTrait;
-    use AnnotationProcessor\Repository\AwareTrait;
+    use AnnotationProcessor\Builder\Factory\AwareTrait;
     protected $tokenized_contents;
 
     public function tokenize(): AnnotationTokenizerInterface
@@ -53,7 +54,6 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
     protected function getAnnotationProcessor(array $annotations, int $index): AnnotationProcessorInterface
     {
         $supportingActor = $this->getSupportingActorTemplate()->getFabricationFileSupportingActor();
-        $repository = $this->getAnnotationProcessorRepository();
         $annotationProcessor = null;
         if ($supportingActor->hasAnnotationProcessorMap()) {
             $annotationProcessors = $supportingActor->getAnnotationProcessorMap();
@@ -63,7 +63,9 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
             }
         }
         if ($annotationProcessor === null) {
-            $annotationProcessor = $repository->getByFQCN(AnnotationProcessor::class);
+            $annotationProcessorBuilder = $this->getAnnotationProcessorBuilderFactory()->create();
+            $annotationProcessorDefinition = [BuilderInterface::PROCESSOR_FQCN => AnnotationProcessor::class];
+            $annotationProcessor = $annotationProcessorBuilder->setRecord($annotationProcessorDefinition)->build();
         }
         $annotationProcessor->getAnnotationProcessorContext()->setAnnotationContents($annotations[3][$index]);
 

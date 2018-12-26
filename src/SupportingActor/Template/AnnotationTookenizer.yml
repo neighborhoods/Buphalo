@@ -4,4 +4,4 @@ services:
     public: false
     shared: false
     calls:
-      - [setAnnotationProcessorRepository, ['@Rhift\Bradfab\AnnotationProcessor\RepositoryInterface']]
+      - [setAnnotationProcessorBuilderFactory, ['@Rhift\Bradfab\AnnotationProcessor\Builder\FactoryInterface']]

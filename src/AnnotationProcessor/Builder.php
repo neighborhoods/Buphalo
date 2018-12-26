@@ -17,7 +17,7 @@ class Builder implements BuilderInterface
     public function build(): AnnotationProcessorInterface
     {
         $annotationProcessorDefinition = $this->getRecord();
-        $fqcn = $annotationProcessorDefinition['processor_fqcn'];
+        $fqcn = $annotationProcessorDefinition[BuilderInterface::PROCESSOR_FQCN];
         $annotationProcessor = $this->getAnnotationProcessorRepository()->getByFQCN($fqcn);
         $contextBuilder = $this->getAnnotationProcessorContextBuilderFactory()->create();
         if (isset($annotationProcessorDefinition[Context\BuilderInterface::STATIC_CONTEXT_RECORD])) {
