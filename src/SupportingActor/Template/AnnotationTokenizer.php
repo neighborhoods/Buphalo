@@ -51,6 +51,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
         return $this->tokenized_contents;
     }
 
+    // @todo - try refactoring this as a builder alias.
     protected function getAnnotationProcessor(array $annotations, int $index): AnnotationProcessorInterface
     {
         $supportingActor = $this->getSupportingActorTemplate()->getFabricationFileSupportingActor();
