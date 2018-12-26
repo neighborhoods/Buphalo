@@ -79,11 +79,7 @@ class Builder implements BuilderInterface
             $discoverableDirectories[] = $this->getSourceDirectoryPath();
             $containerBuilderFacade = (new Facade())->setContainerBuilder($containerBuilder);
             $containerBuilderFacade->addFinder(
-                (new Finder())->name('*.yml')
-                    ->notName('*.prefab.definition.yml')
-                    ->notName('*.fabrication.yml')
-                    ->files()
-                    ->in($discoverableDirectories)
+                (new Finder())->name('*.service.yml')->files()->in($discoverableDirectories)
             );
             $containerBuilderFacade->assembleYaml();
             $this->updateServiceDefinitions($containerBuilder);

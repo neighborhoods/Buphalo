@@ -4,3 +4,11 @@ supporting_actors:
   Factory.yml:
   FactoryInterface.php:
   Factory\AwareTrait.php:
+  Builder.php:
+  Builder.yml:
+  BuilderInterface.php:
+  Builder\AwareTrait.php:
+  Builder\Factory.php:
+  Builder\Factory.yml:
+  Builder\FactoryInterface.php:
+  Builder\Factory\AwareTrait.php:

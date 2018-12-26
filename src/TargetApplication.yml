@@ -1,5 +1,13 @@
+parameters:
+  Rhift\Bradfab\TargetApplicationInterface.source_path: '%env(BRADFAB_TARGET_APPLICATION_SOURCE_PATH)%'
+  Rhift\Bradfab\TargetApplicationInterface.fabrication_path: '%env(BRADFAB_TARGET_APPLICATION_FABRICATION_PATH)%'
+  Rhift\Bradfab\TargetApplicationInterface.namespace: '%env(BRADFAB_TARGET_APPLICATION_NAMESPACE)%'
 services:
   Rhift\Bradfab\TargetApplicationInterface:
     class: Rhift\Bradfab\TargetApplication
     public: false
     shared: false
+    calls:
+      - [setNamespace, ['%Rhift\Bradfab\TargetApplicationInterface.namespace%']]
+      - [setSourcePath, ['%Rhift\Bradfab\TargetApplicationInterface.source_path%']]
+      - [setFabricationPath, ['%Rhift\Bradfab\TargetApplicationInterface.fabrication_path%']]

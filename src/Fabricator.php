@@ -24,13 +24,6 @@ class Fabricator implements FabricatorInterface
 
     protected function encapsulatedNoBueno(): FabricatorInterface
     {
-        $fabricationRelativePath = __DIR__ . '/../fab';
-        // Ensure that the fabrication file path exists so that realpath can verify it.
-        $this->getFilesystem()->mkdir($fabricationRelativePath);
-
-        $this->getTargetApplication()->setNamespace('Rhift\Bradfab\\');
-        $this->getTargetApplication()->setSourcePath(realpath(__DIR__ . '/../src'));
-        $this->getTargetApplication()->setFabricationPath(realpath($fabricationRelativePath));
         $this->setTemplateActorDirectoryPath(realpath(__DIR__ . '/Template/Actor/'));
 
         return $this;
@@ -38,9 +31,7 @@ class Fabricator implements FabricatorInterface
 
     public function fabricate(): FabricatorInterface
     {
-        $this->encapsulatedNoBueno();
-
-        $this->getFilesystem()->remove($this->getTargetApplication()->getFabricationPath());
+        $this->removeFabricationDirectory();
         /** @var SplFileInfo $fabricateYamlSPLFileInfo */
         foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlSPLFileInfo) {
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
@@ -64,6 +55,15 @@ class Fabricator implements FabricatorInterface
                 $writer->setTargetApplication($this->getTargetApplication());
                 $writer->write();
             }
+        }
+
+        return $this;
+    }
+
+    protected function removeFabricationDirectory(): FabricatorInterface
+    {
+        if ($this->getFilesystem()->exists($this->getTargetApplication()->getFabricationPath())) {
+            $this->getFilesystem()->remove($this->getTargetApplication()->getFabricationPath());
         }
 
         return $this;
