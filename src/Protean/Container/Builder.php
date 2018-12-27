@@ -8,6 +8,7 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
 use Symfony\Component\DependencyInjection\Dumper\YamlDumper;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Zend\Expressive\Application;
 
@@ -20,6 +21,7 @@ class Builder implements BuilderInterface
     protected $can_build_zend_expressive;
     protected $can_cache_container;
     protected $cached_container_file_name;
+    protected $filesystem;
 
     public function build(): ContainerInterface
     {
@@ -134,7 +136,7 @@ class Builder implements BuilderInterface
     protected function getFabricationDirectoryPath(): string
     {
         if (!realpath($this->getApplicationRootDirectoryPath() . '/fab')) {
-            mkdir($this->getApplicationRootDirectoryPath() . '/fab');
+            $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/fab');
         }
 
         return realpath($this->getApplicationRootDirectoryPath() . '/fab');
@@ -147,29 +149,42 @@ class Builder implements BuilderInterface
 
     protected function getCacheDirectoryPath(): string
     {
+        if (!realpath($this->getApplicationRootDirectoryPath() . '/data/cache')) {
+            $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/data/cache');
+        }
+
         return realpath($this->getApplicationRootDirectoryPath() . '/data/cache');
     }
 
     protected function getPipelineFilePath(): string
     {
-        return $this->getApplicationRootDirectoryPath() . '/config/pipeline.php';
+        return $this->getConfigurationDirectoryPath() . '/pipeline.php';
     }
 
     protected function getZendConfigContainerFilePath(): string
     {
-        return $this->getApplicationRootDirectoryPath() . '/config/container.php';
+        return $this->getConfigurationDirectoryPath() . '/container.php';
+    }
+
+    protected function getConfigurationDirectoryPath(): string
+    {
+        if (!realpath($this->getApplicationRootDirectoryPath() . '/config')) {
+            $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/config');
+        }
+
+        return realpath($this->getApplicationRootDirectoryPath() . '/config');
     }
 
     protected function getExpressiveDIYAMLFilePath(): string
     {
-        return $this->getApplicationRootDirectoryPath() . '/data/cache/expressive.yml';
+        return $this->getCacheDirectoryPath() . '/expressive.yml';
     }
 
     protected function getSymfonyContainerFilePath(): string
     {
         $symfonyContainerFilePath = sprintf(
-            '%/data/cache/%s',
-            $this->getApplicationRootDirectoryPath(),
+            '%s/%s',
+            $this->getCacheDirectoryPath(),
             $this->getCachedContainerFileName()
         );
 
@@ -249,5 +264,14 @@ class Builder implements BuilderInterface
         $this->cached_container_file_name = $cached_container_file_name;
 
         return $this;
+    }
+
+    protected function getFilesystem(): Filesystem
+    {
+        if ($this->filesystem === null) {
+            $this->filesystem = new Filesystem();
+        }
+
+        return $this->filesystem;
     }
 }
