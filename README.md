@@ -131,12 +131,13 @@ supporting_actors:
 * Only fabricates files that do not exist in `src`.
 
 ### Annotation Processors
-* Annotation processors allow user space to define dynamic template content before tokenization or compilation of the template.
-* Annotation processors are optional.
-* Providing static context to the annotation processor is optional.
-* Default annotation replacement is accomplished by using the contents of the annotation.
+* Annotation Processors allow user space to define dynamic template content before tokenization or compilation of the template.
+* Annotation Processors are optional.
+* Providing static context to the Annotation Processor is optional.
 * If the `static_context_record` key is provided, it MUST resolve to a PHP `array`.
-* Annotation processors MUST implement `\Neighborhoods\Bradfab\AnnotationProcessorInterface`
+* Default annotation replacement is accomplished by using the contents of the annotation.
+* Annotation Processors MUST implement `\Neighborhoods\Bradfab\AnnotationProcessorInterface`.
+* Annotation Processors are not shared services.
 ```php
 namespace Neighborhoods\Bradfab;
 
