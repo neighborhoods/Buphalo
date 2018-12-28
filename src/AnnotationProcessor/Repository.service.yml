@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Bradfab\AnnotationProcessor\RepositoryInterface:
+    class: Neighborhoods\Bradfab\AnnotationProcessor\Repository
+    public: false
+    shared: true

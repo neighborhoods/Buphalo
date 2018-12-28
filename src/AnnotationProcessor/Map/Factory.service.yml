@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\AnnotationProcessor\Map\FactoryInterface:
+    class: Neighborhoods\Bradfab\AnnotationProcessor\Map\Factory
+    public: false
+    shared: true
+    calls:
+      - [setAnnotationProcessorMap, ['@Neighborhoods\Bradfab\AnnotationProcessor\MapInterface']]

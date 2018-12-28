@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Bradfab\AnnotationProcessor\MapInterface:
+    class: Neighborhoods\Bradfab\AnnotationProcessor\Map
+    public: false
+    shared: false

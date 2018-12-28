@@ -1,0 +1,13 @@
+parameters:
+  Neighborhoods\Bradfab\TargetApplicationInterface.source_path: '%env(BRADFAB_TARGET_APPLICATION_SOURCE_PATH)%'
+  Neighborhoods\Bradfab\TargetApplicationInterface.fabrication_path: '%env(BRADFAB_TARGET_APPLICATION_FABRICATION_PATH)%'
+  Neighborhoods\Bradfab\TargetApplicationInterface.namespace: '%env(BRADFAB_TARGET_APPLICATION_NAMESPACE)%'
+services:
+  Neighborhoods\Bradfab\TargetApplicationInterface:
+    class: Neighborhoods\Bradfab\TargetApplication
+    public: false
+    shared: false
+    calls:
+      - [setNamespace, ['%Neighborhoods\Bradfab\TargetApplicationInterface.namespace%']]
+      - [setSourcePath, ['%Neighborhoods\Bradfab\TargetApplicationInterface.source_path%']]
+      - [setFabricationPath, ['%Neighborhoods\Bradfab\TargetApplicationInterface.fabrication_path%']]
