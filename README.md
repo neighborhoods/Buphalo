@@ -135,7 +135,7 @@ supporting_actors:
 * Annotation processors are optional.
 * Providing static context to the annotation processor is optional.
 * Default annotation replacement is accomplished by using the contents of the annotation.
-* `static_context_record` MUST resolve to a PHP `array`.
+* If the `static_context_record` key is provided, it MUST resolve to a PHP `array`.
 * Annotation processors MUST implement `\Neighborhoods\Bradfab\AnnotationProcessorInterface`
 ```php
 namespace Neighborhoods\Bradfab;
