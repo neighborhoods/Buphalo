@@ -20,6 +20,7 @@ Employ an easy to change code generation tool to generate well designed patterns
 ## Getting Started
 
 ### Running Bradfab
+* Bradfab leverages an environment variable API for runtime options. The following illustrates the currently supported API.
 ```bash
 BRADFAB_TARGET_APPLICATION_SOURCE_PATH=/PATH/TO/SOURCE/DIRECTORY \
 BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=/PATH/TO/FABRICATION/DIRECTORY \
