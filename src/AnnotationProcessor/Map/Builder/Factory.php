@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\AnnotationProcessor\Map\Builder;
+namespace Neighborhoods\Bradfab\AnnotationProcessor\Map\Builder;
 
-use Rhift\Bradfab\AnnotationProcessor\Map\BuilderInterface;
+use Neighborhoods\Bradfab\AnnotationProcessor\Map\BuilderInterface;
 
 class Factory implements FactoryInterface
 {

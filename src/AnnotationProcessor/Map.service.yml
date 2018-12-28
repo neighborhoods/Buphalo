@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\AnnotationProcessor\MapInterface:
-    class: Rhift\Bradfab\AnnotationProcessor\Map
+  Neighborhoods\Bradfab\AnnotationProcessor\MapInterface:
+    class: Neighborhoods\Bradfab\AnnotationProcessor\Map
     public: false
     shared: false

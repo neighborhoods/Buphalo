@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\IntMapInterface:
-    class: Rhift\Bradfab\IntMap
+  Neighborhoods\Bradfab\IntegerMapInterface:
+    class: Neighborhoods\Bradfab\IntegerMap
     public: false
     shared: false

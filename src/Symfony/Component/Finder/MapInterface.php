@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Symfony\Component\Finder;
+namespace Neighborhoods\Bradfab\Symfony\Component\Finder;
 
 use Symfony\Component\Finder\Finder;
 

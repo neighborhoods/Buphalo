@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\AnnotationProcessor\Factory;
+namespace Neighborhoods\Bradfab\AnnotationProcessor\Factory;
 
-use Rhift\Bradfab\AnnotationProcessor\FactoryInterface;
+use Neighborhoods\Bradfab\AnnotationProcessor\FactoryInterface;
 
 trait AwareTrait
 {

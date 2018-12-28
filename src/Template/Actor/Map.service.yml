@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\Template\Actor\MapInterface:
-    class: Rhift\Bradfab\Template\Actor\Map
+  Neighborhoods\Bradfab\Template\Actor\MapInterface:
+    class: Neighborhoods\Bradfab\Template\Actor\Map
     public: false
     shared: false

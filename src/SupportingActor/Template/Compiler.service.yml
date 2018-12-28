@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\SupportingActor\Template\CompilerInterface:
-    class: Rhift\Bradfab\SupportingActor\Template\Compiler
+  Neighborhoods\Bradfab\SupportingActor\Template\CompilerInterface:
+    class: Neighborhoods\Bradfab\SupportingActor\Template\Compiler
     public: false
     shared: false

@@ -1,7 +1,7 @@
 services:
-  Rhift\Bradfab\SupportingActor\Template\FactoryInterface:
-    class: Rhift\Bradfab\SupportingActor\Template\Factory
+  Neighborhoods\Bradfab\SupportingActor\Template\FactoryInterface:
+    class: Neighborhoods\Bradfab\SupportingActor\Template\Factory
     public: false
     shared: true
     calls:
-      - [setSupportingActorTemplate, ['@Rhift\Bradfab\SupportingActor\TemplateInterface']]
+      - [setSupportingActorTemplate, ['@Neighborhoods\Bradfab\SupportingActor\TemplateInterface']]

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\SupportingActor\Template;
+namespace Neighborhoods\Bradfab\SupportingActor\Template;
 
-use Rhift\Bradfab\AnnotationProcessor\BuilderInterface;
-use Rhift\Bradfab\AnnotationProcessorInterface;
-use Rhift\Bradfab\SupportingActor;
-use Rhift\Bradfab\AnnotationProcessor;
+use Neighborhoods\Bradfab\AnnotationProcessor\BuilderInterface;
+use Neighborhoods\Bradfab\AnnotationProcessorInterface;
+use Neighborhoods\Bradfab\SupportingActor;
+use Neighborhoods\Bradfab\AnnotationProcessor;
 
 class AnnotationTokenizer implements AnnotationTokenizerInterface
 {

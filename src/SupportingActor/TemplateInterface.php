@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\SupportingActor;
+namespace Neighborhoods\Bradfab\SupportingActor;
 
-use Rhift\Bradfab\FabricationFile\SupportingActorInterface;
+use Neighborhoods\Bradfab\FabricationFile\SupportingActorInterface;
 
 interface TemplateInterface
 {

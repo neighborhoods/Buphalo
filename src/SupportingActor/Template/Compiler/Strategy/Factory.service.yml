@@ -1,7 +1,7 @@
 services:
-  Rhift\Bradfab\SupportingActor\Template\Compiler\Strategy\FactoryInterface:
-    class: Rhift\Bradfab\SupportingActor\Template\Compiler\Strategy\Factory
+  Neighborhoods\Bradfab\SupportingActor\Template\Compiler\Strategy\FactoryInterface:
+    class: Neighborhoods\Bradfab\SupportingActor\Template\Compiler\Strategy\Factory
     public: false
     shared: true
     calls:
-      - [setSupportingActorTemplateCompilerStrategy, ['@Rhift\Bradfab\SupportingActor\Template\Compiler\StrategyInterface']]
+      - [setSupportingActorTemplateCompilerStrategy, ['@Neighborhoods\Bradfab\SupportingActor\Template\Compiler\StrategyInterface']]

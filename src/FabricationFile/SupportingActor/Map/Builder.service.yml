@@ -1,8 +1,8 @@
 services:
-  Rhift\Bradfab\FabricationFile\SupportingActor\Map\BuilderInterface:
-    class: Rhift\Bradfab\FabricationFile\SupportingActor\Map\Builder
+  Neighborhoods\Bradfab\FabricationFile\SupportingActor\Map\BuilderInterface:
+    class: Neighborhoods\Bradfab\FabricationFile\SupportingActor\Map\Builder
     public: false
     shared: false
     calls:
-      - [setFabricationFileSupportingActorMapFactory, ['@Rhift\Bradfab\FabricationFile\SupportingActor\Map\FactoryInterface']]
-      - [setFabricationFileSupportingActorBuilderFactory, ['@Rhift\Bradfab\FabricationFile\SupportingActor\Builder\FactoryInterface']]
+      - [setFabricationFileSupportingActorMapFactory, ['@Neighborhoods\Bradfab\FabricationFile\SupportingActor\Map\FactoryInterface']]
+      - [setFabricationFileSupportingActorBuilderFactory, ['@Neighborhoods\Bradfab\FabricationFile\SupportingActor\Builder\FactoryInterface']]

@@ -1,7 +1,7 @@
 services:
-  Rhift\Bradfab\BooleanMap\FactoryInterface:
-    class: Rhift\Bradfab\BooleanMap\Factory
+  Neighborhoods\Bradfab\BooleanMap\FactoryInterface:
+    class: Neighborhoods\Bradfab\BooleanMap\Factory
     public: false
     shared: true
     calls:
-      - [setBooleanMap, ['@Rhift\Bradfab\BooleanMapInterface']]
+      - [setBooleanMap, ['@Neighborhoods\Bradfab\BooleanMapInterface']]

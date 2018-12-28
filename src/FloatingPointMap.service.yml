@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\FloatMapInterface:
-    class: Rhift\Bradfab\FloatMap
+  Neighborhoods\Bradfab\FloatingPointMapInterface:
+    class: Neighborhoods\Bradfab\FloatingPointMap
     public: false
     shared: false

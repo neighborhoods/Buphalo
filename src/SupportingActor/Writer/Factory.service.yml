@@ -1,7 +1,7 @@
 services:
-  Rhift\Bradfab\SupportingActor\Writer\FactoryInterface:
-    class: Rhift\Bradfab\SupportingActor\Writer\Factory
+  Neighborhoods\Bradfab\SupportingActor\Writer\FactoryInterface:
+    class: Neighborhoods\Bradfab\SupportingActor\Writer\Factory
     public: false
     shared: true
     calls:
-      - [setSupportingActorWriter, ['@Rhift\Bradfab\SupportingActor\WriterInterface']]
+      - [setSupportingActorWriter, ['@Neighborhoods\Bradfab\SupportingActor\WriterInterface']]

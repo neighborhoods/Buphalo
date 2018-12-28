@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\FloatingPointMap;
+namespace Neighborhoods\Bradfab\FloatingPointMap;
 
-use Rhift\Bradfab\FloatingPointMapInterface;
+use Neighborhoods\Bradfab\FloatingPointMapInterface;
 
 trait AwareTrait
 {

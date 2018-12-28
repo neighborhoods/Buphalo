@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Protean\Container;
+namespace Neighborhoods\Bradfab\Protean\Container;
 
-use Rhift\Bradfab\Symfony\Component\DependencyInjection\ContainerBuilder\Facade;
+use Neighborhoods\Bradfab\Symfony\Component\DependencyInjection\ContainerBuilder\Facade;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;

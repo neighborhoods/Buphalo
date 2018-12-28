@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\FabricationFile\SupportingActorInterface:
-    class: Rhift\Bradfab\FabricationFile\SupportingActor
+  Neighborhoods\Bradfab\FabricationFile\SupportingActorInterface:
+    class: Neighborhoods\Bradfab\FabricationFile\SupportingActor
     public: false
     shared: false

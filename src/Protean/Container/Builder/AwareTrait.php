@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Protean\Container\Builder;
+namespace Neighborhoods\Bradfab\Protean\Container\Builder;
 
-use Rhift\Bradfab\Protean\Container\BuilderInterface;
+use Neighborhoods\Bradfab\Protean\Container\BuilderInterface;
 
 trait AwareTrait
 {

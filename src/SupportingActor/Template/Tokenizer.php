@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\SupportingActor\Template;
+namespace Neighborhoods\Bradfab\SupportingActor\Template;
 
-use Rhift\Bradfab\SupportingActor;
+use Neighborhoods\Bradfab\SupportingActor;
 
 class Tokenizer implements TokenizerInterface
 {
@@ -29,7 +29,7 @@ class Tokenizer implements TokenizerInterface
             $this->getAnnotationTokenizer()->tokenize();
             $templateContents = $this->getSupportingActorTemplate()->getContents();
             $tokenizedContents = str_replace(
-                'Rhift\Bradfab\Template\Actor',
+                'Neighborhoods\Bradfab\Template\Actor',
                 TokenizerInterface::FQCN_TOKEN,
                 $templateContents
             );

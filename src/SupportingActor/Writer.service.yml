@@ -1,6 +1,6 @@
 services:
-  Rhift\Bradfab\SupportingActor\WriterInterface:
-    class: Rhift\Bradfab\SupportingActor\Writer
+  Neighborhoods\Bradfab\SupportingActor\WriterInterface:
+    class: Neighborhoods\Bradfab\SupportingActor\Writer
     public: false
     shared: false
     calls:

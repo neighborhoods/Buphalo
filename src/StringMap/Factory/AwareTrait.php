@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\StringMap\Factory;
+namespace Neighborhoods\Bradfab\StringMap\Factory;
 
-use Rhift\Bradfab\StringMap\FactoryInterface;
+use Neighborhoods\Bradfab\StringMap\FactoryInterface;
 
 trait AwareTrait
 {

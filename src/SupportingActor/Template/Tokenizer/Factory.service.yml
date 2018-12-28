@@ -1,7 +1,7 @@
 services:
-  Rhift\Bradfab\SupportingActor\Template\Tokenizer\FactoryInterface:
-    class: Rhift\Bradfab\SupportingActor\Template\Tokenizer\Factory
+  Neighborhoods\Bradfab\SupportingActor\Template\Tokenizer\FactoryInterface:
+    class: Neighborhoods\Bradfab\SupportingActor\Template\Tokenizer\Factory
     public: false
     shared: true
     calls:
-      - [setSupportingActorTemplateTokenizer, ['@Rhift\Bradfab\SupportingActor\Template\TokenizerInterface']]
+      - [setSupportingActorTemplateTokenizer, ['@Neighborhoods\Bradfab\SupportingActor\Template\TokenizerInterface']]

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\SupportingActor\Template;
+namespace Neighborhoods\Bradfab\SupportingActor\Template;
 
-use Rhift\Bradfab\SupportingActor;
+use Neighborhoods\Bradfab\SupportingActor;
 
 class Compiler implements CompilerInterface
 {

@@ -1,7 +1,7 @@
 services:
-  Rhift\Bradfab\TargetApplication\FactoryInterface:
-    class: Rhift\Bradfab\TargetApplication\Factory
+  Neighborhoods\Bradfab\TargetApplication\FactoryInterface:
+    class: Neighborhoods\Bradfab\TargetApplication\Factory
     public: false
     shared: true
     calls:
-      - [setTargetApplication, ['@Rhift\Bradfab\TargetApplicationInterface']]
+      - [setTargetApplication, ['@Neighborhoods\Bradfab\TargetApplicationInterface']]

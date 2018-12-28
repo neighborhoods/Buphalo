@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\SupportingActor\TemplateInterface:
-    class: Rhift\Bradfab\SupportingActor\Template
+  Neighborhoods\Bradfab\SupportingActor\TemplateInterface:
+    class: Neighborhoods\Bradfab\SupportingActor\Template
     public: false
     shared: false

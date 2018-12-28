@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\SupportingActor\Template\Compiler;
+namespace Neighborhoods\Bradfab\SupportingActor\Template\Compiler;
 
-use Rhift\Bradfab\TargetActor;
+use Neighborhoods\Bradfab\TargetActor;
 
 class Strategy implements StrategyInterface
 {

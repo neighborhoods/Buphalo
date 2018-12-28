@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\BooleanMapInterface:
-    class: Rhift\Bradfab\BooleanMap
+  Neighborhoods\Bradfab\BooleanMapInterface:
+    class: Neighborhoods\Bradfab\BooleanMap
     public: falses
     shared: false

@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\StringMapInterface:
-    class: Rhift\Bradfab\StringMap
+  Neighborhoods\Bradfab\StringMapInterface:
+    class: Neighborhoods\Bradfab\StringMap
     public: false
     shared: false

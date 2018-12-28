@@ -4,10 +4,10 @@ declare(strict_types=1);
 error_reporting(E_ALL);
 require_once __DIR__ . '/../../../../vendor/autoload.php';
 
-use Rhift\Bradfab\Bradfab;
-use Rhift\Bradfab\Protean\Container\Builder;
-use Rhift\Bradfab\ErrorHandler;
-use Rhift\Bradfab\ExceptionHandler;
+use Neighborhoods\Bradfab\Bradfab;
+use Neighborhoods\Bradfab\Protean\Container\Builder;
+use Neighborhoods\Bradfab\ErrorHandler;
+use Neighborhoods\Bradfab\ExceptionHandler;
 
 set_exception_handler(new ExceptionHandler());
 set_error_handler(new ErrorHandler());

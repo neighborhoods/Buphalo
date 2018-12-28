@@ -1,15 +1,15 @@
 services:
-  Rhift\Bradfab\FabricatorInterface:
-    class: Rhift\Bradfab\Fabricator
+  Neighborhoods\Bradfab\FabricatorInterface:
+    class: Neighborhoods\Bradfab\Fabricator
     public: false
     shared: false
     calls:
       - [setFilesystem, ['@Symfony\Component\Filesystem\FilesystemInterface']]
       - [setFinder, ['@Symfony\Component\Finder\FinderInterface']]
-      - [setFabricationFileBuilderFactory, ['@Rhift\Bradfab\FabricationFile\Builder\FactoryInterface']]
-      - [setSupportingActorTemplateFactory, ['@Rhift\Bradfab\SupportingActor\Template\FactoryInterface']]
-      - [setSupportingActorTemplateTokenizerFactory, ['@Rhift\Bradfab\SupportingActor\Template\Tokenizer\FactoryInterface']]
-      - [setSupportingActorTemplateCompilerFactory, ['@Rhift\Bradfab\SupportingActor\Template\Compiler\FactoryInterface']]
-      - [setSupportingActorTemplateCompilerStrategyFactory, ['@Rhift\Bradfab\SupportingActor\Template\Compiler\Strategy\FactoryInterface']]
-      - [setTargetActorFactory, ['@Rhift\Bradfab\TargetActor\FactoryInterface']]
-      - [setSupportingActorWriterFactory, ['@Rhift\Bradfab\SupportingActor\Writer\FactoryInterface']]
+      - [setFabricationFileBuilderFactory, ['@Neighborhoods\Bradfab\FabricationFile\Builder\FactoryInterface']]
+      - [setSupportingActorTemplateFactory, ['@Neighborhoods\Bradfab\SupportingActor\Template\FactoryInterface']]
+      - [setSupportingActorTemplateTokenizerFactory, ['@Neighborhoods\Bradfab\SupportingActor\Template\Tokenizer\FactoryInterface']]
+      - [setSupportingActorTemplateCompilerFactory, ['@Neighborhoods\Bradfab\SupportingActor\Template\Compiler\FactoryInterface']]
+      - [setSupportingActorTemplateCompilerStrategyFactory, ['@Neighborhoods\Bradfab\SupportingActor\Template\Compiler\Strategy\FactoryInterface']]
+      - [setTargetActorFactory, ['@Neighborhoods\Bradfab\TargetActor\FactoryInterface']]
+      - [setSupportingActorWriterFactory, ['@Neighborhoods\Bradfab\SupportingActor\Writer\FactoryInterface']]

@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\AnnotationProcessor\ContextInterface:
-    class: Rhift\Bradfab\AnnotationProcessor\Context
+  Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface:
+    class: Neighborhoods\Bradfab\AnnotationProcessor\Context
     public: false
     shared: false

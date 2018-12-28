@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\SupportingActor\Template\Compiler\StrategyInterface:
-    class: Rhift\Bradfab\SupportingActor\Template\Compiler\Strategy
+  Neighborhoods\Bradfab\SupportingActor\Template\Compiler\StrategyInterface:
+    class: Neighborhoods\Bradfab\SupportingActor\Template\Compiler\Strategy
     public: false
     shared: false

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\AnnotationProcessor\Map;
+namespace Neighborhoods\Bradfab\AnnotationProcessor\Map;
 
-use Rhift\Bradfab\AnnotationProcessor\MapInterface;
-use Rhift\Bradfab\AnnotationProcessor;
+use Neighborhoods\Bradfab\AnnotationProcessor\MapInterface;
+use Neighborhoods\Bradfab\AnnotationProcessor;
 
 class Builder implements BuilderInterface
 {

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\SupportingActor\Writer;
+namespace Neighborhoods\Bradfab\SupportingActor\Writer;
 
-use Rhift\Bradfab\SupportingActor\WriterInterface;
+use Neighborhoods\Bradfab\SupportingActor\WriterInterface;
 
 class Builder implements BuilderInterface
 {
@@ -14,8 +14,8 @@ class Builder implements BuilderInterface
     public function build(): WriterInterface
     {
         $Writer = $this->getSupportingActorWriterFactory()->create();
-        
-        
+
+
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
 

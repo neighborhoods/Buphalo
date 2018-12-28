@@ -1,5 +1,5 @@
 services:
-  Rhift\Bradfab\AnnotationProcessor\RepositoryInterface:
-    class: Rhift\Bradfab\AnnotationProcessor\Repository
+  Neighborhoods\Bradfab\AnnotationProcessor\RepositoryInterface:
+    class: Neighborhoods\Bradfab\AnnotationProcessor\Repository
     public: false
     shared: true

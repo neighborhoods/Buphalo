@@ -1,13 +1,13 @@
 parameters:
-  Rhift\Bradfab\TargetApplicationInterface.source_path: '%env(BRADFAB_TARGET_APPLICATION_SOURCE_PATH)%'
-  Rhift\Bradfab\TargetApplicationInterface.fabrication_path: '%env(BRADFAB_TARGET_APPLICATION_FABRICATION_PATH)%'
-  Rhift\Bradfab\TargetApplicationInterface.namespace: '%env(BRADFAB_TARGET_APPLICATION_NAMESPACE)%'
+  Neighborhoods\Bradfab\TargetApplicationInterface.source_path: '%env(BRADFAB_TARGET_APPLICATION_SOURCE_PATH)%'
+  Neighborhoods\Bradfab\TargetApplicationInterface.fabrication_path: '%env(BRADFAB_TARGET_APPLICATION_FABRICATION_PATH)%'
+  Neighborhoods\Bradfab\TargetApplicationInterface.namespace: '%env(BRADFAB_TARGET_APPLICATION_NAMESPACE)%'
 services:
-  Rhift\Bradfab\TargetApplicationInterface:
-    class: Rhift\Bradfab\TargetApplication
+  Neighborhoods\Bradfab\TargetApplicationInterface:
+    class: Neighborhoods\Bradfab\TargetApplication
     public: false
     shared: false
     calls:
-      - [setNamespace, ['%Rhift\Bradfab\TargetApplicationInterface.namespace%']]
-      - [setSourcePath, ['%Rhift\Bradfab\TargetApplicationInterface.source_path%']]
-      - [setFabricationPath, ['%Rhift\Bradfab\TargetApplicationInterface.fabrication_path%']]
+      - [setNamespace, ['%Neighborhoods\Bradfab\TargetApplicationInterface.namespace%']]
+      - [setSourcePath, ['%Neighborhoods\Bradfab\TargetApplicationInterface.source_path%']]
+      - [setFabricationPath, ['%Neighborhoods\Bradfab\TargetApplicationInterface.fabrication_path%']]

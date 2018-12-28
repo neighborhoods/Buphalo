@@ -1,7 +1,7 @@
 services:
-  Rhift\Bradfab\StringMap\FactoryInterface:
-    class: Rhift\Bradfab\StringMap\Factory
+  Neighborhoods\Bradfab\StringMap\FactoryInterface:
+    class: Neighborhoods\Bradfab\StringMap\Factory
     public: false
     shared: true
     calls:
-      - [setStringMap, ['@Rhift\Bradfab\StringMapInterface']]
+      - [setStringMap, ['@Neighborhoods\Bradfab\StringMapInterface']]

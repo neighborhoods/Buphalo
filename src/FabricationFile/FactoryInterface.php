@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\FabricationFile;
+namespace Neighborhoods\Bradfab\FabricationFile;
 
-use Rhift\Bradfab\FabricationFileInterface;
+use Neighborhoods\Bradfab\FabricationFileInterface;
 
 interface FactoryInterface
 {

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Template\Actor\Map;
+namespace Neighborhoods\Bradfab\Template\Actor\Map;
 
-use Rhift\Bradfab\Template\Actor\MapInterface;
+use Neighborhoods\Bradfab\Template\Actor\MapInterface;
 
 class Builder implements BuilderInterface
 {

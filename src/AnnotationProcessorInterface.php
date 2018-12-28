@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab;
+namespace Neighborhoods\Bradfab;
 
-use Rhift\Bradfab\AnnotationProcessor\ContextInterface;
+use Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface;
 
 interface AnnotationProcessorInterface
 {

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\TargetActor;
+namespace Neighborhoods\Bradfab\TargetActor;
 
-use Rhift\Bradfab\TargetActorInterface;
+use Neighborhoods\Bradfab\TargetActorInterface;
 
 class Factory implements FactoryInterface
 {

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\AnnotationProcessor\Context\Builder;
+namespace Neighborhoods\Bradfab\AnnotationProcessor\Context\Builder;
 
-use Rhift\Bradfab\AnnotationProcessor\Context\BuilderInterface;
+use Neighborhoods\Bradfab\AnnotationProcessor\Context\BuilderInterface;
 
 interface FactoryInterface
 {

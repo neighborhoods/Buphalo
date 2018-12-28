@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Symfony\Component\DependencyInjection\ContainerBuilder;
+namespace Neighborhoods\Bradfab\Symfony\Component\DependencyInjection\ContainerBuilder;
 
-use Rhift\Bradfab\Symfony\Component\Finder\Map;
-use Rhift\Bradfab\Symfony\Component\Finder\MapInterface;
+use Neighborhoods\Bradfab\Symfony\Component\Finder\Map;
+use Neighborhoods\Bradfab\Symfony\Component\Finder\MapInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;

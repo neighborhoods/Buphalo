@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\SupportingActor;
+namespace Neighborhoods\Bradfab\SupportingActor;
 
-use Rhift\Bradfab\SupportingActor;
+use Neighborhoods\Bradfab\SupportingActor;
 use Symfony\Component\Filesystem\Filesystem;
-use Rhift\Bradfab\TargetApplication;
+use Neighborhoods\Bradfab\TargetApplication;
 
 class Writer implements WriterInterface
 {

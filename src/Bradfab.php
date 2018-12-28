@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab;
+namespace Neighborhoods\Bradfab;
 
-use Rhift\Bradfab\Protean;
-use Rhift\Bradfab\TargetApplication\FactoryInterface;
+use Neighborhoods\Bradfab\Protean;
+use Neighborhoods\Bradfab\TargetApplication\FactoryInterface;
 
 class Bradfab implements BradfabInterface
 {

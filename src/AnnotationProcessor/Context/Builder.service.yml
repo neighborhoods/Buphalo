@@ -1,7 +1,7 @@
 services:
-  Rhift\Bradfab\AnnotationProcessor\Context\BuilderInterface:
-    class: Rhift\Bradfab\AnnotationProcessor\Context\Builder
+  Neighborhoods\Bradfab\AnnotationProcessor\Context\BuilderInterface:
+    class: Neighborhoods\Bradfab\AnnotationProcessor\Context\Builder
     public: false
     shared: false
     calls:
-      - [setAnnotationProcessorContextFactory, ['@Rhift\Bradfab\AnnotationProcessor\Context\FactoryInterface']]
+      - [setAnnotationProcessorContextFactory, ['@Neighborhoods\Bradfab\AnnotationProcessor\Context\FactoryInterface']]
