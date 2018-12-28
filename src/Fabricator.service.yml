@@ -1,3 +1,5 @@
+parameters:
+  Neighborhoods\Bradfab\FabricatorInterface.template_actor_directory_path: '%env(BRADFAB_FABRICATOR_TEMPLATE_ACTOR_DIRECTORY_PATH)%'
 services:
   Neighborhoods\Bradfab\FabricatorInterface:
     class: Neighborhoods\Bradfab\Fabricator
@@ -13,3 +15,4 @@ services:
       - [setSupportingActorTemplateCompilerStrategyFactory, ['@Neighborhoods\Bradfab\SupportingActor\Template\Compiler\Strategy\FactoryInterface']]
       - [setTargetActorFactory, ['@Neighborhoods\Bradfab\TargetActor\FactoryInterface']]
       - [setSupportingActorWriterFactory, ['@Neighborhoods\Bradfab\SupportingActor\Writer\FactoryInterface']]
+      - [setTemplateActorDirectoryPath, ['%Neighborhoods\Bradfab\FabricatorInterface.template_actor_directory_path%']]
