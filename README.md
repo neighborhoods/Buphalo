@@ -20,7 +20,7 @@ Employ an easy to change code generation tool to generate well designed patterns
 ## Getting Started
 
 ### Running Bradfab
-* Bradfab leverages an environment variable API for runtime options. The following illustrates the currently supported API.
+* Bradfab leverages an environment variable API for runtime options. The following shell command to run Bradfab illustrates the currently supported API.
 ```bash
 BRADFAB_TARGET_APPLICATION_SOURCE_PATH=/PATH/TO/SOURCE/DIRECTORY \
 BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=/PATH/TO/FABRICATION/DIRECTORY \
@@ -28,7 +28,7 @@ BRADFAB_FABRICATOR_TEMPLATE_ACTOR_DIRECTORY_PATH=/PATH/TO/TEMPLATE/ACTOR/DIRECTO
 BRADFAB_TARGET_APPLICATION_NAMESPACE=VENDOR\\PRODUCT\\ \
 vendor/bin/bradfab
 ```
-* For example, in order to Bradfab Bradfab (when Bradfab is included as a dependency)
+* For example, in order to Bradfab Bradfab (when Bradfab is installed as a composer dependency) execute the following shell command from your project's root.
 ```bash
 BRADFAB_TARGET_APPLICATION_SOURCE_PATH=$PWD/vendor/neighborhoods/bradfab/src \
 BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=$PWD/vendor/neighborhoods/bradfab/fab \
