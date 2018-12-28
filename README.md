@@ -19,6 +19,23 @@ Employ an easy to change code generation tool to generate well designed patterns
 
 ## Getting Started
 
+### Running Bradfab
+```bash
+BRADFAB_TARGET_APPLICATION_SOURCE_PATH=/PATH/TO/SOURCE/DIRECTORY \
+BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=/PATH/TO/FABRICATION/DIRECTORY \
+BRADFAB_FABRICATOR_TEMPLATE_ACTOR_DIRECTORY_PATH=/PATH/TO/TEMPLATE/ACTOR/DIRECTORY \
+BRADFAB_TARGET_APPLICATION_NAMESPACE=VENDOR\\PRODUCT\\ \
+vendor/bin/bradfab
+```
+* For example, in order to Bradfab Bradfab (when Bradfab is included as a dependency)
+```bash
+BRADFAB_TARGET_APPLICATION_SOURCE_PATH=$PWD/vendor/neighborhoods/bradfab/src \
+BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=$PWD/vendor/neighborhoods/bradfab/fab \
+BRADFAB_FABRICATOR_TEMPLATE_ACTOR_DIRECTORY_PATH=$PWD/vendor/neighborhoods/bradfab/src/Template/Actor/ \
+BRADFAB_TARGET_APPLICATION_NAMESPACE=Neighborhoods\\Bradfab\\ \
+vendor/bin/bradfab
+```
+
 ### Example Fabrication Files
 * Relative to the root of your software product.
 ```yml
