@@ -155,7 +155,7 @@ interface AnnotationProcessorInterface
 * Currently, annotation processors have accesss to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface` object.
 
 ### Example Annotation Processors
-* Annotation Tag: `@neighborhoods-bradfab:annotation-processor`
+* Annotation Processor Tag: `@neighborhoods-bradfab:annotation-processor`
 * Annotation Processor Keys:
   * `Neighborhoods\Bradfab\Template\Actor\Builder.build1`
   * `Neighborhoods\Bradfab\Template\Actor\Builder.build2`
