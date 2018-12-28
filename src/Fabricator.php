@@ -22,13 +22,6 @@ class Fabricator implements FabricatorInterface
     protected $filesystem;
     protected $template_actor_directory_path;
 
-    protected function encapsulatedNoBueno(): FabricatorInterface
-    {
-        $this->setTemplateActorDirectoryPath(realpath(__DIR__ . '/Template/Actor/'));
-
-        return $this;
-    }
-
     public function fabricate(): FabricatorInterface
     {
         $this->removeFabricationDirectory();
