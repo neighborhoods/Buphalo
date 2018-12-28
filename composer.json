@@ -1,7 +1,7 @@
 {
   "name": "rhift/bradfab",
   "type": "library",
-  "description": "Bradfab builds fabricates patterns.",
+  "description": "Bradfab fabricates patterns.",
   "license": "proprietary",
   "keywords": [
     "Bradfab"
