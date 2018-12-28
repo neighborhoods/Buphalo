@@ -215,3 +215,9 @@ The `1.x` feature series establishes the fitness precedence of `Bradfab` for all
 * `Method Fill` MUST be as transparent and flexible to user space as it is in `1.x`.
 * `Fabrication File`s MUST be as easy to add/update/remove as they are in `1.x`.
 * Future versions of `Bradfab` can add to the `1.x` fitness requirements but not alter or remove a member of the `1.x` fitness requirements as it is the definition of the mission of `Bradfab`.
+
+### Setting Up Git When Developing Bradfab As A Composer Dependency
+* From your project root, and with Bradfab installed as a composer dependency
+```bash
+cd vendor/neighborhoods/bradfab && rm -rf .git && git clone git@github.com:neighborhoods/Bradfab.git && cp -R Bradfab/.git . && rm -rf Bradfab/ && cd ../../../
+```
