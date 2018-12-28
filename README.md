@@ -192,15 +192,16 @@ supporting_actors:
 ```
 * If no annotation processors are defined then `\Neighborhoods\Bradfab\AnnotationProcessor` is used and the above compiles as 
 ```php
-    public function build(): PrimaryActorInterface
+// src/V2/Toe/Builder.php
+    public function build(): ToeInterface
     {
-        $PrimaryActor = $this->getPrimaryActorFactory()->create();
+        $Toe = $this->getToeFactory()->create();
         
         
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
 
-        return $PrimaryActor;
+        return $Toe;
     }
 ```
 
