@@ -28,7 +28,7 @@ BRADFAB_FABRICATOR_TEMPLATE_ACTOR_DIRECTORY_PATH=/PATH/TO/TEMPLATE/ACTOR/DIRECTO
 BRADFAB_TARGET_APPLICATION_NAMESPACE=VENDOR\\PRODUCT\\ \
 vendor/bin/bradfab
 ```
-* For example, in order to Bradfab Bradfab (when Bradfab is installed as a composer dependency) execute the following shell command from your project's root.
+* For example, in order to Bradfab Bradfab (when Bradfab is installed as a composer dependency) execute the following shell command from your product's root.
 ```bash
 BRADFAB_TARGET_APPLICATION_SOURCE_PATH=$PWD/vendor/neighborhoods/bradfab/src \
 BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=$PWD/vendor/neighborhoods/bradfab/fab \
@@ -218,7 +218,7 @@ The `1.x` feature series establishes the fitness precedence of `Bradfab` for all
 * Future versions of `Bradfab` can add to the `1.x` fitness requirements but not alter or remove a member of the `1.x` fitness requirements as it is the definition of the mission of `Bradfab`.
 
 ### Setting Up Git When Developing Bradfab As A Composer Dependency
-* From your project root, and with Bradfab installed as a composer dependency
+* From your product root, and with Bradfab installed as a composer dependency
 ```bash
 cd vendor/neighborhoods/bradfab && rm -rf .git && git clone git@github.com:neighborhoods/Bradfab.git && cp -R Bradfab/.git . && rm -rf Bradfab/ && cd ../../../
 ```
