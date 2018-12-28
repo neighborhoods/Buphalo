@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\BooleanMap;
+namespace Neighborhoods\Bradfab\BooleanMap;
 
-use Rhift\Bradfab\BooleanMapInterface;
+use Neighborhoods\Bradfab\BooleanMapInterface;
 
 class Factory implements FactoryInterface
 {

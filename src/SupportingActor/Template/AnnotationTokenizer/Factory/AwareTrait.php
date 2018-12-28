@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\SupportingActor\Template\AnnotationTokenizer\Factory;
+namespace Neighborhoods\Bradfab\SupportingActor\Template\AnnotationTokenizer\Factory;
 
-use Rhift\Bradfab\SupportingActor\Template\AnnotationTokenizer\FactoryInterface;
+use Neighborhoods\Bradfab\SupportingActor\Template\AnnotationTokenizer\FactoryInterface;
 
 trait AwareTrait
 {

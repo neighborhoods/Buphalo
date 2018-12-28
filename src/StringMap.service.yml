@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Bradfab\StringMapInterface:
+    class: Neighborhoods\Bradfab\StringMap
+    public: false
+    shared: false

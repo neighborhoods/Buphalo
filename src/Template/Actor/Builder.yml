@@ -1,7 +1,0 @@
-services:
-  Rhift\Bradfab\Template\Actor\BuilderInterface:
-    class: Rhift\Bradfab\Template\Actor\Builder
-    public: false
-    shared: false
-    calls:
-      - [setActorFactory, ['@Rhift\Bradfab\Template\Actor\FactoryInterface']]

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Template;
+namespace Neighborhoods\Bradfab\Template;
 
 class Actor implements ActorInterface
 {

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\IntegerMap;
+namespace Neighborhoods\Bradfab\IntegerMap;
 
-use Rhift\Bradfab\IntegerMapInterface;
+use Neighborhoods\Bradfab\IntegerMapInterface;
 
 trait AwareTrait
 {

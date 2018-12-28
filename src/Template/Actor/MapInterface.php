@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Template\Actor;
+namespace Neighborhoods\Bradfab\Template\Actor;
 
-use Rhift\Bradfab\Template\ActorInterface;
+use Neighborhoods\Bradfab\Template\ActorInterface;
 
 interface MapInterface extends \SeekableIterator, \ArrayAccess, \Serializable, \Countable
 {

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\FabricationFile\SupportingActor;
+namespace Neighborhoods\Bradfab\FabricationFile\SupportingActor;
 
-use Rhift\Bradfab\FabricationFile\SupportingActorInterface;
-use Rhift\Bradfab\AnnotationProcessor;
+use Neighborhoods\Bradfab\FabricationFile\SupportingActorInterface;
+use Neighborhoods\Bradfab\AnnotationProcessor;
 
 class Builder implements BuilderInterface
 {

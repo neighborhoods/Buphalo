@@ -1,7 +1,0 @@
-services:
-  Rhift\Bradfab\AnnotationProcessor\Context\BuilderInterface:
-    class: Rhift\Bradfab\AnnotationProcessor\Context\Builder
-    public: false
-    shared: false
-    calls:
-      - [setAnnotationProcessorContextFactory, ['@Rhift\Bradfab\AnnotationProcessor\Context\FactoryInterface']]

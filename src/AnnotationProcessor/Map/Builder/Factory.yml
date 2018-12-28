@@ -1,7 +1,0 @@
-services:
-  Rhift\Bradfab\AnnotationProcessor\Map\Builder\FactoryInterface:
-    class: Rhift\Bradfab\AnnotationProcessor\Map\Builder\Factory
-    public: false
-    shared: true
-    calls:
-      - [setAnnotationProcessorMapBuilder, ['@Rhift\Bradfab\AnnotationProcessor\Map\BuilderInterface']]

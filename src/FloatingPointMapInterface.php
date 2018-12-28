@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab;
+namespace Neighborhoods\Bradfab;
 
 interface FloatingPointMapInterface extends \SeekableIterator, \ArrayAccess, \Serializable, \Countable
 {

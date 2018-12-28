@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\AnnotationProcessor\Context\BuilderInterface:
+    class: Neighborhoods\Bradfab\AnnotationProcessor\Context\Builder
+    public: false
+    shared: false
+    calls:
+      - [setAnnotationProcessorContextFactory, ['@Neighborhoods\Bradfab\AnnotationProcessor\Context\FactoryInterface']]

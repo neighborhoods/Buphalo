@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\FabricationFile;
+namespace Neighborhoods\Bradfab\FabricationFile;
 
-use Rhift\Bradfab\FabricationFileInterface;
-use Rhift\Bradfab\FabricationFile;
+use Neighborhoods\Bradfab\FabricationFileInterface;
+use Neighborhoods\Bradfab\FabricationFile;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Yaml\Yaml;
 

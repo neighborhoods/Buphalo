@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\SupportingActor\Writer\BuilderInterface:
+    class: Neighborhoods\Bradfab\SupportingActor\Writer\Builder
+    public: false
+    shared: false
+    calls:
+      - [setSupportingActorWriterFactory, ['@Neighborhoods\Bradfab\SupportingActor\Writer\FactoryInterface']]

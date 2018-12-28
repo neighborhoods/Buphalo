@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\SupportingActor\Template;
+namespace Neighborhoods\Bradfab\SupportingActor\Template;
 
-use Rhift\Bradfab\SupportingActor\TemplateInterface;
+use Neighborhoods\Bradfab\SupportingActor\TemplateInterface;
 
 class Builder implements BuilderInterface
 {

@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\StringMap\FactoryInterface:
+    class: Neighborhoods\Bradfab\StringMap\Factory
+    public: false
+    shared: true
+    calls:
+      - [setStringMap, ['@Neighborhoods\Bradfab\StringMapInterface']]

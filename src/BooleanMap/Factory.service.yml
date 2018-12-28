@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\BooleanMap\FactoryInterface:
+    class: Neighborhoods\Bradfab\BooleanMap\Factory
+    public: false
+    shared: true
+    calls:
+      - [setBooleanMap, ['@Neighborhoods\Bradfab\BooleanMapInterface']]

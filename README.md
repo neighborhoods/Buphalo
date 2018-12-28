@@ -118,11 +118,11 @@ supporting_actors:
 * Providing static context to the annotation processor is optional.
 * Default annotation replacement is accomplished by using the contents of the annotation.
 * `static_context_record` MUST resolve to a PHP `array`.
-* Annotation processors MUST implement `\Rhift\Bradfab\AnnotationProcessorInterface`
+* Annotation processors MUST implement `\Neighborhoods\Bradfab\AnnotationProcessorInterface`
 ```php
-namespace Rhift\Bradfab;
+namespace Neighborhoods\Bradfab;
 
-use Rhift\Bradfab\AnnotationProcessor\ContextInterface;
+use Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface;
 
 interface AnnotationProcessorInterface
 {
@@ -133,22 +133,22 @@ interface AnnotationProcessorInterface
     public function getReplacement(): string;
 }
 ```
-* Currently, annotation processors have accesss to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Rhift\Bradfab\AnnotationProcessor\ContextInterface` object.
+* Currently, annotation processors have accesss to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface` object.
 
 ### Example Annotation Processors
-* Annotation Tag: `@rhift-bradfab:annotation-processor`
+* Annotation Tag: `@neighborhoods-bradfab:annotation-processor`
 * Annotation Processor Keys:
-  * `Rhift\Bradfab\Template\Actor\Builder.build1`
-  * `Rhift\Bradfab\Template\Actor\Builder.build2`
+  * `Neighborhoods\Bradfab\Template\Actor\Builder.build1`
+  * `Neighborhoods\Bradfab\Template\Actor\Builder.build2`
 * The keys above are named according to a collision avoidance convention. However, there is no requirement on the key name except for uniqueness.
 ```php
 // src/Template/Actor/Builder.php
     public function build(): ActorInterface
     {
         $Actor = $this->getActorFactory()->create();
-        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build1
+        /** @neighborhoods-bradfab:annotation-processor Neighborhoods\Bradfab\Template\Actor\Builder.build1
          */
-        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build2
+        /** @neighborhoods-bradfab:annotation-processor Neighborhoods\Bradfab\Template\Actor\Builder.build2
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
          */
@@ -162,9 +162,9 @@ supporting_actors:
 # ...
   Builder.php:
     annotation_processors:
-      Rhift\Bradfab\Template\Actor\Builder.build1:
+      Neighborhoods\Bradfab\Template\Actor\Builder.build1:
         processor_fqcn: \VENDOR\PRODUCT\AnAnnotationProcessor
-      Rhift\Bradfab\Template\Actor\Builder.build2:
+      Neighborhoods\Bradfab\Template\Actor\Builder.build2:
         processor_fqcn: \VENDOR\PRODUCT\AnotherAnnotationProcessor
         static_context_record:
           head: 'shoulders'
@@ -172,7 +172,7 @@ supporting_actors:
   Builder.yml:
 # ...
 ```
-* If no annotation processors are defined then `\Rhift\Bradfab\AnnotationProcessor` is used and the above compiles as 
+* If no annotation processors are defined then `\Neighborhoods\Bradfab\AnnotationProcessor` is used and the above compiles as 
 ```php
     public function build(): PrimaryActorInterface
     {

@@ -1,7 +1,0 @@
-services:
-  Rhift\Bradfab\FloatingPointMap\FactoryInterface:
-    class: Rhift\Bradfab\FloatingPointMap\Factory
-    public: false
-    shared: true
-    calls:
-      - [setFloatingPointMap, ['@Rhift\Bradfab\FloatingPointMapInterface']]

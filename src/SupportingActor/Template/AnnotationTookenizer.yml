@@ -1,7 +1,0 @@
-services:
-  Rhift\Bradfab\SupportingActor\Template\AnnotationTokenizerInterface:
-    class: Rhift\Bradfab\SupportingActor\Template\AnnotationTokenizer
-    public: false
-    shared: false
-    calls:
-      - [setAnnotationProcessorBuilderFactory, ['@Rhift\Bradfab\AnnotationProcessor\Builder\FactoryInterface']]

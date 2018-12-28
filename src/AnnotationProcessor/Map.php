@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\AnnotationProcessor;
+namespace Neighborhoods\Bradfab\AnnotationProcessor;
 
-use Rhift\Bradfab\AnnotationProcessorInterface;
+use Neighborhoods\Bradfab\AnnotationProcessorInterface;
 
 class Map extends \ArrayIterator implements MapInterface
 {

@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Bradfab\BooleanMapInterface:
+    class: Neighborhoods\Bradfab\BooleanMap
+    public: falses
+    shared: false

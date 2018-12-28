@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Protean\Container;
+namespace Neighborhoods\Bradfab\Protean\Container;
 
 use Psr\Container\ContainerInterface;
 

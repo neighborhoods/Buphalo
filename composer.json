@@ -1,7 +1,7 @@
 {
-  "name": "rhift/bradfab",
+  "name": "neighborhoods/bradfab",
   "type": "library",
-  "description": "Bradfab builds fabricates patterns.",
+  "description": "Bradfab fabricates patterns.",
   "license": "proprietary",
   "keywords": [
     "Bradfab"
@@ -12,7 +12,7 @@
   "authors": [
     {
       "name": "Brad Wilson",
-      "email": "brad@rhift.com"
+      "email": "brad.wilson@neighborhoods.com"
     }
   ],
   "require": {
@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Rhift\\Bradfab\\": [
+      "Neighborhoods\\Bradfab\\": [
         "src",
         "fab"
       ]

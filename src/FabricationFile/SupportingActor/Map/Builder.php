@@ -1,11 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\FabricationFile\SupportingActor\Map;
+namespace Neighborhoods\Bradfab\FabricationFile\SupportingActor\Map;
 
-use Rhift\Bradfab\FabricationFile\SupportingActor\MapInterface;
-use Rhift\Bradfab\FabricationFile;
-use Rhift\Bradfab\AnnotationProcessor;
+use Neighborhoods\Bradfab\FabricationFile\SupportingActor\MapInterface;
+use Neighborhoods\Bradfab\FabricationFile;
 
 class Builder implements BuilderInterface
 {

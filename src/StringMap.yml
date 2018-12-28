@@ -1,5 +1,0 @@
-services:
-  Rhift\Bradfab\StringMapInterface:
-    class: Rhift\Bradfab\StringMap
-    public: false
-    shared: false

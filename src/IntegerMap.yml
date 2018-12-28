@@ -1,5 +1,0 @@
-services:
-  Rhift\Bradfab\IntMapInterface:
-    class: Rhift\Bradfab\IntMap
-    public: false
-    shared: false

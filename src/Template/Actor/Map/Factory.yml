@@ -1,7 +1,0 @@
-services:
-  Rhift\Bradfab\Template\Actor\Map\FactoryInterface:
-    class: Rhift\Bradfab\Template\Actor\Map\Factory
-    public: false
-    shared: true
-    calls:
-      - [setActorMap, ['@Rhift\Bradfab\Template\Actor\MapInterface']]

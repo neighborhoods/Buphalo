@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Template\Actor;
+namespace Neighborhoods\Bradfab\Template\Actor;
 
-use Rhift\Bradfab\Template\ActorInterface;
+use Neighborhoods\Bradfab\Template\ActorInterface;
 
 class Builder implements BuilderInterface
 {
@@ -14,9 +14,9 @@ class Builder implements BuilderInterface
     public function build(): ActorInterface
     {
         $Actor = $this->getActorFactory()->create();
-        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build1
+        /** @neighborhoods-bradfab:annotation-processor Neighborhoods\Bradfab\Template\Actor\Builder.build1
          */
-        /** @rhift-bradfab:annotation-processor Rhift\Bradfab\Template\Actor\Builder.build2
+        /** @neighborhoods-bradfab:annotation-processor Neighborhoods\Bradfab\Template\Actor\Builder.build2
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
          */

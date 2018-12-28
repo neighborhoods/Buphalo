@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\StringMap;
+namespace Neighborhoods\Bradfab\StringMap;
 
-use Rhift\Bradfab\StringMapInterface;
+use Neighborhoods\Bradfab\StringMapInterface;
 
 interface FactoryInterface
 {

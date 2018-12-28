@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\Symfony\Component\DependencyInjection\ContainerBuilder;
+namespace Neighborhoods\Bradfab\Symfony\Component\DependencyInjection\ContainerBuilder;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Finder\Finder;

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\AnnotationProcessor;
+namespace Neighborhoods\Bradfab\AnnotationProcessor;
 
-use Rhift\Bradfab\FabricationFile;
+use Neighborhoods\Bradfab\FabricationFile;
 
 class Context implements ContextInterface
 {

@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface:
+    class: Neighborhoods\Bradfab\AnnotationProcessor\Context
+    public: false
+    shared: false

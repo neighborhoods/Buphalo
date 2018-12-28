@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Rhift\Bradfab\SupportingActor\Template\Tokenizer;
+namespace Neighborhoods\Bradfab\SupportingActor\Template\Tokenizer;
 
-use Rhift\Bradfab\SupportingActor\Template\TokenizerInterface;
+use Neighborhoods\Bradfab\SupportingActor\Template\TokenizerInterface;
 
 class Factory implements FactoryInterface
 {

@@ -1,5 +1,0 @@
-services:
-  Rhift\Bradfab\TargetActorInterface:
-    class: Rhift\Bradfab\TargetActor
-    public: false
-    shared: false
