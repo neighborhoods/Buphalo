@@ -18,6 +18,7 @@ class Builder implements BuilderInterface
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
         */
+
         return $map;
     }
 

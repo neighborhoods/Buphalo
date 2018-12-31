@@ -16,6 +16,7 @@ class Repository implements RepositoryInterface
         // TODO: Implement add() method.
         throw new \LogicException('Unimplemented add method.');
         */
+
         return $this;
     }
 
@@ -26,6 +27,7 @@ class Repository implements RepositoryInterface
         // TODO: Implement getByIdentity() method.
         throw new \LogicException('Unimplemented get method.');
         */
+
         return $Actor;
     }
 }
