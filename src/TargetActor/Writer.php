@@ -24,7 +24,7 @@ class Writer implements WriterInterface
             $targetActorFilePath = $this->getTargetActorFabricationFilePath();
             $this->getFilesystem()->mkdir(dirname($targetActorFilePath));
             if (is_file($targetActorFilePath)) {
-                $message = sprintf('Supporting actor with path[%s] already exists.', $targetActorFilePath);
+                $message = sprintf('Target actor with path[%s] already exists.', $targetActorFilePath);
                 throw new \LogicException($message);
             }
             $compiledContents = $this->getTargetActorTemplateCompiler()->getCompiledContents();
