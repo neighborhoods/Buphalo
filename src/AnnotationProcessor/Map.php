@@ -49,8 +49,10 @@ class Map extends \ArrayIterator implements MapInterface
         return $AnnotationProcessor;
     }
 
-    protected function assertValidArrayType(AnnotationProcessorInterface ...$AnnotationProcessors): MapInterface
-    {
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        AnnotationProcessorInterface ...$AnnotationProcessors
+    ): MapInterface {
         return $this;
     }
 

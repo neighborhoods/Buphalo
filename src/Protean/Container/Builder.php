@@ -35,7 +35,9 @@ class Builder implements BuilderInterface
         if ($this->container === null) {
             $containerCacheFilePath = $this->getSymfonyContainerFilePath();
             if (file_exists($containerCacheFilePath)) {
+                /** @noinspection PhpIncludeInspection */
                 require_once $containerCacheFilePath;
+                /** @noinspection PhpUndefinedClassInspection */
                 $containerBuilder = new \ProjectServiceContainer();
             } else {
                 if ($this->getCanBuildZendExpressive()) {
@@ -124,8 +126,10 @@ class Builder implements BuilderInterface
     {
         $currentWorkingDirectory = getcwd();
         chdir($this->getApplicationRootDirectoryPath());
+        /** @noinspection PhpIncludeInspection */
         $zendContainerBuilder = require $this->getZendConfigContainerFilePath();
         $ApplicationServiceDefinition = $zendContainerBuilder->findDefinition(Application::class);
+        /** @noinspection PhpIncludeInspection */
         (require_once $this->getPipelineFilePath())($ApplicationServiceDefinition);
         file_put_contents($this->getExpressiveDIYAMLFilePath(), (new YamlDumper($zendContainerBuilder))->dump());
         chdir($currentWorkingDirectory);

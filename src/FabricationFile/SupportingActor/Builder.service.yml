@@ -1,8 +1,0 @@
-services:
-  Neighborhoods\Bradfab\FabricationFile\SupportingActor\BuilderInterface:
-    class: Neighborhoods\Bradfab\FabricationFile\SupportingActor\Builder
-    public: false
-    shared: false
-    calls:
-      - [setFabricationFileSupportingActorFactory, ['@Neighborhoods\Bradfab\FabricationFile\SupportingActor\FactoryInterface']]
-      - [setAnnotationProcessorMapBuilderFactory, ['@Neighborhoods\Bradfab\AnnotationProcessor\Map\Builder\FactoryInterface']]

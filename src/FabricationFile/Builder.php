@@ -11,7 +11,7 @@ use Symfony\Component\Yaml\Yaml;
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
-    use FabricationFile\SupportingActor\Map\Builder\Factory\AwareTrait;
+    use FabricationFile\Actor\Map\Builder\Factory\AwareTrait;
 
     protected $spl_file_info;
 
@@ -19,16 +19,16 @@ class Builder implements BuilderInterface
     {
         $fabricationFileContents = Yaml::parseFile($this->getSPLFileInfo()->getPathname(), YAML::PARSE_CONSTANT);
         $fabricationFile = $this->getFabricationFileFactory()->create();
-        $supportingActorMapBuilder = $this->getFabricationFileSupportingActorMapBuilderFactory()->create();
-        $supportingActors = $supportingActorMapBuilder->setRecords($fabricationFileContents)->build();
-        foreach ($supportingActors as $supportingActor) {
-            if ($supportingActor->hasAnnotationProcessorMap()) {
-                foreach ($supportingActor->getAnnotationProcessorMap() as $annotationProcessor) {
+        $actorMapBuilder = $this->getFabricationFileActorMapBuilderFactory()->create();
+        $actors = $actorMapBuilder->setRecords($fabricationFileContents)->build();
+        foreach ($actors as $actor) {
+            if ($actor->hasAnnotationProcessorMap()) {
+                foreach ($actor->getAnnotationProcessorMap() as $annotationProcessor) {
                     $annotationProcessor->getAnnotationProcessorContext()->setFabricationFile($fabricationFile);
                 }
             }
         }
-        $fabricationFile->setSupportingActors($supportingActors);
+        $fabricationFile->setActors($actors);
         $fabricationFile->setFileName($this->getSPLFileInfo()->getFilename());
         $fabricationFile->setFilePath($this->getSPLFileInfo()->getPathname());
         $fabricationFile->setRelativeDirectoryPath($this->getSPLFileInfo()->getRelativePath());

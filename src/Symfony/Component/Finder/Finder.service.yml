@@ -1,5 +1,5 @@
 services:
-  Symfony\Component\Finder\FinderInterface:
+  Symfony\Component\Finder\Finder:
     class: Symfony\Component\Finder\Finder
     public: false
     shared: false

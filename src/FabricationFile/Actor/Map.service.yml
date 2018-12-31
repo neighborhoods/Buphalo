@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Bradfab\FabricationFile\Actor\MapInterface:
+    class: Neighborhoods\Bradfab\FabricationFile\Actor\Map
+    public: false
+    shared: false

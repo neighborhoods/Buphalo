@@ -10,12 +10,12 @@ use Symfony\Component\Finder\SplFileInfo;
 class Fabricator implements FabricatorInterface
 {
     use FabricationFile\Builder\Factory\AwareTrait;
-    use SupportingActor\Template\Factory\AwareTrait;
-    use SupportingActor\Template\Tokenizer\Factory\AwareTrait;
-    use SupportingActor\Template\Compiler\Factory\AwareTrait;
-    use SupportingActor\Template\Compiler\Strategy\Factory\AwareTrait;
+    use TargetActor\Template\Factory\AwareTrait;
+    use TargetActor\Template\Tokenizer\Factory\AwareTrait;
+    use TargetActor\Template\Compiler\Factory\AwareTrait;
+    use TargetActor\Template\Compiler\Strategy\Factory\AwareTrait;
     use TargetActor\Factory\AwareTrait;
-    use SupportingActor\Writer\Factory\AwareTrait;
+    use TargetActor\Writer\Factory\AwareTrait;
     use TargetApplication\AwareTrait;
     protected $finder;
     protected $fabricate_yaml_files;
@@ -29,22 +29,22 @@ class Fabricator implements FabricatorInterface
         foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlSPLFileInfo) {
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
             $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlSPLFileInfo)->build();
-            foreach ($fabricationFile->getSupportingActors() as $supportingActor) {
+            foreach ($fabricationFile->getActors() as $actor) {
                 $targetActor = $this->getTargetActorFactory()->create();
                 $targetActor->setFabricationFile($fabricationFile);
                 $targetActor->setTargetApplication($this->getTargetApplication());
-                $template = $this->getSupportingActorTemplateFactory()->create();
-                $template->setFabricationFileSupportingActor($supportingActor);
+                $template = $this->getTargetActorTemplateFactory()->create();
+                $template->setFabricationFileActor($actor);
                 $template->setTemplateActorDirectoryPath($this->getTemplateActorDirectoryPath());
-                $tokenizer = $this->getSupportingActorTemplateTokenizerFactory()->create();
-                $tokenizer->setSupportingActorTemplate($template);
-                $strategy = $this->getSupportingActorTemplateCompilerStrategyFactory()->create();
+                $tokenizer = $this->getTargetActorTemplateTokenizerFactory()->create();
+                $tokenizer->setTargetActorTemplate($template);
+                $strategy = $this->getTargetActorTemplateCompilerStrategyFactory()->create();
                 $strategy->setTargetActor($targetActor);
-                $compiler = $this->getSupportingActorTemplateCompilerFactory()->create();
-                $compiler->setSupportingActorTemplateTokenizer($tokenizer);
-                $compiler->setSupportingActorTemplateCompilerStrategy($strategy);
-                $writer = $this->getSupportingActorWriterFactory()->create();
-                $writer->setSupportingActorTemplateCompiler($compiler);
+                $compiler = $this->getTargetActorTemplateCompilerFactory()->create();
+                $compiler->setTargetActorTemplateTokenizer($tokenizer);
+                $compiler->setTargetActorTemplateCompilerStrategy($strategy);
+                $writer = $this->getTargetActorWriterFactory()->create();
+                $writer->setTargetActorTemplateCompiler($compiler);
                 $writer->setTargetApplication($this->getTargetApplication());
                 $writer->write();
             }

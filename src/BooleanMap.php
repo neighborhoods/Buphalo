@@ -47,7 +47,9 @@ class BooleanMap extends \ArrayIterator implements BooleanMapInterface
         return $int;
     }
 
-    protected function assertValidArrayType(bool ...$booleans): BooleanMapInterface
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        bool ...$booleans): BooleanMapInterface
     {
         return $this;
     }

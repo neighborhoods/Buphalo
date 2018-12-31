@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-use Neighborhoods\Bradfab\FabricationFile\SupportingActor\MapInterface;
+use Neighborhoods\Bradfab\FabricationFile\Actor\MapInterface;
 
 class FabricationFile implements FabricationFileInterface
 {
@@ -11,24 +11,24 @@ class FabricationFile implements FabricationFileInterface
     protected $file_path;
     protected $relative_file_path;
     protected $relative_directory_path;
-    protected $supporting_actors;
+    protected $actors;
 
-    public function getSupportingActors(): MapInterface
+    public function getActors(): MapInterface
     {
-        if ($this->supporting_actors === null) {
-            throw new \LogicException('FabricationFile supporting_actors has not been set.');
+        if ($this->actors === null) {
+            throw new \LogicException('FabricationFile actors has not been set.');
         }
 
-        return $this->supporting_actors;
+        return $this->actors;
     }
 
-    public function setSupportingActors(MapInterface $supporting_actors): FabricationFileInterface
+    public function setActors(MapInterface $actors): FabricationFileInterface
     {
-        if ($this->supporting_actors !== null) {
-            throw new \LogicException('FabricationFile supporting_actors is already set.');
+        if ($this->actors !== null) {
+            throw new \LogicException('FabricationFile actors is already set.');
         }
 
-        $this->supporting_actors = $supporting_actors;
+        $this->actors = $actors;
 
         return $this;
     }

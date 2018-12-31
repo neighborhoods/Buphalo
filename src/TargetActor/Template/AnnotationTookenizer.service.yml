@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\TargetActor\Template\AnnotationTokenizerInterface:
+    class: Neighborhoods\Bradfab\TargetActor\Template\AnnotationTokenizer
+    public: false
+    shared: false
+    calls:
+      - [setAnnotationProcessorBuilderFactory, ['@Neighborhoods\Bradfab\AnnotationProcessor\Builder\FactoryInterface']]

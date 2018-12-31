@@ -4,7 +4,8 @@
   "description": "Fabricates patterns.",
   "license": "proprietary",
   "keywords": [
-    "Bradfab"
+    "Bradfab",
+    "Code Generation"
   ],
   "bin": [
     "bin/bradfab"
@@ -18,7 +19,6 @@
   "require": {
     "php": "^7.2",
     "symfony/config": "^4.2",
-    "symfony/console": "^4.2",
     "symfony/dependency-injection": "^4.2",
     "symfony/expression-language": "^4.2",
     "symfony/filesystem": "^4.2",

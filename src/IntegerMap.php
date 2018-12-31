@@ -47,8 +47,10 @@ class IntegerMap extends \ArrayIterator implements IntegerMapInterface
         return $integer;
     }
 
-    protected function assertValidArrayType(int ...$integers): IntegerMapInterface
-    {
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        int ...$integers
+    ): IntegerMapInterface {
         return $this;
     }
 

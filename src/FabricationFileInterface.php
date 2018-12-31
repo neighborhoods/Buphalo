@@ -3,15 +3,15 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-use Neighborhoods\Bradfab\FabricationFile\SupportingActor\MapInterface;
+use Neighborhoods\Bradfab\FabricationFile\Actor\MapInterface;
 
 interface FabricationFileInterface
 {
     public const FILE_EXTENSION_FABRICATION = '.fabrication.yml';
 
-    public function getSupportingActors(): MapInterface;
+    public function getActors(): MapInterface;
 
-    public function setSupportingActors(MapInterface $supporting_actors): FabricationFileInterface;
+    public function setActors(MapInterface $actors): FabricationFileInterface;
 
     public function getFileName(): string;
 

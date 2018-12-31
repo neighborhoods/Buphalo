@@ -47,8 +47,10 @@ class FloatingPointMap extends \ArrayIterator implements FloatingPointMapInterfa
         return $floatingPoint;
     }
 
-    protected function assertValidArrayType(float ...$floatingPoints): FloatingPointMapInterface
-    {
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        float ...$floatingPoints
+    ): FloatingPointMapInterface {
         return $this;
     }
 

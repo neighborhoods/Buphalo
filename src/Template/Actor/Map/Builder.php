@@ -14,10 +14,10 @@ class Builder implements BuilderInterface
     public function build(): MapInterface
     {
         $map = $this->getActorMapFactory()->create();
-
+        /** @neighborhoods-bradfab:annotation-processor Neighborhoods\Bradfab\Template\Actor\Map\Builder.build1
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
-
+        */
         return $map;
     }
 

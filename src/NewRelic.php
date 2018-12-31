@@ -70,6 +70,7 @@ class NewRelic implements NewRelicInterface
         return $this;
     }
 
+    /** @noinspection SpellCheckingInspection */
     public function disableAutorum(): NewRelicInterface
     {
         if ($this->isExtensionLoaded()) {
@@ -150,6 +151,7 @@ class NewRelic implements NewRelicInterface
         return $this;
     }
 
+    /** @noinspection SpellCheckingInspection */
     public function setAppname(string $name): NewRelicInterface
     {
         if ($this->isExtensionLoaded()) {

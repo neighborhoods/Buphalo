@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\FabricationFile\Actor\FactoryInterface:
+    class: Neighborhoods\Bradfab\FabricationFile\Actor\Factory
+    public: false
+    shared: true
+    calls:
+      - [setFabricationFileActor, ['@Neighborhoods\Bradfab\FabricationFile\ActorInterface']]

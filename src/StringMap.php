@@ -47,8 +47,10 @@ class StringMap extends \ArrayIterator implements StringMapInterface
         return $string;
     }
 
-    protected function assertValidArrayType(string ...$strings): StringMapInterface
-    {
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        string ...$strings
+    ): StringMapInterface {
         return $this;
     }
 

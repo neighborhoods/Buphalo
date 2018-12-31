@@ -49,8 +49,10 @@ class Map extends \ArrayIterator implements MapInterface
         return $Actor;
     }
 
-    protected function assertValidArrayType(ActorInterface ...$Actors): MapInterface
-    {
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        ActorInterface ...$Actors
+    ): MapInterface {
         return $this;
     }
 

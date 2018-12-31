@@ -50,8 +50,10 @@ class Map extends \ArrayIterator implements MapInterface
         return $finder;
     }
 
-    protected function assertValidArrayType(Finder ...$finders): MapInterface
-    {
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        Finder ...$finders
+    ): MapInterface {
         return $this;
     }
 

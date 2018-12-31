@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\TargetActor\WriterInterface:
+    class: Neighborhoods\Bradfab\TargetActor\Writer
+    public: false
+    shared: false
+    calls:
+      - [setFilesystem, ['@Symfony\Component\Filesystem\Filesystem']]

@@ -17,6 +17,7 @@ interface NewRelicInterface
 
     public function customMetric(string $metric_name, float $value): NewRelicInterface;
 
+    /** @noinspection SpellCheckingInspection */
     public function disableAutorum(): NewRelicInterface;
 
     public function endOfTransaction(): NewRelicInterface;
@@ -31,6 +32,7 @@ interface NewRelicInterface
 
     public function recordCustomEvent(string $name, array $attributes): NewRelicInterface;
 
+    /** @noinspection SpellCheckingInspection */
     public function setAppname(string $name): NewRelicInterface;
 
     public function noticeError(
