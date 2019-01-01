@@ -3,25 +3,30 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-class TargetActor implements TargetActorInterface
+class TargetPrimaryActor implements TargetPrimaryActorInterface
 {
     use FabricationFile\AwareTrait;
     use TargetApplication\AwareTrait;
 
     protected $relative_name_path;
-    protected $fqcn;
-    protected $short_name;
-    protected $name;
+    protected $namespace;
+    protected $full_name;
     protected $file_path_position;
+    protected $short_name;
 
     public function getRelativeNamePath(): string
     {
         if ($this->relative_name_path === null) {
             $filePath = $this->getFilePathPosition();
             $relativeNamePath = str_replace(
-                $this->getTargetApplication()->getSourcePath() . '/',
+                sprintf('%s/', $this->getTargetApplication()->getSourcePath()),
                 '',
                 $filePath
+            );
+            $relativeNamePath = str_replace(
+                '/',
+                '\\',
+                $relativeNamePath
             );
             $this->relative_name_path = $relativeNamePath;
         }
@@ -29,16 +34,25 @@ class TargetActor implements TargetActorInterface
         return $this->relative_name_path;
     }
 
-    public function getFQCN(): string
+    public function getNamespace(): string
     {
-        if ($this->fqcn === null) {
-            $relativeNamePath = $this->getRelativeNamePath();
-            $FQCN = $this->getTargetApplication()->getNamespace() . $relativeNamePath;
-            $FQCN = str_replace('/', '\\', $FQCN);
-            $this->fqcn = $FQCN;
+        if ($this->namespace === null) {
+            $namespace = $this->getTargetApplication()->getNamespace();
+            $this->namespace = $namespace;
         }
 
-        return $this->fqcn;
+        return $this->namespace;
+    }
+
+    public function getFullName(): string
+    {
+        if ($this->full_name === null) {
+            $relativeNamePath = $this->getRelativeNamePath();
+            $fullName = str_replace('\\', '', $relativeNamePath);
+            $this->full_name = $fullName;
+        }
+
+        return $this->full_name;
     }
 
     public function getShortName(): string
@@ -46,7 +60,7 @@ class TargetActor implements TargetActorInterface
         if ($this->short_name === null) {
             $relativeNamePath = $this->getRelativeNamePath();
             $start = 0;
-            $position = strrpos($relativeNamePath, '/');
+            $position = strrpos($relativeNamePath, '\\');
             if ($position !== false) {
                 $start = $position + 1;
             }
@@ -54,15 +68,6 @@ class TargetActor implements TargetActorInterface
         }
 
         return $this->short_name;
-    }
-
-    public function getName(): string
-    {
-        if ($this->name === null) {
-            $this->name = str_replace('/', '', $this->getRelativeNamePath());
-        }
-
-        return $this->name;
     }
 
     public function getFilePathPosition(): string

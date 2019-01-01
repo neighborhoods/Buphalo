@@ -12,22 +12,48 @@ class Template implements TemplateInterface
     }
 
     protected $contents;
-    protected $template_actor_directory_path;
+    protected $template_directory_path;
     protected $file_extension;
+    protected $actor_template_file_path;
+    protected $short_name;
 
     public function getContents(): string
     {
         if ($this->contents === null) {
-            $actorTemplateFilePath = realpath(
-                $this->getTemplateActorDirectoryPath()
-                . '/'
-                . str_replace('\\', '/', $this->getFabricationFileActor()->getRelativeTemplatePath())
-                . $this->getFileExtension()
-            );
-            $this->contents = file_get_contents($actorTemplateFilePath);
+            $this->contents = file_get_contents($this->getActorTemplateFilePath());
         }
 
         return $this->contents;
+    }
+
+    public function getActorTemplateFilePath(): string
+    {
+        if ($this->actor_template_file_path === null) {
+            $actorTemplateFilePath = realpath(
+                $this->getTemplateDirectoryPath()
+                . '/'
+                . $this->getFabricationFileActor()->getRelativeTemplatePath()
+                . $this->getFileExtension()
+            );
+            $this->actor_template_file_path = $actorTemplateFilePath;
+        }
+
+        return $this->actor_template_file_path;
+    }
+
+    public function getShortName(): string
+    {
+        if ($this->short_name === null) {
+            $relativeTemplatePath = $this->getFabricationFileActor()->getRelativeTemplatePath();
+            $shortNamePosition = strrpos($relativeTemplatePath, "/");
+            if ($shortNamePosition === false) {
+                $shortNamePosition = 0;
+            }
+            $shortName = str_replace('/', '', substr($relativeTemplatePath, $shortNamePosition));
+            $this->short_name = $shortName;
+        }
+
+        return $this->short_name;
     }
 
     public function updateContents(string $contents): TemplateInterface
@@ -41,22 +67,22 @@ class Template implements TemplateInterface
         return $this;
     }
 
-    public function getTemplateActorDirectoryPath(): string
+    public function getTemplateDirectoryPath(): string
     {
-        if ($this->template_actor_directory_path === null) {
-            throw new \LogicException('Template template_actor_directory_path has not been set.');
+        if ($this->template_directory_path === null) {
+            throw new \LogicException('Template template_directory_path has not been set.');
         }
 
-        return $this->template_actor_directory_path;
+        return $this->template_directory_path;
     }
 
-    public function setTemplateActorDirectoryPath(string $template_actor_directory_path): TemplateInterface
+    public function setTemplateDirectoryPath(string $template_directory_path): TemplateInterface
     {
-        if ($this->template_actor_directory_path !== null) {
-            throw new \LogicException('Template template_actor_directory_path is already set.');
+        if ($this->template_directory_path !== null) {
+            throw new \LogicException('Template template_directory_path is already set.');
         }
 
-        $this->template_actor_directory_path = $template_actor_directory_path;
+        $this->template_directory_path = $template_directory_path;
 
         return $this;
     }

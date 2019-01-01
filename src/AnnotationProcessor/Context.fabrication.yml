@@ -1,14 +1,14 @@
 actors:
-  AwareTrait.php:
-  Factory.php:
-  Factory.service.yml:
-  FactoryInterface.php:
-  Factory\AwareTrait.php:
-  Builder.php:
-  Builder.service.yml:
-  BuilderInterface.php:
-  Builder\AwareTrait.php:
-  Builder\Factory.php:
-  Builder\Factory.service.yml:
-  Builder\FactoryInterface.php:
-  Builder\Factory\AwareTrait.php:
+  Actor\AwareTrait.php:
+  Actor\Factory.php:
+  Actor\Factory.service.yml:
+  Actor\FactoryInterface.php:
+  Actor\Factory\AwareTrait.php:
+  Actor\Builder.php:
+  Actor\Builder.service.yml:
+  Actor\BuilderInterface.php:
+  Actor\Builder\AwareTrait.php:
+  Actor\Builder\Factory.php:
+  Actor\Builder\Factory.service.yml:
+  Actor\Builder\FactoryInterface.php:
+  Actor\Builder\Factory\AwareTrait.php:

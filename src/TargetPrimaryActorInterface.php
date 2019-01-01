@@ -3,19 +3,19 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-interface TargetActorInterface
+interface TargetPrimaryActorInterface
 {
     public function setFabricationFile(FabricationFileInterface $FabricationFile);
 
     public function setTargetApplication(TargetApplicationInterface $TargetApplication);
 
-    public function getName(): string;
+    public function getNamespace(): string;
 
-    public function getFQCN(): string;
-
-    public function getShortName(): string;
+    public function getFullName(): string;
 
     public function getRelativeNamePath(): string;
 
     public function getFilePathPosition(): string;
+
+    public function getShortName(): string;
 }

@@ -1,8 +1,11 @@
 #template_tree_layer_preference:
 actors:
   Actor.php:
+#    looks_like: Actor.php
   Actor.service.yml:
+#    looks_like: Actor.service.yml
   ActorInterface.php:
+#    looks_like: ActorInterface.php
   Actor\AwareTrait.php:
   Actor\Factory.php:
   Actor\Factory.service.yml:

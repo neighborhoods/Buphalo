@@ -14,7 +14,7 @@ class Fabricator implements FabricatorInterface
     use TargetActor\Template\Tokenizer\Factory\AwareTrait;
     use TargetActor\Template\Compiler\Factory\AwareTrait;
     use TargetActor\Template\Compiler\Strategy\Factory\AwareTrait;
-    use TargetActor\Factory\AwareTrait;
+    use TargetPrimaryActor\Factory\AwareTrait;
     use TargetActor\Writer\Factory\AwareTrait;
     use TargetApplication\AwareTrait;
     protected $finder;
@@ -30,16 +30,16 @@ class Fabricator implements FabricatorInterface
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
             $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlSPLFileInfo)->build();
             foreach ($fabricationFile->getActors() as $actor) {
-                $targetActor = $this->getTargetActorFactory()->create();
-                $targetActor->setFabricationFile($fabricationFile);
-                $targetActor->setTargetApplication($this->getTargetApplication());
+                $targetPrimaryActor = $this->getTargetPrimaryActorFactory()->create();
+                $targetPrimaryActor->setFabricationFile($fabricationFile);
+                $targetPrimaryActor->setTargetApplication($this->getTargetApplication());
                 $template = $this->getTargetActorTemplateFactory()->create();
                 $template->setFabricationFileActor($actor);
-                $template->setTemplateActorDirectoryPath($this->getTemplateActorDirectoryPath());
+                $template->setTemplateDirectoryPath($this->getTemplateActorDirectoryPath());
                 $tokenizer = $this->getTargetActorTemplateTokenizerFactory()->create();
                 $tokenizer->setTargetActorTemplate($template);
                 $strategy = $this->getTargetActorTemplateCompilerStrategyFactory()->create();
-                $strategy->setTargetActor($targetActor);
+                $strategy->setTargetPrimaryActor($targetPrimaryActor);
                 $compiler = $this->getTargetActorTemplateCompilerFactory()->create();
                 $compiler->setTargetActorTemplateTokenizer($tokenizer);
                 $compiler->setTargetActorTemplateCompilerStrategy($strategy);

@@ -21,14 +21,19 @@ class Builder implements BuilderInterface
             '.%s',
             pathinfo($record[Map\BuilderInterface::RELATIVE_TEMPLATE_PATH], PATHINFO_EXTENSION)
         );
-        $relativeTemplatePath = str_replace(
+        $intermediary = str_replace(
             $templateFileExtension,
             '',
             $record[Map\BuilderInterface::RELATIVE_TEMPLATE_PATH]
         );
+        $relativeTemplatePath = str_replace(
+            '\\',
+            '/',
+            $intermediary
+        );
         $actor->setRelativeTemplatePath($relativeTemplatePath);
         $actor->setTemplateFileExtension($templateFileExtension);
-        if (isset($record['annotation_processors']) && is_array($record['annotation_processors'])) {
+        if (isset($record['annotation_processors'])) {
             $annotationProcessorMapBuilder = $this->getAnnotationProcessorMapBuilderFactory()->create();
             $annotationProcessorMapBuilder->setRecords($record['annotation_processors']);
             $annotationProcessorMap = $annotationProcessorMapBuilder->build();

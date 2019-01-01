@@ -38,20 +38,21 @@ class Writer implements WriterInterface
     public function getTargetActorSourceFilePath()
     {
         if ($this->target_actor_source_file_path === null) {
-            $targetActorFilePathPosition = $this->getTargetActor()->getFilePathPosition();
+            $targetActorFilePathPosition = $this->getTargetPrimaryActor()->getFilePathPosition();
             $actor = $this->getTargetActorTemplate()->getFabricationFileActor();
             $actorRelativeFilePathPosition = str_replace(
-                '\\',
-                '/',
+                'Actor/',
+                '',
                 $actor->getRelativeTemplatePath()
             );
             $fileExtension = $this->getTargetActorTemplate()->getFileExtension();
-            $this->target_actor_source_file_path = sprintf(
+            $targetActorSourceFilePath = sprintf(
                 '%s/%s%s',
                 $targetActorFilePathPosition,
                 $actorRelativeFilePathPosition,
                 $fileExtension
             );
+            $this->target_actor_source_file_path = $targetActorSourceFilePath;
         }
 
         return $this->target_actor_source_file_path;
@@ -102,12 +103,12 @@ class Writer implements WriterInterface
         return $this->target_actor_template;
     }
 
-    protected function getTargetActor()
+    protected function getTargetPrimaryActor()
     {
         if ($this->target_actor === null) {
             $this->target_actor = $this->getTargetActorTemplateCompiler()
                 ->getTargetActorTemplateCompilerStrategy()
-                ->getTargetActor();
+                ->getTargetPrimaryActor();
         }
 
         return $this->target_actor;

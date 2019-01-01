@@ -1,6 +1,0 @@
-actors:
-  AwareTrait.php:
-  Factory.php:
-  Factory.service.yml:
-  FactoryInterface.php:
-  Factory\AwareTrait.php:

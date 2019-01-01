@@ -21,40 +21,54 @@ class Compiler implements CompilerInterface
     {
         if ($this->CompiledContents === null) {
             $tokenizedContents = $this->getTargetActorTemplateTokenizer()->getTokenizedContents();
-
             $compiledContents = str_replace(
-                TokenizerInterface::VARIABLE_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_VARIABLE_TOKEN,
                 $this->getTargetActorTemplateCompilerStrategy()->getVariableReplacement(),
                 $tokenizedContents
             );
             $compiledContents = str_replace(
-                TokenizerInterface::PROPERTY_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_PROPERTY_TOKEN,
                 $this->getTargetActorTemplateCompilerStrategy()->getPropertyReplacement(),
                 $compiledContents
             );
             $compiledContents = str_replace(
-                TokenizerInterface::PROPERTY_REFERENCE_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_PROPERTY_REFERENCE_TOKEN,
                 $this->getTargetActorTemplateCompilerStrategy()->getPropertyReferenceReplacement(),
                 $compiledContents
             );
             $compiledContents = str_replace(
-                TokenizerInterface::INTERFACE_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_INTERFACE_TOKEN,
                 $this->getTargetActorTemplateCompilerStrategy()->getInterfaceReplacement(),
                 $compiledContents
             );
             $compiledContents = str_replace(
-                TokenizerInterface::TRAIT_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_TRAIT_TOKEN,
                 $this->getTargetActorTemplateCompilerStrategy()->getTraitReplacement(),
                 $compiledContents
             );
             $compiledContents = str_replace(
-                TokenizerInterface::METHOD_AND_COMMENT_TOKEN,
-                $this->getTargetActorTemplateCompilerStrategy()->getMethodAndCommentReplacement(),
+                TokenizerInterface::PRIMARY_ACTOR_RELATIVE_NAME_PATH_TOKEN,
+                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getRelativeNamePath(),
                 $compiledContents
             );
             $compiledContents = str_replace(
-                TokenizerInterface::FQCN_TOKEN,
-                $this->getTargetActorTemplateCompilerStrategy()->getFQCNReplacement(),
+                TokenizerInterface::PRIMARY_ACTOR_SHORT_NAME_TOKEN,
+                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getShortName(),
+                $compiledContents
+            );
+            $compiledContents = str_replace(
+                TokenizerInterface::PRIMARY_ACTOR_NAMESPACE_TOKEN,
+                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getNamespace(),
+                $compiledContents
+            );
+            $compiledContents = str_replace(
+                TokenizerInterface::PRIMARY_ACTOR_FULL_NAME_TOKEN,
+                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getFullName(),
+                $compiledContents
+            );
+            $compiledContents = str_replace(
+                TokenizerInterface::ACTOR_SHORT_NAME_TOKEN,
+                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getFullName(),
                 $compiledContents
             );
             $this->CompiledContents = $compiledContents;

@@ -30,38 +30,63 @@ class Tokenizer implements TokenizerInterface
             $this->getAnnotationTokenizer()->tokenize();
             $templateContents = $this->getTargetActorTemplate()->getContents();
             $tokenizedContents = str_replace(
-                'Neighborhoods\Bradfab\Template\Actor',
-                TokenizerInterface::FQCN_TOKEN,
+                'Neighborhoods\Bradfab',
+                TokenizerInterface::PRIMARY_ACTOR_NAMESPACE_TOKEN,
                 $templateContents
             );
             $tokenizedContents = str_replace(
+                'Template\Actor',
+                TokenizerInterface::PRIMARY_ACTOR_RELATIVE_NAME_PATH_TOKEN,
+                $tokenizedContents
+            );
+            $tokenizedContents = str_replace(
+                'Template\Actor\\',
+                sprintf('%s\\', TokenizerInterface::PRIMARY_ACTOR_RELATIVE_NAME_PATH_TOKEN),
+                $tokenizedContents
+            );
+            $tokenizedContents = str_replace(
+                'Template',
+                TokenizerInterface::PRIMARY_ACTOR_RELATIVE_NAME_PATH_TOKEN,
+                $tokenizedContents
+            );
+            $tokenizedContents = str_replace(
                 'protected $Actor',
-                TokenizerInterface::PROPERTY_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_PROPERTY_TOKEN,
                 $tokenizedContents
             );
             $tokenizedContents = str_replace(
                 '$this->Actor',
-                TokenizerInterface::PROPERTY_REFERENCE_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_PROPERTY_REFERENCE_TOKEN,
                 $tokenizedContents
             );
             $tokenizedContents = str_replace(
                 '$Actor',
-                TokenizerInterface::VARIABLE_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_VARIABLE_TOKEN,
                 $tokenizedContents
             );
             $tokenizedContents = str_replace(
                 'ActorInterface',
-                TokenizerInterface::INTERFACE_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_INTERFACE_TOKEN,
                 $tokenizedContents
             );
             $tokenizedContents = str_replace(
                 'use Actor',
-                TokenizerInterface::TRAIT_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_TRAIT_TOKEN,
+                $tokenizedContents
+            );
+            $tokenizedContents = str_replace(
+                sprintf('%s', $this->getTargetActorTemplate()->getShortName()),
+                TokenizerInterface::ACTOR_SHORT_NAME_TOKEN,
+                $tokenizedContents
+            );
+            $tokenizedContents = str_replace(
+                "Actor\n",
+                sprintf('%s%s', TokenizerInterface::PRIMARY_ACTOR_SHORT_NAME_TOKEN, "\n"),
                 $tokenizedContents
             );
             $tokenizedContents = str_replace(
                 'Actor',
-                TokenizerInterface::METHOD_AND_COMMENT_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_FULL_NAME_TOKEN,
                 $tokenizedContents
             );
             $this->getTargetActorTemplate()->updateContents($tokenizedContents);

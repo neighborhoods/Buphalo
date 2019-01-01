@@ -13,6 +13,6 @@ services:
       - [setTargetActorTemplateTokenizerFactory, ['@Neighborhoods\Bradfab\TargetActor\Template\Tokenizer\FactoryInterface']]
       - [setTargetActorTemplateCompilerFactory, ['@Neighborhoods\Bradfab\TargetActor\Template\Compiler\FactoryInterface']]
       - [setTargetActorTemplateCompilerStrategyFactory, ['@Neighborhoods\Bradfab\TargetActor\Template\Compiler\Strategy\FactoryInterface']]
-      - [setTargetActorFactory, ['@Neighborhoods\Bradfab\TargetActor\FactoryInterface']]
+      - [setTargetPrimaryActorFactory, ['@Neighborhoods\Bradfab\TargetPrimaryActor\FactoryInterface']]
       - [setTargetActorWriterFactory, ['@Neighborhoods\Bradfab\TargetActor\Writer\FactoryInterface']]
       - [setTemplateActorDirectoryPath, ['%Neighborhoods\Bradfab\FabricatorInterface.template_actor_directory_path%']]
