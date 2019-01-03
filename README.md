@@ -40,7 +40,7 @@ vendor/bin/bradfab
 ### Example Fabrication Files
 * Relative to the root of your software product.
 ```yml
-# src/V2/Toe.fabricate.yml
+# src/V2/Toe.fabrication.yml
 supporting_actors:
 # I WANT ALL THE ACTORS!
   AwareTrait.php:
@@ -78,7 +78,7 @@ supporting_actors:
   Map\Builder\Factory\AwareTrait.php:
 ```
 ```yml
-# src/V2/Toe/Nail.fabricate.yml
+# src/V2/Toe/Nail.fabrication.yml
 supporting_actors:
 # I only want SOME actors!
   AwareTrait.php:
@@ -176,7 +176,7 @@ interface AnnotationProcessorInterface
     }
 ```
 ```yml
-# src/V2/Toe.fabricate.yml
+# src/V2/Toe.fabrication.yml
 supporting_actors:
 # ...
   Builder.php:
