@@ -15,7 +15,7 @@ class Writer implements WriterInterface
     protected $target_actor_source_file_path;
     protected $target_actor_fabrication_file_path;
     protected $target_actor_template;
-    protected $target_actor;
+    protected $target_primary_actor;
     protected $FabricationFileActor;
 
     public function write(): WriterInterface
@@ -38,7 +38,7 @@ class Writer implements WriterInterface
     public function getTargetActorSourceFilePath()
     {
         if ($this->target_actor_source_file_path === null) {
-            $targetActorFilePathPosition = $this->getTargetPrimaryActor()->getFilePathPosition();
+            $targetPrimaryActorFilePathPosition = $this->getTargetPrimaryActor()->getFilePathPosition();
             $actor = $this->getTargetActorTemplate()->getFabricationFileActor();
             $actorRelativeFilePathPosition = str_replace(
                 'Actor/',
@@ -48,7 +48,7 @@ class Writer implements WriterInterface
             $fileExtension = $this->getTargetActorTemplate()->getFileExtension();
             $targetActorSourceFilePath = sprintf(
                 '%s/%s%s',
-                $targetActorFilePathPosition,
+                $targetPrimaryActorFilePathPosition,
                 $actorRelativeFilePathPosition,
                 $fileExtension
             );
@@ -105,13 +105,13 @@ class Writer implements WriterInterface
 
     protected function getTargetPrimaryActor()
     {
-        if ($this->target_actor === null) {
-            $this->target_actor = $this->getTargetActorTemplateCompiler()
+        if ($this->target_primary_actor === null) {
+            $this->target_primary_actor = $this->getTargetActorTemplateCompiler()
                 ->getTargetActorTemplateCompilerStrategy()
                 ->getTargetPrimaryActor();
         }
 
-        return $this->target_actor;
+        return $this->target_primary_actor;
     }
 
     public function getFabricationFileActor()
