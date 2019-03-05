@@ -40,7 +40,7 @@ vendor/bin/bradfab
 ### Example Fabrication Files
 * Relative to the root of your software product.
 ```yml
-# src/V2/Toe.fabricate.yml
+# src/V2/Toe.fabrication.yml
 supporting_actors:
 # I WANT ALL THE ACTORS!
   AwareTrait.php:
@@ -78,7 +78,7 @@ supporting_actors:
   Map\Builder\Factory\AwareTrait.php:
 ```
 ```yml
-# src/V2/Toe/Nail.fabricate.yml
+# src/V2/Toe/Nail.fabrication.yml
 supporting_actors:
 # I only want SOME actors!
   AwareTrait.php:
@@ -105,9 +105,9 @@ supporting_actors:
 ```
 
 ### Turning Off Fabrication Of A Supporting Actor
-* Just don't include the Supporting Actor entry in the `Fabrication File` for the `<Object>` to begin with.
-* Remove the Supporting Actor entry from the `Fabrication File` for the `<Object>`.
-* Comment the Supporting Actor entry from the `Fabrication File` for the `<Object>`.
+* Just don't include the Supporting Actor entry in the Fabrication File for the `<Object>` to begin with.
+* Remove the Supporting Actor entry from the Fabrication File for the `<Object>`.
+* Comment the Supporting Actor entry from the Fabrication File for the `<Object>`.
 
 ### Adding A New Template
 * Add the appropriate PHP and DI service definition YAML files in the position that you want them under `src/Template/Actor`.
@@ -118,25 +118,26 @@ supporting_actors:
 ## Definitions
 
 ### Fabrication File
-* A `Fabrication File` contains the instructions for fabricating a [`Fablet`](#fablet) for any arbitrary `<Object>`.
-* The [`Fablet`](#fablet) `<Object>` is identified by the `Fabrication File` file name, and the location of the `Fabrication File` within the directory structure that it resides.
-* In the [Example Fabrication Files](#example-fabrication-files) section one [`Fablet`](#fablet) `<Object>` is `Toe` and another [`Fablet`](#fablet) `<Object>` is `Toe\Nail`.
-* A [`Fablet`](#fablet) `<Object>` can be any PHP object.
+* A Fabrication File contains the instructions for fabricating a [Fablet](#fablet) for any arbitrary `<Object>`.
+* The [Fablet](#fablet) `<Object>` is identified by the Fabrication File file name, and the location of the `Fabrication File` within the directory structure that it resides.
+* In the [Example Fabrication Files](#example-fabrication-files) section one [Fablet](#fablet) `<Object>` is `Toe` and another [Fablet](#fablet) `<Object>` is `Toe\Nail`.
+* A [Fablet](#fablet) `<Object>` can be any PHP object.
 
 ### Fablet
 (credit [Mucha](https://github.com/pmucha-55places))
-* A `Fablet` is the collection of Supporting Actors that are built from the Fabrication File for an `<Object>`.
+* A Fablet is the collection of Supporting Actors that are built from the Fabrication File for an `<Object>`.
 
 ## Features
 * Only fabricates files that do not exist in `src`.
 
 ### Annotation Processors
-* Annotation processors allow user space to define dynamic template content before tokenization or compilation of the template.
-* Annotation processors are optional.
-* Providing static context to the annotation processor is optional.
+* Annotation Processors allow user space to define dynamic template content before tokenization or compilation of the template.
+* Annotation Processors are optional.
+* Providing static context to the Annotation Processor is optional.
+* If the `static_context_record` key is provided, it MUST resolve to a PHP `array`.
 * Default annotation replacement is accomplished by using the contents of the annotation.
-* `static_context_record` MUST resolve to a PHP `array`.
-* Annotation processors MUST implement `\Neighborhoods\Bradfab\AnnotationProcessorInterface`
+* Annotation Processors MUST implement `\Neighborhoods\Bradfab\AnnotationProcessorInterface`.
+* Annotation Processors are not shared services.
 ```php
 namespace Neighborhoods\Bradfab;
 
@@ -154,7 +155,7 @@ interface AnnotationProcessorInterface
 * Currently, annotation processors have accesss to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface` object.
 
 ### Example Annotation Processors
-* Annotation Tag: `@neighborhoods-bradfab:annotation-processor`
+* Annotation Processor Tag: `@neighborhoods-bradfab:annotation-processor`
 * Annotation Processor Keys:
   * `Neighborhoods\Bradfab\Template\Actor\Builder.build1`
   * `Neighborhoods\Bradfab\Template\Actor\Builder.build2`
@@ -175,7 +176,7 @@ interface AnnotationProcessorInterface
     }
 ```
 ```yml
-# src/V2/Toe.fabricate.yml
+# src/V2/Toe.fabrication.yml
 supporting_actors:
 # ...
   Builder.php:
@@ -192,30 +193,31 @@ supporting_actors:
 ```
 * If no annotation processors are defined then `\Neighborhoods\Bradfab\AnnotationProcessor` is used and the above compiles as 
 ```php
-    public function build(): PrimaryActorInterface
+// src/V2/Toe/Builder.php
+    public function build(): ToeInterface
     {
-        $PrimaryActor = $this->getPrimaryActorFactory()->create();
+        $Toe = $this->getToeFactory()->create();
         
         
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
 
-        return $PrimaryActor;
+        return $Toe;
     }
 ```
 
 ### User Space Template Trees
-* User space template trees are merged with the `Bradfab` template tree, collision precedence favors user space.
+* User space template trees are merged with the Bradfab template tree, collision precedence favors user space.
 
 ## Contributing to Bradfab
-The `1.x` feature series establishes the fitness precedence of `Bradfab` for all future feature versions of `Bradfab`. All of the following fitness requirements MUST be met for all future versions. 
+The `1.x` feature series establishes the fitness precedence of Bradfab for all future feature versions of Bradfab. All of the following fitness requirements MUST be met for all future versions. 
 * Any Supporting Actors (and any associated files) MUST be as easy to add/update/remove as they are in `1.x`.
 * Fabrication must be as fast as it is in `1.x`.
-* The `source` target, `fabrication` target, and `Template Tree` target MUST be user defined so that `Bradfab` can be composed and used to build any arbitrary Template Tree.
-* `Method Fill` MUST be as easy to add/update/remove as it is in `1.x`.
-* `Method Fill` MUST be as transparent and flexible to user space as it is in `1.x`.
-* `Fabrication File`s MUST be as easy to add/update/remove as they are in `1.x`.
-* Future versions of `Bradfab` can add to the `1.x` fitness requirements but not alter or remove a member of the `1.x` fitness requirements as it is the definition of the mission of `Bradfab`.
+* The source target, fabrication target, and Template Tree target MUST be user defined so that Bradfab can be composed and used to build any arbitrary Template Tree.
+* Annotation Processors MUST be as easy to add/update/remove as it is in `1.x`.
+* Annotation Processors MUST be as transparent and flexible to user space as it is in `1.x`.
+* Fabrication Files MUST be as easy to add/update/remove as they are in `1.x`.
+* Future versions of Bradfab can add to the `1.x` fitness requirements but not alter or remove a member of the `1.x` fitness requirements as it is the definition of the mission of Bradfab.
 
 ### Setting Up Git When Developing Bradfab As A Composer Dependency
 * From your product root, and with Bradfab installed as a composer dependency
