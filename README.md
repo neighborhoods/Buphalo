@@ -83,23 +83,23 @@ supporting_actors:
 # I only want SOME actors!
   AwareTrait.php:
   Factory.php:
-  Factory.yml:
+  Factory.service.yml:
   FactoryInterface.php:
   Factory\AwareTrait.php:
   Builder.php:
-  Builder.yml:
+  Builder.service.yml:
   BuilderInterface.php:
   Builder\AwareTrait.php:
   Builder\Factory.php:
-  Builder\Factory.yml:
+  Builder\Factory.service.yml:
   Builder\FactoryInterface.php:
   Builder\Factory\AwareTrait.php:
   Map.php:
-  Map.yml:
+  Map.service.yml:
   MapInterface.php:
   Map\AwareTrait.php:
   Map\Factory.php:
-  Map\Factory.yml:
+  Map\Factory.service.yml:
   Map\FactoryInterface.php:
   Map\Factory\AwareTrait.php:
 ```
