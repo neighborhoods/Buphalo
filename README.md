@@ -45,35 +45,35 @@ supporting_actors:
 # I WANT ALL THE ACTORS!
   AwareTrait.php:
   Factory.php:
-  Factory.yml:
+  Factory.service.yml:
   FactoryInterface.php:
   Factory\AwareTrait.php:
   Builder.php:
-  Builder.yml:
+  Builder.service.yml:
   BuilderInterface.php:
   Builder\AwareTrait.php:
   Builder\Factory.php:
-  Builder\Factory.yml:
+  Builder\Factory.service.yml:
   Builder\FactoryInterface.php:
   Builder\Factory\AwareTrait.php:
   Repository.php:
-  Repository.yml:
+  Repository.service.yml:
   RepositoryInterface.php:
   Repository\AwareTrait.php:
   Map.php:
-  Map.yml:
+  Map.service.yml:
   MapInterface.php:
   Map\AwareTrait.php:
   Map\Factory.php:
-  Map\Factory.yml:
+  Map\Factory.service.yml:
   Map\FactoryInterface.php:
   Map\Factory\AwareTrait.php:
   Map\Builder.php:
-  Map\Builder.yml:
+  Map\Builder.service.yml:
   Map\BuilderInterface.php:
   Map\Builder\AwareTrait.php:
   Map\Builder\Factory.php:
-  Map\Builder\Factory.yml:
+  Map\Builder\Factory.service.yml:
   Map\Builder\FactoryInterface.php:
   Map\Builder\Factory\AwareTrait.php:
 ```
@@ -83,23 +83,23 @@ supporting_actors:
 # I only want SOME actors!
   AwareTrait.php:
   Factory.php:
-  Factory.yml:
+  Factory.service.yml:
   FactoryInterface.php:
   Factory\AwareTrait.php:
   Builder.php:
-  Builder.yml:
+  Builder.service.yml:
   BuilderInterface.php:
   Builder\AwareTrait.php:
   Builder\Factory.php:
-  Builder\Factory.yml:
+  Builder\Factory.service.yml:
   Builder\FactoryInterface.php:
   Builder\Factory\AwareTrait.php:
   Map.php:
-  Map.yml:
+  Map.service.yml:
   MapInterface.php:
   Map\AwareTrait.php:
   Map\Factory.php:
-  Map\Factory.yml:
+  Map\Factory.service.yml:
   Map\FactoryInterface.php:
   Map\Factory\AwareTrait.php:
 ```
