@@ -30,11 +30,11 @@ class BooleanMap extends \ArrayIterator implements BooleanMapInterface
         parent::offsetSet($index, $this->assertValidArrayItemType($integer));
     }
 
-    /** @param bool $integer */
-    public function append($integer)
+    /** @param bool $boolean */
+    public function append($boolean)
     {
-        $this->assertValidArrayItemType($integer);
-        parent::append($integer);
+        $this->assertValidArrayItemType($boolean);
+        parent::append($boolean);
     }
 
     public function current(): bool

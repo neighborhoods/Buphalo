@@ -10,6 +10,7 @@ class Context implements ContextInterface
     use FabricationFile\AwareTrait {
         getFabricationFile as public;
     }
+
     protected $static_context_record;
     protected $annotation_contents;
 

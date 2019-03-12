@@ -17,30 +17,58 @@ class Builder implements BuilderInterface
     {
         $record = $this->getRecord();
         $actor = $this->getFabricationFileActorFactory()->create();
+        $looksLikeTemplateFileExtension = $this->getTemplateFileExtension(
+            $record[BuilderInterface::RELATIVE_TEMPLATE_PATH]
+        );
+        $looksLikeRelativeTemplatePath = $this->getRelativeTemplatePath(
+            $looksLikeTemplateFileExtension,
+            $record[BuilderInterface::RELATIVE_TEMPLATE_PATH]
+        );
+        $actor->setRelativeTemplatePath($looksLikeRelativeTemplatePath);
+        $actor->setTemplateFileExtension($looksLikeTemplateFileExtension);
+        if (isset($record[BuilderInterface::LOOKS_LIKE])) {
+            $looksLikeTemplateFileExtension = $this->getTemplateFileExtension($record[BuilderInterface::LOOKS_LIKE]);
+            $looksLikeRelativeTemplatePath = $this->getRelativeTemplatePath(
+                $looksLikeTemplateFileExtension,
+                $record[BuilderInterface::LOOKS_LIKE]
+            );
+            $actor->setLooksLikeRelativeTemplatePath($looksLikeRelativeTemplatePath);
+            $actor->setLooksLikeTemplateFileExtension($looksLikeTemplateFileExtension);
+        }
+        if (isset($record[BuilderInterface::ANNOTATION_PROCESSORS])) {
+            $annotationProcessorMapBuilder = $this->getAnnotationProcessorMapBuilderFactory()->create();
+            $annotationProcessorMapBuilder->setRecords($record[BuilderInterface::ANNOTATION_PROCESSORS]);
+            $annotationProcessorMap = $annotationProcessorMapBuilder->build();
+            $actor->setAnnotationProcessorMap($annotationProcessorMap);
+        }
+
+        return $actor;
+    }
+
+    protected function getTemplateFileExtension(string $relativeTemplatePath): string
+    {
         $templateFileExtension = sprintf(
             '.%s',
-            pathinfo($record[Map\BuilderInterface::RELATIVE_TEMPLATE_PATH], PATHINFO_EXTENSION)
+            pathinfo($relativeTemplatePath, PATHINFO_EXTENSION)
         );
+
+        return $templateFileExtension;
+    }
+
+    protected function getRelativeTemplatePath(string $templateFileExtension, string $relativeTemplatePath): string
+    {
         $intermediary = str_replace(
             $templateFileExtension,
             '',
-            $record[Map\BuilderInterface::RELATIVE_TEMPLATE_PATH]
+            $relativeTemplatePath
         );
         $relativeTemplatePath = str_replace(
             '\\',
             '/',
             $intermediary
         );
-        $actor->setRelativeTemplatePath($relativeTemplatePath);
-        $actor->setTemplateFileExtension($templateFileExtension);
-        if (isset($record['annotation_processors'])) {
-            $annotationProcessorMapBuilder = $this->getAnnotationProcessorMapBuilderFactory()->create();
-            $annotationProcessorMapBuilder->setRecords($record['annotation_processors']);
-            $annotationProcessorMap = $annotationProcessorMapBuilder->build();
-            $actor->setAnnotationProcessorMap($annotationProcessorMap);
-        }
 
-        return $actor;
+        return $relativeTemplatePath;
     }
 
     protected function getRecord(): array

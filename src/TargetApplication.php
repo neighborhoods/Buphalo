@@ -5,26 +5,26 @@ namespace Neighborhoods\Bradfab;
 
 class TargetApplication implements TargetApplicationInterface
 {
-    protected $source_path;
+    protected $source_directory_path;
     protected $fabrication_path;
     protected $namespace;
 
-    public function getSourcePath(): string
+    public function getSourceDirectoryPath(): string
     {
-        if ($this->source_path === null) {
-            throw new \LogicException('TargetApplication source_path has not been set.');
+        if ($this->source_directory_path === null) {
+            throw new \LogicException('TargetApplication source_directory_path has not been set.');
         }
 
-        return $this->source_path;
+        return $this->source_directory_path;
     }
 
-    public function setSourcePath(string $source_path): TargetApplicationInterface
+    public function setSourceDirectoryPath(string $source_directory_path): TargetApplicationInterface
     {
-        if ($this->source_path !== null) {
-            throw new \LogicException('TargetApplication source_path is already set.');
+        if ($this->source_directory_path !== null) {
+            throw new \LogicException('TargetApplication source_directory_path is already set.');
         }
 
-        $this->source_path = $source_path;
+        $this->source_directory_path = $source_directory_path;
 
         return $this;
     }

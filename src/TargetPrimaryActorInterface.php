@@ -9,13 +9,15 @@ interface TargetPrimaryActorInterface
 
     public function setTargetApplication(TargetApplicationInterface $TargetApplication);
 
-    public function getNamespace(): string;
+    public function getNamespacePrefix(): string;
 
-    public function getFullName(): string;
+    public function getFullCapitalCamelCaseName(): string;
 
-    public function getRelativeNamePath(): string;
+    public function getRelativeClassPath(): string;
 
-    public function getFilePathPosition(): string;
+    public function getSourceDirectoryPath(): string;
 
-    public function getShortName(): string;
+    public function getShortCapitalCamelCaseName(): string;
+
+    public function getFabricationDirectoryPath(): string;
 }

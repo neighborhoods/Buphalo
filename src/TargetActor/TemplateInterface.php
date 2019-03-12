@@ -13,11 +13,11 @@ interface TemplateInterface
 
     public function getFabricationFileActor(): ActorInterface;
 
-    public function getTemplateDirectoryPath(): string;
+    public function getTemplateTreeDirectoryPath(): string;
 
     public function getFileExtension(): string;
 
-    public function setTemplateDirectoryPath(string $template_directory_path): TemplateInterface;
+    public function setTemplateTreeDirectoryPath(string $template_tree_directory_path): TemplateInterface;
 
     public function updateContents(string $contents): TemplateInterface;
 

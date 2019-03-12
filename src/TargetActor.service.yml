@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\TargetPrimaryActorInterface:
-    class: Neighborhoods\Bradfab\TargetPrimaryActor
+  Neighborhoods\Bradfab\TargetActorInterface:
+    class: Neighborhoods\Bradfab\TargetActor
     public: false
     shared: false

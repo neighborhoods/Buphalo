@@ -8,7 +8,7 @@ use Symfony\Component\Finder\Finder;
 
 interface FabricatorInterface
 {
-    public function fabricate();
+    public function fabricate(): FabricatorInterface;
 
     public function setFilesystem(Filesystem $filesystem): FabricatorInterface;
 

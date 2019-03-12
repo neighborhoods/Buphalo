@@ -9,9 +9,9 @@ interface TargetApplicationInterface
 
     public function setNamespace(string $namespace): TargetApplicationInterface;
 
-    public function setSourcePath(string $source_path): TargetApplicationInterface;
+    public function setSourceDirectoryPath(string $source_directory_path): TargetApplicationInterface;
 
-    public function getSourcePath(): string;
+    public function getSourceDirectoryPath(): string;
 
     public function setFabricationPath(string $fabrication_path): TargetApplicationInterface;
 

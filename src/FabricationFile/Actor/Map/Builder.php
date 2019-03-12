@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\FabricationFile\Actor\Map;
 
+use Neighborhoods\Bradfab\FabricationFile\Actor;
 use Neighborhoods\Bradfab\FabricationFile\Actor\MapInterface;
 use Neighborhoods\Bradfab\FabricationFile;
 
@@ -18,7 +19,7 @@ class Builder implements BuilderInterface
         $map = $this->getFabricationFileActorMapFactory()->create();
         foreach ($this->getRecords()[self::ACTORS] as $relativeClassname => $actorRecord) {
             $actorBuilder = $this->getFabricationFileActorBuilderFactory()->create();
-            $actorRecord[self::RELATIVE_TEMPLATE_PATH] = $relativeClassname;
+            $actorRecord[Actor\BuilderInterface::RELATIVE_TEMPLATE_PATH] = $relativeClassname;
             $actor = $actorBuilder->setRecord($actorRecord)->build();
             $map[$relativeClassname] = $actor;
         }

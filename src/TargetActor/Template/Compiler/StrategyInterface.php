@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\TargetActor\Template\Compiler;
 
+use Neighborhoods\Bradfab\FabricationFile\ActorInterface;
 use Neighborhoods\Bradfab\TargetPrimaryActorInterface;
 
 interface StrategyInterface
@@ -10,6 +11,8 @@ interface StrategyInterface
     public function setTargetPrimaryActor(TargetPrimaryActorInterface $TargetPrimaryActor);
 
     public function getTargetPrimaryActor(): TargetPrimaryActorInterface;
+
+    public function setFabricationFileActor(ActorInterface $FabricationFileActor);
 
     public function getPropertyReplacement(): string;
 
@@ -20,4 +23,6 @@ interface StrategyInterface
     public function getInterfaceReplacement(): string;
 
     public function getTraitReplacement(): string;
+
+    public function getActorShortNameReplacement(): string;
 }

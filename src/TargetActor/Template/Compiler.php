@@ -48,27 +48,27 @@ class Compiler implements CompilerInterface
             );
             $compiledContents = str_replace(
                 TokenizerInterface::PRIMARY_ACTOR_RELATIVE_NAME_PATH_TOKEN,
-                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getRelativeNamePath(),
+                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getShortCapitalCamelCaseName(),
                 $compiledContents
             );
             $compiledContents = str_replace(
                 TokenizerInterface::PRIMARY_ACTOR_SHORT_NAME_TOKEN,
-                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getShortName(),
+                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getShortCapitalCamelCaseName(),
                 $compiledContents
             );
             $compiledContents = str_replace(
                 TokenizerInterface::PRIMARY_ACTOR_NAMESPACE_TOKEN,
-                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getNamespace(),
+                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getNamespacePrefix(),
                 $compiledContents
             );
             $compiledContents = str_replace(
                 TokenizerInterface::PRIMARY_ACTOR_FULL_NAME_TOKEN,
-                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getFullName(),
+                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getFullCapitalCamelCaseName(),
                 $compiledContents
             );
             $compiledContents = str_replace(
                 TokenizerInterface::ACTOR_SHORT_NAME_TOKEN,
-                $this->getTargetActorTemplateCompilerStrategy()->getTargetPrimaryActor()->getFullName(),
+                $this->getTargetActorTemplateCompilerStrategy()->getActorShortNameReplacement(),
                 $compiledContents
             );
             $this->CompiledContents = $compiledContents;

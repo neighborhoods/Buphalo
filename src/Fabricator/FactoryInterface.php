@@ -7,5 +7,7 @@ use Neighborhoods\Bradfab\FabricatorInterface;
 
 interface FactoryInterface
 {
+    public function setFabricator(FabricatorInterface $Fabricator): FabricatorInterface;
+
     public function create(): FabricatorInterface;
 }

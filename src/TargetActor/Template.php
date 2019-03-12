@@ -12,29 +12,28 @@ class Template implements TemplateInterface
     }
 
     protected $contents;
-    protected $template_directory_path;
+    protected $template_tree_directory_path;
     protected $file_extension;
     protected $actor_template_file_path;
     protected $short_name;
-
-    public function getContents(): string
-    {
-        if ($this->contents === null) {
-            $this->contents = file_get_contents($this->getActorTemplateFilePath());
-        }
-
-        return $this->contents;
-    }
+    protected $looks_like_short_name;
+    protected $looks_like_file_extension;
 
     public function getActorTemplateFilePath(): string
     {
         if ($this->actor_template_file_path === null) {
-            $actorTemplateFilePath = realpath(
-                $this->getTemplateDirectoryPath()
-                . '/'
-                . $this->getFabricationFileActor()->getRelativeTemplatePath()
-                . $this->getFileExtension()
+            $actorTemplateFilePathCandidate = sprintf(
+                '%s/%s%s',
+                $this->getTemplateTreeDirectoryPath(),
+                $this->getFabricationFileActor()->getRelativeTemplatePath(),
+                $this->getFileExtension()
             );
+            $actorTemplateFilePath = realpath($actorTemplateFilePathCandidate);
+            if ($actorTemplateFilePath === false) {
+                throw new \RuntimeException(
+                    sprintf('The actor template file[%s] does not exist.', $actorTemplateFilePathCandidate)
+                );
+            }
             $this->actor_template_file_path = $actorTemplateFilePath;
         }
 
@@ -56,6 +55,48 @@ class Template implements TemplateInterface
         return $this->short_name;
     }
 
+    public function getFileExtension(): string
+    {
+        if ($this->file_extension === null) {
+            $this->file_extension = $this->getFabricationFileActor()->getTemplateFileExtension();
+        }
+
+        return $this->file_extension;
+    }
+
+    public function getLooksLikeShortName(): string
+    {
+        if ($this->looks_like_short_name === null) {
+            $relativeTemplatePath = $this->getFabricationFileActor()->getLooksLikeRelativeTemplatePath();
+            $looksLikeShortNamePosition = strrpos($relativeTemplatePath, "/");
+            if ($looksLikeShortNamePosition === false) {
+                $looksLikeShortNamePosition = 0;
+            }
+            $looksLikeShortName = str_replace('/', '', substr($relativeTemplatePath, $looksLikeShortNamePosition));
+            $this->looks_like_short_name = $looksLikeShortName;
+        }
+
+        return $this->looks_like_short_name;
+    }
+
+    public function getLooksLikeFileExtension(): string
+    {
+        if ($this->looks_like_file_extension === null) {
+            $this->looks_like_file_extension = $this->getFabricationFileActor()->getLooksLikeTemplateFileExtension();
+        }
+
+        return $this->looks_like_file_extension;
+    }
+
+    public function getContents(): string
+    {
+        if ($this->contents === null) {
+            $this->contents = file_get_contents($this->getActorTemplateFilePath());
+        }
+
+        return $this->contents;
+    }
+
     public function updateContents(string $contents): TemplateInterface
     {
         if ($this->contents === null) {
@@ -67,32 +108,23 @@ class Template implements TemplateInterface
         return $this;
     }
 
-    public function getTemplateDirectoryPath(): string
+    public function getTemplateTreeDirectoryPath(): string
     {
-        if ($this->template_directory_path === null) {
-            throw new \LogicException('Template template_directory_path has not been set.');
+        if ($this->template_tree_directory_path === null) {
+            throw new \LogicException('Template template_tree_directory_path has not been set.');
         }
 
-        return $this->template_directory_path;
+        return $this->template_tree_directory_path;
     }
 
-    public function setTemplateDirectoryPath(string $template_directory_path): TemplateInterface
+    public function setTemplateTreeDirectoryPath(string $template_tree_directory_path): TemplateInterface
     {
-        if ($this->template_directory_path !== null) {
-            throw new \LogicException('Template template_directory_path is already set.');
+        if ($this->template_tree_directory_path !== null) {
+            throw new \LogicException('Template template_tree_directory_path is already set.');
         }
 
-        $this->template_directory_path = $template_directory_path;
+        $this->template_tree_directory_path = $template_tree_directory_path;
 
         return $this;
-    }
-
-    public function getFileExtension(): string
-    {
-        if ($this->file_extension === null) {
-            $this->file_extension = $this->getFabricationFileActor()->getTemplateFileExtension();
-        }
-
-        return $this->file_extension;
     }
 }

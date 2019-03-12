@@ -38,17 +38,17 @@ class Writer implements WriterInterface
     public function getTargetActorSourceFilePath()
     {
         if ($this->target_actor_source_file_path === null) {
-            $targetPrimaryActorFilePathPosition = $this->getTargetPrimaryActor()->getFilePathPosition();
+            $sourceDirectoryPath = $this->getTargetPrimaryActor()->getSourceDirectoryPath();
             $actor = $this->getTargetActorTemplate()->getFabricationFileActor();
             $actorRelativeFilePathPosition = str_replace(
                 'Actor/',
-                '',
+                sprintf('%s/', $this->getTargetPrimaryActor()->getShortCapitalCamelCaseName()),
                 $actor->getRelativeTemplatePath()
             );
             $fileExtension = $this->getTargetActorTemplate()->getFileExtension();
             $targetActorSourceFilePath = sprintf(
                 '%s/%s%s',
-                $targetPrimaryActorFilePathPosition,
+                $sourceDirectoryPath,
                 $actorRelativeFilePathPosition,
                 $fileExtension
             );
@@ -58,15 +58,15 @@ class Writer implements WriterInterface
         return $this->target_actor_source_file_path;
     }
 
-
     public function getTargetActorFabricationFilePath()
     {
         if ($this->target_actor_fabrication_file_path === null) {
-            $this->target_actor_fabrication_file_path = str_replace(
-                $this->getTargetApplication()->getSourcePath(),
+            $targetActorFabricationFilePath = str_replace(
+                $this->getTargetApplication()->getSourceDirectoryPath(),
                 $this->getTargetApplication()->getFabricationPath(),
                 $this->getTargetActorSourceFilePath()
             );
+            $this->target_actor_fabrication_file_path = $targetActorFabricationFilePath;
         }
 
         return $this->target_actor_fabrication_file_path;

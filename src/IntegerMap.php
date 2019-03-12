@@ -30,11 +30,11 @@ class IntegerMap extends \ArrayIterator implements IntegerMapInterface
         parent::offsetSet($index, $this->assertValidArrayItemType($integer));
     }
 
-    /** @param int $integer */
-    public function append($integer)
+    /** @param int $boolean */
+    public function append($boolean)
     {
-        $this->assertValidArrayItemType($integer);
-        parent::append($integer);
+        $this->assertValidArrayItemType($boolean);
+        parent::append($boolean);
     }
 
     public function current(): int

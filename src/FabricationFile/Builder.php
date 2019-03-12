@@ -20,15 +20,15 @@ class Builder implements BuilderInterface
         $fabricationFileContents = Yaml::parseFile($this->getSPLFileInfo()->getPathname(), YAML::PARSE_CONSTANT);
         $fabricationFile = $this->getFabricationFileFactory()->create();
         $actorMapBuilder = $this->getFabricationFileActorMapBuilderFactory()->create();
-        $actors = $actorMapBuilder->setRecords($fabricationFileContents)->build();
-        foreach ($actors as $actor) {
-            if ($actor->hasAnnotationProcessorMap()) {
-                foreach ($actor->getAnnotationProcessorMap() as $annotationProcessor) {
+        $fabricationFileActors = $actorMapBuilder->setRecords($fabricationFileContents)->build();
+        foreach ($fabricationFileActors as $fabricationFileActor) {
+            if ($fabricationFileActor->hasAnnotationProcessorMap()) {
+                foreach ($fabricationFileActor->getAnnotationProcessorMap() as $annotationProcessor) {
                     $annotationProcessor->getAnnotationProcessorContext()->setFabricationFile($fabricationFile);
                 }
             }
         }
-        $fabricationFile->setActors($actors);
+        $fabricationFile->setActors($fabricationFileActors);
         $fabricationFile->setFileName($this->getSPLFileInfo()->getFilename());
         $fabricationFile->setFilePath($this->getSPLFileInfo()->getPathname());
         $fabricationFile->setRelativeDirectoryPath($this->getSPLFileInfo()->getRelativePath());

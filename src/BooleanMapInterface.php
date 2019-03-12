@@ -13,7 +13,7 @@ interface BooleanMapInterface extends \SeekableIterator, \ArrayAccess, \Serializ
     /** @param bool $integer */
     public function offsetSet($index, $integer);
 
-    /** @param bool $boollean */
+    /** @param bool $boolean */
     public function append($boolean);
 
     public function current(): bool;

@@ -16,11 +16,12 @@ class Fabricator implements FabricatorInterface
     use TargetActor\Template\Compiler\Strategy\Factory\AwareTrait;
     use TargetPrimaryActor\Factory\AwareTrait;
     use TargetActor\Writer\Factory\AwareTrait;
+    use TargetActor\Factory\AwareTrait;
     use TargetApplication\AwareTrait;
     protected $finder;
     protected $fabricate_yaml_files;
     protected $filesystem;
-    protected $template_actor_directory_path;
+    protected $template_tree_directory_path;
 
     public function fabricate(): FabricatorInterface
     {
@@ -29,16 +30,24 @@ class Fabricator implements FabricatorInterface
         foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlSPLFileInfo) {
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
             $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlSPLFileInfo)->build();
-            foreach ($fabricationFile->getActors() as $actor) {
+            foreach ($fabricationFile->getActors() as $fabricationFileActor) {
                 $targetPrimaryActor = $this->getTargetPrimaryActorFactory()->create();
                 $targetPrimaryActor->setFabricationFile($fabricationFile);
                 $targetPrimaryActor->setTargetApplication($this->getTargetApplication());
                 $template = $this->getTargetActorTemplateFactory()->create();
-                $template->setFabricationFileActor($actor);
-                $template->setTemplateDirectoryPath($this->getTemplateActorDirectoryPath());
+                $template->setFabricationFileActor($fabricationFileActor);
+                $template->setTemplateTreeDirectoryPath($this->getTemplateTreeDirectoryPath());
+                $targetActor = $this->getTargetActorFactory()->create();
+                $targetActor->setFabricationFileActor($fabricationFileActor);
+                $targetActor->setTargetPrimaryActor($targetPrimaryActor);
+
+//                $targetActor->getShortName();
+//                $targetActor->getFabricationFilePath();
+
                 $tokenizer = $this->getTargetActorTemplateTokenizerFactory()->create();
                 $tokenizer->setTargetActorTemplate($template);
                 $strategy = $this->getTargetActorTemplateCompilerStrategyFactory()->create();
+                $strategy->setFabricationFileActor($fabricationFileActor);
                 $strategy->setTargetPrimaryActor($targetPrimaryActor);
                 $compiler = $this->getTargetActorTemplateCompilerFactory()->create();
                 $compiler->setTargetActorTemplateTokenizer($tokenizer);
@@ -65,7 +74,7 @@ class Fabricator implements FabricatorInterface
     protected function getFabricateYamlFiles(): array
     {
         if ($this->fabricate_yaml_files === null) {
-            $finder = $this->getFinder()->in($this->getTargetApplication()->getSourcePath());
+            $finder = $this->getFinder()->in($this->getTargetApplication()->getSourceDirectoryPath());
             $finder->name('*' . FabricationFileInterface::FILE_EXTENSION_FABRICATION);
             /** @var $file SplFileInfo */
             foreach ($finder as $directoryPath => $file) {
@@ -121,22 +130,22 @@ class Fabricator implements FabricatorInterface
         return $this;
     }
 
-    public function getTemplateActorDirectoryPath(): string
+    public function getTemplateTreeDirectoryPath(): string
     {
-        if ($this->template_actor_directory_path === null) {
-            throw new \LogicException('Bradfab template_actor_directory_path has not been set.');
+        if ($this->template_tree_directory_path === null) {
+            throw new \LogicException('Bradfab template_tree_directory_path has not been set.');
         }
 
-        return $this->template_actor_directory_path;
+        return $this->template_tree_directory_path;
     }
 
-    public function setTemplateActorDirectoryPath(string $template_actor_directory_path): FabricatorInterface
+    public function setTemplateTreeDirectoryPath(string $template_tree_directory_path): FabricatorInterface
     {
-        if ($this->template_actor_directory_path !== null) {
-            throw new \LogicException('Bradfab template_actor_directory_path is already set.');
+        if ($this->template_tree_directory_path !== null) {
+            throw new \LogicException('Bradfab template_tree_directory_path is already set.');
         }
 
-        $this->template_actor_directory_path = $template_actor_directory_path;
+        $this->template_tree_directory_path = $template_tree_directory_path;
 
         return $this;
     }
