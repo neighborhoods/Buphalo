@@ -24,16 +24,16 @@ Employ an easy to change code generation tool to generate well designed patterns
 ```bash
 BRADFAB_TARGET_APPLICATION_SOURCE_PATH=/PATH/TO/SOURCE/DIRECTORY \
 BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=/PATH/TO/FABRICATION/DIRECTORY \
-BRADFAB_FABRICATOR_TEMPLATE_ACTOR_DIRECTORY_PATH=/PATH/TO/TEMPLATE/ACTOR/DIRECTORY \
-BRADFAB_TARGET_APPLICATION_NAMESPACE=VENDOR\\PRODUCT\\ \
+BRADFAB_FABRICATOR_TEMPLATE_TREE_DIRECTORY_PATH=/PATH/TO/TEMPLATE/TREE/DIRECTORY \
+BRADFAB_TARGET_APPLICATION_NAMESPACE=VENDOR\\PRODUCT \
 vendor/bin/bradfab
 ```
 * For example, in order to Bradfab Bradfab (when Bradfab is installed as a composer dependency) execute the following shell command from your product's root.
 ```bash
 BRADFAB_TARGET_APPLICATION_SOURCE_PATH=$PWD/vendor/neighborhoods/bradfab/src \
 BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=$PWD/vendor/neighborhoods/bradfab/fab \
-BRADFAB_FABRICATOR_TEMPLATE_ACTOR_DIRECTORY_PATH=$PWD/vendor/neighborhoods/bradfab/src/Template/Actor/ \
-BRADFAB_TARGET_APPLICATION_NAMESPACE=Neighborhoods\\Bradfab\\ \
+BRADFAB_FABRICATOR_TEMPLATE_TREE_DIRECTORY_PATH=$PWD/vendor/neighborhoods/bradfab/src/Template/ \
+BRADFAB_TARGET_APPLICATION_NAMESPACE=Neighborhoods\\Bradfab \
 vendor/bin/bradfab
 ```
 
