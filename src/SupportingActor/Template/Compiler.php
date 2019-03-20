@@ -47,6 +47,11 @@ class Compiler implements CompilerInterface
                 $compiledContents
             );
             $compiledContents = str_replace(
+                TokenizerInterface::CONSTANT_TOKEN,
+                $this->getSupportingActorTemplateCompilerStrategy()->getConstantReplacement(),
+                $compiledContents
+            );
+            $compiledContents = str_replace(
                 TokenizerInterface::METHOD_AND_COMMENT_TOKEN,
                 $this->getSupportingActorTemplateCompilerStrategy()->getMethodAndCommentReplacement(),
                 $compiledContents
