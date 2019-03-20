@@ -19,6 +19,8 @@ interface StrategyInterface
 
     public function getVariableReplacement(): string;
 
+    public function getConstantReplacement(): string;
+
     public function getMethodAndCommentReplacement(): string;
 
     public function getInterfaceReplacement(): string;

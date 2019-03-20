@@ -14,6 +14,7 @@ interface TokenizerInterface
     public const TRAIT_TOKEN = '**TRAIT_TOKEN**';
     public const METHOD_AND_COMMENT_TOKEN = '**METHOD_AND_COMMENT_TOKEN**';
     public const INTERFACE_TOKEN = '**INTERFACE_TOKEN**';
+    public const CONSTANT_TOKEN = '**CONSTANT_TOKEN**';
 
     public function getTokenizedContents(): string;
 

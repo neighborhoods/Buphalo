@@ -59,6 +59,11 @@ class Tokenizer implements TokenizerInterface
                 $tokenizedContents
             );
             $tokenizedContents = str_replace(
+                'ACTOR',
+                TokenizerInterface::CONSTANT_TOKEN,
+                $tokenizedContents
+            );
+            $tokenizedContents = str_replace(
                 'Actor',
                 TokenizerInterface::METHOD_AND_COMMENT_TOKEN,
                 $tokenizedContents

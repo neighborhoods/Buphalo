@@ -16,6 +16,7 @@ class Strategy implements StrategyInterface
     protected $property_reference_replacement;
     protected $interface_replacement;
     protected $trait_replacement;
+    protected $constant_replacement;
     protected $method_and_comment_replacement;
     protected $fqcn_replacement;
 
@@ -65,6 +66,14 @@ class Strategy implements StrategyInterface
         return $this->trait_replacement;
     }
 
+    public function getConstantReplacement(): string
+    {
+        if ($this->constant_replacement === null) {
+            $this->constant_replacement = strtoupper($this->getTargetActor()->getName());
+        }
+
+        return $this->constant_replacement;
+    }
     public function getMethodAndCommentReplacement(): string
     {
         if ($this->method_and_comment_replacement === null) {
