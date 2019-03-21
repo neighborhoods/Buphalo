@@ -4,11 +4,6 @@ namespace Neighborhoods\Bradfab\Template\Actor\Repository;
 
 interface HandlerInterface extends \Psr\Http\Server\RequestHandlerInterface
 {
-
-    const ROUTE_PATH_ACTORS = '';
-
-    const ROUTE_NAME_ACTORS = '';
-
-
+/** @neighborhoods-bradfab:annotation-processor Neighborhoods\Prefab\AnnotationProcessor\Actor\Repository\HandlerInterface:CONSTANTS */
 }
 
