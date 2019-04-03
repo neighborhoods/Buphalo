@@ -68,7 +68,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
             $annotationProcessorDefinition = [BuilderInterface::PROCESSOR_FQCN => AnnotationProcessor::class];
             $annotationProcessor = $annotationProcessorBuilder->setRecord($annotationProcessorDefinition)->build();
         }
-        $annotationProcessor->getAnnotationProcessorContext()->setAnnotationContents($annotations[3][$index]);
+        $annotationProcessor->getAnnotationProcessorContext()->setAnnotationContents($annotations[2][$index]);
 
         return $annotationProcessor;
     }
