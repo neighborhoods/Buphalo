@@ -8,7 +8,7 @@ use Neighborhoods\Bradfab\SupportingActor\TemplateInterface;
 interface AnnotationTokenizerInterface
 {
     public const ANNOTATION_TAG = '@neighborhoods-bradfab:annotation-processor';
-    public const ANNOTATION_REGEX = '/(?<=\/\*\*)(\s+' . self::ANNOTATION_TAG . '\s+)([\s\S]*?)(?=\*\/)/';
+    public const ANNOTATION_REGEX = '/(?<=\/\*\*)(\s+' . self::ANNOTATION_TAG . '\s*?)([\s\S]*?)(?=\*\/)/';
 
     public function setSupportingActorTemplate(TemplateInterface $Template);
 
