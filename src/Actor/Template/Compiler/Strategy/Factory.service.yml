@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\Actor\Template\Compiler\Strategy\FactoryInterface:
+    class: Neighborhoods\Bradfab\Actor\Template\Compiler\Strategy\Factory
+    public: false
+    shared: true
+    calls:
+      - [setTargetActorTemplateCompilerStrategy, ['@Neighborhoods\Bradfab\Actor\Template\Compiler\StrategyInterface']]

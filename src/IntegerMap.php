@@ -3,13 +3,16 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-class IntegerMap extends \ArrayIterator implements IntegerMapInterface
+use ArrayIterator;
+use LogicException;
+
+class IntegerMap extends ArrayIterator implements IntegerMapInterface
 {
     /** @param int ...$integer */
     public function __construct(array $integer = array(), int $flags = 0)
     {
         if ($this->count() !== 0) {
-            throw new \LogicException('Map is not empty.');
+            throw new LogicException('Map is not empty.');
         }
 
         if (!empty($integer)) {

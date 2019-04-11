@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Bradfab\TargetActor\Template\Compiler\StrategyInterface:
-    class: Neighborhoods\Bradfab\TargetActor\Template\Compiler\Strategy
-    public: false
-    shared: false

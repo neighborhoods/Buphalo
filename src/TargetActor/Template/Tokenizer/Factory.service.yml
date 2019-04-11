@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\Bradfab\TargetActor\Template\Tokenizer\FactoryInterface:
-    class: Neighborhoods\Bradfab\TargetActor\Template\Tokenizer\Factory
-    public: false
-    shared: true
-    calls:
-      - [setTargetActorTemplateTokenizer, ['@Neighborhoods\Bradfab\TargetActor\Template\TokenizerInterface']]

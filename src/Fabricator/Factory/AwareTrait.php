@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Fabricator\Factory;
 
+use LogicException;
 use Neighborhoods\Bradfab\Fabricator\FactoryInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setFabricatorFactory(FactoryInterface $FabricatorFactory): self
     {
         if ($this->hasFabricatorFactory()) {
-            throw new \LogicException('FabricatorFactory is already set.');
+            throw new LogicException('FabricatorFactory is already set.');
         }
         $this->FabricatorFactory = $FabricatorFactory;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getFabricatorFactory(): FactoryInterface
     {
         if (!$this->hasFabricatorFactory()) {
-            throw new \LogicException('FabricatorFactory is not set.');
+            throw new LogicException('FabricatorFactory is not set.');
         }
 
         return $this->FabricatorFactory;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetFabricatorFactory(): self
     {
         if (!$this->hasFabricatorFactory()) {
-            throw new \LogicException('FabricatorFactory is not set.');
+            throw new LogicException('FabricatorFactory is not set.');
         }
         unset($this->FabricatorFactory);
 

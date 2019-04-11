@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Template\Actor\Map;
 
+use LogicException;
 use Neighborhoods\Bradfab\Template\Actor\MapInterface;
 
 class Builder implements BuilderInterface
@@ -25,7 +26,7 @@ class Builder implements BuilderInterface
     protected function getRecords(): array
     {
         if ($this->records === null) {
-            throw new \LogicException('Builder records has not been set.');
+            throw new LogicException('Builder records has not been set.');
         }
 
         return $this->records;
@@ -34,7 +35,7 @@ class Builder implements BuilderInterface
     public function setRecords(array $records): BuilderInterface
     {
         if ($this->records !== null) {
-            throw new \LogicException('Builder records is already set.');
+            throw new LogicException('Builder records is already set.');
         }
 
         $this->records = $records;

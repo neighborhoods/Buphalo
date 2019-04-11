@@ -1,4 +1,4 @@
-actors:
+supporting_actors:
   Actor\AwareTrait.php:
   Actor\Factory.php:
   Actor\Factory.service.yml:

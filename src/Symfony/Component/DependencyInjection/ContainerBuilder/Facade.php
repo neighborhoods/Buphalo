@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use LogicException;
 use Neighborhoods\Bradfab\Symfony\Component\Finder\Map;
 use Neighborhoods\Bradfab\Symfony\Component\Finder\MapInterface;
 use Symfony\Component\Config\FileLocator;
@@ -54,7 +55,7 @@ class Facade implements FacadeInterface
         if ($this->containerBuilder === null) {
             $this->containerBuilder = $containerBuilder;
         } else {
-            throw new \LogicException('Container builder is already set.');
+            throw new LogicException('Container builder is already set.');
         }
 
         return $this;
@@ -63,7 +64,7 @@ class Facade implements FacadeInterface
     public function getContainerBuilder(): ContainerBuilder
     {
         if ($this->containerBuilder === null) {
-            throw new \LogicException('Container builder is not set.');
+            throw new LogicException('Container builder is not set.');
         }
 
         return $this->containerBuilder;
@@ -78,7 +79,7 @@ class Facade implements FacadeInterface
                 $loader->import($servicesYmlFilePath);
             }
         } else {
-            throw new \LogicException('Yaml is already assembled.');
+            throw new LogicException('Yaml is already assembled.');
         }
 
         return $this;
@@ -93,7 +94,7 @@ class Facade implements FacadeInterface
             $containerBuilder->compile(true);
             $this->containerIsBuilt = true;
         } else {
-            throw new \LogicException('Container is already built.');
+            throw new LogicException('Container is already built.');
         }
 
         return $this;

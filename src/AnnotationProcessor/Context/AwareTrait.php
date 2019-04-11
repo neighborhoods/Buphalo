@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\AnnotationProcessor\Context;
 
+use LogicException;
 use Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setAnnotationProcessorContext(ContextInterface $Context): self
     {
         if ($this->hasAnnotationProcessorContext()) {
-            throw new \LogicException('AnnotationProcessorContext is already set.');
+            throw new LogicException('AnnotationProcessorContext is already set.');
         }
         $this->AnnotationProcessorContext = $Context;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getAnnotationProcessorContext(): ContextInterface
     {
         if (!$this->hasAnnotationProcessorContext()) {
-            throw new \LogicException('AnnotationProcessorContext is not set.');
+            throw new LogicException('AnnotationProcessorContext is not set.');
         }
 
         return $this->AnnotationProcessorContext;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetAnnotationProcessorContext(): self
     {
         if (!$this->hasAnnotationProcessorContext()) {
-            throw new \LogicException('AnnotationProcessorContext is not set.');
+            throw new LogicException('AnnotationProcessorContext is not set.');
         }
         unset($this->AnnotationProcessorContext);
 

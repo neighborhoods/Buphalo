@@ -5,6 +5,7 @@ namespace Neighborhoods\Bradfab;
 
 use Neighborhoods\Bradfab\Protean;
 use Neighborhoods\Bradfab\TargetApplication\FactoryInterface;
+use ReflectionClass;
 
 class Bradfab implements BradfabInterface
 {
@@ -12,7 +13,7 @@ class Bradfab implements BradfabInterface
 
     public function run(): BradfabInterface
     {
-        $this->getProteanContainerBuilder()->setCachedContainerFileName((new \ReflectionClass($this))->getShortName());
+        $this->getProteanContainerBuilder()->setCachedContainerFileName((new ReflectionClass($this))->getShortName());
         $this->getProteanContainerBuilder()->setCanBuildZendExpressive(false);
         $this->getProteanContainerBuilder()->setCanCacheContainer(false);
         $this->getProteanContainerBuilder()->registerServiceAsPublic(FabricatorInterface::class);

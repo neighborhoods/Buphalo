@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\IntegerMap\Factory;
 
+use LogicException;
 use Neighborhoods\Bradfab\IntegerMap\FactoryInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setIntegerMapFactory(FactoryInterface $IntegerMapFactory): self
     {
         if ($this->hasIntegerMapFactory()) {
-            throw new \LogicException('IntegerMapFactory is already set.');
+            throw new LogicException('IntegerMapFactory is already set.');
         }
         $this->IntegerMapFactory = $IntegerMapFactory;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getIntegerMapFactory(): FactoryInterface
     {
         if (!$this->hasIntegerMapFactory()) {
-            throw new \LogicException('IntegerMapFactory is not set.');
+            throw new LogicException('IntegerMapFactory is not set.');
         }
 
         return $this->IntegerMapFactory;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetIntegerMapFactory(): self
     {
         if (!$this->hasIntegerMapFactory()) {
-            throw new \LogicException('IntegerMapFactory is not set.');
+            throw new LogicException('IntegerMapFactory is not set.');
         }
         unset($this->IntegerMapFactory);
 

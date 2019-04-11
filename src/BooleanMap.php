@@ -3,13 +3,16 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-class BooleanMap extends \ArrayIterator implements BooleanMapInterface
+use ArrayIterator;
+use LogicException;
+
+class BooleanMap extends ArrayIterator implements BooleanMapInterface
 {
     /** @param bool ...$booleans */
     public function __construct(array $booleans = array(), int $flags = 0)
     {
         if ($this->count() !== 0) {
-            throw new \LogicException('Map is not empty.');
+            throw new LogicException('Map is not empty.');
         }
 
         if (!empty($booleans)) {

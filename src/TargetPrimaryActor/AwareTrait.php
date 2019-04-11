@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\TargetPrimaryActor;
 
+use LogicException;
 use Neighborhoods\Bradfab\TargetPrimaryActorInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setTargetPrimaryActor(TargetPrimaryActorInterface $TargetPrimaryActor): self
     {
         if ($this->hasTargetPrimaryActor()) {
-            throw new \LogicException('TargetPrimaryActor is already set.');
+            throw new LogicException('TargetPrimaryActor is already set.');
         }
         $this->TargetPrimaryActor = $TargetPrimaryActor;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getTargetPrimaryActor(): TargetPrimaryActorInterface
     {
         if (!$this->hasTargetPrimaryActor()) {
-            throw new \LogicException('TargetPrimaryActor is not set.');
+            throw new LogicException('TargetPrimaryActor is not set.');
         }
 
         return $this->TargetPrimaryActor;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetTargetPrimaryActor(): self
     {
         if (!$this->hasTargetPrimaryActor()) {
-            throw new \LogicException('TargetPrimaryActor is not set.');
+            throw new LogicException('TargetPrimaryActor is not set.');
         }
         unset($this->TargetPrimaryActor);
 

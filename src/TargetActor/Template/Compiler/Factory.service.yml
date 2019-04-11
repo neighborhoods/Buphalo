@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\Bradfab\TargetActor\Template\Compiler\FactoryInterface:
-    class: Neighborhoods\Bradfab\TargetActor\Template\Compiler\Factory
-    public: false
-    shared: true
-    calls:
-      - [setTargetActorTemplateCompiler, ['@Neighborhoods\Bradfab\TargetActor\Template\CompilerInterface']]

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\FabricationFile\Actor\Map\Builder;
 
+use LogicException;
 use Neighborhoods\Bradfab\FabricationFile\Actor\Map\BuilderInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setFabricationFileActorMapBuilder(BuilderInterface $FabricationFileActorMapBuilder): self
     {
         if ($this->hasFabricationFileActorMapBuilder()) {
-            throw new \LogicException('FabricationFileActorMapBuilder is already set.');
+            throw new LogicException('FabricationFileActorMapBuilder is already set.');
         }
         $this->FabricationFileActorMapBuilder = $FabricationFileActorMapBuilder;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getFabricationFileActorMapBuilder(): BuilderInterface
     {
         if (!$this->hasFabricationFileActorMapBuilder()) {
-            throw new \LogicException('FabricationFileActorMapBuilder is not set.');
+            throw new LogicException('FabricationFileActorMapBuilder is not set.');
         }
 
         return $this->FabricationFileActorMapBuilder;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetFabricationFileActorMapBuilder(): self
     {
         if (!$this->hasFabricationFileActorMapBuilder()) {
-            throw new \LogicException('FabricationFileActorMapBuilder is not set.');
+            throw new LogicException('FabricationFileActorMapBuilder is not set.');
         }
         unset($this->FabricationFileActorMapBuilder);
 

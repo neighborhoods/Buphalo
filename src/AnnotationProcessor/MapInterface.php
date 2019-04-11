@@ -3,9 +3,13 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\AnnotationProcessor;
 
+use ArrayAccess;
+use Countable;
 use Neighborhoods\Bradfab\AnnotationProcessorInterface;
+use SeekableIterator;
+use Serializable;
 
-interface MapInterface extends \SeekableIterator, \ArrayAccess, \Serializable, \Countable
+interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param AnnotationProcessorInterface ...$AnnotationProcessors */
     public function __construct(array $AnnotationProcessors = array(), int $flags = 0);

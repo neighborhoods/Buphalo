@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\AnnotationProcessor\Context;
 
+use LogicException;
 use Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface;
 
 class Builder implements BuilderInterface
@@ -24,7 +25,7 @@ class Builder implements BuilderInterface
     protected function getRecord(): array
     {
         if ($this->record === null) {
-            throw new \LogicException('Builder record has not been set.');
+            throw new LogicException('Builder record has not been set.');
         }
 
         return $this->record;
@@ -38,7 +39,7 @@ class Builder implements BuilderInterface
     public function setRecord(array $record): BuilderInterface
     {
         if ($this->record !== null) {
-            throw new \LogicException('Builder record is already set.');
+            throw new LogicException('Builder record is already set.');
         }
 
         $this->record = $record;

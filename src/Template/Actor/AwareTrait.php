@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Template\Actor;
 
+use LogicException;
 use Neighborhoods\Bradfab\Template\ActorInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setActor(ActorInterface $Actor): self
     {
         if ($this->hasActor()) {
-            throw new \LogicException('Actor is already set.');
+            throw new LogicException('Actor is already set.');
         }
         $this->Actor = $Actor;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getActor(): ActorInterface
     {
         if (!$this->hasActor()) {
-            throw new \LogicException('Actor is not set.');
+            throw new LogicException('Actor is not set.');
         }
 
         return $this->Actor;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetActor(): self
     {
         if (!$this->hasActor()) {
-            throw new \LogicException('Actor is not set.');
+            throw new LogicException('Actor is not set.');
         }
         unset($this->Actor);
 

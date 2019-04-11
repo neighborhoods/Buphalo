@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\AnnotationProcessor\Builder;
 
+use LogicException;
 use Neighborhoods\Bradfab\AnnotationProcessor\BuilderInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setAnnotationProcessorBuilder(BuilderInterface $AnnotationProcessorBuilder): self
     {
         if ($this->hasAnnotationProcessorBuilder()) {
-            throw new \LogicException('AnnotationProcessorBuilder is already set.');
+            throw new LogicException('AnnotationProcessorBuilder is already set.');
         }
         $this->AnnotationProcessorBuilder = $AnnotationProcessorBuilder;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getAnnotationProcessorBuilder(): BuilderInterface
     {
         if (!$this->hasAnnotationProcessorBuilder()) {
-            throw new \LogicException('AnnotationProcessorBuilder is not set.');
+            throw new LogicException('AnnotationProcessorBuilder is not set.');
         }
 
         return $this->AnnotationProcessorBuilder;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetAnnotationProcessorBuilder(): self
     {
         if (!$this->hasAnnotationProcessorBuilder()) {
-            throw new \LogicException('AnnotationProcessorBuilder is not set.');
+            throw new LogicException('AnnotationProcessorBuilder is not set.');
         }
         unset($this->AnnotationProcessorBuilder);
 

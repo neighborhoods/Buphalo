@@ -3,16 +3,18 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Symfony\Component\Finder;
 
+use ArrayIterator;
+use LogicException;
 use Symfony\Component\Finder\Finder;
 
 /** @codeCoverageIgnore */
-class Map extends \ArrayIterator implements MapInterface
+class Map extends ArrayIterator implements MapInterface
 {
     /** @param Finder ...$finders */
     public function __construct(array $finders = array(), int $flags = 0)
     {
         if ($this->count() !== 0) {
-            throw new \LogicException('Map is not empty.');
+            throw new LogicException('Map is not empty.');
         }
 
         if (!empty($finders)) {

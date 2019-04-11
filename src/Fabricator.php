@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
+use LogicException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -10,13 +11,13 @@ use Symfony\Component\Finder\SplFileInfo;
 class Fabricator implements FabricatorInterface
 {
     use FabricationFile\Builder\Factory\AwareTrait;
-    use TargetActor\Template\Factory\AwareTrait;
-    use TargetActor\Template\Tokenizer\Factory\AwareTrait;
-    use TargetActor\Template\Compiler\Factory\AwareTrait;
-    use TargetActor\Template\Compiler\Strategy\Factory\AwareTrait;
+    use Actor\Template\Factory\AwareTrait;
+    use Actor\Template\Tokenizer\Factory\AwareTrait;
+    use Actor\Template\Compiler\Factory\AwareTrait;
+    use Actor\Template\Compiler\Strategy\Factory\AwareTrait;
     use TargetPrimaryActor\Factory\AwareTrait;
-    use TargetActor\Writer\Factory\AwareTrait;
-    use TargetActor\Factory\AwareTrait;
+    use Actor\Writer\Factory\AwareTrait;
+    use Actor\Factory\AwareTrait;
     use TargetApplication\AwareTrait;
     protected $finder;
     protected $fabricate_yaml_files;
@@ -81,7 +82,7 @@ class Fabricator implements FabricatorInterface
                 $pathname = $file->getPathname();
                 if (isset($this->fabricate_yaml_files[$pathname])) {
                     $message = sprintf('Fabricate yaml file with pathname[%s] is already set.', $pathname);
-                    throw new \LogicException($message);
+                    throw new LogicException($message);
                 }
                 $this->fabricate_yaml_files[$pathname] = $file;
             }
@@ -93,7 +94,7 @@ class Fabricator implements FabricatorInterface
     protected function getFinder(): Finder
     {
         if ($this->finder === null) {
-            throw new \LogicException('Bradfab finder has not been set.');
+            throw new LogicException('Bradfab finder has not been set.');
         }
 
         return $this->finder;
@@ -102,7 +103,7 @@ class Fabricator implements FabricatorInterface
     public function setFinder(Finder $finder): FabricatorInterface
     {
         if ($this->finder !== null) {
-            throw new \LogicException('Bradfab finder is already set.');
+            throw new LogicException('Bradfab finder is already set.');
         }
 
         $this->finder = $finder;
@@ -113,7 +114,7 @@ class Fabricator implements FabricatorInterface
     public function getFilesystem(): Filesystem
     {
         if ($this->filesystem === null) {
-            throw new \LogicException('Bradfab filesystem has not been set.');
+            throw new LogicException('Bradfab filesystem has not been set.');
         }
 
         return $this->filesystem;
@@ -122,7 +123,7 @@ class Fabricator implements FabricatorInterface
     public function setFilesystem(Filesystem $filesystem): FabricatorInterface
     {
         if ($this->filesystem !== null) {
-            throw new \LogicException('Bradfab filesystem is already set.');
+            throw new LogicException('Bradfab filesystem is already set.');
         }
 
         $this->filesystem = $filesystem;
@@ -133,7 +134,7 @@ class Fabricator implements FabricatorInterface
     public function getTemplateTreeDirectoryPath(): string
     {
         if ($this->template_tree_directory_path === null) {
-            throw new \LogicException('Bradfab template_tree_directory_path has not been set.');
+            throw new LogicException('Bradfab template_tree_directory_path has not been set.');
         }
 
         return $this->template_tree_directory_path;
@@ -142,7 +143,7 @@ class Fabricator implements FabricatorInterface
     public function setTemplateTreeDirectoryPath(string $template_tree_directory_path): FabricatorInterface
     {
         if ($this->template_tree_directory_path !== null) {
-            throw new \LogicException('Bradfab template_tree_directory_path is already set.');
+            throw new LogicException('Bradfab template_tree_directory_path is already set.');
         }
 
         $this->template_tree_directory_path = $template_tree_directory_path;

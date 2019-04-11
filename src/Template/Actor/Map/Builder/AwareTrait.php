@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Template\Actor\Map\Builder;
 
+use LogicException;
 use Neighborhoods\Bradfab\Template\Actor\Map\BuilderInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setActorMapBuilder(BuilderInterface $ActorMapBuilder): self
     {
         if ($this->hasActorMapBuilder()) {
-            throw new \LogicException('ActorMapBuilder is already set.');
+            throw new LogicException('ActorMapBuilder is already set.');
         }
         $this->ActorMapBuilder = $ActorMapBuilder;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getActorMapBuilder(): BuilderInterface
     {
         if (!$this->hasActorMapBuilder()) {
-            throw new \LogicException('ActorMapBuilder is not set.');
+            throw new LogicException('ActorMapBuilder is not set.');
         }
 
         return $this->ActorMapBuilder;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetActorMapBuilder(): self
     {
         if (!$this->hasActorMapBuilder()) {
-            throw new \LogicException('ActorMapBuilder is not set.');
+            throw new LogicException('ActorMapBuilder is not set.');
         }
         unset($this->ActorMapBuilder);
 

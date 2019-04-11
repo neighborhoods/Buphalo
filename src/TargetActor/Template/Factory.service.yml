@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\Bradfab\TargetActor\Template\FactoryInterface:
-    class: Neighborhoods\Bradfab\TargetActor\Template\Factory
-    public: false
-    shared: true
-    calls:
-      - [setTargetActorTemplate, ['@Neighborhoods\Bradfab\TargetActor\TemplateInterface']]

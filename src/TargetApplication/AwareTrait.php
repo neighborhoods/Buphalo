@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\TargetApplication;
 
+use LogicException;
 use Neighborhoods\Bradfab\TargetApplicationInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setTargetApplication(TargetApplicationInterface $TargetApplication): self
     {
         if ($this->hasTargetApplication()) {
-            throw new \LogicException('TargetApplication is already set.');
+            throw new LogicException('TargetApplication is already set.');
         }
         $this->TargetApplication = $TargetApplication;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getTargetApplication(): TargetApplicationInterface
     {
         if (!$this->hasTargetApplication()) {
-            throw new \LogicException('TargetApplication is not set.');
+            throw new LogicException('TargetApplication is not set.');
         }
 
         return $this->TargetApplication;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetTargetApplication(): self
     {
         if (!$this->hasTargetApplication()) {
-            throw new \LogicException('TargetApplication is not set.');
+            throw new LogicException('TargetApplication is not set.');
         }
         unset($this->TargetApplication);
 

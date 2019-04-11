@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\FabricationFile;
 
+use LogicException;
 use Neighborhoods\Bradfab\FabricationFileInterface;
 use Neighborhoods\Bradfab\FabricationFile;
 use Symfony\Component\Finder\SplFileInfo;
@@ -40,7 +41,7 @@ class Builder implements BuilderInterface
     protected function getSPLFileInfo(): SplFileInfo
     {
         if ($this->spl_file_info === null) {
-            throw new \LogicException('Builder spl_file_info has not been set.');
+            throw new LogicException('Builder spl_file_info has not been set.');
         }
 
         return $this->spl_file_info;
@@ -49,7 +50,7 @@ class Builder implements BuilderInterface
     public function setSplFileInfo(SplFileInfo $spl_file_info): BuilderInterface
     {
         if ($this->spl_file_info !== null) {
-            throw new \LogicException('Builder spl_file_info is already set.');
+            throw new LogicException('Builder spl_file_info is already set.');
         }
 
         $this->spl_file_info = $spl_file_info;

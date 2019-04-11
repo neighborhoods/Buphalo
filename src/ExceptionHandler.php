@@ -3,9 +3,11 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
+use Throwable;
+
 class ExceptionHandler implements ExceptionHandlerInterface
 {
-    public function __invoke(\Throwable $throwable): ExceptionHandlerInterface
+    public function __invoke(Throwable $throwable): ExceptionHandlerInterface
     {
         $newRelic = new NewRelic();
         if ($newRelic->isExtensionLoaded()) {

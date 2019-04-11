@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\FloatingPointMap\Factory;
 
+use LogicException;
 use Neighborhoods\Bradfab\FloatingPointMap\FactoryInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setFloatingPointMapFactory(FactoryInterface $FloatingPointMapFactory): self
     {
         if ($this->hasFloatingPointMapFactory()) {
-            throw new \LogicException('FloatingPointMapFactory is already set.');
+            throw new LogicException('FloatingPointMapFactory is already set.');
         }
         $this->FloatingPointMapFactory = $FloatingPointMapFactory;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getFloatingPointMapFactory(): FactoryInterface
     {
         if (!$this->hasFloatingPointMapFactory()) {
-            throw new \LogicException('FloatingPointMapFactory is not set.');
+            throw new LogicException('FloatingPointMapFactory is not set.');
         }
 
         return $this->FloatingPointMapFactory;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetFloatingPointMapFactory(): self
     {
         if (!$this->hasFloatingPointMapFactory()) {
-            throw new \LogicException('FloatingPointMapFactory is not set.');
+            throw new LogicException('FloatingPointMapFactory is not set.');
         }
         unset($this->FloatingPointMapFactory);
 

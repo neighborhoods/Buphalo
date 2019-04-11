@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Template\Actor\Builder;
 
+use LogicException;
 use Neighborhoods\Bradfab\Template\Actor\BuilderInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setActorBuilder(BuilderInterface $ActorBuilder): self
     {
         if ($this->hasActorBuilder()) {
-            throw new \LogicException('ActorBuilder is already set.');
+            throw new LogicException('ActorBuilder is already set.');
         }
         $this->ActorBuilder = $ActorBuilder;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getActorBuilder(): BuilderInterface
     {
         if (!$this->hasActorBuilder()) {
-            throw new \LogicException('ActorBuilder is not set.');
+            throw new LogicException('ActorBuilder is not set.');
         }
 
         return $this->ActorBuilder;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetActorBuilder(): self
     {
         if (!$this->hasActorBuilder()) {
-            throw new \LogicException('ActorBuilder is not set.');
+            throw new LogicException('ActorBuilder is not set.');
         }
         unset($this->ActorBuilder);
 

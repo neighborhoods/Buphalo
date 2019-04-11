@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Bradfab\TargetActorInterface:
-    class: Neighborhoods\Bradfab\TargetActor
-    public: false
-    shared: false

@@ -8,18 +8,19 @@ class TargetPrimaryActor implements TargetPrimaryActorInterface
     use FabricationFile\AwareTrait;
     use TargetApplication\AwareTrait;
 
-    protected $relative_class_path;
-    protected $namespace;
-    protected $full_capital_camel_case_name;
-    protected $source_directory_path;
-    protected $fabrication_directory_path;
-    protected $short_capital_camel_case_name;
+    protected $RelativeParentClassPath;
+    protected $Namespace;
+    protected $FullPascalCaseName;
+    protected $ShortPascalCaseName;
+    protected $SourceDirectoryPath;
+    protected $FabricationDirectoryPath;
+    protected $RelativeClassPath;
 
-    public function getRelativeClassPath(): string
+    public function getRelativeParentClassPath(): string
     {
-        if ($this->relative_class_path === null) {
+        if ($this->RelativeParentClassPath === null) {
             $filePath = $this->getSourceDirectoryPath();
-            $relativeClassPath = ltrim(
+            $relativeParentClassPath = ltrim(
                 str_replace(
                     $this->getTargetApplication()->getSourceDirectoryPath(),
                     '',
@@ -27,41 +28,55 @@ class TargetPrimaryActor implements TargetPrimaryActorInterface
                 ),
                 '/'
             );
-            $relativeClassPath = str_replace(
+            $relativeParentClassPath = str_replace(
                 '/',
                 '\\',
-                $relativeClassPath
+                $relativeParentClassPath
             );
-            $this->relative_class_path = $relativeClassPath;
+            $this->RelativeParentClassPath = $relativeParentClassPath;
         }
 
-        return $this->relative_class_path;
+        return $this->RelativeParentClassPath;
     }
 
-    public function getNamespacePrefix(): string
+    public function getRelativeClassPath(): string
     {
-        if ($this->namespace === null) {
+        if ($this->RelativeClassPath === null) {
+            $relativeClassPath = sprintf(
+                '%s\%s',
+                $this->getRelativeParentClassPath(),
+                $this->getShortCapitalCamelCaseName()
+            );
+            $this->RelativeClassPath = $relativeClassPath;
+        }
+
+        return $this->RelativeClassPath;
+    }
+
+    public function getNamespace(): string
+    {
+        if ($this->Namespace === null) {
             $namespace = $this->getTargetApplication()->getNamespace();
-            $this->namespace = $namespace;
+            $this->Namespace = $namespace;
         }
 
-        return $this->namespace;
+        return $this->Namespace;
     }
 
-    public function getFullCapitalCamelCaseName(): string
+    public function getFullPascalCaseName(): string
     {
-        if ($this->full_capital_camel_case_name === null) {
-            $relativeClassPath = $this->getRelativeClassPath();
-            $fullCapitalCamelCaseName = str_replace('\\', '', $relativeClassPath);
-            $this->full_capital_camel_case_name = $fullCapitalCamelCaseName;
+        if ($this->FullPascalCaseName === null) {
+            $relativeClassPath = $this->getRelativeParentClassPath();
+            $fullPascalCaseName = str_replace('\\', '', $relativeClassPath);
+            $this->FullPascalCaseName = $fullPascalCaseName;
         }
 
-        return $this->full_capital_camel_case_name;
+        return $this->FullPascalCaseName;
     }
 
     public function getShortCapitalCamelCaseName(): string
     {
-        if ($this->short_capital_camel_case_name === null) {
+        if ($this->ShortPascalCaseName === null) {
             $extensionRemoved = str_replace(
                 FabricationFileInterface::FILE_EXTENSION_FABRICATION,
                 '',
@@ -69,19 +84,19 @@ class TargetPrimaryActor implements TargetPrimaryActorInterface
             );
             $position = strrpos($extensionRemoved, '/');
             if ($position !== false) {
-                $shortCapitalCamelCaseName = substr($extensionRemoved, $position + 1);
+                $shortPascalCaseName = substr($extensionRemoved, $position + 1);
             } else {
-                $shortCapitalCamelCaseName = $extensionRemoved;
+                $shortPascalCaseName = $extensionRemoved;
             }
-            $this->short_capital_camel_case_name = $shortCapitalCamelCaseName;
+            $this->ShortPascalCaseName = $shortPascalCaseName;
         }
 
-        return $this->short_capital_camel_case_name;
+        return $this->ShortPascalCaseName;
     }
 
     public function getSourceDirectoryPath(): string
     {
-        if ($this->source_directory_path === null) {
+        if ($this->SourceDirectoryPath === null) {
             $fabricationFilePath = $this->getFabricationFile()->getFilePath();
             $sourceDirectoryPath = substr(
                 $fabricationFilePath,
@@ -91,23 +106,23 @@ class TargetPrimaryActor implements TargetPrimaryActorInterface
                     sprintf('/%s', $this->getShortCapitalCamelCaseName())
                 )
             );
-            $this->source_directory_path = $sourceDirectoryPath;
+            $this->SourceDirectoryPath = $sourceDirectoryPath;
         }
 
-        return $this->source_directory_path;
+        return $this->SourceDirectoryPath;
     }
 
     public function getFabricationDirectoryPath(): string
     {
-        if ($this->fabrication_directory_path === null) {
+        if ($this->FabricationDirectoryPath === null) {
             $fabricationDirectoryPath = str_replace(
                 $this->getTargetApplication()->getSourceDirectoryPath(),
                 $this->getTargetApplication()->getFabricationPath(),
                 $this->getSourceDirectoryPath()
             );
-            $this->fabrication_directory_path = $fabricationDirectoryPath;
+            $this->FabricationDirectoryPath = $fabricationDirectoryPath;
         }
 
-        return $this->fabrication_directory_path;
+        return $this->FabricationDirectoryPath;
     }
 }

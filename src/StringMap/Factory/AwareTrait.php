@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\StringMap\Factory;
 
+use LogicException;
 use Neighborhoods\Bradfab\StringMap\FactoryInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setStringMapFactory(FactoryInterface $StringMapFactory): self
     {
         if ($this->hasStringMapFactory()) {
-            throw new \LogicException('StringMapFactory is already set.');
+            throw new LogicException('StringMapFactory is already set.');
         }
         $this->StringMapFactory = $StringMapFactory;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getStringMapFactory(): FactoryInterface
     {
         if (!$this->hasStringMapFactory()) {
-            throw new \LogicException('StringMapFactory is not set.');
+            throw new LogicException('StringMapFactory is not set.');
         }
 
         return $this->StringMapFactory;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetStringMapFactory(): self
     {
         if (!$this->hasStringMapFactory()) {
-            throw new \LogicException('StringMapFactory is not set.');
+            throw new LogicException('StringMapFactory is not set.');
         }
         unset($this->StringMapFactory);
 

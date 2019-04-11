@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Template\Actor\Builder\Factory;
 
+use LogicException;
 use Neighborhoods\Bradfab\Template\Actor\Builder\FactoryInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setActorBuilderFactory(FactoryInterface $ActorBuilderFactory): self
     {
         if ($this->hasActorBuilderFactory()) {
-            throw new \LogicException('ActorBuilderFactory is already set.');
+            throw new LogicException('ActorBuilderFactory is already set.');
         }
         $this->ActorBuilderFactory = $ActorBuilderFactory;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getActorBuilderFactory(): FactoryInterface
     {
         if (!$this->hasActorBuilderFactory()) {
-            throw new \LogicException('ActorBuilderFactory is not set.');
+            throw new LogicException('ActorBuilderFactory is not set.');
         }
 
         return $this->ActorBuilderFactory;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetActorBuilderFactory(): self
     {
         if (!$this->hasActorBuilderFactory()) {
-            throw new \LogicException('ActorBuilderFactory is not set.');
+            throw new LogicException('ActorBuilderFactory is not set.');
         }
         unset($this->ActorBuilderFactory);
 

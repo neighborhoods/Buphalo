@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Bradfab\ActorInterface:
+    class: Neighborhoods\Bradfab\Actor
+    public: false
+    shared: false

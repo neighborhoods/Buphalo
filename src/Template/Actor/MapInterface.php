@@ -3,9 +3,13 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Template\Actor;
 
+use ArrayAccess;
+use Countable;
 use Neighborhoods\Bradfab\Template\ActorInterface;
+use SeekableIterator;
+use Serializable;
 
-interface MapInterface extends \SeekableIterator, \ArrayAccess, \Serializable, \Countable
+interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param ActorInterface ...$Actors */
     public function __construct(array $Actors = array(), int $flags = 0);

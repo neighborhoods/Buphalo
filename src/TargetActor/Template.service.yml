@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Bradfab\TargetActor\TemplateInterface:
-    class: Neighborhoods\Bradfab\TargetActor\Template
-    public: false
-    shared: false

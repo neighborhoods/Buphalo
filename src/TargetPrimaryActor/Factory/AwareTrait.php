@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\TargetPrimaryActor\Factory;
 
+use LogicException;
 use Neighborhoods\Bradfab\TargetPrimaryActor\FactoryInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setTargetPrimaryActorFactory(FactoryInterface $TargetPrimaryActorFactory): self
     {
         if ($this->hasTargetPrimaryActorFactory()) {
-            throw new \LogicException('TargetPrimaryActorFactory is already set.');
+            throw new LogicException('TargetPrimaryActorFactory is already set.');
         }
         $this->TargetPrimaryActorFactory = $TargetPrimaryActorFactory;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getTargetPrimaryActorFactory(): FactoryInterface
     {
         if (!$this->hasTargetPrimaryActorFactory()) {
-            throw new \LogicException('TargetPrimaryActorFactory is not set.');
+            throw new LogicException('TargetPrimaryActorFactory is not set.');
         }
 
         return $this->TargetPrimaryActorFactory;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetTargetPrimaryActorFactory(): self
     {
         if (!$this->hasTargetPrimaryActorFactory()) {
-            throw new \LogicException('TargetPrimaryActorFactory is not set.');
+            throw new LogicException('TargetPrimaryActorFactory is not set.');
         }
         unset($this->TargetPrimaryActorFactory);
 

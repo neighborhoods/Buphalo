@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
+use Throwable;
+
 class NewRelic implements NewRelicInterface
 {
     protected $is_extension_loaded;
@@ -133,7 +135,7 @@ class NewRelic implements NewRelicInterface
         return $this;
     }
 
-    public function noticeThrowable(\Throwable $throwable): NewRelicInterface
+    public function noticeThrowable(Throwable $throwable): NewRelicInterface
     {
         if ($this->isExtensionLoaded()) {
             newrelic_notice_error($throwable);

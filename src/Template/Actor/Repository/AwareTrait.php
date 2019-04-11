@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Template\Actor\Repository;
 
+use LogicException;
 use Neighborhoods\Bradfab\Template\Actor\RepositoryInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setActorRepository(RepositoryInterface $ActorRepository): self
     {
         if ($this->hasActorRepository()) {
-            throw new \LogicException('ActorRepository is already set.');
+            throw new LogicException('ActorRepository is already set.');
         }
         $this->ActorRepository = $ActorRepository;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getActorRepository(): RepositoryInterface
     {
         if (!$this->hasActorRepository()) {
-            throw new \LogicException('ActorRepository is not set.');
+            throw new LogicException('ActorRepository is not set.');
         }
 
         return $this->ActorRepository;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetActorRepository(): self
     {
         if (!$this->hasActorRepository()) {
-            throw new \LogicException('ActorRepository is not set.');
+            throw new LogicException('ActorRepository is not set.');
         }
         unset($this->ActorRepository);
 

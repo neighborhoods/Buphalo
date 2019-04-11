@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\FabricationFile;
 
+use LogicException;
 use Neighborhoods\Bradfab\FabricationFileInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setFabricationFile(FabricationFileInterface $FabricationFile): self
     {
         if ($this->hasFabricationFile()) {
-            throw new \LogicException('FabricationFile is already set.');
+            throw new LogicException('FabricationFile is already set.');
         }
         $this->FabricationFile = $FabricationFile;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getFabricationFile(): FabricationFileInterface
     {
         if (!$this->hasFabricationFile()) {
-            throw new \LogicException('FabricationFile is not set.');
+            throw new LogicException('FabricationFile is not set.');
         }
 
         return $this->FabricationFile;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetFabricationFile(): self
     {
         if (!$this->hasFabricationFile()) {
-            throw new \LogicException('FabricationFile is not set.');
+            throw new LogicException('FabricationFile is not set.');
         }
         unset($this->FabricationFile);
 

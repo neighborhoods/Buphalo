@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
+use Throwable;
+
 interface NewRelicInterface
 {
     public const EXTENSION_NAME_NEWRELIC = 'newrelic';
@@ -28,7 +30,7 @@ interface NewRelicInterface
 
     public function noticeMessage(string $message): NewRelicInterface;
 
-    public function noticeThrowable(\Throwable $throwable): NewRelicInterface;
+    public function noticeThrowable(Throwable $throwable): NewRelicInterface;
 
     public function recordCustomEvent(string $name, array $attributes): NewRelicInterface;
 

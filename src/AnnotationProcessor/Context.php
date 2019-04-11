@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\AnnotationProcessor;
 
+use LogicException;
 use Neighborhoods\Bradfab\FabricationFile;
 
 class Context implements ContextInterface
@@ -17,7 +18,7 @@ class Context implements ContextInterface
     public function getStaticContextRecord(): array
     {
         if ($this->static_context_record === null) {
-            throw new \LogicException('Context static_context_record has not been set.');
+            throw new LogicException('Context static_context_record has not been set.');
         }
 
         return $this->static_context_record;
@@ -31,7 +32,7 @@ class Context implements ContextInterface
     public function setStaticContextRecord(array $static_context_record): ContextInterface
     {
         if ($this->static_context_record !== null) {
-            throw new \LogicException('Context static_context_record is already set.');
+            throw new LogicException('Context static_context_record is already set.');
         }
 
         $this->static_context_record = $static_context_record;
@@ -47,7 +48,7 @@ class Context implements ContextInterface
     public function getAnnotationContents(): string
     {
         if ($this->annotation_contents === null) {
-            throw new \LogicException('Context annotation_contents has not been set.');
+            throw new LogicException('Context annotation_contents has not been set.');
         }
 
         return $this->annotation_contents;
@@ -56,7 +57,7 @@ class Context implements ContextInterface
     public function setAnnotationContents(string $annotation_contents): ContextInterface
     {
         if ($this->annotation_contents !== null) {
-            throw new \LogicException('Context annotation_contents is already set.');
+            throw new LogicException('Context annotation_contents is already set.');
         }
 
         $this->annotation_contents = $annotation_contents;

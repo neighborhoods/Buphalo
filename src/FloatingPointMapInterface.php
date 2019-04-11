@@ -3,7 +3,12 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-interface FloatingPointMapInterface extends \SeekableIterator, \ArrayAccess, \Serializable, \Countable
+use ArrayAccess;
+use Countable;
+use SeekableIterator;
+use Serializable;
+
+interface FloatingPointMapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param float ...$floatingPoints */
     public function __construct(array $floatingPoints = array(), int $flags = 0);

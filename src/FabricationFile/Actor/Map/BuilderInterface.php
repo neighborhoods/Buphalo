@@ -7,7 +7,7 @@ use Neighborhoods\Bradfab\FabricationFile\Actor\MapInterface;
 
 interface BuilderInterface
 {
-    public const ACTORS = 'actors';
+    public const SUPPORTING_ACTORS = 'supporting_actors';
 
     public function build(): MapInterface;
 

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\FabricationFile\Actor;
 
+use LogicException;
 use Neighborhoods\Bradfab\FabricationFile\ActorInterface;
 use Neighborhoods\Bradfab\AnnotationProcessor;
 
@@ -26,11 +27,11 @@ class Builder implements BuilderInterface
         );
         $actor->setRelativeTemplatePath($looksLikeRelativeTemplatePath);
         $actor->setTemplateFileExtension($looksLikeTemplateFileExtension);
-        if (isset($record[BuilderInterface::LOOKS_LIKE])) {
-            $looksLikeTemplateFileExtension = $this->getTemplateFileExtension($record[BuilderInterface::LOOKS_LIKE]);
+        if (isset($record[BuilderInterface::AS])) {
+            $looksLikeTemplateFileExtension = $this->getTemplateFileExtension($record[BuilderInterface::AS]);
             $looksLikeRelativeTemplatePath = $this->getRelativeTemplatePath(
                 $looksLikeTemplateFileExtension,
-                $record[BuilderInterface::LOOKS_LIKE]
+                $record[BuilderInterface::AS]
             );
             $actor->setLooksLikeRelativeTemplatePath($looksLikeRelativeTemplatePath);
             $actor->setLooksLikeTemplateFileExtension($looksLikeTemplateFileExtension);
@@ -74,7 +75,7 @@ class Builder implements BuilderInterface
     protected function getRecord(): array
     {
         if ($this->record === null) {
-            throw new \LogicException('Builder record has not been set.');
+            throw new LogicException('Builder record has not been set.');
         }
 
         return $this->record;
@@ -83,7 +84,7 @@ class Builder implements BuilderInterface
     public function setRecord(array $record): BuilderInterface
     {
         if ($this->record !== null) {
-            throw new \LogicException('Builder record is already set.');
+            throw new LogicException('Builder record is already set.');
         }
 
         $this->record = $record;

@@ -1,17 +1,21 @@
 #template_tree_layer_preference:
-actors:
+actor:
   Actor.php:
+    as: Test.php
   Actor.service.yml:
+    as: Test.service.yml
   ActorInterface.php:
+    as: TestInterface.php
+supporting_actors:
   Actor\AwareTrait.php:
   Actor\Factory.php:
   Actor\Factory.service.yml:
   Actor\FactoryInterface.php:
   Actor\Factory\AwareTrait.php:
-  #  Actor\SpecialBuilder.php:
-#    looks_like: Actor\Builder.php
+#  Actor\SpecialBuilder.php:
+#    as: Actor\Builder.php
   Actor\Builder.php:
-    #    template_tree_layer_preference:
+#   template_tree_layer_preference:
     annotation_processors:
       Neighborhoods\Bradfab\Template\Actor\Builder.build1:
         processor_fqcn: \Neighborhoods\Bradfab\AnnotationProcessor

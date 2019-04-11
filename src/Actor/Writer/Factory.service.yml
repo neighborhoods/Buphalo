@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\Actor\Writer\FactoryInterface:
+    class: Neighborhoods\Bradfab\Actor\Writer\Factory
+    public: false
+    shared: true
+    calls:
+      - [setTargetActorWriter, ['@Neighborhoods\Bradfab\Actor\WriterInterface']]

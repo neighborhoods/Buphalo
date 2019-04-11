@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\AnnotationProcessor\Repository;
 
+use LogicException;
 use Neighborhoods\Bradfab\AnnotationProcessor\RepositoryInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setAnnotationProcessorRepository(RepositoryInterface $AnnotationProcessorRepository): self
     {
         if ($this->hasAnnotationProcessorRepository()) {
-            throw new \LogicException('AnnotationProcessorRepository is already set.');
+            throw new LogicException('AnnotationProcessorRepository is already set.');
         }
         $this->AnnotationProcessorRepository = $AnnotationProcessorRepository;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getAnnotationProcessorRepository(): RepositoryInterface
     {
         if (!$this->hasAnnotationProcessorRepository()) {
-            throw new \LogicException('AnnotationProcessorRepository is not set.');
+            throw new LogicException('AnnotationProcessorRepository is not set.');
         }
 
         return $this->AnnotationProcessorRepository;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetAnnotationProcessorRepository(): self
     {
         if (!$this->hasAnnotationProcessorRepository()) {
-            throw new \LogicException('AnnotationProcessorRepository is not set.');
+            throw new LogicException('AnnotationProcessorRepository is not set.');
         }
         unset($this->AnnotationProcessorRepository);
 

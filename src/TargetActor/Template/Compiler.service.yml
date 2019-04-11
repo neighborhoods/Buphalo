@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Bradfab\TargetActor\Template\CompilerInterface:
-    class: Neighborhoods\Bradfab\TargetActor\Template\Compiler
-    public: false
-    shared: false
