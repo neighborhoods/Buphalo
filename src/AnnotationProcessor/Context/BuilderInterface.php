@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Neighborhoods\Bradfab\AnnotationProcessor\Context;
 
 use Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface;
+use Neighborhoods\Bradfab\FabricationFileInterface;
 
 interface BuilderInterface
 {
@@ -12,4 +13,6 @@ interface BuilderInterface
     public function build(): ContextInterface;
 
     public function setRecord(array $record): BuilderInterface;
+
+    public function setFabricationFile(FabricationFileInterface $FabricationFile);
 }

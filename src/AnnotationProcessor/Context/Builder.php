@@ -5,10 +5,12 @@ namespace Neighborhoods\Bradfab\AnnotationProcessor\Context;
 
 use LogicException;
 use Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface;
+use Neighborhoods\Bradfab\FabricationFile;
 
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
+    use FabricationFile\AwareTrait;
 
     protected $record;
 
@@ -17,6 +19,7 @@ class Builder implements BuilderInterface
         $context = $this->getAnnotationProcessorContextFactory()->create();
         if ($this->hasRecord()) {
             $context->setStaticContextRecord($this->getRecord());
+            $context->setFabricationFile($this->getFabricationFile());
         }
 
         return $context;

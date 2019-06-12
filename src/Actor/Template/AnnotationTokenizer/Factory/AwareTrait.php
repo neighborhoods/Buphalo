@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorTemplateAnnotationTokenizerFactory;
+    protected $ActorTemplateAnnotationTokenizerFactory;
 
-    public function setTargetActorTemplateAnnotationTokenizerFactory(FactoryInterface $AnnotationTokenizerFactory): self
+    public function setActorTemplateAnnotationTokenizerFactory(FactoryInterface $AnnotationTokenizerFactory): self
     {
-        if ($this->hasTargetActorTemplateAnnotationTokenizerFactory()) {
-            throw new LogicException('TargetActorTemplateAnnotationTokenizerFactory is already set.');
+        if ($this->hasActorTemplateAnnotationTokenizerFactory()) {
+            throw new LogicException('ActorTemplateAnnotationTokenizerFactory is already set.');
         }
-        $this->TargetActorTemplateAnnotationTokenizerFactory = $AnnotationTokenizerFactory;
+        $this->ActorTemplateAnnotationTokenizerFactory = $AnnotationTokenizerFactory;
 
         return $this;
     }
 
-    protected function getTargetActorTemplateAnnotationTokenizerFactory(): FactoryInterface
+    protected function getActorTemplateAnnotationTokenizerFactory(): FactoryInterface
     {
-        if (!$this->hasTargetActorTemplateAnnotationTokenizerFactory()) {
-            throw new LogicException('TargetActorTemplateAnnotationTokenizerFactory is not set.');
+        if (!$this->hasActorTemplateAnnotationTokenizerFactory()) {
+            throw new LogicException('ActorTemplateAnnotationTokenizerFactory is not set.');
         }
 
-        return $this->TargetActorTemplateAnnotationTokenizerFactory;
+        return $this->ActorTemplateAnnotationTokenizerFactory;
     }
 
-    protected function hasTargetActorTemplateAnnotationTokenizerFactory(): bool
+    protected function hasActorTemplateAnnotationTokenizerFactory(): bool
     {
-        return isset($this->TargetActorTemplateAnnotationTokenizerFactory);
+        return isset($this->ActorTemplateAnnotationTokenizerFactory);
     }
 
-    protected function unsetTargetActorTemplateAnnotationTokenizerFactory(): self
+    protected function unsetActorTemplateAnnotationTokenizerFactory(): self
     {
-        if (!$this->hasTargetActorTemplateAnnotationTokenizerFactory()) {
-            throw new LogicException('TargetActorTemplateAnnotationTokenizerFactory is not set.');
+        if (!$this->hasActorTemplateAnnotationTokenizerFactory()) {
+            throw new LogicException('ActorTemplateAnnotationTokenizerFactory is not set.');
         }
-        unset($this->TargetActorTemplateAnnotationTokenizerFactory);
+        unset($this->ActorTemplateAnnotationTokenizerFactory);
 
         return $this;
     }

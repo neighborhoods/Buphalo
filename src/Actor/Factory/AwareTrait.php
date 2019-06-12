@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorFactory;
+    protected $ActorFactory;
 
-    public function setTargetActorFactory(FactoryInterface $TargetActorFactory): self
+    public function setActorFactory(FactoryInterface $ActorFactory): self
     {
-        if ($this->hasTargetActorFactory()) {
-            throw new LogicException('TargetActorFactory is already set.');
+        if ($this->hasActorFactory()) {
+            throw new LogicException('ActorFactory is already set.');
         }
-        $this->TargetActorFactory = $TargetActorFactory;
+        $this->ActorFactory = $ActorFactory;
 
         return $this;
     }
 
-    protected function getTargetActorFactory(): FactoryInterface
+    protected function getActorFactory(): FactoryInterface
     {
-        if (!$this->hasTargetActorFactory()) {
-            throw new LogicException('TargetActorFactory is not set.');
+        if (!$this->hasActorFactory()) {
+            throw new LogicException('ActorFactory is not set.');
         }
 
-        return $this->TargetActorFactory;
+        return $this->ActorFactory;
     }
 
-    protected function hasTargetActorFactory(): bool
+    protected function hasActorFactory(): bool
     {
-        return isset($this->TargetActorFactory);
+        return isset($this->ActorFactory);
     }
 
-    protected function unsetTargetActorFactory(): self
+    protected function unsetActorFactory(): self
     {
-        if (!$this->hasTargetActorFactory()) {
-            throw new LogicException('TargetActorFactory is not set.');
+        if (!$this->hasActorFactory()) {
+            throw new LogicException('ActorFactory is not set.');
         }
-        unset($this->TargetActorFactory);
+        unset($this->ActorFactory);
 
         return $this;
     }

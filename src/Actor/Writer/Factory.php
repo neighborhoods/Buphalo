@@ -11,6 +11,6 @@ class Factory implements FactoryInterface
 
     public function create(): WriterInterface
     {
-        return clone $this->getTargetActorWriter();
+        return clone $this->getActorWriter();
     }
 }

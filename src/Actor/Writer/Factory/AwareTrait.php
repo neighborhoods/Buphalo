@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\Writer\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorWriterFactory;
+    protected $ActorWriterFactory;
 
-    public function setTargetActorWriterFactory(FactoryInterface $WriterFactory): self
+    public function setActorWriterFactory(FactoryInterface $WriterFactory): self
     {
-        if ($this->hasTargetActorWriterFactory()) {
-            throw new LogicException('TargetActorWriterFactory is already set.');
+        if ($this->hasActorWriterFactory()) {
+            throw new LogicException('ActorWriterFactory is already set.');
         }
-        $this->TargetActorWriterFactory = $WriterFactory;
+        $this->ActorWriterFactory = $WriterFactory;
 
         return $this;
     }
 
-    protected function getTargetActorWriterFactory(): FactoryInterface
+    protected function getActorWriterFactory(): FactoryInterface
     {
-        if (!$this->hasTargetActorWriterFactory()) {
-            throw new LogicException('TargetActorWriterFactory is not set.');
+        if (!$this->hasActorWriterFactory()) {
+            throw new LogicException('ActorWriterFactory is not set.');
         }
 
-        return $this->TargetActorWriterFactory;
+        return $this->ActorWriterFactory;
     }
 
-    protected function hasTargetActorWriterFactory(): bool
+    protected function hasActorWriterFactory(): bool
     {
-        return isset($this->TargetActorWriterFactory);
+        return isset($this->ActorWriterFactory);
     }
 
-    protected function unsetTargetActorWriterFactory(): self
+    protected function unsetActorWriterFactory(): self
     {
-        if (!$this->hasTargetActorWriterFactory()) {
-            throw new LogicException('TargetActorWriterFactory is not set.');
+        if (!$this->hasActorWriterFactory()) {
+            throw new LogicException('ActorWriterFactory is not set.');
         }
-        unset($this->TargetActorWriterFactory);
+        unset($this->ActorWriterFactory);
 
         return $this;
     }

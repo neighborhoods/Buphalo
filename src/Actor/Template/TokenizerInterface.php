@@ -20,7 +20,7 @@ interface TokenizerInterface
 
     public function getTokenizedContents(): string;
 
-    public function setTargetActorTemplate(TemplateInterface $Template);
+    public function setActorTemplate(TemplateInterface $Template);
 
-    public function getTargetActorTemplate(): TemplateInterface;
+    public function getActorTemplate(): TemplateInterface;
 }

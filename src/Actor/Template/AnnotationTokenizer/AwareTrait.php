@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizerInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorTemplateAnnotationTokenizer;
+    protected $ActorTemplateAnnotationTokenizer;
 
-    public function setTargetActorTemplateAnnotationTokenizer(AnnotationTokenizerInterface $AnnotationTokenizer): self
+    public function setActorTemplateAnnotationTokenizer(AnnotationTokenizerInterface $AnnotationTokenizer): self
     {
-        if ($this->hasTargetActorTemplateAnnotationTokenizer()) {
-            throw new LogicException('TargetActorTemplateAnnotationTokenizer is already set.');
+        if ($this->hasActorTemplateAnnotationTokenizer()) {
+            throw new LogicException('ActorTemplateAnnotationTokenizer is already set.');
         }
-        $this->TargetActorTemplateAnnotationTokenizer = $AnnotationTokenizer;
+        $this->ActorTemplateAnnotationTokenizer = $AnnotationTokenizer;
 
         return $this;
     }
 
-    protected function getTargetActorTemplateAnnotationTokenizer(): AnnotationTokenizerInterface
+    protected function getActorTemplateAnnotationTokenizer(): AnnotationTokenizerInterface
     {
-        if (!$this->hasTargetActorTemplateAnnotationTokenizer()) {
-            throw new LogicException('TargetActorTemplateAnnotationTokenizer is not set.');
+        if (!$this->hasActorTemplateAnnotationTokenizer()) {
+            throw new LogicException('ActorTemplateAnnotationTokenizer is not set.');
         }
 
-        return $this->TargetActorTemplateAnnotationTokenizer;
+        return $this->ActorTemplateAnnotationTokenizer;
     }
 
-    protected function hasTargetActorTemplateAnnotationTokenizer(): bool
+    protected function hasActorTemplateAnnotationTokenizer(): bool
     {
-        return isset($this->TargetActorTemplateAnnotationTokenizer);
+        return isset($this->ActorTemplateAnnotationTokenizer);
     }
 
-    protected function unsetTargetActorTemplateAnnotationTokenizer(): self
+    protected function unsetActorTemplateAnnotationTokenizer(): self
     {
-        if (!$this->hasTargetActorTemplateAnnotationTokenizer()) {
-            throw new LogicException('TargetActorTemplateAnnotationTokenizer is not set.');
+        if (!$this->hasActorTemplateAnnotationTokenizer()) {
+            throw new LogicException('ActorTemplateAnnotationTokenizer is not set.');
         }
-        unset($this->TargetActorTemplateAnnotationTokenizer);
+        unset($this->ActorTemplateAnnotationTokenizer);
 
         return $this;
     }

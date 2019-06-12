@@ -3,102 +3,239 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-
 use LogicException;
 
 class Actor implements ActorInterface
 {
-    use FabricationFile\Actor\AwareTrait;
-    use TargetPrimaryActor\AwareTrait;
-
+    protected $Namespace;
+    protected $RelativeClassPath;
+    protected $ParentRelativeClassPath;
+    protected $FullPascalCaseName;
     protected $ShortPascalCaseName;
+    protected $SourceDirectoryPath;
+    protected $SourceFilePath;
+    protected $FabricationDirectoryPath;
     protected $FabricationFilePath;
-    protected $RelativeFabricationFilePath;
-    protected $relative_name_path;
-    protected $relative_class_name_path;
-    protected $file_extension;
+    protected $FileName;
+    protected $FileExtension;
+
+    public function getParentRelativeClassPath(): string
+    {
+        if ($this->ParentRelativeClassPath === null) {
+            throw new LogicException('Parent Relative Class Path has not been set.');
+        }
+
+        return $this->ParentRelativeClassPath;
+    }
+
+    public function setParentRelativeClassPath(string $ParentRelativeClassPath): ActorInterface
+    {
+        if ($this->ParentRelativeClassPath !== null) {
+            throw new LogicException('Parent Relative Class Path is already set.');
+        }
+
+        $this->ParentRelativeClassPath = $ParentRelativeClassPath;
+
+        return $this;
+    }
+
+    public function getNamespace(): string
+    {
+        if ($this->Namespace === null) {
+            throw new LogicException('Namespace has not been set.');
+        }
+
+        return $this->Namespace;
+    }
+
+    public function setNamespace(string $Namespace): ActorInterface
+    {
+        if ($this->Namespace !== null) {
+            throw new LogicException('Namespace is already set.');
+        }
+
+        $this->Namespace = $Namespace;
+
+        return $this;
+    }
+
+    public function getFullPascalCaseName(): string
+    {
+        if ($this->FullPascalCaseName === null) {
+            throw new LogicException('Full Pascal Case Name has not been set.');
+        }
+
+        return $this->FullPascalCaseName;
+    }
+
+    public function setFullPascalCaseName(string $FullPascalCaseName): ActorInterface
+    {
+        if ($this->FullPascalCaseName !== null) {
+            throw new LogicException('Full Pascal Case Name is already set.');
+        }
+
+        $this->FullPascalCaseName = $FullPascalCaseName;
+
+        return $this;
+    }
 
     public function getShortPascalCaseName(): string
     {
         if ($this->ShortPascalCaseName === null) {
-            $relativeNamePath = $this->getRelativeNamePath();
-            $start = 0;
-            $position = strrpos($relativeNamePath, '/');
-            if ($position !== false) {
-                $start = $position + 1;
-            }
-            $shortName = trim(substr($relativeNamePath, $start));
-            $this->ShortPascalCaseName = $shortName;
+            throw new LogicException('Short Pascal Case Name has not been set.');
         }
 
         return $this->ShortPascalCaseName;
     }
 
+    public function setShortPascalCaseName(string $ShortPascalCaseName): ActorInterface
+    {
+        if ($this->ShortPascalCaseName !== null) {
+            throw new LogicException('Short Pascal Case Name is already set.');
+        }
+
+        $this->ShortPascalCaseName = $ShortPascalCaseName;
+
+        return $this;
+    }
+
+    public function getSourceDirectoryPath(): string
+    {
+        if ($this->SourceDirectoryPath === null) {
+            throw new LogicException('Source Directory Path has not been set.');
+        }
+
+        return $this->SourceDirectoryPath;
+    }
+
+    public function setSourceDirectoryPath(string $SourceDirectoryPath): ActorInterface
+    {
+        if ($this->SourceDirectoryPath !== null) {
+            throw new LogicException('Source Directory Path is already set.');
+        }
+
+        $this->SourceDirectoryPath = $SourceDirectoryPath;
+
+        return $this;
+    }
+
+    public function getFabricationDirectoryPath(): string
+    {
+        if ($this->FabricationDirectoryPath === null) {
+            throw new LogicException('Fabrication Directory Path has not been set.');
+        }
+
+        return $this->FabricationDirectoryPath;
+    }
+
+    public function setFabricationDirectoryPath(string $FabricationDirectoryPath): ActorInterface
+    {
+        if ($this->FabricationDirectoryPath !== null) {
+            throw new LogicException('Fabrication Directory Path is already set.');
+        }
+
+        $this->FabricationDirectoryPath = $FabricationDirectoryPath;
+
+        return $this;
+    }
+
+    public function getRelativeClassPath(): string
+    {
+        if ($this->RelativeClassPath === null) {
+            throw new LogicException('Relative Class Path has not been set.');
+        }
+
+        return $this->RelativeClassPath;
+    }
+
+    public function setRelativeClassPath(string $RelativeClassPath): ActorInterface
+    {
+        if ($this->RelativeClassPath !== null) {
+            throw new LogicException('Relative Class Path is already set.');
+        }
+
+        $this->RelativeClassPath = $RelativeClassPath;
+
+        return $this;
+    }
+
+    public function getSourceFilePath(): string
+    {
+        if ($this->SourceFilePath === null) {
+            throw new LogicException('Source File Path has not been set.');
+        }
+
+        return $this->SourceFilePath;
+    }
+
+    public function setSourceFilePath(string $SourceFilePath): ActorInterface
+    {
+        if ($this->SourceFilePath !== null) {
+            throw new LogicException('Source File Path is already set.');
+        }
+
+        $this->SourceFilePath = $SourceFilePath;
+
+        return $this;
+    }
+
     public function getFabricationFilePath(): string
     {
         if ($this->FabricationFilePath === null) {
-            $fabricationDirectoryPath = $this->getTargetPrimaryActor()->getFabricationDirectoryPath();
-            $fabricationFilePath = sprintf('%s/%s', $fabricationDirectoryPath, $this->getRelativeFabricationFilePath());
-            $this->FabricationFilePath = $fabricationFilePath;
+            throw new LogicException('Fabrication File Path has not been set.');
         }
 
         return $this->FabricationFilePath;
     }
 
-    public function getSourceFilePath(): string
+    public function setFabricationFilePath(string $FabricationFilePath): ActorInterface
     {
-        throw new LogicException('Get source file path is not implemented.');
-    }
-
-    public function getRelativeFabricationFilePath(): string
-    {
-        if ($this->RelativeFabricationFilePath === null) {
-            $relativeNamePath = $this->getRelativeNamePath();
-            $relativeFabricationFilePath = sprintf(
-                '%s%s',
-                $relativeNamePath,
-                $this->getFileExtension()
-            );
-            $this->RelativeFabricationFilePath = $relativeFabricationFilePath;
+        if ($this->FabricationFilePath !== null) {
+            throw new LogicException('Fabrication File Path is already set.');
         }
 
-        return $this->RelativeFabricationFilePath;
+        $this->FabricationFilePath = $FabricationFilePath;
+
+        return $this;
     }
 
-    public function getRelativeNamePath(): string
+    public function getFileName(): string
     {
-        if ($this->relative_name_path === null) {
-            $fabricationFileActor = $this->getFabricationFileActor();
-            $relativeNamePath = $fabricationFileActor->getRelativeTemplatePath();
-            if ($fabricationFileActor->hasLooksLikeRelativeTemplatePath()) {
-                $relativeNamePath = $fabricationFileActor->getLooksLikeRelativeTemplatePath();
-            }
-            $this->relative_name_path = $relativeNamePath;
+        if ($this->FileName === null) {
+            throw new LogicException('File Name has not been set.');
         }
 
-        return $this->relative_name_path;
+        return $this->FileName;
     }
 
-    public function getRelativeClassNamePath(): string
+    public function setFileName(string $FileName): ActorInterface
     {
-        if ($this->relative_class_name_path === null) {
-            $relativeClassNamePath = str_replace('/', '\\', $this->getRelativeNamePath());
-            $this->relative_class_name_path = $relativeClassNamePath;
+        if ($this->FileName !== null) {
+            throw new LogicException('File Name is already set.');
         }
 
-        return $this->relative_class_name_path;
+        $this->FileName = $FileName;
+
+        return $this;
     }
 
     public function getFileExtension(): string
     {
-        if ($this->file_extension === null) {
-            $fileExtension = $this->getFabricationFileActor()->getTemplateFileExtension();
-            if ($this->getFabricationFileActor()->hasLooksLikeTemplateFileExtension()) {
-                $fileExtension = $this->getFabricationFileActor()->getLooksLikeTemplateFileExtension();
-            }
-            $this->file_extension = $fileExtension;
+        if ($this->FileExtension === null) {
+            throw new LogicException('File Extension has not been set.');
         }
 
-        return $this->file_extension;
+        return $this->FileExtension;
+    }
+
+    public function setFileExtension(string $FileExtension): ActorInterface
+    {
+        if ($this->FileExtension !== null) {
+            throw new LogicException('File Extension is already set.');
+        }
+
+        $this->FileExtension = $FileExtension;
+
+        return $this;
     }
 }

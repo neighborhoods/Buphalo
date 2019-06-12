@@ -4,4 +4,4 @@ services:
     public: false
     shared: true
     calls:
-      - [setTargetActorTemplateCompiler, ['@Neighborhoods\Bradfab\Actor\Template\CompilerInterface']]
+      - [setActorTemplateCompiler, ['@Neighborhoods\Bradfab\Actor\Template\CompilerInterface']]

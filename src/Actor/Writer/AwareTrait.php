@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\WriterInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorWriter;
+    protected $ActorWriter;
 
-    public function setTargetActorWriter(WriterInterface $Writer): self
+    public function setActorWriter(WriterInterface $Writer): self
     {
-        if ($this->hasTargetActorWriter()) {
-            throw new LogicException('TargetActorWriter is already set.');
+        if ($this->hasActorWriter()) {
+            throw new LogicException('ActorWriter is already set.');
         }
-        $this->TargetActorWriter = $Writer;
+        $this->ActorWriter = $Writer;
 
         return $this;
     }
 
-    protected function getTargetActorWriter(): WriterInterface
+    protected function getActorWriter(): WriterInterface
     {
-        if (!$this->hasTargetActorWriter()) {
-            throw new LogicException('TargetActorWriter is not set.');
+        if (!$this->hasActorWriter()) {
+            throw new LogicException('ActorWriter is not set.');
         }
 
-        return $this->TargetActorWriter;
+        return $this->ActorWriter;
     }
 
-    protected function hasTargetActorWriter(): bool
+    protected function hasActorWriter(): bool
     {
-        return isset($this->TargetActorWriter);
+        return isset($this->ActorWriter);
     }
 
-    protected function unsetTargetActorWriter(): self
+    protected function unsetActorWriter(): self
     {
-        if (!$this->hasTargetActorWriter()) {
-            throw new LogicException('TargetActorWriter is not set.');
+        if (!$this->hasActorWriter()) {
+            throw new LogicException('ActorWriter is not set.');
         }
-        unset($this->TargetActorWriter);
+        unset($this->ActorWriter);
 
         return $this;
     }

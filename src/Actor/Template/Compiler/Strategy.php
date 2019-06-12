@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Actor\Template\Compiler;
 
-use Neighborhoods\Bradfab\TargetPrimaryActor;
-use \Neighborhoods\Bradfab\FabricationFile;
+use Neighborhoods\Bradfab\Actor;
+use Neighborhoods\Bradfab\FabricationFile;
 
 /** @noinspection PhpSuperClassIncompatibleWithInterfaceInspection */
 class Strategy implements StrategyInterface
 {
-    use TargetPrimaryActor\AwareTrait {
-        getTargetPrimaryActor as public;
+    use Actor\AwareTrait {
+        getActor as public;
     }
     use FabricationFile\Actor\AwareTrait;
 
@@ -24,7 +24,7 @@ class Strategy implements StrategyInterface
     public function getVariableReplacement(): string
     {
         if ($this->variable_replacement === null) {
-            $targetActorName = $this->getTargetPrimaryActor()->getFullPascalCaseName();
+            $targetActorName = $this->getActor()->getFullPascalCaseName();
             $this->variable_replacement = sprintf('$%s', $targetActorName);
         }
 
@@ -36,7 +36,7 @@ class Strategy implements StrategyInterface
         if ($this->property_replacement === null) {
             $propertyReplacement = sprintf(
                 'protected $%s',
-                $this->getTargetPrimaryActor()->getFullPascalCaseName()
+                $this->getActor()->getFullPascalCaseName()
             );
             $this->property_replacement = $propertyReplacement;
         }
@@ -49,7 +49,7 @@ class Strategy implements StrategyInterface
         if ($this->property_reference_replacement === null) {
             $this->property_reference_replacement = sprintf(
                 '$this->%s',
-                $this->getTargetPrimaryActor()->getFullPascalCaseName()
+                $this->getActor()->getFullPascalCaseName()
             );
         }
 
@@ -60,7 +60,7 @@ class Strategy implements StrategyInterface
     {
         if ($this->interface_replacement === null) {
             $this->interface_replacement = sprintf('%sInterface',
-                $this->getTargetPrimaryActor()->getShortCapitalCamelCaseName());
+                $this->getActor()->getShortPascalCaseName());
         }
 
         return $this->interface_replacement;
@@ -69,7 +69,7 @@ class Strategy implements StrategyInterface
     public function getTraitReplacement(): string
     {
         if ($this->trait_replacement === null) {
-            $this->trait_replacement = sprintf('use %s', $this->getTargetPrimaryActor()->getFullPascalCaseName());
+            $this->trait_replacement = sprintf('use %s', $this->getActor()->getFullPascalCaseName());
         }
 
         return $this->trait_replacement;
@@ -79,9 +79,9 @@ class Strategy implements StrategyInterface
     {
         if ($this->actor_name_replacement === null) {
             $fabricationFileActor = $this->getFabricationFileActor();
-            $relativeNamePath = $fabricationFileActor->getRelativeTemplatePath();
-            if ($fabricationFileActor->hasLooksLikeRelativeTemplatePath()) {
-                $relativeNamePath = $fabricationFileActor->getLooksLikeRelativeTemplatePath();
+            $relativeNamePath = $fabricationFileActor->getGenerateRelativeDirectoryPath();
+            if ($fabricationFileActor->hasTemplateRelativeDirectoryPath()) {
+                $relativeNamePath = $fabricationFileActor->getTemplateRelativeDirectoryPath();
             }
             $start = 0;
             $position = strrpos($relativeNamePath, '/');

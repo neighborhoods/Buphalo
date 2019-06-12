@@ -4,112 +4,176 @@ declare(strict_types=1);
 namespace Neighborhoods\Bradfab;
 
 use LogicException;
-use Neighborhoods\Bradfab\FabricationFile\Actor\MapInterface;
+use Neighborhoods\Bradfab\FabricationFile\Actor;
+use Neighborhoods\Bradfab\FabricationFile\SupportingActor;
 
 class FabricationFile implements FabricationFileInterface
 {
-    protected $file_name;
-    protected $file_path;
-    protected $relative_file_path;
-    protected $relative_directory_path;
-    protected $actors;
+    protected $BaseName;
+    protected $FileName;
+    protected $FilePath;
+    protected $RelativeFilePath;
+    protected $RelativeDirectoryPath;
+    protected $DirectoryPath;
+    protected $Actors;
+    protected $SupportingActors;
 
-    public function getActors(): MapInterface
+    public function getActors(): Actor\MapInterface
     {
-        if ($this->actors === null) {
-            throw new LogicException('FabricationFile actors has not been set.');
+        if ($this->Actors === null) {
+            throw new LogicException('FabricationFile Actors has not been set.');
         }
 
-        return $this->actors;
+        return $this->Actors;
     }
 
-    public function setActors(MapInterface $actors): FabricationFileInterface
+    public function setActors(Actor\MapInterface $Actors): FabricationFileInterface
     {
-        if ($this->actors !== null) {
-            throw new LogicException('FabricationFile actors is already set.');
+        if ($this->Actors !== null) {
+            throw new LogicException('FabricationFile Actors is already set.');
         }
 
-        $this->actors = $actors;
+        $this->Actors = $Actors;
 
         return $this;
     }
 
     public function getFileName(): string
     {
-        if ($this->file_name === null) {
-            throw new LogicException('FabricationFile file_name has not been set.');
+        if ($this->FileName === null) {
+            throw new LogicException('FabricationFile FileName has not been set.');
         }
 
-        return $this->file_name;
+        return $this->FileName;
     }
 
-    public function setFileName(string $file_name): FabricationFileInterface
+    public function setFileName(string $FileName): FabricationFileInterface
     {
-        if ($this->file_name !== null) {
-            throw new LogicException('FabricationFile file_name is already set.');
+        if ($this->FileName !== null) {
+            throw new LogicException('FabricationFile FileName is already set.');
         }
 
-        $this->file_name = $file_name;
+        $this->FileName = $FileName;
 
         return $this;
     }
 
     public function getFilePath(): string
     {
-        if ($this->file_path === null) {
-            throw new LogicException('FabricationFile file_path has not been set.');
+        if ($this->FilePath === null) {
+            throw new LogicException('FabricationFile FilePath has not been set.');
         }
 
-        return $this->file_path;
+        return $this->FilePath;
     }
 
-    public function setFilePath(string $file_path): FabricationFileInterface
+    public function setFilePath(string $FilePath): FabricationFileInterface
     {
-        if ($this->file_path !== null) {
-            throw new LogicException('FabricationFile file_path is already set.');
+        if ($this->FilePath !== null) {
+            throw new LogicException('FabricationFile FilePath is already set.');
         }
 
-        $this->file_path = $file_path;
+        $this->FilePath = $FilePath;
 
         return $this;
     }
 
     public function getRelativeFilePath(): string
     {
-        if ($this->relative_file_path === null) {
-            throw new LogicException('FabricationFile relative_file_path has not been set.');
+        if ($this->RelativeFilePath === null) {
+            throw new LogicException('FabricationFile RelativeFilePath has not been set.');
         }
 
-        return $this->relative_file_path;
+        return $this->RelativeFilePath;
     }
 
-    public function setRelativeFilePath(string $relative_file_path): FabricationFileInterface
+    public function setRelativeFilePath(string $RelativeFilePath): FabricationFileInterface
     {
-        if ($this->relative_file_path !== null) {
-            throw new LogicException('FabricationFile relative_file_path is already set.');
+        if ($this->RelativeFilePath !== null) {
+            throw new LogicException('FabricationFile RelativeFilePath is already set.');
         }
 
-        $this->relative_file_path = $relative_file_path;
+        $this->RelativeFilePath = $RelativeFilePath;
 
         return $this;
     }
 
     public function getRelativeDirectoryPath(): string
     {
-        if ($this->relative_directory_path === null) {
-            throw new LogicException('FabricationFile relative_directory_path has not been set.');
+        if ($this->RelativeDirectoryPath === null) {
+            throw new LogicException('FabricationFile RelativeDirectoryPath has not been set.');
         }
 
-        return $this->relative_directory_path;
+        return $this->RelativeDirectoryPath;
     }
 
-    public function setRelativeDirectoryPath(string $relative_directory_path): FabricationFileInterface
+    public function setRelativeDirectoryPath(string $RelativeDirectoryPath): FabricationFileInterface
     {
-        if ($this->relative_directory_path !== null) {
-            throw new LogicException('FabricationFile relative_directory_path is already set.');
+        if ($this->RelativeDirectoryPath !== null) {
+            throw new LogicException('FabricationFile RelativeDirectoryPath is already set.');
         }
 
-        $this->relative_directory_path = $relative_directory_path;
+        $this->RelativeDirectoryPath = $RelativeDirectoryPath;
+
+        return $this;
+    }
+
+    public function getSupportingActors(): SupportingActor\MapInterface
+    {
+        if ($this->SupportingActors === null) {
+            throw new LogicException('FabricationFile SupportingActors has not been set.');
+        }
+
+        return $this->SupportingActors;
+    }
+
+    public function setSupportingActors(SupportingActor\MapInterface $SupportingActors): FabricationFileInterface
+    {
+        if ($this->SupportingActors !== null) {
+            throw new LogicException('FabricationFile SupportingActors is already set.');
+        }
+
+        $this->SupportingActors = $SupportingActors;
+
+        return $this;
+    }
+
+    public function getBaseName(): string
+    {
+        if ($this->BaseName === null) {
+            throw new LogicException('Base Name has not been set.');
+        }
+
+        return $this->BaseName;
+    }
+
+    public function setBaseName(string $BaseName): FabricationFileInterface
+    {
+        if ($this->BaseName !== null) {
+            throw new LogicException('Base Name is already set.');
+        }
+
+        $this->BaseName = $BaseName;
+
+        return $this;
+    }
+
+    public function getDirectoryPath(): string
+    {
+        if ($this->DirectoryPath === null) {
+            throw new LogicException('Directory Path has not been set.');
+        }
+
+        return $this->DirectoryPath;
+    }
+
+    public function setDirectoryPath(string $DirectoryPath): FabricationFileInterface
+    {
+        if ($this->DirectoryPath !== null) {
+            throw new LogicException('Directory Path is already set.');
+        }
+
+        $this->DirectoryPath = $DirectoryPath;
 
         return $this;
     }

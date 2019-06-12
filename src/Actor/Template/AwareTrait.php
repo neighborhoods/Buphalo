@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\TemplateInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorTemplate;
+    protected $ActorTemplate;
 
-    public function setTargetActorTemplate(TemplateInterface $Template): self
+    public function setActorTemplate(TemplateInterface $Template): self
     {
-        if ($this->hasTargetActorTemplate()) {
-            throw new LogicException('TargetActorTemplate is already set.');
+        if ($this->hasActorTemplate()) {
+            throw new LogicException('ActorTemplate is already set.');
         }
-        $this->TargetActorTemplate = $Template;
+        $this->ActorTemplate = $Template;
 
         return $this;
     }
 
-    protected function getTargetActorTemplate(): TemplateInterface
+    protected function getActorTemplate(): TemplateInterface
     {
-        if (!$this->hasTargetActorTemplate()) {
-            throw new LogicException('TargetActorTemplate is not set.');
+        if (!$this->hasActorTemplate()) {
+            throw new LogicException('ActorTemplate is not set.');
         }
 
-        return $this->TargetActorTemplate;
+        return $this->ActorTemplate;
     }
 
-    protected function hasTargetActorTemplate(): bool
+    protected function hasActorTemplate(): bool
     {
-        return isset($this->TargetActorTemplate);
+        return isset($this->ActorTemplate);
     }
 
-    protected function unsetTargetActorTemplate(): self
+    protected function unsetActorTemplate(): self
     {
-        if (!$this->hasTargetActorTemplate()) {
-            throw new LogicException('TargetActorTemplate is not set.');
+        if (!$this->hasActorTemplate()) {
+            throw new LogicException('ActorTemplate is not set.');
         }
-        unset($this->TargetActorTemplate);
+        unset($this->ActorTemplate);
 
         return $this;
     }

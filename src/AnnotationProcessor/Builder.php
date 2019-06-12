@@ -4,14 +4,16 @@ declare(strict_types=1);
 namespace Neighborhoods\Bradfab\AnnotationProcessor;
 
 use LogicException;
-use Neighborhoods\Bradfab\AnnotationProcessorInterface;
 use Neighborhoods\Bradfab\AnnotationProcessor;
+use Neighborhoods\Bradfab\AnnotationProcessorInterface;
+use Neighborhoods\Bradfab\FabricationFile;
 
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
     use AnnotationProcessor\Repository\AwareTrait;
     use AnnotationProcessor\Context\Builder\Factory\AwareTrait;
+    use FabricationFile\AwareTrait;
 
     protected $record;
 
@@ -21,6 +23,7 @@ class Builder implements BuilderInterface
         $fqcn = $annotationProcessorDefinition[BuilderInterface::PROCESSOR_FQCN];
         $annotationProcessor = $this->getAnnotationProcessorRepository()->getByFQCN($fqcn);
         $contextBuilder = $this->getAnnotationProcessorContextBuilderFactory()->create();
+        $contextBuilder->setFabricationFile($this->getFabricationFile());
         if (isset($annotationProcessorDefinition[Context\BuilderInterface::STATIC_CONTEXT_RECORD])) {
             $contextBuilder->setRecord($annotationProcessorDefinition[Context\BuilderInterface::STATIC_CONTEXT_RECORD]);
         }

@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\Template\Compiler\Strategy\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorTemplateCompilerStrategyFactory;
+    protected $ActorTemplateCompilerStrategyFactory;
 
-    public function setTargetActorTemplateCompilerStrategyFactory(FactoryInterface $StrategyFactory): self
+    public function setActorTemplateCompilerStrategyFactory(FactoryInterface $StrategyFactory): self
     {
-        if ($this->hasTargetActorTemplateCompilerStrategyFactory()) {
-            throw new LogicException('TargetActorTemplateCompilerStrategyFactory is already set.');
+        if ($this->hasActorTemplateCompilerStrategyFactory()) {
+            throw new LogicException('ActorTemplateCompilerStrategyFactory is already set.');
         }
-        $this->TargetActorTemplateCompilerStrategyFactory = $StrategyFactory;
+        $this->ActorTemplateCompilerStrategyFactory = $StrategyFactory;
 
         return $this;
     }
 
-    protected function getTargetActorTemplateCompilerStrategyFactory(): FactoryInterface
+    protected function getActorTemplateCompilerStrategyFactory(): FactoryInterface
     {
-        if (!$this->hasTargetActorTemplateCompilerStrategyFactory()) {
-            throw new LogicException('TargetActorTemplateCompilerStrategyFactory is not set.');
+        if (!$this->hasActorTemplateCompilerStrategyFactory()) {
+            throw new LogicException('ActorTemplateCompilerStrategyFactory is not set.');
         }
 
-        return $this->TargetActorTemplateCompilerStrategyFactory;
+        return $this->ActorTemplateCompilerStrategyFactory;
     }
 
-    protected function hasTargetActorTemplateCompilerStrategyFactory(): bool
+    protected function hasActorTemplateCompilerStrategyFactory(): bool
     {
-        return isset($this->TargetActorTemplateCompilerStrategyFactory);
+        return isset($this->ActorTemplateCompilerStrategyFactory);
     }
 
-    protected function unsetTargetActorTemplateCompilerStrategyFactory(): self
+    protected function unsetActorTemplateCompilerStrategyFactory(): self
     {
-        if (!$this->hasTargetActorTemplateCompilerStrategyFactory()) {
-            throw new LogicException('TargetActorTemplateCompilerStrategyFactory is not set.');
+        if (!$this->hasActorTemplateCompilerStrategyFactory()) {
+            throw new LogicException('ActorTemplateCompilerStrategyFactory is not set.');
         }
-        unset($this->TargetActorTemplateCompilerStrategyFactory);
+        unset($this->ActorTemplateCompilerStrategyFactory);
 
         return $this;
     }

@@ -5,8 +5,10 @@ namespace Neighborhoods\Bradfab\Actor;
 
 use LogicException;
 use Neighborhoods\Bradfab\Actor;
-use Symfony\Component\Filesystem\Filesystem;
+use Neighborhoods\Bradfab\ActorInterface;
+use Neighborhoods\Bradfab\FabricationFile;
 use Neighborhoods\Bradfab\TargetApplication;
+use Symfony\Component\Filesystem\Filesystem;
 
 class Writer implements WriterInterface
 {
@@ -15,20 +17,20 @@ class Writer implements WriterInterface
     protected $filesystem;
     protected $target_actor_source_file_path;
     protected $target_actor_fabrication_file_path;
-    protected $target_actor_template;
+    protected $TargetActorTemplate;
     protected $target_primary_actor;
     protected $FabricationFileActor;
 
     public function write(): WriterInterface
     {
-        if (!is_file($this->getTargetActorSourceFilePath())) {
-            $targetActorFilePath = $this->getTargetActorFabricationFilePath();
+        if (!is_file($this->getActorSourceFilePath())) {
+            $targetActorFilePath = $this->getActorFabricationFilePath();
             $this->getFilesystem()->mkdir(dirname($targetActorFilePath));
             if (is_file($targetActorFilePath)) {
                 $message = sprintf('Target actor with path[%s] already exists.', $targetActorFilePath);
                 throw new LogicException($message);
             }
-            $compiledContents = $this->getTargetActorTemplateCompiler()->getCompiledContents();
+            $compiledContents = $this->getActorTemplateCompiler()->getCompiledContents();
             file_put_contents($targetActorFilePath, $compiledContents);
         }
 
@@ -36,17 +38,17 @@ class Writer implements WriterInterface
     }
 
 
-    public function getTargetActorSourceFilePath()
+    public function getActorSourceFilePath(): string
     {
         if ($this->target_actor_source_file_path === null) {
-            $sourceDirectoryPath = $this->getTargetPrimaryActor()->getSourceDirectoryPath();
-            $actor = $this->getTargetActorTemplate()->getFabricationFileActor();
+            $sourceDirectoryPath = $this->getActor()->getSourceDirectoryPath();
+            $actor = $this->getActorTemplate()->getFabricationFileActor();
             $actorRelativeFilePathPosition = str_replace(
                 'Actor/',
-                sprintf('%s/', $this->getTargetPrimaryActor()->getShortCapitalCamelCaseName()),
-                $actor->getRelativeTemplatePath()
+                sprintf('%s/', $this->getActor()->getShortPascalCaseName()),
+                $actor->getGenerateRelativeDirectoryPath()
             );
-            $fileExtension = $this->getTargetActorTemplate()->getFileExtension();
+            $fileExtension = $this->getActorTemplate()->getFileExtension();
             $targetActorSourceFilePath = sprintf(
                 '%s/%s%s',
                 $sourceDirectoryPath,
@@ -59,13 +61,13 @@ class Writer implements WriterInterface
         return $this->target_actor_source_file_path;
     }
 
-    public function getTargetActorFabricationFilePath()
+    public function getActorFabricationFilePath(): string
     {
         if ($this->target_actor_fabrication_file_path === null) {
             $targetActorFabricationFilePath = str_replace(
                 $this->getTargetApplication()->getSourceDirectoryPath(),
                 $this->getTargetApplication()->getFabricationPath(),
-                $this->getTargetActorSourceFilePath()
+                $this->getActorSourceFilePath()
             );
             $this->target_actor_fabrication_file_path = $targetActorFabricationFilePath;
         }
@@ -93,32 +95,32 @@ class Writer implements WriterInterface
         return $this;
     }
 
-    protected function getTargetActorTemplate()
+    protected function getActorTemplate(): TemplateInterface
     {
-        if ($this->target_actor_template === null) {
-            $this->target_actor_template = $this->getTargetActorTemplateCompiler()
-                ->getTargetActorTemplateTokenizer()
-                ->getTargetActorTemplate();
+        if ($this->TargetActorTemplate === null) {
+            $this->TargetActorTemplate = $this->getActorTemplateCompiler()
+                ->getActorTemplateTokenizer()
+                ->getActorTemplate();
         }
 
-        return $this->target_actor_template;
+        return $this->TargetActorTemplate;
     }
 
-    protected function getTargetPrimaryActor()
+    protected function getActor(): ActorInterface
     {
         if ($this->target_primary_actor === null) {
-            $this->target_primary_actor = $this->getTargetActorTemplateCompiler()
-                ->getTargetActorTemplateCompilerStrategy()
-                ->getTargetPrimaryActor();
+            $this->target_primary_actor = $this->getActorTemplateCompiler()
+                ->getActorTemplateCompilerStrategy()
+                ->getActor();
         }
 
         return $this->target_primary_actor;
     }
 
-    public function getFabricationFileActor()
+    public function getFabricationFileActor(): FabricationFile\ActorInterface
     {
         if ($this->FabricationFileActor === null) {
-            $this->FabricationFileActor = $this->getTargetActorTemplate()
+            $this->FabricationFileActor = $this->getActorTemplate()
                 ->getFabricationFileActor();
         }
 

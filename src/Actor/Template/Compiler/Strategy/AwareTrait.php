@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\Template\Compiler\StrategyInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorTemplateCompilerStrategy;
+    protected $ActorTemplateCompilerStrategy;
 
-    public function setTargetActorTemplateCompilerStrategy(StrategyInterface $Strategy): self
+    public function setActorTemplateCompilerStrategy(StrategyInterface $Strategy): self
     {
-        if ($this->hasTargetActorTemplateCompilerStrategy()) {
-            throw new LogicException('TargetActorTemplateCompilerStrategy is already set.');
+        if ($this->hasActorTemplateCompilerStrategy()) {
+            throw new LogicException('ActorTemplateCompilerStrategy is already set.');
         }
-        $this->TargetActorTemplateCompilerStrategy = $Strategy;
+        $this->ActorTemplateCompilerStrategy = $Strategy;
 
         return $this;
     }
 
-    protected function getTargetActorTemplateCompilerStrategy(): StrategyInterface
+    protected function getActorTemplateCompilerStrategy(): StrategyInterface
     {
-        if (!$this->hasTargetActorTemplateCompilerStrategy()) {
-            throw new LogicException('TargetActorTemplateCompilerStrategy is not set.');
+        if (!$this->hasActorTemplateCompilerStrategy()) {
+            throw new LogicException('ActorTemplateCompilerStrategy is not set.');
         }
 
-        return $this->TargetActorTemplateCompilerStrategy;
+        return $this->ActorTemplateCompilerStrategy;
     }
 
-    protected function hasTargetActorTemplateCompilerStrategy(): bool
+    protected function hasActorTemplateCompilerStrategy(): bool
     {
-        return isset($this->TargetActorTemplateCompilerStrategy);
+        return isset($this->ActorTemplateCompilerStrategy);
     }
 
-    protected function unsetTargetActorTemplateCompilerStrategy(): self
+    protected function unsetActorTemplateCompilerStrategy(): self
     {
-        if (!$this->hasTargetActorTemplateCompilerStrategy()) {
-            throw new LogicException('TargetActorTemplateCompilerStrategy is not set.');
+        if (!$this->hasActorTemplateCompilerStrategy()) {
+            throw new LogicException('ActorTemplateCompilerStrategy is not set.');
         }
-        unset($this->TargetActorTemplateCompilerStrategy);
+        unset($this->ActorTemplateCompilerStrategy);
 
         return $this;
     }

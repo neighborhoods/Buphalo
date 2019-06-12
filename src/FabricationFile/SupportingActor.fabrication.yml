@@ -1,0 +1,22 @@
+supporting_actors:
+  Actor\AwareTrait.php:
+  Actor\Factory.php:
+  Actor\Factory.service.yml:
+  Actor\FactoryInterface.php:
+  Actor\Factory\AwareTrait.php:
+  Actor\Builder.php:
+  Actor\Builder.service.yml:
+  Actor\BuilderInterface.php:
+  Actor\Builder\AwareTrait.php:
+  Actor\Builder\Factory.php:
+  Actor\Builder\Factory.service.yml:
+  Actor\Builder\FactoryInterface.php:
+  Actor\Builder\Factory\AwareTrait.php:
+  Actor\Map.php:
+  Actor\Map.service.yml:
+  Actor\MapInterface.php:
+  Actor\Map\AwareTrait.php:
+  Actor\Map\Factory.php:
+  Actor\Map\Factory.service.yml:
+  Actor\Map\FactoryInterface.php:
+  Actor\Map\Factory\AwareTrait.php:

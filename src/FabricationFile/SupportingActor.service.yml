@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Bradfab\FabricationFile\SupportingActorInterface:
+    class: Neighborhoods\Bradfab\FabricationFile\SupportingActor
+    public: false
+    shared: false

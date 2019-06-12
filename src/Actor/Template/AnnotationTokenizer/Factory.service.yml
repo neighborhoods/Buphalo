@@ -4,4 +4,4 @@ services:
     public: false
     shared: true
     calls:
-      - [setTargetActorTemplateAnnotationTokenizer, ['@Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizerInterface']]
+      - [setActorTemplateAnnotationTokenizer, ['@Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizerInterface']]

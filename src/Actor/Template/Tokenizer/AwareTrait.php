@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\Template\TokenizerInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorTemplateTokenizer;
+    protected $ActorTemplateTokenizer;
 
-    public function setTargetActorTemplateTokenizer(TokenizerInterface $Tokenizer): self
+    public function setActorTemplateTokenizer(TokenizerInterface $Tokenizer): self
     {
-        if ($this->hasTargetActorTemplateTokenizer()) {
-            throw new LogicException('TargetActorTemplateTokenizer is already set.');
+        if ($this->hasActorTemplateTokenizer()) {
+            throw new LogicException('ActorTemplateTokenizer is already set.');
         }
-        $this->TargetActorTemplateTokenizer = $Tokenizer;
+        $this->ActorTemplateTokenizer = $Tokenizer;
 
         return $this;
     }
 
-    protected function getTargetActorTemplateTokenizer(): TokenizerInterface
+    protected function getActorTemplateTokenizer(): TokenizerInterface
     {
-        if (!$this->hasTargetActorTemplateTokenizer()) {
-            throw new LogicException('TargetActorTemplateTokenizer is not set.');
+        if (!$this->hasActorTemplateTokenizer()) {
+            throw new LogicException('ActorTemplateTokenizer is not set.');
         }
 
-        return $this->TargetActorTemplateTokenizer;
+        return $this->ActorTemplateTokenizer;
     }
 
-    protected function hasTargetActorTemplateTokenizer(): bool
+    protected function hasActorTemplateTokenizer(): bool
     {
-        return isset($this->TargetActorTemplateTokenizer);
+        return isset($this->ActorTemplateTokenizer);
     }
 
-    protected function unsetTargetActorTemplateTokenizer(): self
+    protected function unsetActorTemplateTokenizer(): self
     {
-        if (!$this->hasTargetActorTemplateTokenizer()) {
-            throw new LogicException('TargetActorTemplateTokenizer is not set.');
+        if (!$this->hasActorTemplateTokenizer()) {
+            throw new LogicException('ActorTemplateTokenizer is not set.');
         }
-        unset($this->TargetActorTemplateTokenizer);
+        unset($this->ActorTemplateTokenizer);
 
         return $this;
     }

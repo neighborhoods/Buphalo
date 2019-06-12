@@ -10,7 +10,7 @@ interface AnnotationTokenizerInterface
     public const ANNOTATION_TAG = '@neighborhoods-bradfab:annotation-processor';
     public const ANNOTATION_REGEX = '/(?<=\/\*\*)(\s+' . self::ANNOTATION_TAG . ')(.*)([\s\S]*?)(?=\*\/)/';
 
-    public function setTargetActorTemplate(TemplateInterface $Template);
+    public function setActorTemplate(TemplateInterface $Template);
 
     public function tokenize(): AnnotationTokenizerInterface;
 

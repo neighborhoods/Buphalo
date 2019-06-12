@@ -8,11 +8,11 @@ use Neighborhoods\Bradfab\TargetApplicationInterface;
 
 interface WriterInterface
 {
-    public function setTargetActorTemplateCompiler(CompilerInterface $Compiler);
+    public function setActorTemplateCompiler(CompilerInterface $Compiler);
 
     public function setTargetApplication(TargetApplicationInterface $TargetApplication);
 
-    public function getTargetActorSourceFilePath();
+    public function getActorSourceFilePath(): string;
 
     public function write(): WriterInterface;
 }

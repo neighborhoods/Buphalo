@@ -15,48 +15,44 @@ class Fabricator implements FabricatorInterface
     use Actor\Template\Tokenizer\Factory\AwareTrait;
     use Actor\Template\Compiler\Factory\AwareTrait;
     use Actor\Template\Compiler\Strategy\Factory\AwareTrait;
-    use TargetPrimaryActor\Factory\AwareTrait;
+    use Actor\Builder\Factory\AwareTrait;
+    use SupportingActor\Factory\AwareTrait;
     use Actor\Writer\Factory\AwareTrait;
-    use Actor\Factory\AwareTrait;
     use TargetApplication\AwareTrait;
-    protected $finder;
-    protected $fabricate_yaml_files;
-    protected $filesystem;
-    protected $template_tree_directory_path;
+
+    protected $Finder;
+    protected $FabricateYamlFiles;
+    protected $Filesystem;
+    protected $TemplateTreeDirectoryPath;
 
     public function fabricate(): FabricatorInterface
     {
         $this->removeFabricationDirectory();
-        /** @var SplFileInfo $fabricateYamlSPLFileInfo */
-        foreach ($this->getFabricateYamlFiles() as $fabricateYamlFilePathname => $fabricateYamlSPLFileInfo) {
+        /** @var SplFileInfo $fabricationFileSplFileInfo */
+        foreach ($this->getFabricationYamlFiles() as $fabricationFilePath => $fabricationFileSplFileInfo) {
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
-            $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricateYamlSPLFileInfo)->build();
+            $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricationFileSplFileInfo)->build();
             foreach ($fabricationFile->getActors() as $fabricationFileActor) {
-                $targetPrimaryActor = $this->getTargetPrimaryActorFactory()->create();
-                $targetPrimaryActor->setFabricationFile($fabricationFile);
-                $targetPrimaryActor->setTargetApplication($this->getTargetApplication());
-                $template = $this->getTargetActorTemplateFactory()->create();
-                $template->setFabricationFileActor($fabricationFileActor);
-                $template->setTemplateTreeDirectoryPath($this->getTemplateTreeDirectoryPath());
-                $targetActor = $this->getTargetActorFactory()->create();
-                $targetActor->setFabricationFileActor($fabricationFileActor);
-                $targetActor->setTargetPrimaryActor($targetPrimaryActor);
-
-//                $targetActor->getShortName();
-//                $targetActor->getFabricationFilePath();
-
-                $tokenizer = $this->getTargetActorTemplateTokenizerFactory()->create();
-                $tokenizer->setTargetActorTemplate($template);
-                $strategy = $this->getTargetActorTemplateCompilerStrategyFactory()->create();
-                $strategy->setFabricationFileActor($fabricationFileActor);
-                $strategy->setTargetPrimaryActor($targetPrimaryActor);
-                $compiler = $this->getTargetActorTemplateCompilerFactory()->create();
-                $compiler->setTargetActorTemplateTokenizer($tokenizer);
-                $compiler->setTargetActorTemplateCompilerStrategy($strategy);
-                $writer = $this->getTargetActorWriterFactory()->create();
-                $writer->setTargetActorTemplateCompiler($compiler);
-                $writer->setTargetApplication($this->getTargetApplication());
-                $writer->write();
+                $actorBuilder = $this->getActorBuilderFactory()->create();
+                $actorBuilder->setFabricationFile($fabricationFile);
+                $actorBuilder->setFabricationFileActor($fabricationFileActor);
+                $actorBuilder->setTargetApplication($this->getTargetApplication());
+                $actor = $actorBuilder->build();
+                //$template = $this->getActorTemplateFactory()->create();
+                //$template->setFabricationFileActor($fabricationFileActor);
+                //$template->setTemplateTreeDirectoryPath($this->getTemplateTreeDirectoryPath());
+                //$tokenizer = $this->getActorTemplateTokenizerFactory()->create();
+                //$tokenizer->setActorTemplate($template);
+                //$strategy = $this->getActorTemplateCompilerStrategyFactory()->create();
+                //$strategy->setFabricationFileActor($fabricationFileActor);
+                //$strategy->setActor($actor);
+                //$compiler = $this->getActorTemplateCompilerFactory()->create();
+                //$compiler->setActorTemplateTokenizer($tokenizer);
+                //$compiler->setActorTemplateCompilerStrategy($strategy);
+                //$writer = $this->getActorWriterFactory()->create();
+                //$writer->setActorTemplateCompiler($compiler);
+                //$writer->setTargetApplication($this->getTargetApplication());
+                //$writer->write();
             }
         }
 
@@ -72,81 +68,83 @@ class Fabricator implements FabricatorInterface
         return $this;
     }
 
-    protected function getFabricateYamlFiles(): array
+    protected function getFabricationYamlFiles(): array
     {
-        if ($this->fabricate_yaml_files === null) {
+        if ($this->FabricateYamlFiles === null) {
+            // @Please change this and get|setFinder to a Finder\Builder & Finder\Builder\Factory.
             $finder = $this->getFinder()->in($this->getTargetApplication()->getSourceDirectoryPath());
-            $finder->name('*' . FabricationFileInterface::FILE_EXTENSION_FABRICATION);
+//            $finder->name('*' . FabricationFileInterface::FILE_EXTENSION_FABRICATION);
+            $finder->files()->name('Test.fabrication.yml');
+
             /** @var $file SplFileInfo */
             foreach ($finder as $directoryPath => $file) {
                 $pathname = $file->getPathname();
-                if (isset($this->fabricate_yaml_files[$pathname])) {
-                    $message = sprintf('Fabricate yaml file with pathname[%s] is already set.', $pathname);
+                if (isset($this->FabricateYamlFiles[$pathname])) {
+                    $message = sprintf('Fabricate YAML file with pathname[%s] is already set.', $pathname);
                     throw new LogicException($message);
                 }
-                $this->fabricate_yaml_files[$pathname] = $file;
+                $this->FabricateYamlFiles[$pathname] = $file;
             }
         }
 
-        return $this->fabricate_yaml_files;
+        return $this->FabricateYamlFiles;
     }
 
     protected function getFinder(): Finder
     {
-        if ($this->finder === null) {
-            throw new LogicException('Bradfab finder has not been set.');
+        if ($this->Finder === null) {
+            throw new LogicException('Bradfab Finder has not been set.');
         }
 
-        return $this->finder;
+        return $this->Finder;
     }
 
     public function setFinder(Finder $finder): FabricatorInterface
     {
-        if ($this->finder !== null) {
-            throw new LogicException('Bradfab finder is already set.');
+        if ($this->Finder !== null) {
+            throw new LogicException('Bradfab Finder is already set.');
         }
-
-        $this->finder = $finder;
+        $this->Finder = $finder;
 
         return $this;
     }
 
     public function getFilesystem(): Filesystem
     {
-        if ($this->filesystem === null) {
-            throw new LogicException('Bradfab filesystem has not been set.');
+        if ($this->Filesystem === null) {
+            throw new LogicException('Bradfab Filesystem has not been set.');
         }
 
-        return $this->filesystem;
+        return $this->Filesystem;
     }
 
     public function setFilesystem(Filesystem $filesystem): FabricatorInterface
     {
-        if ($this->filesystem !== null) {
-            throw new LogicException('Bradfab filesystem is already set.');
+        if ($this->Filesystem !== null) {
+            throw new LogicException('Bradfab Filesystem is already set.');
         }
 
-        $this->filesystem = $filesystem;
+        $this->Filesystem = $filesystem;
 
         return $this;
     }
 
     public function getTemplateTreeDirectoryPath(): string
     {
-        if ($this->template_tree_directory_path === null) {
-            throw new LogicException('Bradfab template_tree_directory_path has not been set.');
+        if ($this->TemplateTreeDirectoryPath === null) {
+            throw new LogicException('Bradfab TemplateTreeDirectoryPath has not been set.');
         }
 
-        return $this->template_tree_directory_path;
+        return $this->TemplateTreeDirectoryPath;
     }
 
     public function setTemplateTreeDirectoryPath(string $template_tree_directory_path): FabricatorInterface
     {
-        if ($this->template_tree_directory_path !== null) {
-            throw new LogicException('Bradfab template_tree_directory_path is already set.');
+        if ($this->TemplateTreeDirectoryPath !== null) {
+            throw new LogicException('Bradfab TemplateTreeDirectoryPath is already set.');
         }
 
-        $this->template_tree_directory_path = $template_tree_directory_path;
+        $this->TemplateTreeDirectoryPath = $template_tree_directory_path;
 
         return $this;
     }

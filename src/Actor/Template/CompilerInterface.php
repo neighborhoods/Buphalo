@@ -7,13 +7,13 @@ use Neighborhoods\Bradfab\Actor\Template\Compiler\StrategyInterface;
 
 interface CompilerInterface
 {
-    public function setTargetActorTemplateTokenizer(TokenizerInterface $Tokenizer);
+    public function setActorTemplateTokenizer(TokenizerInterface $Tokenizer);
 
-    public function getTargetActorTemplateTokenizer(): TokenizerInterface;
+    public function getActorTemplateTokenizer(): TokenizerInterface;
 
-    public function setTargetActorTemplateCompilerStrategy(StrategyInterface $Strategy);
+    public function setActorTemplateCompilerStrategy(StrategyInterface $Strategy);
 
-    public function getTargetActorTemplateCompilerStrategy(): StrategyInterface;
+    public function getActorTemplateCompilerStrategy(): StrategyInterface;
 
     public function getCompiledContents(): string;
 }

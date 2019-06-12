@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\Template\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorTemplateFactory;
+    protected $ActorTemplateFactory;
 
-    public function setTargetActorTemplateFactory(FactoryInterface $TemplateFactory): self
+    public function setActorTemplateFactory(FactoryInterface $TemplateFactory): self
     {
-        if ($this->hasTargetActorTemplateFactory()) {
-            throw new LogicException('TargetActorTemplateFactory is already set.');
+        if ($this->hasActorTemplateFactory()) {
+            throw new LogicException('ActorTemplateFactory is already set.');
         }
-        $this->TargetActorTemplateFactory = $TemplateFactory;
+        $this->ActorTemplateFactory = $TemplateFactory;
 
         return $this;
     }
 
-    protected function getTargetActorTemplateFactory(): FactoryInterface
+    protected function getActorTemplateFactory(): FactoryInterface
     {
-        if (!$this->hasTargetActorTemplateFactory()) {
-            throw new LogicException('TargetActorTemplateFactory is not set.');
+        if (!$this->hasActorTemplateFactory()) {
+            throw new LogicException('ActorTemplateFactory is not set.');
         }
 
-        return $this->TargetActorTemplateFactory;
+        return $this->ActorTemplateFactory;
     }
 
-    protected function hasTargetActorTemplateFactory(): bool
+    protected function hasActorTemplateFactory(): bool
     {
-        return isset($this->TargetActorTemplateFactory);
+        return isset($this->ActorTemplateFactory);
     }
 
-    protected function unsetTargetActorTemplateFactory(): self
+    protected function unsetActorTemplateFactory(): self
     {
-        if (!$this->hasTargetActorTemplateFactory()) {
-            throw new LogicException('TargetActorTemplateFactory is not set.');
+        if (!$this->hasActorTemplateFactory()) {
+            throw new LogicException('ActorTemplateFactory is not set.');
         }
-        unset($this->TargetActorTemplateFactory);
+        unset($this->ActorTemplateFactory);
 
         return $this;
     }

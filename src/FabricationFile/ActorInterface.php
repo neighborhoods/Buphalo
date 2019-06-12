@@ -5,15 +5,15 @@ namespace Neighborhoods\Bradfab\FabricationFile;
 
 use Neighborhoods\Bradfab\AnnotationProcessor\MapInterface;
 
-interface ActorInterface
+interface ActorInterface extends GenericActorInterface
 {
-    public function getRelativeTemplatePath(): string;
+    public function getGenerateRelativeDirectoryPath(): string;
 
-    public function setRelativeTemplatePath(string $relative_template_path): ActorInterface;
+    public function setGenerateRelativeDirectoryPath(string $GenerateRelativeDirectoryPath): ActorInterface;
 
-    public function setTemplateFileExtension($template_file_extension): ActorInterface;
+    public function setGenerateFileExtension(string $GenerateFileExtension): ActorInterface;
 
-    public function getTemplateFileExtension();
+    public function getGenerateFileExtension(): string;
 
     public function setAnnotationProcessorMap(MapInterface $AnnotationProcessors);
 
@@ -21,15 +21,11 @@ interface ActorInterface
 
     public function hasAnnotationProcessorMap(): bool;
 
-    public function setLooksLikeRelativeTemplatePath(string $looks_like_relative_template_path): ActorInterface;
+    public function setTemplateRelativeDirectoryPath(string $TemplateRelativeDirectoryPath): ActorInterface;
 
-    public function getLooksLikeRelativeTemplatePath(): string;
+    public function getTemplateRelativeDirectoryPath(): string;
 
-    public function setLooksLikeTemplateFileExtension(string $looks_like_template_file_extension): ActorInterface;
+    public function setTemplateFileExtension(string $TemplateFileExtension): ActorInterface;
 
-    public function getLooksLikeTemplateFileExtension(): string;
-
-    public function hasLooksLikeTemplateFileExtension(): bool;
-
-    public function hasLooksLikeRelativeTemplatePath(): bool;
+    public function getTemplateFileExtension(): string;
 }

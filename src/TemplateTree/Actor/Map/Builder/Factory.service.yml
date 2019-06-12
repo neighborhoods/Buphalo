@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\TemplateTree\Actor\Map\Builder\FactoryInterface:
+    class: Neighborhoods\Bradfab\TemplateTree\Actor\Map\Builder\Factory
+    public: false
+    shared: true
+    calls:
+      - [setActorMapBuilder, ['@Neighborhoods\Bradfab\TemplateTree\Actor\Map\BuilderInterface']]

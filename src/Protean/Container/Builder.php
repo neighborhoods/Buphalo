@@ -5,8 +5,7 @@ namespace Neighborhoods\Bradfab\Protean\Container;
 
 use LogicException;
 use Neighborhoods\Bradfab\Symfony\Component\DependencyInjection\ContainerBuilder\Facade;
-use /** @noinspection PhpUndefinedClassInspection */
-    ProjectServiceContainer;
+use ProjectServiceContainer;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
@@ -29,9 +28,7 @@ class Builder implements BuilderInterface
 
     public function build(): ContainerInterface
     {
-        $container = $this->getContainer();
-
-        return $container;
+        return $this->getContainer();
     }
 
     protected function getContainer(): ContainerInterface
@@ -134,7 +131,7 @@ class Builder implements BuilderInterface
         $zendContainerBuilder = require $this->getZendConfigContainerFilePath();
         $ApplicationServiceDefinition = $zendContainerBuilder->findDefinition(Application::class);
         /** @noinspection PhpIncludeInspection */
-        (require_once $this->getPipelineFilePath())($ApplicationServiceDefinition);
+        (require $this->getPipelineFilePath())($ApplicationServiceDefinition);
         file_put_contents($this->getExpressiveDIYAMLFilePath(), (new YamlDumper($zendContainerBuilder))->dump());
         chdir($currentWorkingDirectory);
 
@@ -202,7 +199,7 @@ class Builder implements BuilderInterface
     public function setApplicationRootDirectoryPath(string $applicationRootDirectoryPath): BuilderInterface
     {
         if ($this->applicationRootDirectoryPath === null) {
-            $applicationRootDirectoryPath = realpath(rtrim($applicationRootDirectoryPath, "/"));
+            $applicationRootDirectoryPath = realpath(rtrim($applicationRootDirectoryPath, '/'));
             if (is_dir($applicationRootDirectoryPath)) {
                 $this->applicationRootDirectoryPath = $applicationRootDirectoryPath;
             } else {

@@ -4,5 +4,6 @@ services:
     calls:
       - [setFabricationFileFactory, ['@Neighborhoods\Bradfab\FabricationFile\FactoryInterface']]
       - [setFabricationFileActorMapBuilderFactory, ['@Neighborhoods\Bradfab\FabricationFile\Actor\Map\Builder\FactoryInterface']]
+      - [setFabricationFileSupportingActorMapBuilderFactory, ['@Neighborhoods\Bradfab\FabricationFile\SupportingActor\Map\Builder\FactoryInterface']]
     shared: false
     public: false

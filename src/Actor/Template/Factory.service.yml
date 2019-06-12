@@ -4,4 +4,4 @@ services:
     public: false
     shared: true
     calls:
-      - [setTargetActorTemplate, ['@Neighborhoods\Bradfab\Actor\TemplateInterface']]
+      - [setActorTemplate, ['@Neighborhoods\Bradfab\Actor\TemplateInterface']]

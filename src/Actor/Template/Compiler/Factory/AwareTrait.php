@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\Template\Compiler\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorTemplateCompilerFactory;
+    protected $ActorTemplateCompilerFactory;
 
-    public function setTargetActorTemplateCompilerFactory(FactoryInterface $CompilerFactory): self
+    public function setActorTemplateCompilerFactory(FactoryInterface $CompilerFactory): self
     {
-        if ($this->hasTargetActorTemplateCompilerFactory()) {
-            throw new LogicException('TargetActorTemplateCompilerFactory is already set.');
+        if ($this->hasActorTemplateCompilerFactory()) {
+            throw new LogicException('ActorTemplateCompilerFactory is already set.');
         }
-        $this->TargetActorTemplateCompilerFactory = $CompilerFactory;
+        $this->ActorTemplateCompilerFactory = $CompilerFactory;
 
         return $this;
     }
 
-    protected function getTargetActorTemplateCompilerFactory(): FactoryInterface
+    protected function getActorTemplateCompilerFactory(): FactoryInterface
     {
-        if (!$this->hasTargetActorTemplateCompilerFactory()) {
-            throw new LogicException('TargetActorTemplateCompilerFactory is not set.');
+        if (!$this->hasActorTemplateCompilerFactory()) {
+            throw new LogicException('ActorTemplateCompilerFactory is not set.');
         }
 
-        return $this->TargetActorTemplateCompilerFactory;
+        return $this->ActorTemplateCompilerFactory;
     }
 
-    protected function hasTargetActorTemplateCompilerFactory(): bool
+    protected function hasActorTemplateCompilerFactory(): bool
     {
-        return isset($this->TargetActorTemplateCompilerFactory);
+        return isset($this->ActorTemplateCompilerFactory);
     }
 
-    protected function unsetTargetActorTemplateCompilerFactory(): self
+    protected function unsetActorTemplateCompilerFactory(): self
     {
-        if (!$this->hasTargetActorTemplateCompilerFactory()) {
-            throw new LogicException('TargetActorTemplateCompilerFactory is not set.');
+        if (!$this->hasActorTemplateCompilerFactory()) {
+            throw new LogicException('ActorTemplateCompilerFactory is not set.');
         }
-        unset($this->TargetActorTemplateCompilerFactory);
+        unset($this->ActorTemplateCompilerFactory);
 
         return $this;
     }

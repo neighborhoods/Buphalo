@@ -14,98 +14,130 @@ class Actor implements ActorInterface
         hasAnnotationProcessorMap as public;
     }
 
-    protected $relative_template_path;
-    protected $template_file_extension;
-    protected $looks_like_template_file_extension;
-    protected $looks_like_relative_template_path;
+    protected $GenerateRelativeDirectoryPath;
+    protected $GenerateFileName;
+    protected $GenerateFileExtension;
+    protected $TemplateRelativeDirectoryPath;
+    protected $TemplateFileName;
+    protected $TemplateFileExtension;
 
-    public function getRelativeTemplatePath(): string
+    public function getGenerateRelativeDirectoryPath(): string
     {
-        if ($this->relative_template_path === null) {
-            throw new LogicException('Actor relative_template_path has not been set.');
+        if ($this->GenerateRelativeDirectoryPath === null) {
+            throw new LogicException('Actor Generate Relative Directory Path has not been set.');
         }
 
-        return $this->relative_template_path;
+        return $this->GenerateRelativeDirectoryPath;
     }
 
-    public function setRelativeTemplatePath(string $relative_template_path): ActorInterface
+    public function setGenerateRelativeDirectoryPath(string $GenerateRelativeDirectoryPath): ActorInterface
     {
-        if ($this->relative_template_path !== null) {
-            throw new LogicException('Actor relative_template_path is already set.');
+        if ($this->GenerateRelativeDirectoryPath !== null) {
+            throw new LogicException('Actor Generate Relative Directory Path is already set.');
         }
 
-        $this->relative_template_path = $relative_template_path;
+        $this->GenerateRelativeDirectoryPath = $GenerateRelativeDirectoryPath;
 
         return $this;
     }
 
-    public function getTemplateFileExtension()
+    public function getGenerateFileExtension(): string
     {
-        if ($this->template_file_extension === null) {
-            throw new LogicException('Actor template_file_extension has not been set.');
+        if ($this->GenerateFileExtension === null) {
+            throw new LogicException('Actor Generate File Extension has not been set.');
         }
 
-        return $this->template_file_extension;
+        return $this->GenerateFileExtension;
     }
 
-    public function setTemplateFileExtension($template_file_extension): ActorInterface
+    public function setGenerateFileExtension(string $GenerateFileExtension): ActorInterface
     {
-        if ($this->template_file_extension !== null) {
-            throw new LogicException('Actor template_file_extension is already set.');
+        if ($this->GenerateFileExtension !== null) {
+            throw new LogicException('Actor Generated File Extension is already set.');
         }
 
-        $this->template_file_extension = $template_file_extension;
+        $this->GenerateFileExtension = $GenerateFileExtension;
 
         return $this;
     }
 
-    public function getLooksLikeTemplateFileExtension(): string
+    public function getTemplateFileExtension(): string
     {
-        if ($this->looks_like_template_file_extension === null) {
-            throw new LogicException('Actor looks_like_template_file_extension has not been set.');
+        if ($this->TemplateFileExtension === null) {
+            throw new LogicException('Actor Template File Extension has not been set.');
         }
 
-        return $this->looks_like_template_file_extension;
+        return $this->TemplateFileExtension;
     }
 
-    public function setLooksLikeTemplateFileExtension(string $looks_like_template_file_extension): ActorInterface
+    public function setTemplateFileExtension(string $TemplateFileExtension): ActorInterface
     {
-        if ($this->looks_like_template_file_extension !== null) {
-            throw new LogicException('Actor looks_like_template_file_extension is already set.');
+        if ($this->TemplateFileExtension !== null) {
+            throw new LogicException('Actor Template File Extension is already set.');
         }
 
-        $this->looks_like_template_file_extension = $looks_like_template_file_extension;
+        $this->TemplateFileExtension = $TemplateFileExtension;
 
         return $this;
     }
 
-    public function hasLooksLikeTemplateFileExtension(): bool
+    public function getTemplateRelativeDirectoryPath(): string
     {
-        return $this->looks_like_template_file_extension !== null;
-    }
-
-    public function getLooksLikeRelativeTemplatePath(): string
-    {
-        if ($this->looks_like_relative_template_path === null) {
-            throw new LogicException('Actor looks_like_relative_template_path has not been set.');
+        if ($this->TemplateRelativeDirectoryPath === null) {
+            throw new LogicException('Actor Template Relative Directory Path has not been set.');
         }
 
-        return $this->looks_like_relative_template_path;
+        return $this->TemplateRelativeDirectoryPath;
     }
 
-    public function setLooksLikeRelativeTemplatePath(string $looks_like_relative_template_path): ActorInterface
+    public function setTemplateRelativeDirectoryPath(string $TemplateRelativeDirectoryPath): ActorInterface
     {
-        if ($this->looks_like_relative_template_path !== null) {
-            throw new LogicException('Actor looks_like_relative_template_path is already set.');
+        if ($this->TemplateRelativeDirectoryPath !== null) {
+            throw new LogicException('Actor Template Relative Directory Path is already set.');
         }
 
-        $this->looks_like_relative_template_path = $looks_like_relative_template_path;
+        $this->TemplateRelativeDirectoryPath = $TemplateRelativeDirectoryPath;
 
         return $this;
     }
 
-    public function hasLooksLikeRelativeTemplatePath(): bool
+    public function getGenerateFileName(): string
     {
-        return $this->looks_like_relative_template_path !== null;
+        if ($this->GenerateFileName === null) {
+            throw new LogicException('Generate File Name has not been set.');
+        }
+
+        return $this->GenerateFileName;
+    }
+
+    public function setGenerateFileName(string $GenerateFileName): ActorInterface
+    {
+        if ($this->GenerateFileName !== null) {
+            throw new LogicException('Generate File Name is already set.');
+        }
+
+        $this->GenerateFileName = $GenerateFileName;
+
+        return $this;
+    }
+
+    public function getTemplateFileName(): string
+    {
+        if ($this->TemplateFileName === null) {
+            throw new LogicException('Template File Name has not been set.');
+        }
+
+        return $this->TemplateFileName;
+    }
+
+    public function setTemplateFileName(string $TemplateFileName): ActorInterface
+    {
+        if ($this->TemplateFileName !== null) {
+            throw new LogicException('Template File Name is already set.');
+        }
+
+        $this->TemplateFileName = $TemplateFileName;
+
+        return $this;
     }
 }

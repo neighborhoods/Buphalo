@@ -4,11 +4,13 @@ declare(strict_types=1);
 namespace Neighborhoods\Bradfab\AnnotationProcessor\Map;
 
 use LogicException;
-use Neighborhoods\Bradfab\AnnotationProcessor\MapInterface;
 use Neighborhoods\Bradfab\AnnotationProcessor;
+use Neighborhoods\Bradfab\AnnotationProcessor\MapInterface;
+use Neighborhoods\Bradfab\FabricationFile;
 
 class Builder implements BuilderInterface
 {
+    use FabricationFile\AwareTrait;
     use Factory\AwareTrait;
     use AnnotationProcessor\Builder\Factory\AwareTrait;
 
@@ -20,6 +22,7 @@ class Builder implements BuilderInterface
         $map = $this->getAnnotationProcessorMapFactory()->create();
         foreach ($records as $annotationProcessorKey => $annotationProcessorDefinition) {
             $annotationProcessorBuilder = $this->getAnnotationProcessorBuilderFactory()->create();
+            $annotationProcessorBuilder->setFabricationFile($this->getFabricationFile());
             $annotationProcessorBuilder->setRecord($annotationProcessorDefinition);
             $map[$annotationProcessorKey] = $annotationProcessorBuilder->build();
         }

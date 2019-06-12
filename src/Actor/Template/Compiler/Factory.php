@@ -11,6 +11,6 @@ class Factory implements FactoryInterface
 
     public function create(): CompilerInterface
     {
-        return clone $this->getTargetActorTemplateCompiler();
+        return clone $this->getActorTemplateCompiler();
     }
 }

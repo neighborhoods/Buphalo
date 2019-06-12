@@ -11,6 +11,6 @@ class Factory implements FactoryInterface
 
     public function create(): AnnotationTokenizerInterface
     {
-        return clone $this->getTargetActorTemplateAnnotationTokenizer();
+        return clone $this->getActorTemplateAnnotationTokenizer();
     }
 }

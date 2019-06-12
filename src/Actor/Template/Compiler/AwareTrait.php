@@ -8,38 +8,38 @@ use Neighborhoods\Bradfab\Actor\Template\CompilerInterface;
 
 trait AwareTrait
 {
-    protected $TargetActorTemplateCompiler;
+    protected $ActorTemplateCompiler;
 
-    public function setTargetActorTemplateCompiler(CompilerInterface $Compiler): self
+    public function setActorTemplateCompiler(CompilerInterface $Compiler): self
     {
-        if ($this->hasTargetActorTemplateCompiler()) {
-            throw new LogicException('TargetActorTemplateCompiler is already set.');
+        if ($this->hasActorTemplateCompiler()) {
+            throw new LogicException('ActorTemplateCompiler is already set.');
         }
-        $this->TargetActorTemplateCompiler = $Compiler;
+        $this->ActorTemplateCompiler = $Compiler;
 
         return $this;
     }
 
-    protected function getTargetActorTemplateCompiler(): CompilerInterface
+    protected function getActorTemplateCompiler(): CompilerInterface
     {
-        if (!$this->hasTargetActorTemplateCompiler()) {
-            throw new LogicException('TargetActorTemplateCompiler is not set.');
+        if (!$this->hasActorTemplateCompiler()) {
+            throw new LogicException('ActorTemplateCompiler is not set.');
         }
 
-        return $this->TargetActorTemplateCompiler;
+        return $this->ActorTemplateCompiler;
     }
 
-    protected function hasTargetActorTemplateCompiler(): bool
+    protected function hasActorTemplateCompiler(): bool
     {
-        return isset($this->TargetActorTemplateCompiler);
+        return isset($this->ActorTemplateCompiler);
     }
 
-    protected function unsetTargetActorTemplateCompiler(): self
+    protected function unsetActorTemplateCompiler(): self
     {
-        if (!$this->hasTargetActorTemplateCompiler()) {
-            throw new LogicException('TargetActorTemplateCompiler is not set.');
+        if (!$this->hasActorTemplateCompiler()) {
+            throw new LogicException('ActorTemplateCompiler is not set.');
         }
-        unset($this->TargetActorTemplateCompiler);
+        unset($this->ActorTemplateCompiler);
 
         return $this;
     }

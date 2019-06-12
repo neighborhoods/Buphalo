@@ -10,33 +10,33 @@ trait AwareTrait
 {
     protected $Actor;
 
-    public function setTargetActor(ActorInterface $TargetActor): self
+    public function setActor(ActorInterface $Actor): self
     {
-        if ($this->hasTargetActor()) {
+        if ($this->hasActor()) {
             throw new LogicException('Actor is already set.');
         }
-        $this->Actor = $TargetActor;
+        $this->Actor = $Actor;
 
         return $this;
     }
 
-    protected function getTargetActor(): ActorInterface
+    protected function getActor(): ActorInterface
     {
-        if (!$this->hasTargetActor()) {
+        if (!$this->hasActor()) {
             throw new LogicException('Actor is not set.');
         }
 
         return $this->Actor;
     }
 
-    protected function hasTargetActor(): bool
+    protected function hasActor(): bool
     {
         return isset($this->Actor);
     }
 
-    protected function unsetTargetActor(): self
+    protected function unsetActor(): self
     {
-        if (!$this->hasTargetActor()) {
+        if (!$this->hasActor()) {
             throw new LogicException('Actor is not set.');
         }
         unset($this->Actor);

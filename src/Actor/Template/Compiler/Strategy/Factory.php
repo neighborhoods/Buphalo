@@ -11,6 +11,6 @@ class Factory implements FactoryInterface
 
     public function create(): StrategyInterface
     {
-        return clone $this->getTargetActorTemplateCompilerStrategy();
+        return clone $this->getActorTemplateCompilerStrategy();
     }
 }

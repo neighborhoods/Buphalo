@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Neighborhoods\Bradfab\AnnotationProcessor;
 
 use Neighborhoods\Bradfab\AnnotationProcessorInterface;
+use Neighborhoods\Bradfab\FabricationFileInterface;
 
 interface BuilderInterface
 {
@@ -12,4 +13,6 @@ interface BuilderInterface
     public function build(): AnnotationProcessorInterface;
 
     public function setRecord(array $record): BuilderInterface;
+
+    public function setFabricationFile(FabricationFileInterface $FabricationFile);
 }

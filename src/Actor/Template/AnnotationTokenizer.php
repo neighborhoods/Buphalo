@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Actor\Template;
 
-use Neighborhoods\Bradfab\AnnotationProcessor\BuilderInterface;
-use Neighborhoods\Bradfab\AnnotationProcessorInterface;
 use Neighborhoods\Bradfab\Actor;
 use Neighborhoods\Bradfab\AnnotationProcessor;
+use Neighborhoods\Bradfab\AnnotationProcessor\BuilderInterface;
+use Neighborhoods\Bradfab\AnnotationProcessorInterface;
 
 class AnnotationTokenizer implements AnnotationTokenizerInterface
 {
@@ -24,7 +24,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
     public function getTokenizedContents(): string
     {
         if ($this->tokenized_contents === null) {
-            $templateContents = $this->getTargetActorTemplate()->getContents();
+            $templateContents = $this->getActorTemplate()->getContents();
             $numberOfAnnotations = preg_match_all(
                 self::ANNOTATION_REGEX,
                 $templateContents,
@@ -44,17 +44,17 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
                 }
             }
 
-            $this->getTargetActorTemplate()->updateContents($tokenizedContents);
+            $this->getActorTemplate()->updateContents($tokenizedContents);
             $this->tokenized_contents = $tokenizedContents;
         }
 
         return $this->tokenized_contents;
     }
 
-    // @todo - try refactoring this as a builder alias.
+    // @Please refactor this as a named builder.
     protected function getAnnotationProcessor(array $annotations, int $index): AnnotationProcessorInterface
     {
-        $targetActor = $this->getTargetActorTemplate()->getFabricationFileActor();
+        $targetActor = $this->getActorTemplate()->getFabricationFileActor();
         $annotationProcessor = null;
         if ($targetActor->hasAnnotationProcessorMap()) {
             $annotationProcessors = $targetActor->getAnnotationProcessorMap();

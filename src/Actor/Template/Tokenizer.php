@@ -9,7 +9,7 @@ use Neighborhoods\Bradfab\Actor;
 class Tokenizer implements TokenizerInterface
 {
     use Actor\Template\AwareTrait {
-        getTargetActorTemplate as public;
+        getActorTemplate as public;
     }
     use Actor\Template\AnnotationTokenizer\Factory\AwareTrait;
 
@@ -28,69 +28,80 @@ class Tokenizer implements TokenizerInterface
         if ($this->tokenized_contents === null) {
 
             $this->getAnnotationTokenizer()->tokenize();
-            $templateContents = $this->getTargetActorTemplate()->getContents();
+            $templateContents = $this->getActorTemplate()->getContents();
             $tokenizedContents = str_replace(
                 'Neighborhoods\Bradfab',
                 TokenizerInterface::PRIMARY_ACTOR_NAMESPACE_TOKEN,
                 $templateContents
             );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'Template\Actor',
                 TokenizerInterface::PRIMARY_ACTOR_RELATIVE_NAME_PATH_TOKEN,
                 $tokenizedContents
             );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'Template\Actor\\',
                 sprintf('%s\\', TokenizerInterface::PRIMARY_ACTOR_RELATIVE_NAME_PATH_TOKEN),
                 $tokenizedContents
             );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'Template',
                 TokenizerInterface::PRIMARY_ACTOR_RELATIVE_NAME_PATH_TOKEN,
                 $tokenizedContents
             );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'protected $Actor',
                 TokenizerInterface::PRIMARY_ACTOR_PROPERTY_TOKEN,
                 $tokenizedContents
             );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 '$this->Actor',
                 TokenizerInterface::PRIMARY_ACTOR_PROPERTY_REFERENCE_TOKEN,
                 $tokenizedContents
             );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 '$Actor',
                 TokenizerInterface::PRIMARY_ACTOR_VARIABLE_TOKEN,
                 $tokenizedContents
             );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'ActorInterface',
                 TokenizerInterface::PRIMARY_ACTOR_INTERFACE_TOKEN,
                 $tokenizedContents
             );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'use Actor',
                 TokenizerInterface::PRIMARY_ACTOR_TRAIT_TOKEN,
                 $tokenizedContents
             );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
-                sprintf('%s', $this->getTargetActorTemplate()->getPascalCaseName()),
+                sprintf('%s', $this->getActorTemplate()->getPascalCaseName()),
                 TokenizerInterface::ACTOR_SHORT_NAME_TOKEN,
                 $tokenizedContents
             );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 "Actor\n",
                 sprintf('%s%s', TokenizerInterface::PRIMARY_ACTOR_SHORT_NAME_TOKEN, "\n"),
                 $tokenizedContents
             );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'Actor',
                 TokenizerInterface::PRIMARY_ACTOR_FULL_NAME_TOKEN,
                 $tokenizedContents
             );
-            $this->getTargetActorTemplate()->updateContents($tokenizedContents);
-            $this->tokenized_contents = $this->getTargetActorTemplate()->getContents();
+            $this->getActorTemplate()->updateContents($tokenizedContents);
+            $this->tokenized_contents = $this->getActorTemplate()->getContents();
         }
 
         return $this->tokenized_contents;
@@ -99,8 +110,8 @@ class Tokenizer implements TokenizerInterface
     protected function getAnnotationTokenizer(): AnnotationTokenizerInterface
     {
         if ($this->annotation_tokenizer === null) {
-            $annotationTokenizer = $this->getTargetActorTemplateAnnotationTokenizerFactory()->create();
-            $annotationTokenizer->setTargetActorTemplate($this->getTargetActorTemplate());
+            $annotationTokenizer = $this->getActorTemplateAnnotationTokenizerFactory()->create();
+            $annotationTokenizer->setActorTemplate($this->getActorTemplate());
             $this->annotation_tokenizer = $annotationTokenizer;
         }
 

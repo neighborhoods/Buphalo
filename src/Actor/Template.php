@@ -27,13 +27,13 @@ class Template implements TemplateInterface
             $actorTemplateFilePathCandidate = sprintf(
                 '%s/%s%s',
                 $this->getTemplateTreeDirectoryPath(),
-                $this->getFabricationFileActor()->getRelativeTemplatePath(),
+                $this->getFabricationFileActor()->getGenerateRelativeDirectoryPath(),
                 $this->getFileExtension()
             );
             $actorTemplateFilePath = realpath($actorTemplateFilePathCandidate);
             if ($actorTemplateFilePath === false) {
                 throw new RuntimeException(
-                    sprintf('The actor template file[%s] does not exist.', $actorTemplateFilePathCandidate)
+                    sprintf('The actor template file [%s] does not exist.', $actorTemplateFilePathCandidate)
                 );
             }
             $this->ActorTemplateFilePath = $actorTemplateFilePath;
@@ -45,8 +45,8 @@ class Template implements TemplateInterface
     public function getPascalCaseName(): string
     {
         if ($this->ShortPascalCaseName === null) {
-            $relativeTemplatePath = $this->getFabricationFileActor()->getRelativeTemplatePath();
-            $shortNamePosition = strrpos($relativeTemplatePath, "/");
+            $relativeTemplatePath = $this->getFabricationFileActor()->getGenerateRelativeDirectoryPath();
+            $shortNamePosition = strrpos($relativeTemplatePath, '/');
             if ($shortNamePosition === false) {
                 $shortNamePosition = 0;
             }
@@ -60,7 +60,7 @@ class Template implements TemplateInterface
     public function getFileExtension(): string
     {
         if ($this->FileExtension === null) {
-            $this->FileExtension = $this->getFabricationFileActor()->getTemplateFileExtension();
+            $this->FileExtension = $this->getFabricationFileActor()->getGenerateFileExtension();
         }
 
         return $this->FileExtension;
@@ -69,8 +69,8 @@ class Template implements TemplateInterface
     public function getLooksLikeShortPascalCaseName(): string
     {
         if ($this->LooksLikeShortName === null) {
-            $relativeTemplatePath = $this->getFabricationFileActor()->getLooksLikeRelativeTemplatePath();
-            $looksLikeShortNamePosition = strrpos($relativeTemplatePath, "/");
+            $relativeTemplatePath = $this->getFabricationFileActor()->getTemplateRelativeDirectoryPath();
+            $looksLikeShortNamePosition = strrpos($relativeTemplatePath, '/');
             if ($looksLikeShortNamePosition === false) {
                 $looksLikeShortNamePosition = 0;
             }
@@ -84,7 +84,7 @@ class Template implements TemplateInterface
     public function getLooksLikeFileExtension(): string
     {
         if ($this->LooksLikeFileExtension === null) {
-            $this->LooksLikeFileExtension = $this->getFabricationFileActor()->getLooksLikeTemplateFileExtension();
+            $this->LooksLikeFileExtension = $this->getFabricationFileActor()->getTemplateFileExtension();
         }
 
         return $this->LooksLikeFileExtension;
