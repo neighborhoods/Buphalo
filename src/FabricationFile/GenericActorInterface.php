@@ -12,4 +12,8 @@ interface GenericActorInterface
     public function setTemplateFileName(string $TemplateFileName): ActorInterface;
 
     public function getTemplateFileName(): string;
+
+    public function setTemplateRelativeFilePath($TemplateRelativeFilePath): ActorInterface;
+
+    public function getTemplateRelativeFilePath();
 }

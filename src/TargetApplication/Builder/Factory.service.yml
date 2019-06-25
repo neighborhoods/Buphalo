@@ -1,0 +1,14 @@
+parameters:
+  Neighborhoods\Bradfab\TargetApplication\Builder\FactoryInterface.SourceDirectoryPath: '%env(Neighborhoods_Bradfab_TargetApplication_Builder_FactoryInterface__SourceDirectoryPath)%'
+  Neighborhoods\Bradfab\TargetApplication\Builder\FactoryInterface.FabricationPath: '%env(Neighborhoods_Bradfab_TargetApplication_Builder_FactoryInterface__FabricationPath)%'
+  Neighborhoods\Bradfab\TargetApplication\Builder\FactoryInterface.Namespace: '%env(Neighborhoods_Bradfab_TargetApplication_Builder_FactoryInterface__Namespace)%'
+services:
+  Neighborhoods\Bradfab\TargetApplication\Builder\FactoryInterface:
+    class: Neighborhoods\Bradfab\TargetApplication\Builder\Factory
+    public: false
+    shared: true
+    calls:
+      - [setTargetApplicationBuilder, ['@Neighborhoods\Bradfab\TargetApplication\BuilderInterface']]
+      - [setNamespace, ['%Neighborhoods\Bradfab\TargetApplication\Builder\FactoryInterface.Namespace%']]
+      - [setSourceDirectoryPath, ['%Neighborhoods\Bradfab\TargetApplication\Builder\FactoryInterface.SourceDirectoryPath%']]
+      - [setFabricationPath, ['%Neighborhoods\Bradfab\TargetApplication\Builder\FactoryInterface.FabricationPath%']]

@@ -17,10 +17,11 @@ class Builder implements BuilderInterface
     protected const CURRENT_DIRECTORY = '.';
 
     protected $Record;
-    protected $RelativeTemplateDirectoryPath;
+    protected $TemplateRelativeDirectoryPath;
     protected $TemplateBaseName;
     protected $TemplateFileName;
     protected $TemplateFileExtension;
+    protected $TemplateRelativeFilePath;
     protected $GenerateRelativeDirectoryPath;
     protected $GenerateBaseName;
     protected $GenerateFileName;
@@ -34,9 +35,10 @@ class Builder implements BuilderInterface
         $actor->setGenerateRelativeDirectoryPath($this->getGenerateRelativeDirectoryPath());
         $actor->setGenerateFileName($this->getGenerateFileName());
         $actor->setGenerateFileExtension($this->getGenerateFileExtension());
-        $actor->setTemplateRelativeDirectoryPath($this->getRelativeTemplateDirectoryPath());
+        $actor->setTemplateRelativeDirectoryPath($this->getTemplateRelativeDirectoryPath());
         $actor->setTemplateFileName($this->getTemplateFileName());
         $actor->setTemplateFileExtension($this->getTemplateFileExtension());
+        $actor->setTemplateRelativeFilePath($this->getTemplateRelativeFilePath());
         if (isset($record[BuilderInterface::ANNOTATION_PROCESSORS])) {
             $annotationProcessorMapBuilder = $this->getAnnotationProcessorMapBuilderFactory()->create();
             $annotationProcessorMapBuilder->setRecords($record[BuilderInterface::ANNOTATION_PROCESSORS]);
@@ -148,18 +150,18 @@ class Builder implements BuilderInterface
         return $this->TemplateFileExtension;
     }
 
-    protected function getRelativeTemplateDirectoryPath(): string
+    protected function getTemplateRelativeDirectoryPath(): string
     {
-        if ($this->RelativeTemplateDirectoryPath === null) {
+        if ($this->TemplateRelativeDirectoryPath === null) {
             $RelativeTemplateDirectoryPath = pathinfo($this->getRecord()[BuilderInterface::TEMPLATE], PATHINFO_DIRNAME);
             if ($RelativeTemplateDirectoryPath === self::CURRENT_DIRECTORY) {
-                $this->RelativeTemplateDirectoryPath = '';
+                $this->TemplateRelativeDirectoryPath = '';
             } else {
-                $this->RelativeTemplateDirectoryPath = $RelativeTemplateDirectoryPath;
+                $this->TemplateRelativeDirectoryPath = $RelativeTemplateDirectoryPath;
             }
         }
 
-        return $this->RelativeTemplateDirectoryPath;
+        return $this->TemplateRelativeDirectoryPath;
     }
 
     protected function getRecord(): array
@@ -180,5 +182,19 @@ class Builder implements BuilderInterface
         $this->Record = $record;
 
         return $this;
+    }
+
+    protected function getTemplateRelativeFilePath(): string
+    {
+        if ($this->TemplateRelativeFilePath === null) {
+            $this->TemplateRelativeFilePath = sprintf(
+                '%s/%s.%s',
+                $this->getTemplateRelativeDirectoryPath(),
+                $this->getTemplateFileName(),
+                $this->getTemplateFileExtension()
+            );
+        }
+
+        return $this->TemplateRelativeFilePath;
     }
 }

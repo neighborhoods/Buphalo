@@ -1,6 +1,0 @@
-supporting_actors:
-  Actor\AwareTrait.php:
-  Actor\Factory.php:
-  Actor\Factory.service.yml:
-  Actor\FactoryInterface.php:
-  Actor\Factory\AwareTrait.php:

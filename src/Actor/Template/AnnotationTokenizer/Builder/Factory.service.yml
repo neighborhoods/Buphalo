@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer\Builder\FactoryInterface:
+    class: Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer\Builder\Factory
+    calls:
+      - [setActorTemplateAnnotationTokenizerBuilder, ['@Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer\BuilderInterface']]

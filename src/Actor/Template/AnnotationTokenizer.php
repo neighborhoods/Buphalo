@@ -44,7 +44,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
                 }
             }
 
-            $this->getActorTemplate()->updateContents($tokenizedContents);
+            $this->getActorTemplate()->applyTokenizedContents($tokenizedContents);
             $this->tokenized_contents = $tokenizedContents;
         }
 

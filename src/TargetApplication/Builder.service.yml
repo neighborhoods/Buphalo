@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\TargetApplication\BuilderInterface:
+    class: Neighborhoods\Bradfab\TargetApplication\Builder
+    public: false
+    shared: false
+    calls:
+      - [setTargetApplicationFactory, ['@Neighborhoods\Bradfab\TargetApplication\FactoryInterface']]

@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Neighborhoods\Bradfab;
 
 use Neighborhoods\Bradfab\FabricationFile\Actor;
-use Neighborhoods\Bradfab\FabricationFile\SupportingActor;
 
 interface FabricationFileInterface
 {
@@ -29,10 +28,6 @@ interface FabricationFileInterface
     public function setRelativeDirectoryPath(string $RelativeDirectoryPath): FabricationFileInterface;
 
     public function getRelativeDirectoryPath(): string;
-
-    public function setSupportingActors(SupportingActor\MapInterface $SupportingActors): FabricationFileInterface;
-
-    public function getSupportingActors(): SupportingActor\MapInterface;
 
     public function getBaseName(): string;
 

@@ -4,15 +4,10 @@ declare(strict_types=1);
 namespace Neighborhoods\Bradfab\Actor\Template\Compiler;
 
 use Neighborhoods\Bradfab\ActorInterface;
-use Neighborhoods\Bradfab\FabricationFile;
 
 interface StrategyInterface
 {
     public function setActor(ActorInterface $TargetPrimaryActor);
-
-    public function getActor(): ActorInterface;
-
-    public function setFabricationFileActor(FabricationFile\ActorInterface $FabricationFileActor);
 
     public function getPropertyReplacement(): string;
 

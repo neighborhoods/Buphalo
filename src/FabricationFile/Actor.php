@@ -20,6 +20,7 @@ class Actor implements ActorInterface
     protected $TemplateRelativeDirectoryPath;
     protected $TemplateFileName;
     protected $TemplateFileExtension;
+    protected $TemplateRelativeFilePath;
 
     public function getGenerateRelativeDirectoryPath(): string
     {
@@ -137,6 +138,26 @@ class Actor implements ActorInterface
         }
 
         $this->TemplateFileName = $TemplateFileName;
+
+        return $this;
+    }
+
+    public function getTemplateRelativeFilePath()
+    {
+        if ($this->TemplateRelativeFilePath === null) {
+            throw new LogicException('Template Relative File Path has not been set.');
+        }
+
+        return $this->TemplateRelativeFilePath;
+    }
+
+    public function setTemplateRelativeFilePath($TemplateRelativeFilePath): ActorInterface
+    {
+        if ($this->TemplateRelativeFilePath !== null) {
+            throw new LogicException('Template Relative File Path is already set.');
+        }
+
+        $this->TemplateRelativeFilePath = $TemplateRelativeFilePath;
 
         return $this;
     }

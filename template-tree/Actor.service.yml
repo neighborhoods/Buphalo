@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\BradfabTemplateTree\ActorInterface:
+    class: Neighborhoods\BradfabTemplateTree\Actor
+    public: false
+    shared: false

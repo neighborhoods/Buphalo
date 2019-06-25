@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Bradfab\SupportingActor\TemplateInterface:
-    class: Neighborhoods\Bradfab\SupportingActor\Template
-    public: false
-    shared: false

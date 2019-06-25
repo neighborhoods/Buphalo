@@ -12,7 +12,5 @@ interface WriterInterface
 
     public function setTargetApplication(TargetApplicationInterface $TargetApplication);
 
-    public function getActorSourceFilePath(): string;
-
     public function write(): WriterInterface;
 }

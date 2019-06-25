@@ -4,80 +4,76 @@ declare(strict_types=1);
 namespace Neighborhoods\Bradfab\Actor\Template\Compiler;
 
 use Neighborhoods\Bradfab\Actor;
-use Neighborhoods\Bradfab\FabricationFile;
 
 /** @noinspection PhpSuperClassIncompatibleWithInterfaceInspection */
 class Strategy implements StrategyInterface
 {
-    use Actor\AwareTrait {
-        getActor as public;
-    }
-    use FabricationFile\Actor\AwareTrait;
+    use Actor\AwareTrait;
 
-    protected $variable_replacement;
-    protected $property_replacement;
-    protected $property_reference_replacement;
-    protected $interface_replacement;
-    protected $trait_replacement;
-    protected $actor_name_replacement;
+    protected $VariableReplacement;
+    protected $PropertyReplacement;
+    protected $PropertyReferenceReplacement;
+    protected $InterfaceReplacement;
+    protected $TraitReplacement;
+    protected $ActorNameReplacement;
 
     public function getVariableReplacement(): string
     {
-        if ($this->variable_replacement === null) {
+        if ($this->VariableReplacement === null) {
             $targetActorName = $this->getActor()->getFullPascalCaseName();
-            $this->variable_replacement = sprintf('$%s', $targetActorName);
+            $this->VariableReplacement = sprintf('$%s', $targetActorName);
         }
 
-        return $this->variable_replacement;
+        return $this->VariableReplacement;
     }
 
     public function getPropertyReplacement(): string
     {
-        if ($this->property_replacement === null) {
+        if ($this->PropertyReplacement === null) {
             $propertyReplacement = sprintf(
                 'protected $%s',
                 $this->getActor()->getFullPascalCaseName()
             );
-            $this->property_replacement = $propertyReplacement;
+            $this->PropertyReplacement = $propertyReplacement;
         }
 
-        return $this->property_replacement;
+        return $this->PropertyReplacement;
     }
 
     public function getPropertyReferenceReplacement(): string
     {
-        if ($this->property_reference_replacement === null) {
-            $this->property_reference_replacement = sprintf(
+        if ($this->PropertyReferenceReplacement === null) {
+            $this->PropertyReferenceReplacement = sprintf(
                 '$this->%s',
                 $this->getActor()->getFullPascalCaseName()
             );
         }
 
-        return $this->property_reference_replacement;
+        return $this->PropertyReferenceReplacement;
     }
 
     public function getInterfaceReplacement(): string
     {
-        if ($this->interface_replacement === null) {
-            $this->interface_replacement = sprintf('%sInterface',
+        if ($this->InterfaceReplacement === null) {
+            $this->InterfaceReplacement = sprintf('%sInterface',
                 $this->getActor()->getShortPascalCaseName());
         }
 
-        return $this->interface_replacement;
+        return $this->InterfaceReplacement;
     }
 
     public function getTraitReplacement(): string
     {
-        if ($this->trait_replacement === null) {
-            $this->trait_replacement = sprintf('use %s', $this->getActor()->getFullPascalCaseName());
+        if ($this->TraitReplacement === null) {
+            $this->TraitReplacement = sprintf('use %s', $this->getActor()->getFullPascalCaseName());
         }
 
-        return $this->trait_replacement;
+        return $this->TraitReplacement;
     }
 
     public function getActorShortNameReplacement(): string
     {
-        if ($this->actor_name_replacement === null) {
+        if ($this->ActorNameReplacement === null) {
             $fabricationFileActor = $this->getFabricationFileActor();
             $relativeNamePath = $fabricationFileActor->getGenerateRelativeDirectoryPath();
             if ($fabricationFileActor->hasTemplateRelativeDirectoryPath()) {
@@ -89,9 +85,9 @@ class Strategy implements StrategyInterface
                 $start = $position + 1;
             }
             $shortName = trim(substr($relativeNamePath, $start));
-            $this->actor_name_replacement = $shortName;
+            $this->ActorNameReplacement = $shortName;
         }
 
-        return $this->actor_name_replacement;
+        return $this->ActorNameReplacement;
     }
 }

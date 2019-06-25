@@ -11,19 +11,18 @@ use Symfony\Component\Finder\SplFileInfo;
 class Fabricator implements FabricatorInterface
 {
     use FabricationFile\Builder\Factory\AwareTrait;
-    use Actor\Template\Factory\AwareTrait;
-    use Actor\Template\Tokenizer\Factory\AwareTrait;
-    use Actor\Template\Compiler\Factory\AwareTrait;
+    use Actor\Template\Builder\Factory\AwareTrait;
+    use Actor\Template\Tokenizer\Builder\Factory\AwareTrait;
+    use Actor\Template\Compiler\Builder\Factory\AwareTrait;
     use Actor\Template\Compiler\Strategy\Factory\AwareTrait;
     use Actor\Builder\Factory\AwareTrait;
-    use SupportingActor\Factory\AwareTrait;
-    use Actor\Writer\Factory\AwareTrait;
+    use Actor\Writer\Builder\Factory\AwareTrait;
     use TargetApplication\AwareTrait;
+    use TemplateTree\Map\Builder\Factory\AwareTrait;
 
     protected $Finder;
     protected $FabricateYamlFiles;
     protected $Filesystem;
-    protected $TemplateTreeDirectoryPath;
 
     public function fabricate(): FabricatorInterface
     {
@@ -33,26 +32,10 @@ class Fabricator implements FabricatorInterface
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
             $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricationFileSplFileInfo)->build();
             foreach ($fabricationFile->getActors() as $fabricationFileActor) {
-                $actorBuilder = $this->getActorBuilderFactory()->create();
-                $actorBuilder->setFabricationFile($fabricationFile);
-                $actorBuilder->setFabricationFileActor($fabricationFileActor);
-                $actorBuilder->setTargetApplication($this->getTargetApplication());
-                $actor = $actorBuilder->build();
-                //$template = $this->getActorTemplateFactory()->create();
-                //$template->setFabricationFileActor($fabricationFileActor);
-                //$template->setTemplateTreeDirectoryPath($this->getTemplateTreeDirectoryPath());
-                //$tokenizer = $this->getActorTemplateTokenizerFactory()->create();
-                //$tokenizer->setActorTemplate($template);
-                //$strategy = $this->getActorTemplateCompilerStrategyFactory()->create();
-                //$strategy->setFabricationFileActor($fabricationFileActor);
-                //$strategy->setActor($actor);
-                //$compiler = $this->getActorTemplateCompilerFactory()->create();
-                //$compiler->setActorTemplateTokenizer($tokenizer);
-                //$compiler->setActorTemplateCompilerStrategy($strategy);
-                //$writer = $this->getActorWriterFactory()->create();
-                //$writer->setActorTemplateCompiler($compiler);
-                //$writer->setTargetApplication($this->getTargetApplication());
-                //$writer->write();
+
+                $writerBuilder = $this->getActorWriterBuilderFactory()->create();
+                $writer = $writerBuilder->build();
+                $writer->write();
             }
         }
 
@@ -125,26 +108,6 @@ class Fabricator implements FabricatorInterface
         }
 
         $this->Filesystem = $filesystem;
-
-        return $this;
-    }
-
-    public function getTemplateTreeDirectoryPath(): string
-    {
-        if ($this->TemplateTreeDirectoryPath === null) {
-            throw new LogicException('Bradfab TemplateTreeDirectoryPath has not been set.');
-        }
-
-        return $this->TemplateTreeDirectoryPath;
-    }
-
-    public function setTemplateTreeDirectoryPath(string $template_tree_directory_path): FabricatorInterface
-    {
-        if ($this->TemplateTreeDirectoryPath !== null) {
-            throw new LogicException('Bradfab TemplateTreeDirectoryPath is already set.');
-        }
-
-        $this->TemplateTreeDirectoryPath = $template_tree_directory_path;
 
         return $this;
     }

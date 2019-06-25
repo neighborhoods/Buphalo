@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\TemplateTree\FactoryInterface:
+    class: Neighborhoods\Bradfab\TemplateTree\Factory
+    public: false
+    shared: true
+    calls:
+      - [setTemplateTree, ['@Neighborhoods\Bradfab\TemplateTreeInterface']]

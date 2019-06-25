@@ -5,7 +5,6 @@ namespace Neighborhoods\Bradfab;
 
 use LogicException;
 use Neighborhoods\Bradfab\FabricationFile\Actor;
-use Neighborhoods\Bradfab\FabricationFile\SupportingActor;
 
 class FabricationFile implements FabricationFileInterface
 {
@@ -16,7 +15,6 @@ class FabricationFile implements FabricationFileInterface
     protected $RelativeDirectoryPath;
     protected $DirectoryPath;
     protected $Actors;
-    protected $SupportingActors;
 
     public function getActors(): Actor\MapInterface
     {
@@ -114,26 +112,6 @@ class FabricationFile implements FabricationFileInterface
         }
 
         $this->RelativeDirectoryPath = $RelativeDirectoryPath;
-
-        return $this;
-    }
-
-    public function getSupportingActors(): SupportingActor\MapInterface
-    {
-        if ($this->SupportingActors === null) {
-            throw new LogicException('FabricationFile SupportingActors has not been set.');
-        }
-
-        return $this->SupportingActors;
-    }
-
-    public function setSupportingActors(SupportingActor\MapInterface $SupportingActors): FabricationFileInterface
-    {
-        if ($this->SupportingActors !== null) {
-            throw new LogicException('FabricationFile SupportingActors is already set.');
-        }
-
-        $this->SupportingActors = $SupportingActors;
 
         return $this;
     }

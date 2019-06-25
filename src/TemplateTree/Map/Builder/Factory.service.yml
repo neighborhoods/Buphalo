@@ -1,0 +1,10 @@
+parameters:
+  Neighborhoods\Bradfab\TemplateTree\Map\Builder\FactoryInterface.TemplateTreeDirectoryPaths: '%env(csv:Neighborhoods_Bradfab_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths)%'
+services:
+  Neighborhoods\Bradfab\TemplateTree\Map\Builder\FactoryInterface:
+    class: Neighborhoods\Bradfab\TemplateTree\Map\Builder\Factory
+    public: false
+    shared: false
+    calls:
+      - [setTemplateTreeMapBuilder, ['@Neighborhoods\Bradfab\TemplateTree\Map\BuilderInterface']]
+      - [setTemplateTreeDirectoryPaths, ['%Neighborhoods\Bradfab\TemplateTree\Map\Builder\FactoryInterface.TemplateTreeDirectoryPaths%']]

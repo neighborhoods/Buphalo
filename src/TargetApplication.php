@@ -7,66 +7,66 @@ use LogicException;
 
 class TargetApplication implements TargetApplicationInterface
 {
-    protected $source_directory_path;
-    protected $fabrication_path;
-    protected $namespace;
+    protected $SourceDirectoryPath;
+    protected $FabricationPath;
+    protected $Namespace;
 
     public function getSourceDirectoryPath(): string
     {
-        if ($this->source_directory_path === null) {
-            throw new LogicException('TargetApplication source_directory_path has not been set.');
+        if ($this->SourceDirectoryPath === null) {
+            throw new LogicException('Target Application Source Directory Path has not been set.');
         }
 
-        return $this->source_directory_path;
+        return $this->SourceDirectoryPath;
     }
 
     public function setSourceDirectoryPath(string $source_directory_path): TargetApplicationInterface
     {
-        if ($this->source_directory_path !== null) {
-            throw new LogicException('TargetApplication source_directory_path is already set.');
+        if ($this->SourceDirectoryPath !== null) {
+            throw new LogicException('Target Application Source Directory Path is already set.');
         }
 
-        $this->source_directory_path = $source_directory_path;
+        $this->SourceDirectoryPath = $source_directory_path;
 
         return $this;
     }
 
     public function getFabricationPath(): string
     {
-        if ($this->fabrication_path === null) {
-            throw new LogicException('TargetApplication fabrication_path has not been set.');
+        if ($this->FabricationPath === null) {
+            throw new LogicException('Target Application Fabrication Path has not been set.');
         }
 
-        return $this->fabrication_path;
+        return $this->FabricationPath;
     }
 
     public function setFabricationPath(string $fabrication_path): TargetApplicationInterface
     {
-        if ($this->fabrication_path !== null) {
-            throw new LogicException('TargetApplication fabrication_path is already set.');
+        if ($this->FabricationPath !== null) {
+            throw new LogicException('Target Application Fabrication Path is already set.');
         }
 
-        $this->fabrication_path = $fabrication_path;
+        $this->FabricationPath = $fabrication_path;
 
         return $this;
     }
 
     public function getNamespace(): string
     {
-        if ($this->namespace === null) {
-            throw new LogicException('TargetApplication namespace has not been set.');
+        if ($this->Namespace === null) {
+            throw new LogicException('Target Application Namespace has not been set.');
         }
 
-        return $this->namespace;
+        return $this->Namespace;
     }
 
     public function setNamespace(string $namespace): TargetApplicationInterface
     {
-        if ($this->namespace !== null) {
-            throw new LogicException('TargetApplication namespace is already set.');
+        if ($this->Namespace !== null) {
+            throw new LogicException('Target Application Namespace is already set.');
         }
 
-        $this->namespace = $namespace;
+        $this->Namespace = $namespace;
 
         return $this;
     }

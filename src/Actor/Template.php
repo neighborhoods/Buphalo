@@ -4,128 +4,78 @@ declare(strict_types=1);
 namespace Neighborhoods\Bradfab\Actor;
 
 use LogicException;
+use Neighborhoods\Bradfab\Actor;
 use Neighborhoods\Bradfab\FabricationFile;
-use RuntimeException;
+use Neighborhoods\Bradfab\TemplateTree;
 
 class Template implements TemplateInterface
 {
-    use FabricationFile\Actor\AwareTrait {
-        getFabricationFileActor as public;
-    }
+    use Actor\AwareTrait;
+    use TemplateTree\Map\AwareTrait;
+    use FabricationFile\Actor\AwareTrait;
 
     protected $Contents;
-    protected $TemplateTreeDirectoryPath;
-    protected $FileExtension;
-    protected $ActorTemplateFilePath;
-    protected $ShortPascalCaseName;
-    protected $LooksLikeShortName;
-    protected $LooksLikeFileExtension;
-
-    public function getActorTemplateFilePath(): string
-    {
-        if ($this->ActorTemplateFilePath === null) {
-            $actorTemplateFilePathCandidate = sprintf(
-                '%s/%s%s',
-                $this->getTemplateTreeDirectoryPath(),
-                $this->getFabricationFileActor()->getGenerateRelativeDirectoryPath(),
-                $this->getFileExtension()
-            );
-            $actorTemplateFilePath = realpath($actorTemplateFilePathCandidate);
-            if ($actorTemplateFilePath === false) {
-                throw new RuntimeException(
-                    sprintf('The actor template file [%s] does not exist.', $actorTemplateFilePathCandidate)
-                );
-            }
-            $this->ActorTemplateFilePath = $actorTemplateFilePath;
-        }
-
-        return $this->ActorTemplateFilePath;
-    }
-
-    public function getPascalCaseName(): string
-    {
-        if ($this->ShortPascalCaseName === null) {
-            $relativeTemplatePath = $this->getFabricationFileActor()->getGenerateRelativeDirectoryPath();
-            $shortNamePosition = strrpos($relativeTemplatePath, '/');
-            if ($shortNamePosition === false) {
-                $shortNamePosition = 0;
-            }
-            $shortName = str_replace('/', '', substr($relativeTemplatePath, $shortNamePosition));
-            $this->ShortPascalCaseName = $shortName;
-        }
-
-        return $this->ShortPascalCaseName;
-    }
-
-    public function getFileExtension(): string
-    {
-        if ($this->FileExtension === null) {
-            $this->FileExtension = $this->getFabricationFileActor()->getGenerateFileExtension();
-        }
-
-        return $this->FileExtension;
-    }
-
-    public function getLooksLikeShortPascalCaseName(): string
-    {
-        if ($this->LooksLikeShortName === null) {
-            $relativeTemplatePath = $this->getFabricationFileActor()->getTemplateRelativeDirectoryPath();
-            $looksLikeShortNamePosition = strrpos($relativeTemplatePath, '/');
-            if ($looksLikeShortNamePosition === false) {
-                $looksLikeShortNamePosition = 0;
-            }
-            $looksLikeShortName = str_replace('/', '', substr($relativeTemplatePath, $looksLikeShortNamePosition));
-            $this->LooksLikeShortName = $looksLikeShortName;
-        }
-
-        return $this->LooksLikeShortName;
-    }
-
-    public function getLooksLikeFileExtension(): string
-    {
-        if ($this->LooksLikeFileExtension === null) {
-            $this->LooksLikeFileExtension = $this->getFabricationFileActor()->getTemplateFileExtension();
-        }
-
-        return $this->LooksLikeFileExtension;
-    }
+    protected $TokenizedContents;
+    protected $CompiledContents;
+    protected $FilePath;
 
     public function getContents(): string
     {
         if ($this->Contents === null) {
-            $this->Contents = file_get_contents($this->getActorTemplateFilePath());
+            $this->Contents = file_get_contents($this->getFilePath());
         }
 
         return $this->Contents;
     }
 
-    public function updateContents(string $contents): TemplateInterface
+    public function applyTokenizedContents(string $tokenizedContents): TemplateInterface
     {
-        if ($this->Contents === null) {
-            throw new LogicException('Template contents has not been set.');
-        }
-
-        $this->Contents = $contents;
+        $this->TokenizedContents = $tokenizedContents;
 
         return $this;
     }
 
-    public function getTemplateTreeDirectoryPath(): string
+    public function getTokenizedContents()
     {
-        if ($this->TemplateTreeDirectoryPath === null) {
-            throw new LogicException('Template template_tree_directory_path has not been set.');
+        if ($this->TokenizedContents === null) {
+            throw new LogicException('Tokenized Contents has not been set.');
         }
 
-        return $this->TemplateTreeDirectoryPath;
+        return $this->TokenizedContents;
     }
 
-    public function setTemplateTreeDirectoryPath(string $template_tree_directory_path): TemplateInterface
+    public function getCompiledContents(): string
     {
-        if ($this->TemplateTreeDirectoryPath !== null) {
-            throw new LogicException('Template template_tree_directory_path is already set.');
+        if ($this->CompiledContents === null) {
+            throw new LogicException('Compiled Contents has not been set.');
         }
 
-        $this->TemplateTreeDirectoryPath = $template_tree_directory_path;
+        return $this->CompiledContents;
+    }
+
+    public function applyCompiledContents(string $CompiledContents): TemplateInterface
+    {
+        $this->CompiledContents = $CompiledContents;
+
+        return $this;
+    }
+
+    public function getFilePath()
+    {
+        if ($this->FilePath === null) {
+            throw new LogicException('File Path has not been set.');
+        }
+
+        return $this->FilePath;
+    }
+
+    public function setFilePath($FilePath): TemplateInterface
+    {
+        if ($this->FilePath !== null) {
+            throw new LogicException('File Path is already set.');
+        }
+
+        $this->FilePath = $FilePath;
 
         return $this;
     }

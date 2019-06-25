@@ -3,5 +3,3 @@ services:
     class: Neighborhoods\Bradfab\Actor\Template\Tokenizer
     public: false
     shared: false
-    calls:
-      - [setActorTemplateAnnotationTokenizerFactory, ['@Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer\FactoryInterface']]

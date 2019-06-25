@@ -8,26 +8,24 @@ use Neighborhoods\Bradfab\Actor;
 /** @noinspection PhpSuperClassIncompatibleWithInterfaceInspection */
 class Tokenizer implements TokenizerInterface
 {
-    use Actor\Template\AwareTrait {
-        getActorTemplate as public;
-    }
-    use Actor\Template\AnnotationTokenizer\Factory\AwareTrait;
+    use Actor\Template\AwareTrait;
+    use Actor\Template\AnnotationTokenizer\AwareTrait;
+    use Actor\AwareTrait;
 
-    protected $tokenized_contents;
-    protected $annotation_tokenizer;
+    protected $TokenizedContents;
 
     public function tokenize(): TokenizerInterface
     {
-        $this->getAnnotationTokenizer();
+        $this->getTokenizedContents();
 
         return $this;
     }
 
     public function getTokenizedContents(): string
     {
-        if ($this->tokenized_contents === null) {
+        if ($this->TokenizedContents === null) {
 
-            $this->getAnnotationTokenizer()->tokenize();
+            $this->getActorTemplateAnnotationTokenizer()->tokenize();
             $templateContents = $this->getActorTemplate()->getContents();
             $tokenizedContents = str_replace(
                 'Neighborhoods\Bradfab',
@@ -84,7 +82,7 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
-                sprintf('%s', $this->getActorTemplate()->getPascalCaseName()),
+                sprintf('%s', $this->getActor()->getShortPascalCaseName()),
                 TokenizerInterface::ACTOR_SHORT_NAME_TOKEN,
                 $tokenizedContents
             );
@@ -100,21 +98,10 @@ class Tokenizer implements TokenizerInterface
                 TokenizerInterface::PRIMARY_ACTOR_FULL_NAME_TOKEN,
                 $tokenizedContents
             );
-            $this->getActorTemplate()->updateContents($tokenizedContents);
-            $this->tokenized_contents = $this->getActorTemplate()->getContents();
+            $this->getActorTemplate()->applyTokenizedContents($tokenizedContents);
+            $this->TokenizedContents = $this->getActorTemplate()->getContents();
         }
 
-        return $this->tokenized_contents;
-    }
-
-    protected function getAnnotationTokenizer(): AnnotationTokenizerInterface
-    {
-        if ($this->annotation_tokenizer === null) {
-            $annotationTokenizer = $this->getActorTemplateAnnotationTokenizerFactory()->create();
-            $annotationTokenizer->setActorTemplate($this->getActorTemplate());
-            $this->annotation_tokenizer = $annotationTokenizer;
-        }
-
-        return $this->annotation_tokenizer;
+        return $this->TokenizedContents;
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Neighborhoods\Bradfab\Actor\Template;
 
 use Neighborhoods\Bradfab\Actor\TemplateInterface;
+use Neighborhoods\Bradfab\ActorInterface;
 
 interface TokenizerInterface
 {
@@ -22,5 +23,7 @@ interface TokenizerInterface
 
     public function setActorTemplate(TemplateInterface $Template);
 
-    public function getActorTemplate(): TemplateInterface;
+    public function setActorTemplateAnnotationTokenizer(AnnotationTokenizerInterface $AnnotationTokenizer);
+
+    public function setActor(ActorInterface $Actor);
 }

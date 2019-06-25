@@ -13,10 +13,8 @@ class Builder implements BuilderInterface
 {
     use FabricationFile\Factory\AwareTrait;
     use FabricationFile\Actor\Map\Builder\Factory\AwareTrait;
-    use FabricationFile\SupportingActor\Map\Builder\Factory\AwareTrait;
 
     protected $SplFileInfo;
-    /** @var string */
     protected $FileName;
 
     public function build(): FabricationFileInterface

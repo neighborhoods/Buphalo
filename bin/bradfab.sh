@@ -3,8 +3,8 @@
 
 cd "$(dirname "$0")"
 cd ..
-BRADFAB_TARGET_APPLICATION_SOURCE_DIRECTORY_PATH=$PWD/src \
-BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=$PWD/fab \
-BRADFAB_FABRICATOR_TEMPLATE_TREE_DIRECTORY_PATH=$PWD/src/Template \
-BRADFAB_TARGET_APPLICATION_NAMESPACE=Neighborhoods\\Bradfab\\ \
+Neighborhoods_Bradfab_TargetApplication_Builder_FactoryInterface__SourceDirectoryPath=$PWD/src \
+Neighborhoods_Bradfab_TargetApplication_Builder_FactoryInterface__FabricationPath=$PWD/fab \
+Neighborhoods_Bradfab_TargetApplication_Builder_FactoryInterface__Namespace=Neighborhoods\\Bradfab\\ \
+Neighborhoods_Bradfab_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=$PWD/template-tree,$PWD/template-tree1 \
 bin/bradfab
