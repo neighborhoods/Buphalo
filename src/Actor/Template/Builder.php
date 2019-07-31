@@ -13,23 +13,17 @@ class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
     use Actor\AwareTrait;
-    use TemplateTree\Map\AwareTrait;
     use FabricationFile\Actor\AwareTrait;
-    use TemplateTree\Map\Builder\Factory\AwareTrait;
+    use TemplateTree\Map\Repository\AwareTrait;
 
-    protected $TemplateTreeDirectoryPath;
     protected $FilePath;
 
     public function build(): TemplateInterface
     {
-        $templateTreeMapBuilder = $this->getTemplateTreeMapBuilderFactory()->create();
-        $templateTreeMap = $templateTreeMapBuilder->build();
-
         $template = $this->getActorTemplateFactory()->create();
-        $template->setTemplateTreeMap($this->getTemplateTreeMap());
+        $template->setTemplateTreeMap($this->getTemplateTreeMapRepository()->get());
         $template->setActor($this->getActor());
         $template->setFilePath($this->getFilePath());
-        $template->setTemplateTreeMap($templateTreeMap);
 
         return $template;
     }
@@ -39,7 +33,7 @@ class Builder implements BuilderInterface
         if ($this->FilePath === null) {
             $actorTemplateFilePathCandidate = sprintf(
                 '%s/%s',
-                $this->getTemplateTreeMap()->current()->getDirectoryPath(),
+                $this->getTemplateTreeMapRepository()->get()->current()->getDirectoryPath(),
                 $this->getFabricationFileActor()->getTemplateRelativeFilePath()
             );
             $actorTemplateFilePath = realpath($actorTemplateFilePathCandidate);

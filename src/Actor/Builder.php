@@ -12,7 +12,7 @@ class Builder implements BuilderInterface
     use Factory\AwareTrait;
     use FabricationFile\AwareTrait;
     use FabricationFile\Actor\AwareTrait;
-    use TargetApplication\AwareTrait;
+    use TargetApplication\Repository\AwareTrait;
 
     protected $Namespace;
     protected $RelativeClassPath;
@@ -60,7 +60,7 @@ class Builder implements BuilderInterface
     protected function getNamespace(): string
     {
         if ($this->Namespace === null) {
-            $namespace = $this->getTargetApplication()->getNamespace();
+            $namespace = $this->getTargetApplicationRepository()->get()->getNamespace();
             $this->Namespace = $namespace;
         }
 
@@ -112,8 +112,8 @@ class Builder implements BuilderInterface
     {
         if ($this->FabricationDirectoryPath === null) {
             $fabricationDirectoryPath = str_replace(
-                $this->getTargetApplication()->getSourceDirectoryPath(),
-                $this->getTargetApplication()->getFabricationPath(),
+                $this->getTargetApplicationRepository()->get()->getSourceDirectoryPath(),
+                $this->getTargetApplicationRepository()->get()->getFabricationPath(),
                 $this->getSourceDirectoryPath()
             );
             $this->FabricationDirectoryPath = $fabricationDirectoryPath;

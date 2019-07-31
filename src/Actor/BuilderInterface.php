@@ -6,7 +6,7 @@ namespace Neighborhoods\Bradfab\Actor;
 use Neighborhoods\Bradfab\ActorInterface;
 use Neighborhoods\Bradfab\FabricationFile;
 use Neighborhoods\Bradfab\FabricationFileInterface;
-use Neighborhoods\Bradfab\TargetApplicationInterface;
+use Neighborhoods\Bradfab\TargetApplication\RepositoryInterface;
 
 interface BuilderInterface
 {
@@ -16,5 +16,5 @@ interface BuilderInterface
 
     public function setFabricationFileActor(FabricationFile\ActorInterface $FabricationFileActor);
 
-    public function setTargetApplication(TargetApplicationInterface $TargetApplication);
+    public function setTargetApplicationRepository(RepositoryInterface $targetApplicationRepository);
 }

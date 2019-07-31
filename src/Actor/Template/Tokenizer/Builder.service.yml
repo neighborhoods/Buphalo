@@ -6,3 +6,4 @@ services:
     calls:
       - [setActorTemplateTokenizerFactory, ['@Neighborhoods\Bradfab\Actor\Template\Tokenizer\FactoryInterface']]
       - [setActorTemplateAnnotationTokenizerBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer\Builder\FactoryInterface']]
+      - [setActorTemplateBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\Builder\FactoryInterface']]

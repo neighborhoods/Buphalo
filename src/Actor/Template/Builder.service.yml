@@ -5,3 +5,4 @@ services:
     shared: false
     calls:
       - [setActorTemplateFactory, ['@Neighborhoods\Bradfab\Actor\Template\FactoryInterface']]
+      - [setTemplateTreeMapRepository, ['@Neighborhoods\Bradfab\TemplateTree\Map\RepositoryInterface']]

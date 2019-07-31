@@ -18,9 +18,7 @@ class Bradfab implements BradfabInterface
         $this->getProteanContainerBuilder()->setCanCacheContainer(false);
         $this->getProteanContainerBuilder()->registerServiceAsPublic(FabricatorInterface::class);
         $this->getProteanContainerBuilder()->registerServiceAsPublic(FactoryInterface::class);
-        $container = $this->getProteanContainerBuilder()->build();
         $fabricator = $this->getProteanContainerBuilder()->build()->get(FabricatorInterface::class);
-        $fabricator->setTargetApplication($container->get(FactoryInterface::class)->create());
         $fabricator->fabricate();
 
         return $this;

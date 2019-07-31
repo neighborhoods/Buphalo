@@ -12,5 +12,6 @@ services:
       - [setActorTemplateCompilerBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\Compiler\Builder\FactoryInterface']]
       - [setActorTemplateCompilerStrategyFactory, ['@Neighborhoods\Bradfab\Actor\Template\Compiler\Strategy\FactoryInterface']]
       - [setActorBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Builder\FactoryInterface']]
-      - [setActorWriterFactory, ['@Neighborhoods\Bradfab\Actor\Writer\FactoryInterface']]
+      - [setActorWriterBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Writer\Builder\FactoryInterface']]
       - [setTemplateTreeMapBuilderFactory, ['@Neighborhoods\Bradfab\TemplateTree\Map\Builder\FactoryInterface']]
+      - [setTargetApplicationRepository, ['@Neighborhoods\Bradfab\TargetApplication\RepositoryInterface']]

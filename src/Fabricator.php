@@ -17,7 +17,7 @@ class Fabricator implements FabricatorInterface
     use Actor\Template\Compiler\Strategy\Factory\AwareTrait;
     use Actor\Builder\Factory\AwareTrait;
     use Actor\Writer\Builder\Factory\AwareTrait;
-    use TargetApplication\AwareTrait;
+    use TargetApplication\Repository\AwareTrait;
     use TemplateTree\Map\Builder\Factory\AwareTrait;
 
     protected $Finder;
@@ -32,8 +32,9 @@ class Fabricator implements FabricatorInterface
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();
             $fabricationFile = $fabricationFileBuilder->setSplFileInfo($fabricationFileSplFileInfo)->build();
             foreach ($fabricationFile->getActors() as $fabricationFileActor) {
-
                 $writerBuilder = $this->getActorWriterBuilderFactory()->create();
+                $writerBuilder->setFabricationFile($fabricationFile);
+                $writerBuilder->setFabricationFileActor($fabricationFileActor);
                 $writer = $writerBuilder->build();
                 $writer->write();
             }
@@ -44,8 +45,9 @@ class Fabricator implements FabricatorInterface
 
     protected function removeFabricationDirectory(): FabricatorInterface
     {
-        if ($this->getFilesystem()->exists($this->getTargetApplication()->getFabricationPath())) {
-            $this->getFilesystem()->remove($this->getTargetApplication()->getFabricationPath());
+        $targetApplication = $this->getTargetApplicationRepository()->get();
+        if ($this->getFilesystem()->exists($targetApplication->getFabricationPath())) {
+            $this->getFilesystem()->remove($targetApplication->getFabricationPath());
         }
 
         return $this;
@@ -55,7 +57,7 @@ class Fabricator implements FabricatorInterface
     {
         if ($this->FabricateYamlFiles === null) {
             // @Please change this and get|setFinder to a Finder\Builder & Finder\Builder\Factory.
-            $finder = $this->getFinder()->in($this->getTargetApplication()->getSourceDirectoryPath());
+            $finder = $this->getFinder()->in($this->getTargetApplicationRepository()->get()->getSourceDirectoryPath());
 //            $finder->name('*' . FabricationFileInterface::FILE_EXTENSION_FABRICATION);
             $finder->files()->name('Test.fabrication.yml');
 

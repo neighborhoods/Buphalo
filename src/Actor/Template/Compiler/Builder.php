@@ -7,6 +7,7 @@ use Neighborhoods\Bradfab\Actor;
 use Neighborhoods\Bradfab\Actor\Template\CompilerInterface;
 use Neighborhoods\Bradfab\Actor\Template\Tokenizer;
 use Neighborhoods\Bradfab\Actor\Template\TokenizerInterface;
+use Neighborhoods\Bradfab\FabricationFile;
 
 class Builder implements BuilderInterface
 {
@@ -14,6 +15,8 @@ class Builder implements BuilderInterface
     use Tokenizer\Builder\Factory\AwareTrait;
     use Tokenizer\AwareTrait;
     use Actor\Builder\Factory\AwareTrait;
+    use FabricationFile\AwareTrait;
+    use FabricationFile\Actor\AwareTrait;
 
     public function build(): CompilerInterface
     {
@@ -29,15 +32,14 @@ class Builder implements BuilderInterface
     {
         if ($this->ActorTemplateTokenizer === null) {
             $actorBuilder = $this->getActorBuilderFactory()->create();
-            $actorBuilder->setFabricationFile($fabricationFile);
-            $actorBuilder->setFabricationFileActor($fabricationFileActor);
-            $actorBuilder->setTargetApplication($this->getTargetApplication());
+            $actorBuilder->setFabricationFile($this->getFabricationFile());
+            $actorBuilder->setFabricationFileActor($this->getFabricationFileActor());
             $actor = $actorBuilder->build();
 
             $tokenizerBuilder = $this->getActorTemplateTokenizerBuilderFactory()->create();
-            $tokenizerBuilder->setActorTemplate($template);
             $tokenizerBuilder->setActor($actor);
-            $tokenizer = $tokenizerBuilder->build();
+            $tokenizerBuilder->setFabricationFileActor($this->getFabricationFileActor());
+            $this->ActorTemplateTokenizer = $tokenizerBuilder->build();
         }
 
         return $this->ActorTemplateTokenizer;
