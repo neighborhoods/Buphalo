@@ -7,5 +7,4 @@ services:
       - [setActorWriterFactory, ['@Neighborhoods\Bradfab\Actor\Writer\FactoryInterface']]
       - [setActorTemplateTokenizerBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\Tokenizer\Builder\FactoryInterface']]
       - [setActorTemplateCompilerBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\Compiler\Builder\FactoryInterface']]
-      - [setTargetApplicationRepository, ['@Neighborhoods\Bradfab\TargetApplication\RepositoryInterface']]
       - [setActorBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Builder\FactoryInterface']]

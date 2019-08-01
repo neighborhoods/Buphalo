@@ -5,26 +5,19 @@ namespace Neighborhoods\Bradfab\Actor;
 
 use LogicException;
 use Neighborhoods\Bradfab\Actor;
-use Neighborhoods\Bradfab\TargetApplication;
 use Symfony\Component\Filesystem\Filesystem;
 
 class Writer implements WriterInterface
 {
     use Actor\Template\Compiler\AwareTrait;
-    use Actor\AwareTrait;
-    use TargetApplication\AwareTrait;
 
     protected $filesystem;
-    protected $target_actor_source_file_path;
-    protected $target_actor_fabrication_file_path;
-    protected $TargetActorTemplate;
-    protected $target_primary_actor;
-    protected $FabricationFileActor;
 
     public function write(): WriterInterface
     {
-        if (!is_file($this->getActor()->getSourceFilePath())) {
-            $fabricationFilePath = $this->getActor()->getFabricationFilePath();
+        $actor = $this->getActorTemplateCompiler()->getActorTemplateTokenizer()->getActor();
+        if (!is_file($actor->getSourceFilePath())) {
+            $fabricationFilePath = $actor->getFabricationFilePath();
             $this->getFilesystem()->mkdir(dirname($fabricationFilePath));
             if (is_file($fabricationFilePath)) {
                 $message = sprintf('Actor with fabrication file path [%s] already exists.', $fabricationFilePath);

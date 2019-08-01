@@ -23,6 +23,8 @@ interface TokenizerInterface
 
     public function setActorTemplate(TemplateInterface $Template);
 
+    public function getActor(): ActorInterface;
+
     public function setActorTemplateAnnotationTokenizer(AnnotationTokenizerInterface $AnnotationTokenizer);
 
     public function setActor(ActorInterface $Actor);

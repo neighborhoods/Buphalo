@@ -6,14 +6,12 @@ namespace Neighborhoods\Bradfab\Actor\Writer;
 use Neighborhoods\Bradfab\Actor;
 use Neighborhoods\Bradfab\Actor\WriterInterface;
 use Neighborhoods\Bradfab\FabricationFile;
-use Neighborhoods\Bradfab\TargetApplication;
 
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
     use Actor\Template\Compiler\Builder\Factory\AwareTrait;
     use Actor\Template\Tokenizer\Builder\Factory\AwareTrait;
-    use TargetApplication\Repository\AwareTrait;
     use Actor\Builder\Factory\AwareTrait;
     use FabricationFile\AwareTrait;
     use FabricationFile\Actor\AwareTrait;
@@ -28,7 +26,6 @@ class Builder implements BuilderInterface
 
         $writer = $this->getActorWriterFactory()->create();
         $writer->setActorTemplateCompiler($compiler);
-        $writer->setTargetApplication($this->getTargetApplicationRepository()->get());
 
         return $writer;
     }

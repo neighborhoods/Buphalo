@@ -7,5 +7,7 @@ interface CompilerInterface
 {
     public function setActorTemplateTokenizer(TokenizerInterface $Tokenizer);
 
+    public function getActorTemplateTokenizer(): TokenizerInterface;
+
     public function getCompiledContents(): string;
 }

@@ -10,7 +10,9 @@ class Tokenizer implements TokenizerInterface
 {
     use Actor\Template\AwareTrait;
     use Actor\Template\AnnotationTokenizer\AwareTrait;
-    use Actor\AwareTrait;
+    use Actor\AwareTrait {
+        getActor as public;
+    }
 
     protected $TokenizedContents;
 
@@ -28,7 +30,7 @@ class Tokenizer implements TokenizerInterface
             $this->getActorTemplateAnnotationTokenizer()->tokenize();
             $templateContents = $this->getActorTemplate()->getContents();
             $tokenizedContents = str_replace(
-                'Neighborhoods\Bradfab',
+                'Neighborhoods\BradfabTemplateTree',
                 TokenizerInterface::PRIMARY_ACTOR_NAMESPACE_TOKEN,
                 $templateContents
             );
