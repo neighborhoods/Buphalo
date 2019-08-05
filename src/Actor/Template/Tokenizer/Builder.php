@@ -14,6 +14,7 @@ class Builder implements BuilderInterface
     use Actor\Template\Builder\Factory\AwareTrait;
     use Actor\AwareTrait;
     use FabricationFile\Actor\AwareTrait;
+    use FabricationFile\AwareTrait;
 
     public function build(): TokenizerInterface
     {

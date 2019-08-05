@@ -12,7 +12,8 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
 {
     use Actor\Template\AwareTrait;
     use AnnotationProcessor\Builder\Factory\AwareTrait;
-    protected $tokenized_contents;
+
+    protected $TokenizedContents;
 
     public function tokenize(): AnnotationTokenizerInterface
     {
@@ -23,7 +24,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
 
     public function getTokenizedContents(): string
     {
-        if ($this->tokenized_contents === null) {
+        if ($this->TokenizedContents === null) {
             $templateContents = $this->getActorTemplate()->getContents();
             $numberOfAnnotations = preg_match_all(
                 self::ANNOTATION_REGEX,
@@ -45,10 +46,10 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
             }
 
             $this->getActorTemplate()->applyTokenizedContents($tokenizedContents);
-            $this->tokenized_contents = $tokenizedContents;
+            $this->TokenizedContents = $tokenizedContents;
         }
 
-        return $this->tokenized_contents;
+        return $this->TokenizedContents;
     }
 
     // @Please refactor this as a named builder.
@@ -63,6 +64,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
                 $annotationProcessor = $annotationProcessors[$annotationProcessorIndex];
             }
         }
+        // "default" processor - trim out the annotation.
         if ($annotationProcessor === null) {
             $annotationProcessorBuilder = $this->getAnnotationProcessorBuilderFactory()->create();
             $annotationProcessorDefinition = [BuilderInterface::PROCESSOR_FQCN => AnnotationProcessor::class];

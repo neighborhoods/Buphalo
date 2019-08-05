@@ -60,7 +60,7 @@ class Builder implements BuilderInterface
     protected function getNamespace(): string
     {
         if ($this->Namespace === null) {
-            $namespace = $this->getTargetApplicationRepository()->get()->getNamespace();
+            $namespace = rtrim($this->getTargetApplicationRepository()->get()->getNamespace(), '\\');
             $this->Namespace = $namespace;
         }
 

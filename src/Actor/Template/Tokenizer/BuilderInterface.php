@@ -6,6 +6,7 @@ namespace Neighborhoods\Bradfab\Actor\Template\Tokenizer;
 use Neighborhoods\Bradfab\Actor\Template\TokenizerInterface;
 use Neighborhoods\Bradfab\ActorInterface;
 use Neighborhoods\Bradfab\FabricationFile;
+use Neighborhoods\Bradfab\FabricationFileInterface;
 
 interface BuilderInterface
 {
@@ -14,4 +15,6 @@ interface BuilderInterface
     public function setActor(ActorInterface $Actor);
 
     public function build(): TokenizerInterface;
+
+    public function setFabricationFile(FabricationFileInterface $getFabricationFile);
 }

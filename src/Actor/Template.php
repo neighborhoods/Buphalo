@@ -12,7 +12,9 @@ class Template implements TemplateInterface
 {
     use Actor\AwareTrait;
     use TemplateTree\Map\AwareTrait;
-    use FabricationFile\Actor\AwareTrait;
+    use FabricationFile\Actor\AwareTrait {
+        getFabricationFileActor as public;
+    }
 
     protected $Contents;
     protected $TokenizedContents;

@@ -39,6 +39,7 @@ class Builder implements BuilderInterface
             $tokenizerBuilder = $this->getActorTemplateTokenizerBuilderFactory()->create();
             $tokenizerBuilder->setActor($actor);
             $tokenizerBuilder->setFabricationFileActor($this->getFabricationFileActor());
+            $tokenizerBuilder->setFabricationFile($this->getFabricationFile());
             $this->ActorTemplateTokenizer = $tokenizerBuilder->build();
         }
 

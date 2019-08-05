@@ -24,6 +24,7 @@ class Builder implements BuilderInterface
         $template->setTemplateTreeMap($this->getTemplateTreeMapRepository()->get());
         $template->setActor($this->getActor());
         $template->setFilePath($this->getFilePath());
+        $template->setFabricationFileActor($this->getFabricationFileActor());
 
         return $template;
     }
