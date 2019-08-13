@@ -7,9 +7,12 @@ use LogicException;
 
 class Actor implements ActorInterface
 {
-    protected $Namespace;
+    protected $NamespacePrefix;
+    protected $NamespaceRelative;
     protected $RelativeClassPath;
     protected $ParentRelativeClassPath;
+    protected $PrimaryActorFullPascalCaseName;
+    protected $PrimaryActorShortPascalCaseName;
     protected $FullPascalCaseName;
     protected $ShortPascalCaseName;
     protected $SourceDirectoryPath;
@@ -39,22 +42,22 @@ class Actor implements ActorInterface
         return $this;
     }
 
-    public function getNamespace(): string
+    public function getNamespacePrefix(): string
     {
-        if ($this->Namespace === null) {
-            throw new LogicException('Namespace has not been set.');
+        if ($this->NamespacePrefix === null) {
+            throw new LogicException('Namespace Prefix has not been set.');
         }
 
-        return $this->Namespace;
+        return $this->NamespacePrefix;
     }
 
-    public function setNamespace(string $Namespace): ActorInterface
+    public function setNamespacePrefix(string $NamespacePrefix): ActorInterface
     {
-        if ($this->Namespace !== null) {
-            throw new LogicException('Namespace is already set.');
+        if ($this->NamespacePrefix !== null) {
+            throw new LogicException('Namespace Prefix is already set.');
         }
 
-        $this->Namespace = $Namespace;
+        $this->NamespacePrefix = $NamespacePrefix;
 
         return $this;
     }
@@ -235,6 +238,66 @@ class Actor implements ActorInterface
         }
 
         $this->FileExtension = $FileExtension;
+
+        return $this;
+    }
+
+    public function getNamespaceRelative(): string
+    {
+        if ($this->NamespaceRelative === null) {
+            throw new LogicException('Namespace Relative has not been set.');
+        }
+
+        return $this->NamespaceRelative;
+    }
+
+    public function setNamespaceRelative(string $NamespaceRelative): ActorInterface
+    {
+        if ($this->NamespaceRelative !== null) {
+            throw new LogicException('Namespace Relative is already set.');
+        }
+
+        $this->NamespaceRelative = $NamespaceRelative;
+
+        return $this;
+    }
+
+    public function getPrimaryActorFullPascalCaseName(): string
+    {
+        if ($this->PrimaryActorFullPascalCaseName === null) {
+            throw new LogicException('Primary Actor Full Pascal Case Name has not been set.');
+        }
+
+        return $this->PrimaryActorFullPascalCaseName;
+    }
+
+    public function setPrimaryActorFullPascalCaseName(string $PrimaryActorFullPascalCaseName): ActorInterface
+    {
+        if ($this->PrimaryActorFullPascalCaseName !== null) {
+            throw new LogicException('Primary Actor Full Pascal Case Name is already set.');
+        }
+
+        $this->PrimaryActorFullPascalCaseName = $PrimaryActorFullPascalCaseName;
+
+        return $this;
+    }
+
+    public function getPrimaryActorShortPascalCaseName(): string
+    {
+        if ($this->PrimaryActorShortPascalCaseName === null) {
+            throw new LogicException('Primary Actor Short Pascal Case Name has not been set.');
+        }
+
+        return $this->PrimaryActorShortPascalCaseName;
+    }
+
+    public function setPrimaryActorShortPascalCaseName(string $PrimaryActorShortPascalCaseName): ActorInterface
+    {
+        if ($this->PrimaryActorShortPascalCaseName !== null) {
+            throw new LogicException('Primary Actor Short Pascal Case Name is already set.');
+        }
+
+        $this->PrimaryActorShortPascalCaseName = $PrimaryActorShortPascalCaseName;
 
         return $this;
     }

@@ -30,26 +30,44 @@ class Tokenizer implements TokenizerInterface
             $this->getActorTemplateAnnotationTokenizer()->tokenize();
             $templateContents = $this->getActorTemplate()->getContents();
             $tokenizedContents = str_replace(
-                'Neighborhoods\BradfabTemplateTree',
-                TokenizerInterface::NAMESPACE_TOKEN,
+                'Neighborhoods\\',
+                sprintf('%s\\', TokenizerInterface::NAMESPACE_PREFIX_TOKEN),
                 $templateContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
+                'BradfabTemplateTree;',
+                sprintf('%s;', TokenizerInterface::NAMESPACE_RELATIVE_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                'BradfabTemplateTree\\',
+                sprintf('%s\\', TokenizerInterface::NAMESPACE_RELATIVE_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                '\Actor;',
+                sprintf('%s;', TokenizerInterface::EMPTY_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
                 '\ActorInterface',
-                sprintf('\%s', TokenizerInterface::RELATIVE_CLASS_PATH_TOKEN),
+                sprintf('\%sInterface', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                '\Actor\\',
+                sprintf('%s\\', TokenizerInterface::EMPTY_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 '\Actor',
                 sprintf('\%s', TokenizerInterface::RELATIVE_CLASS_PATH_TOKEN),
-                $tokenizedContents
-            );
-            /** @noinspection CascadeStringReplacementInspection */
-            $tokenizedContents = str_replace(
-                '\Actor\\',
-                sprintf('\\%s\\', TokenizerInterface::RELATIVE_CLASS_PATH_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
@@ -61,37 +79,37 @@ class Tokenizer implements TokenizerInterface
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'protected $Actor',
-                sprintf('protected $%s', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN),
+                sprintf('protected $%s', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 '$this->Actor',
-                sprintf('$this->%s', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN),
+                sprintf('$this->%s', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 '$Actor',
-                sprintf('$%s', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN),
+                sprintf('$%s', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'interface ActorInterface',
-                sprintf('interface %s', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN),
+                sprintf('interface %sInterface', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'ActorInterface',
-                sprintf('%sInterface', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN),
+                sprintf('%sInterface', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'use Actor',
-                sprintf('use %s', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN),
+                sprintf('use %s', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
@@ -103,13 +121,13 @@ class Tokenizer implements TokenizerInterface
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 "Actor\n",
-                sprintf('%s%s', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN, "\n"),
+                sprintf('%s%s', TokenizerInterface::PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN, "\n"),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'Actor',
-                TokenizerInterface::FULL_PASCAL_CASE_NAME_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN,
                 $tokenizedContents
             );
             $this->getActorTemplate()->applyTokenizedContents($tokenizedContents);

@@ -9,7 +9,7 @@ interface GenericActorInterface
 
     public function getParentRelativeClassPath(): string;
 
-    public function getNamespace(): string;
+    public function getNamespacePrefix(): string;
 
     public function getFullPascalCaseName(): string;
 
@@ -29,7 +29,7 @@ interface GenericActorInterface
 
     public function setShortPascalCaseName(string $ShortPascalCaseName): ActorInterface;
 
-    public function setNamespace(string $Namespace): ActorInterface;
+    public function setNamespacePrefix(string $NamespacePrefix): ActorInterface;
 
     public function setParentRelativeClassPath(string $ParentRelativeClassPath): ActorInterface;
 
@@ -48,4 +48,16 @@ interface GenericActorInterface
     public function getFileName(): string;
 
     public function setFabricationFilePath(string $FabricationFilePath): ActorInterface;
+
+    public function getNamespaceRelative(): string;
+
+    public function setNamespaceRelative(string $NamespaceRelative): ActorInterface;
+
+    public function setPrimaryActorFullPascalCaseName(string $PrimaryActorFullPascalCaseName): ActorInterface;
+
+    public function getPrimaryActorFullPascalCaseName(): string;
+
+    public function setPrimaryActorShortPascalCaseName(string $PrimaryActorShortPascalCaseName): ActorInterface;
+
+    public function getPrimaryActorShortPascalCaseName(): string;
 }

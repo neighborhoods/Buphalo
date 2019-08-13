@@ -9,11 +9,12 @@ use Neighborhoods\Bradfab\FabricationFile;
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
-    use FabricationFile\Actor\AwareTrait;
+    use FabricationFile\AwareTrait;
 
     public function build(): AnnotationTokenizerInterface
     {
         $annotationTokenizer = $this->getActorTemplateAnnotationTokenizerFactory()->create();
+        $annotationTokenizer->setFabricationFile($this->getFabricationFile());
 
         return $annotationTokenizer;
     }

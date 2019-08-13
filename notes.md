@@ -80,9 +80,7 @@ In the future it may be possible to additionally apply a style guide to Bradfab 
 
 ```
 \Neighborhoods\Bradfab\Template\Actor\Map\Builder\Factory
- |-----namespace-----|-|----qn1-----|-|------qn2--------|
- |-----namespace-----|-|------------qn3-----------------|
- |--------------------relative name---------------------|
+ |--namespace-prefix-|-|------namesapce-relative--------|
 |----------------------fqcn-----------------------------|
 ```
 

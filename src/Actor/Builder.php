@@ -14,9 +14,12 @@ class Builder implements BuilderInterface
     use FabricationFile\Actor\AwareTrait;
     use TargetApplication\Repository\AwareTrait;
 
-    protected $Namespace;
+    protected $NamespacePrefix;
+    protected $NamespaceRelative;
     protected $RelativeClassPath;
     protected $ParentRelativeClassPath;
+    protected $PrimaryActorFullPascalCaseName;
+    protected $PrimaryActorShortPascalCaseName;
     protected $FullPascalCaseName;
     protected $ShortPascalCaseName;
     protected $SourceDirectoryPath;
@@ -29,9 +32,12 @@ class Builder implements BuilderInterface
     public function build(): ActorInterface
     {
         $actor = $this->getActorFactory()->create();
-        $actor->setNamespace($this->getNamespace());
+        $actor->setNamespacePrefix($this->getNamespace());
+        $actor->setNamespaceRelative($this->getNamespaceRelative());
         $actor->setRelativeClassPath($this->getRelativeClassPath());
         $actor->setParentRelativeClassPath($this->getParentRelativeClassPath());
+        $actor->setPrimaryActorFullPascalCaseName($this->getPrimaryActorFullPascalCaseName());
+        $actor->setPrimaryActorShortPascalCaseName($this->getPrimaryActorShortPascalCaseName());
         $actor->setFullPascalCaseName($this->getFullPascalCaseName());
         $actor->setShortPascalCaseName($this->getShortPascalCaseName());
         $actor->setSourceDirectoryPath($this->getSourceDirectoryPath());
@@ -59,12 +65,12 @@ class Builder implements BuilderInterface
 
     protected function getNamespace(): string
     {
-        if ($this->Namespace === null) {
+        if ($this->NamespacePrefix === null) {
             $namespace = rtrim($this->getTargetApplicationRepository()->get()->getNamespace(), '\\');
-            $this->Namespace = $namespace;
+            $this->NamespacePrefix = $namespace;
         }
 
-        return $this->Namespace;
+        return $this->NamespacePrefix;
     }
 
     protected function getFullPascalCaseName(): string
@@ -182,5 +188,44 @@ class Builder implements BuilderInterface
         }
 
         return $this->FileExtension;
+    }
+
+    protected function getNamespaceRelative(): string
+    {
+        if ($this->NamespaceRelative === null) {
+            $this->NamespaceRelative = str_replace(
+                '/',
+                '\\',
+                $this->getFabricationFile()->getRelativeDirectoryPath()
+            );
+        }
+
+        return $this->NamespaceRelative;
+    }
+
+    protected function getPrimaryActorFullPascalCaseName()
+    {
+        if ($this->PrimaryActorFullPascalCaseName === null) {
+            $this->PrimaryActorFullPascalCaseName = str_replace(
+                '/',
+                '',
+                sprintf(
+                    '%s%s',
+                    $this->getFabricationFile()->getRelativeDirectoryPath(),
+                    $this->getPrimaryActorShortPascalCaseName()
+                )
+            );
+        }
+
+        return $this->PrimaryActorFullPascalCaseName;
+    }
+
+    public function getPrimaryActorShortPascalCaseName(): string
+    {
+        if ($this->PrimaryActorShortPascalCaseName === null) {
+            $this->PrimaryActorShortPascalCaseName = $this->getFabricationFile()->getFileName();
+        }
+
+        return $this->PrimaryActorShortPascalCaseName;
     }
 }

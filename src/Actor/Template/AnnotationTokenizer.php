@@ -7,11 +7,13 @@ use Neighborhoods\Bradfab\Actor;
 use Neighborhoods\Bradfab\AnnotationProcessor;
 use Neighborhoods\Bradfab\AnnotationProcessor\BuilderInterface;
 use Neighborhoods\Bradfab\AnnotationProcessorInterface;
+use Neighborhoods\Bradfab\FabricationFile;
 
 class AnnotationTokenizer implements AnnotationTokenizerInterface
 {
     use Actor\Template\AwareTrait;
     use AnnotationProcessor\Builder\Factory\AwareTrait;
+    use FabricationFile\AwareTrait;
 
     protected $TokenizedContents;
 
@@ -67,6 +69,7 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
         // "default" processor - trim out the annotation.
         if ($annotationProcessor === null) {
             $annotationProcessorBuilder = $this->getAnnotationProcessorBuilderFactory()->create();
+            $annotationProcessorBuilder->setFabricationFile($this->getFabricationFile());
             $annotationProcessorDefinition = [BuilderInterface::PROCESSOR_FQCN => AnnotationProcessor::class];
             $annotationProcessor = $annotationProcessorBuilder->setRecord($annotationProcessorDefinition)->build();
         }
