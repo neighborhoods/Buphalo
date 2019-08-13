@@ -25,8 +25,6 @@ RUN bash docker/build.sh \
 
 RUN chmod -R a+rw data/cache/
 
-ENTRYPOINT ["prime_containers.sh"]
-
 CMD ["php-fpm"]
 
 EXPOSE 9001
