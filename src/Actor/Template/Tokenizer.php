@@ -30,20 +30,34 @@ class Tokenizer implements TokenizerInterface
             $this->getActorTemplateAnnotationTokenizer()->tokenize();
             $templateContents = $this->getActorTemplate()->getContents();
             $tokenizedContents = str_replace(
-                'Neighborhoods\\',
-                sprintf('%s\\', TokenizerInterface::NAMESPACE_PREFIX_TOKEN),
+                'namespace Neighborhoods\\BradfabTemplateTree\\Actor',
+                sprintf(
+                    'namespace %s\\%s\\%s',
+                    TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
+                    TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
+                    TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
+                ),
                 $templateContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
-                'BradfabTemplateTree;',
-                sprintf('%s;', TokenizerInterface::NAMESPACE_RELATIVE_TOKEN),
+                'namespace Neighborhoods\\BradfabTemplateTree',
+                sprintf(
+                    'namespace %s\\%s',
+                    TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
+                    TokenizerInterface::NAMESPACE_RELATIVE_TOKEN
+                ),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
-                'BradfabTemplateTree\\',
-                sprintf('%s\\', TokenizerInterface::NAMESPACE_RELATIVE_TOKEN),
+                'use Neighborhoods\BradfabTemplateTree\Actor',
+                sprintf(
+                    'use %s\\%s\\%s',
+                    TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
+                    TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
+                    TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
+                ),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
