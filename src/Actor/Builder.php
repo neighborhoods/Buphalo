@@ -198,6 +198,12 @@ class Builder implements BuilderInterface
                 '\\',
                 $this->getFabricationFile()->getRelativeDirectoryPath()
             );
+            if ($this->getFabricationFile()->getRelativeDirectoryPath() !== '') {
+                $this->NamespaceRelative = sprintf(
+                    '\\%s',
+                    $this->NamespaceRelative
+                );
+            }
         }
 
         return $this->NamespaceRelative;

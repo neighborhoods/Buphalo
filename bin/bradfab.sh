@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Bash instructions to Bradfab Bradfab.
 
-cd "$(dirname "$0")"
+cd "$(dirname "$0")" || exit
 cd ..
 Neighborhoods_Bradfab_TargetApplication_BuilderInterface__SourceDirectoryPath=$PWD/src \
 Neighborhoods_Bradfab_TargetApplication_BuilderInterface__FabricationPath=$PWD/fab \

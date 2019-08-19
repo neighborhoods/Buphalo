@@ -59,7 +59,7 @@ class Fabricator implements FabricatorInterface
             // @Please change this and get|setFinder to a Finder\Builder & Finder\Builder\Factory.
             $finder = $this->getFinder()->in($this->getTargetApplicationRepository()->get()->getSourceDirectoryPath());
             $finder->name('*' . FabricationFileInterface::FILE_EXTENSION_FABRICATION);
-//            $finder->files()->name('Test.fabrication.yml');
+            //$finder->files()->name('Test.fabrication.yml');
 
             /** @var $file SplFileInfo */
             foreach ($finder as $directoryPath => $file) {

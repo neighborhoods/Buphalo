@@ -32,7 +32,7 @@ class Tokenizer implements TokenizerInterface
             $tokenizedContents = str_replace(
                 'namespace Neighborhoods\\BradfabTemplateTree\\Actor',
                 sprintf(
-                    'namespace %s\\%s\\%s',
+                    'namespace %s%s\\%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
                     TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
                     TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
@@ -43,7 +43,7 @@ class Tokenizer implements TokenizerInterface
             $tokenizedContents = str_replace(
                 'namespace Neighborhoods\\BradfabTemplateTree',
                 sprintf(
-                    'namespace %s\\%s',
+                    'namespace %s%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
                     TokenizerInterface::NAMESPACE_RELATIVE_TOKEN
                 ),
@@ -53,7 +53,7 @@ class Tokenizer implements TokenizerInterface
             $tokenizedContents = str_replace(
                 'use Neighborhoods\BradfabTemplateTree\Actor',
                 sprintf(
-                    'use %s\\%s\\%s',
+                    'use %s%s\\%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
                     TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
                     TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
@@ -64,7 +64,7 @@ class Tokenizer implements TokenizerInterface
             $tokenizedContents = str_replace(
                 "services:\n  Neighborhoods\BradfabTemplateTree\Actor",
                 sprintf(
-                    "services:\n  %s\\%s\\%s",
+                    "services:\n  %s%s\\%s",
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
                     TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
                     TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
@@ -75,7 +75,7 @@ class Tokenizer implements TokenizerInterface
             $tokenizedContents = str_replace(
                 'class: Neighborhoods\BradfabTemplateTree\Actor',
                 sprintf(
-                    'class: %s\\%s\\%s',
+                    'class: %s%s\\%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
                     TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
                     TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
@@ -86,7 +86,7 @@ class Tokenizer implements TokenizerInterface
             $tokenizedContents = str_replace(
                 '[\'@Neighborhoods\BradfabTemplateTree\Actor',
                 sprintf(
-                    '[\'@%s\\%s\\%s',
+                    '[\'@%s%s\\%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
                     TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
                     TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
