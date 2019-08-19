@@ -62,6 +62,39 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
+                "services:\n  Neighborhoods\BradfabTemplateTree\Actor",
+                sprintf(
+                    "services:\n  %s\\%s\\%s",
+                    TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
+                    TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
+                    TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
+                ),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                'class: Neighborhoods\BradfabTemplateTree\Actor',
+                sprintf(
+                    'class: %s\\%s\\%s',
+                    TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
+                    TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
+                    TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
+                ),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                '[\'@Neighborhoods\BradfabTemplateTree\Actor',
+                sprintf(
+                    '[\'@%s\\%s\\%s',
+                    TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
+                    TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
+                    TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
+                ),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
                 '\Actor;',
                 sprintf('%s;', TokenizerInterface::EMPTY_TOKEN),
                 $tokenizedContents
