@@ -26,7 +26,6 @@ class Tokenizer implements TokenizerInterface
     public function getTokenizedContents(): string
     {
         if ($this->TokenizedContents === null) {
-
             $this->getActorTemplateAnnotationTokenizer()->tokenize();
             $templateContents = $this->getActorTemplate()->getContents();
             $tokenizedContents = str_replace(
@@ -126,13 +125,19 @@ class Tokenizer implements TokenizerInterface
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'protected $Actor',
-                sprintf('protected $%s', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
+                sprintf('protected $%s', TokenizerInterface::PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 '$this->Actor',
-                sprintf('$this->%s', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
+                sprintf('$this->%s', TokenizerInterface::PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                'class Actor',
+                sprintf('class %s', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
@@ -174,7 +179,7 @@ class Tokenizer implements TokenizerInterface
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'Actor',
-                TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN,
+                TokenizerInterface::PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN,
                 $tokenizedContents
             );
             $this->getActorTemplate()->applyTokenizedContents($tokenizedContents);

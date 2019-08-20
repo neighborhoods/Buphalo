@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\FabricationFile\Map\FactoryInterface:
+    class: Neighborhoods\Bradfab\FabricationFile\Map\Factory
+    public: false
+    shared: true
+    calls:
+      - [setFabricationFileMap, ['@Neighborhoods\Bradfab\FabricationFile\MapInterface']]
