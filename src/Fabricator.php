@@ -8,15 +8,8 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class Fabricator implements FabricatorInterface
 {
-    use FabricationFile\Builder\Factory\AwareTrait;
-    use Actor\Template\Builder\Factory\AwareTrait;
-    use Actor\Template\Tokenizer\Builder\Factory\AwareTrait;
-    use Actor\Template\Compiler\Builder\Factory\AwareTrait;
-    use Actor\Template\Compiler\Strategy\Factory\AwareTrait;
-    use Actor\Builder\Factory\AwareTrait;
     use Actor\Writer\Builder\Factory\AwareTrait;
     use TargetApplication\Repository\AwareTrait;
-    use TemplateTree\Map\Builder\Factory\AwareTrait;
     use FabricationFile\Map\Builder\Factory\AwareTrait;
 
     protected $Filesystem;

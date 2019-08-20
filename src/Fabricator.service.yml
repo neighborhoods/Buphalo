@@ -5,13 +5,6 @@ services:
     shared: false
     calls:
       - [setFilesystem, ['@Symfony\Component\Filesystem\Filesystem']]
-      - [setFabricationFileBuilderFactory, ['@Neighborhoods\Bradfab\FabricationFile\Builder\FactoryInterface']]
-      - [setActorTemplateBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\Builder\FactoryInterface']]
-      - [setActorTemplateTokenizerBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\Tokenizer\Builder\FactoryInterface']]
-      - [setActorTemplateCompilerBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\Compiler\Builder\FactoryInterface']]
-      - [setActorTemplateCompilerStrategyFactory, ['@Neighborhoods\Bradfab\Actor\Template\Compiler\Strategy\FactoryInterface']]
-      - [setActorBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Builder\FactoryInterface']]
       - [setActorWriterBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Writer\Builder\FactoryInterface']]
-      - [setTemplateTreeMapBuilderFactory, ['@Neighborhoods\Bradfab\TemplateTree\Map\Builder\FactoryInterface']]
       - [setTargetApplicationRepository, ['@Neighborhoods\Bradfab\TargetApplication\RepositoryInterface']]
       - [setFabricationFileMapBuilderFactory, ['@Neighborhoods\Bradfab\FabricationFile\Map\Builder\FactoryInterface']]

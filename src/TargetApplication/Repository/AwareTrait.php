@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\TargetApplication\Repository;
 
+use LogicException;
 use Neighborhoods\Bradfab\TargetApplication\RepositoryInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setTargetApplicationRepository(RepositoryInterface $targetApplicationRepository): self
     {
         if ($this->hasTargetApplicationRepository()) {
-            throw new \LogicException('NeighborhoodsBradfabTargetApplicationRepository is already set.');
+            throw new LogicException('NeighborhoodsBradfabTargetApplicationRepository is already set.');
         }
         $this->NeighborhoodsBradfabTargetApplicationRepository = $targetApplicationRepository;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getTargetApplicationRepository(): RepositoryInterface
     {
         if (!$this->hasTargetApplicationRepository()) {
-            throw new \LogicException('NeighborhoodsBradfabTargetApplicationRepository is not set.');
+            throw new LogicException('NeighborhoodsBradfabTargetApplicationRepository is not set.');
         }
 
         return $this->NeighborhoodsBradfabTargetApplicationRepository;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetTargetApplicationRepository(): self
     {
         if (!$this->hasTargetApplicationRepository()) {
-            throw new \LogicException('NeighborhoodsBradfabTargetApplicationRepository is not set.');
+            throw new LogicException('NeighborhoodsBradfabTargetApplicationRepository is not set.');
         }
         unset($this->NeighborhoodsBradfabTargetApplicationRepository);
 

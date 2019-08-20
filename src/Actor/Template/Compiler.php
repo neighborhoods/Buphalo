@@ -5,13 +5,11 @@ namespace Neighborhoods\Bradfab\Actor\Template;
 
 use Neighborhoods\Bradfab\Actor;
 
-/** @noinspection PhpSuperClassIncompatibleWithInterfaceInspection */
 class Compiler implements CompilerInterface
 {
     use Actor\Template\Tokenizer\AwareTrait {
         getActorTemplateTokenizer as public;
     }
-    use Actor\Template\Compiler\Strategy\AwareTrait;
 
     protected $CompiledContents;
 
