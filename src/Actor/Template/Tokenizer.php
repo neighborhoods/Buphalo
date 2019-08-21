@@ -71,7 +71,7 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = preg_replace(
-                '/class:(\h+)Neighborhoods\\\BradfabTemplateTree\\\Actor/',
+                '/class:(\s+)Neighborhoods\\\BradfabTemplateTree\\\Actor/',
                 sprintf(
                     'class: %s%s\\%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
