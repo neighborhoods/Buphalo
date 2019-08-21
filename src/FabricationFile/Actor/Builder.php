@@ -153,7 +153,10 @@ class Builder implements BuilderInterface
     protected function getTemplateRelativeDirectoryPath(): string
     {
         if ($this->TemplateRelativeDirectoryPath === null) {
-            $RelativeTemplateDirectoryPath = pathinfo($this->getRecord()[BuilderInterface::TEMPLATE], PATHINFO_DIRNAME);
+            $RelativeTemplateDirectoryPath = pathinfo(
+                $this->getRecord()[BuilderInterface::TEMPLATE],
+                PATHINFO_DIRNAME
+            );
             if ($RelativeTemplateDirectoryPath === self::CURRENT_DIRECTORY) {
                 $this->TemplateRelativeDirectoryPath = '';
             } else {
