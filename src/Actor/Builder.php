@@ -54,7 +54,7 @@ class Builder implements BuilderInterface
     {
         if ($this->ParentRelativeClassPath === null) {
             $this->ParentRelativeClassPath = str_replace(
-                '/',
+               DIRECTORY_SEPARATOR,
                 '\\',
                 $this->getFabricationFileActor()->getGenerateRelativeDirectoryPath()
             );
