@@ -13,6 +13,10 @@
     {
       "name": "Brad Wilson",
       "email": "brad.wilson@neighborhoods.com"
+    },
+    {
+      "name": "Jacques Marcotte",
+      "email": "jacques.marcotte@neighborhoods.com"
     }
   ],
   "require": {
