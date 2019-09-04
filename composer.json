@@ -13,10 +13,15 @@
     {
       "name": "Brad Wilson",
       "email": "brad.wilson@neighborhoods.com"
+    },
+    {
+      "name": "Jacques Marcotte",
+      "email": "jacques.marcotte@neighborhoods.com"
     }
   ],
   "require": {
     "php": "^7.2",
+    "ext-json": "*",
     "symfony/config": "^4.2",
     "symfony/console": "^4.2",
     "symfony/dependency-injection": "^4.2",
