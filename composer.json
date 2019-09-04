@@ -27,7 +27,8 @@
     "symfony/expression-language": "^4.2",
     "symfony/filesystem": "^4.2",
     "symfony/finder": "^4.2",
-    "symfony/yaml": "^4.2"
+    "symfony/yaml": "^4.2",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {
