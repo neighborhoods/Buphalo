@@ -1,10 +1,10 @@
 services:
-  Neighborhoods\Bradfab\FabricatorInterface:
-    class: Neighborhoods\Bradfab\Fabricator
+  Neighborhoods\Buphalo\FabricatorInterface:
+    class: Neighborhoods\Buphalo\Fabricator
     public: false
     shared: false
     calls:
       - [setFilesystem, ['@Symfony\Component\Filesystem\Filesystem']]
-      - [setActorWriterBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Writer\Builder\FactoryInterface']]
-      - [setTargetApplicationRepository, ['@Neighborhoods\Bradfab\TargetApplication\RepositoryInterface']]
-      - [setFabricationFileMapBuilderFactory, ['@Neighborhoods\Bradfab\FabricationFile\Map\Builder\FactoryInterface']]
+      - [setActorWriterBuilderFactory, ['@Neighborhoods\Buphalo\Actor\Writer\Builder\FactoryInterface']]
+      - [setTargetApplicationRepository, ['@Neighborhoods\Buphalo\TargetApplication\RepositoryInterface']]
+      - [setFabricationFileMapBuilderFactory, ['@Neighborhoods\Buphalo\FabricationFile\Map\Builder\FactoryInterface']]

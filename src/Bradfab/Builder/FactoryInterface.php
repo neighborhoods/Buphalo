@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Bradfab\Builder;
+namespace Neighborhoods\Buphalo\Buphalo\Builder;
 
-use Neighborhoods\Bradfab\Bradfab\BuilderInterface;
+use Neighborhoods\Buphalo\Buphalo\BuilderInterface;
 
 interface FactoryInterface
 {

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TemplateTree\Map;
+namespace Neighborhoods\Buphalo\TemplateTree\Map;
 
-use Neighborhoods\Bradfab\TemplateTree\Map;
-use Neighborhoods\Bradfab\TemplateTree\MapInterface;
+use Neighborhoods\Buphalo\TemplateTree\Map;
+use Neighborhoods\Buphalo\TemplateTree\MapInterface;
 
 class Repository implements RepositoryInterface
 {

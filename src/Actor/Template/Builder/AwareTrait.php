@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template\Builder;
+namespace Neighborhoods\Buphalo\Actor\Template\Builder;
 
 use LogicException;
-use Neighborhoods\Bradfab\Actor\Template\BuilderInterface;
+use Neighborhoods\Buphalo\Actor\Template\BuilderInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabActorTemplateBuilder;
+    protected $NeighborhoodsBuphaloActorTemplateBuilder;
 
     public function setActorTemplateBuilder(BuilderInterface $actorTemplateBuilder): self
     {
         if ($this->hasActorTemplateBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Template Builder is already set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Template Builder is already set.');
         }
-        $this->NeighborhoodsBradfabActorTemplateBuilder = $actorTemplateBuilder;
+        $this->NeighborhoodsBuphaloActorTemplateBuilder = $actorTemplateBuilder;
 
         return $this;
     }
@@ -24,23 +24,23 @@ trait AwareTrait
     protected function getActorTemplateBuilder(): BuilderInterface
     {
         if (!$this->hasActorTemplateBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Template Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Template Builder is not set.');
         }
 
-        return $this->NeighborhoodsBradfabActorTemplateBuilder;
+        return $this->NeighborhoodsBuphaloActorTemplateBuilder;
     }
 
     protected function hasActorTemplateBuilder(): bool
     {
-        return isset($this->NeighborhoodsBradfabActorTemplateBuilder);
+        return isset($this->NeighborhoodsBuphaloActorTemplateBuilder);
     }
 
     protected function unsetActorTemplateBuilder(): self
     {
         if (!$this->hasActorTemplateBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Template Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Template Builder is not set.');
         }
-        unset($this->NeighborhoodsBradfabActorTemplateBuilder);
+        unset($this->NeighborhoodsBuphaloActorTemplateBuilder);
 
         return $this;
     }

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor;
+namespace Neighborhoods\Buphalo\Actor;
 
 use LogicException;
-use Neighborhoods\Bradfab\Actor;
-use Neighborhoods\Bradfab\FabricationFile;
-use Neighborhoods\Bradfab\TemplateTree;
+use Neighborhoods\Buphalo\Actor;
+use Neighborhoods\Buphalo\FabricationFile;
+use Neighborhoods\Buphalo\TemplateTree;
 
 class Template implements TemplateInterface
 {

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template\Tokenizer\Factory;
+namespace Neighborhoods\Buphalo\Actor\Template\Tokenizer\Factory;
 
 use LogicException;
-use Neighborhoods\Bradfab\Actor\Template\Tokenizer\FactoryInterface;
+use Neighborhoods\Buphalo\Actor\Template\Tokenizer\FactoryInterface;
 
 trait AwareTrait
 {

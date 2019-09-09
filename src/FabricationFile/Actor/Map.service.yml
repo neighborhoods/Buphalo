@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\FabricationFile\Actor\MapInterface:
-    class: Neighborhoods\Bradfab\FabricationFile\Actor\Map
+  Neighborhoods\Buphalo\FabricationFile\Actor\MapInterface:
+    class: Neighborhoods\Buphalo\FabricationFile\Actor\Map
     public: false
     shared: false

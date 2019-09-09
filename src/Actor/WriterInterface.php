@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor;
+namespace Neighborhoods\Buphalo\Actor;
 
-use Neighborhoods\Bradfab\Actor\Template\CompilerInterface;
+use Neighborhoods\Buphalo\Actor\Template\CompilerInterface;
 
 interface WriterInterface
 {

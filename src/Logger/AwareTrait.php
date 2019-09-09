@@ -1,21 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Logger;
+namespace Neighborhoods\Buphalo\Logger;
 
 use Psr\Log\LoggerInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabLogger;
+    protected $NeighborhoodsBuphaloLogger;
 
     public function setLogger(LoggerInterface $logger) : self
     {
         if ($this->hasLogger()) {
-            throw new \LogicException('NeighborhoodsBradfabLogger is already set.');
+            throw new \LogicException('NeighborhoodsBuphaloLogger is already set.');
         }
-        $this->NeighborhoodsBradfabLogger = $logger;
+        $this->NeighborhoodsBuphaloLogger = $logger;
 
         return $this;
     }
@@ -23,23 +23,23 @@ trait AwareTrait
     protected function getLogger() : LoggerInterface
     {
         if (!$this->hasLogger()) {
-            throw new \LogicException('NeighborhoodsBradfabLogger is not set.');
+            throw new \LogicException('NeighborhoodsBuphaloLogger is not set.');
         }
 
-        return $this->NeighborhoodsBradfabLogger;
+        return $this->NeighborhoodsBuphaloLogger;
     }
 
     protected function hasLogger() : bool
     {
-        return isset($this->NeighborhoodsBradfabLogger);
+        return isset($this->NeighborhoodsBuphaloLogger);
     }
 
     protected function unsetLogger() : self
     {
         if (!$this->hasLogger()) {
-            throw new \LogicException('NeighborhoodsBradfabLogger is not set.');
+            throw new \LogicException('NeighborhoodsBuphaloLogger is not set.');
         }
-        unset($this->NeighborhoodsBradfabLogger);
+        unset($this->NeighborhoodsBuphaloLogger);
 
         return $this;
     }

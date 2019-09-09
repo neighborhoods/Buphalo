@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\Actor\Template\TokenizerInterface:
-    class: Neighborhoods\Bradfab\Actor\Template\Tokenizer
+  Neighborhoods\Buphalo\Actor\Template\TokenizerInterface:
+    class: Neighborhoods\Buphalo\Actor\Template\Tokenizer
     public: false
     shared: false

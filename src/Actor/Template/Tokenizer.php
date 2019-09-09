@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template;
+namespace Neighborhoods\Buphalo\Actor\Template;
 
-use Neighborhoods\Bradfab\Actor;
+use Neighborhoods\Buphalo\Actor;
 
 class Tokenizer implements TokenizerInterface
 {
@@ -28,7 +28,7 @@ class Tokenizer implements TokenizerInterface
             $this->getActorTemplateAnnotationTokenizer()->tokenize();
             $templateContents = $this->getActorTemplate()->getContents();
             $tokenizedContents = preg_replace(
-                '/namespace(\s+)Neighborhoods\\\BradfabTemplateTree\\\Actor/',
+                '/namespace(\s+)Neighborhoods\\\BuphaloTemplateTree\\\Actor/',
                 sprintf(
                     'namespace %s%s\\%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
@@ -39,7 +39,7 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = preg_replace(
-                '/namespace(\s+)Neighborhoods\\\BradfabTemplateTree/',
+                '/namespace(\s+)Neighborhoods\\\BuphaloTemplateTree/',
                 sprintf(
                     'namespace %s%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
@@ -49,7 +49,7 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = preg_replace(
-                '/use(\s+)Neighborhoods\\\BradfabTemplateTree\\\Actor/',
+                '/use(\s+)Neighborhoods\\\BuphaloTemplateTree\\\Actor/',
                 sprintf(
                     'use %s%s\\%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
@@ -60,7 +60,7 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = preg_replace(
-                '/services:\n(\s+)Neighborhoods\\\BradfabTemplateTree\\\Actor/',
+                '/services:\n(\s+)Neighborhoods\\\BuphaloTemplateTree\\\Actor/',
                 sprintf(
                     "services:\n  %s%s\\%s",
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
@@ -71,7 +71,7 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = preg_replace(
-                '/class:(\s+)Neighborhoods\\\BradfabTemplateTree\\\Actor/',
+                '/class:(\s+)Neighborhoods\\\BuphaloTemplateTree\\\Actor/',
                 sprintf(
                     'class: %s%s\\%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
@@ -82,7 +82,7 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
-                '[\'@Neighborhoods\BradfabTemplateTree\Actor',
+                '[\'@Neighborhoods\BuphaloTemplateTree\Actor',
                 sprintf(
                     '[\'@%s%s\\%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,

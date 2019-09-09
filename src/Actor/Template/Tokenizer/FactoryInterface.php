@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template\Tokenizer;
+namespace Neighborhoods\Buphalo\Actor\Template\Tokenizer;
 
-use Neighborhoods\Bradfab\Actor\Template\TokenizerInterface;
+use Neighborhoods\Buphalo\Actor\Template\TokenizerInterface;
 
 interface FactoryInterface
 {

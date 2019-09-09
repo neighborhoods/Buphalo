@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\StringMapInterface:
-    class: Neighborhoods\Bradfab\StringMap
+  Neighborhoods\Buphalo\StringMapInterface:
+    class: Neighborhoods\Buphalo\StringMap
     public: false
     shared: false

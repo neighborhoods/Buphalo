@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\VersionUpgrade\Beta\V1;
+namespace Neighborhoods\Buphalo\VersionUpgrade\Beta\V1;
 
 use LogicException;
-use Neighborhoods\Bradfab\Logger\AwareTrait;
+use Neighborhoods\Buphalo\Logger\AwareTrait;
 use SplFileInfo;
 use Symfony\Component\Yaml\Yaml;
 

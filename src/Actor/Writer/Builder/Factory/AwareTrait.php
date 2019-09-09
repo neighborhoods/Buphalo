@@ -1,21 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Writer\Builder\Factory;
+namespace Neighborhoods\Buphalo\Actor\Writer\Builder\Factory;
 
 use LogicException;
-use Neighborhoods\Bradfab\Actor\Writer\Builder\FactoryInterface;
+use Neighborhoods\Buphalo\Actor\Writer\Builder\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabActorWriterBuilderFactory;
+    protected $NeighborhoodsBuphaloActorWriterBuilderFactory;
 
     public function setActorWriterBuilderFactory(FactoryInterface $actorWriterBuilderFactory): self
     {
         if ($this->hasActorWriterBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Writer Builder Factory is already set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Writer Builder Factory is already set.');
         }
-        $this->NeighborhoodsBradfabActorWriterBuilderFactory = $actorWriterBuilderFactory;
+        $this->NeighborhoodsBuphaloActorWriterBuilderFactory = $actorWriterBuilderFactory;
 
         return $this;
     }
@@ -23,23 +23,23 @@ trait AwareTrait
     protected function getActorWriterBuilderFactory(): FactoryInterface
     {
         if (!$this->hasActorWriterBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Writer Builder Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Writer Builder Factory is not set.');
         }
 
-        return $this->NeighborhoodsBradfabActorWriterBuilderFactory;
+        return $this->NeighborhoodsBuphaloActorWriterBuilderFactory;
     }
 
     protected function hasActorWriterBuilderFactory(): bool
     {
-        return isset($this->NeighborhoodsBradfabActorWriterBuilderFactory);
+        return isset($this->NeighborhoodsBuphaloActorWriterBuilderFactory);
     }
 
     protected function unsetActorWriterBuilderFactory(): self
     {
         if (!$this->hasActorWriterBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Writer Builder Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Writer Builder Factory is not set.');
         }
-        unset($this->NeighborhoodsBradfabActorWriterBuilderFactory);
+        unset($this->NeighborhoodsBuphaloActorWriterBuilderFactory);
 
         return $this;
     }

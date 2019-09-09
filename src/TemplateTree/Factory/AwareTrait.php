@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TemplateTree\Factory;
+namespace Neighborhoods\Buphalo\TemplateTree\Factory;
 
 use LogicException;
-use Neighborhoods\Bradfab\TemplateTree\FactoryInterface;
+use Neighborhoods\Buphalo\TemplateTree\FactoryInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabTemplateTreeFactory;
+    protected $NeighborhoodsBuphaloTemplateTreeFactory;
 
     public function setTemplateTreeFactory(FactoryInterface $templateTreeFactory): self
     {
         if ($this->hasTemplateTreeFactory()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Factory is already set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Factory is already set.');
         }
-        $this->NeighborhoodsBradfabTemplateTreeFactory = $templateTreeFactory;
+        $this->NeighborhoodsBuphaloTemplateTreeFactory = $templateTreeFactory;
 
         return $this;
     }
@@ -24,23 +24,23 @@ trait AwareTrait
     protected function getTemplateTreeFactory(): FactoryInterface
     {
         if (!$this->hasTemplateTreeFactory()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Factory is not set.');
         }
 
-        return $this->NeighborhoodsBradfabTemplateTreeFactory;
+        return $this->NeighborhoodsBuphaloTemplateTreeFactory;
     }
 
     protected function hasTemplateTreeFactory(): bool
     {
-        return isset($this->NeighborhoodsBradfabTemplateTreeFactory);
+        return isset($this->NeighborhoodsBuphaloTemplateTreeFactory);
     }
 
     protected function unsetTemplateTreeFactory(): self
     {
         if (!$this->hasTemplateTreeFactory()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Factory is not set.');
         }
-        unset($this->NeighborhoodsBradfabTemplateTreeFactory);
+        unset($this->NeighborhoodsBuphaloTemplateTreeFactory);
 
         return $this;
     }

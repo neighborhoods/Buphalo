@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer;
+namespace Neighborhoods\Buphalo\Actor\Template\AnnotationTokenizer;
 
-use Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizerInterface;
-use Neighborhoods\Bradfab\FabricationFile;
+use Neighborhoods\Buphalo\Actor\Template\AnnotationTokenizerInterface;
+use Neighborhoods\Buphalo\FabricationFile;
 
 class Builder implements BuilderInterface
 {

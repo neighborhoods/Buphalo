@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\FabricationFile;
+namespace Neighborhoods\Buphalo\FabricationFile;
 
-use Neighborhoods\Bradfab\AnnotationProcessor\MapInterface;
+use Neighborhoods\Buphalo\AnnotationProcessor\MapInterface;
 
 interface ActorInterface extends GenericActorInterface
 {

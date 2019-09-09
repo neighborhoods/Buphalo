@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\AnnotationProcessor;
+namespace Neighborhoods\Buphalo\AnnotationProcessor;
 
-use Neighborhoods\Bradfab\AnnotationProcessorInterface;
-use Neighborhoods\Bradfab\FabricationFileInterface;
+use Neighborhoods\Buphalo\AnnotationProcessorInterface;
+use Neighborhoods\Buphalo\FabricationFileInterface;
 
 interface BuilderInterface
 {

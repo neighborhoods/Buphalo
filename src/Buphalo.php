@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab;
+namespace Neighborhoods\Buphalo;
 
-use Neighborhoods\Bradfab\Fabricator\FactoryInterface;
-use Neighborhoods\Bradfab\Protean;
+use Neighborhoods\Buphalo\Fabricator\FactoryInterface;
+use Neighborhoods\Buphalo\Protean;
 use ReflectionClass;
 
-class Bradfab implements BradfabInterface
+class Buphalo implements BuphaloInterface
 {
     use Protean\Container\Builder\AwareTrait;
 
-    public function run(): BradfabInterface
+    public function run(): BuphaloInterface
     {
         $this->getProteanContainerBuilder()->setCachedContainerFileName(
             sprintf(

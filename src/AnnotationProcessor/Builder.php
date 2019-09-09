@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\AnnotationProcessor;
+namespace Neighborhoods\Buphalo\AnnotationProcessor;
 
 use LogicException;
-use Neighborhoods\Bradfab\AnnotationProcessor;
-use Neighborhoods\Bradfab\AnnotationProcessorInterface;
-use Neighborhoods\Bradfab\FabricationFile;
+use Neighborhoods\Buphalo\AnnotationProcessor;
+use Neighborhoods\Buphalo\AnnotationProcessorInterface;
+use Neighborhoods\Buphalo\FabricationFile;
 
 class Builder implements BuilderInterface
 {

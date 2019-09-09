@@ -1,8 +1,8 @@
 services:
-  Neighborhoods\Bradfab\FabricationFile\Actor\BuilderInterface:
-    class: Neighborhoods\Bradfab\FabricationFile\Actor\Builder
+  Neighborhoods\Buphalo\FabricationFile\Actor\BuilderInterface:
+    class: Neighborhoods\Buphalo\FabricationFile\Actor\Builder
     public: false
     shared: false
     calls:
-      - [setFabricationFileActorFactory, ['@Neighborhoods\Bradfab\FabricationFile\Actor\FactoryInterface']]
-      - [setAnnotationProcessorMapBuilderFactory, ['@Neighborhoods\Bradfab\AnnotationProcessor\Map\Builder\FactoryInterface']]
+      - [setFabricationFileActorFactory, ['@Neighborhoods\Buphalo\FabricationFile\Actor\FactoryInterface']]
+      - [setAnnotationProcessorMapBuilderFactory, ['@Neighborhoods\Buphalo\AnnotationProcessor\Map\Builder\FactoryInterface']]

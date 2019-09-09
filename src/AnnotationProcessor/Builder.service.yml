@@ -1,9 +1,9 @@
 services:
-  Neighborhoods\Bradfab\AnnotationProcessor\BuilderInterface:
-    class: Neighborhoods\Bradfab\AnnotationProcessor\Builder
+  Neighborhoods\Buphalo\AnnotationProcessor\BuilderInterface:
+    class: Neighborhoods\Buphalo\AnnotationProcessor\Builder
     public: false
     shared: false
     calls:
-      - [setAnnotationProcessorFactory, ['@Neighborhoods\Bradfab\AnnotationProcessor\FactoryInterface']]
-      - [setAnnotationProcessorRepository, ['@Neighborhoods\Bradfab\AnnotationProcessor\RepositoryInterface']]
-      - [setAnnotationProcessorContextBuilderFactory, ['@Neighborhoods\Bradfab\AnnotationProcessor\Context\Builder\FactoryInterface']]
+      - [setAnnotationProcessorFactory, ['@Neighborhoods\Buphalo\AnnotationProcessor\FactoryInterface']]
+      - [setAnnotationProcessorRepository, ['@Neighborhoods\Buphalo\AnnotationProcessor\RepositoryInterface']]
+      - [setAnnotationProcessorContextBuilderFactory, ['@Neighborhoods\Buphalo\AnnotationProcessor\Context\Builder\FactoryInterface']]

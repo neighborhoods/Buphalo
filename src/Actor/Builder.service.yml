@@ -1,8 +1,8 @@
 services:
-  Neighborhoods\Bradfab\Actor\BuilderInterface:
-    class: Neighborhoods\Bradfab\Actor\Builder
+  Neighborhoods\Buphalo\Actor\BuilderInterface:
+    class: Neighborhoods\Buphalo\Actor\Builder
     public: false
     shared: false
     calls:
-      - [setActorFactory, ['@Neighborhoods\Bradfab\Actor\FactoryInterface']]
-      - [setTargetApplicationRepository, ['@Neighborhoods\Bradfab\TargetApplication\RepositoryInterface']]
+      - [setActorFactory, ['@Neighborhoods\Buphalo\Actor\FactoryInterface']]
+      - [setTargetApplicationRepository, ['@Neighborhoods\Buphalo\TargetApplication\RepositoryInterface']]

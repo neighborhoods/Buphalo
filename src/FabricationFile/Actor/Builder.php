@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\FabricationFile\Actor;
+namespace Neighborhoods\Buphalo\FabricationFile\Actor;
 
 use LogicException;
-use Neighborhoods\Bradfab\AnnotationProcessor;
-use Neighborhoods\Bradfab\FabricationFile;
-use Neighborhoods\Bradfab\FabricationFile\ActorInterface;
+use Neighborhoods\Buphalo\AnnotationProcessor;
+use Neighborhoods\Buphalo\FabricationFile;
+use Neighborhoods\Buphalo\FabricationFile\ActorInterface;
 
 class Builder implements BuilderInterface
 {

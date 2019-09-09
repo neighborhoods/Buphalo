@@ -1,21 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Fabricator\Builder;
+namespace Neighborhoods\Buphalo\Fabricator\Builder;
 
 use LogicException;
-use Neighborhoods\Bradfab\Fabricator\BuilderInterface;
+use Neighborhoods\Buphalo\Fabricator\BuilderInterface;
 
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabFabricatorBuilder;
+    protected $NeighborhoodsBuphaloFabricatorBuilder;
 
     public function setFabricatorBuilder(BuilderInterface $fabricatorBuilder): self
     {
         if ($this->hasFabricatorBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Fabricator Builder is already set.');
+            throw new LogicException('Neighborhoods Buphalo Fabricator Builder is already set.');
         }
-        $this->NeighborhoodsBradfabFabricatorBuilder = $fabricatorBuilder;
+        $this->NeighborhoodsBuphaloFabricatorBuilder = $fabricatorBuilder;
 
         return $this;
     }
@@ -23,23 +23,23 @@ trait AwareTrait
     protected function getFabricatorBuilder(): BuilderInterface
     {
         if (!$this->hasFabricatorBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Fabricator Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo Fabricator Builder is not set.');
         }
 
-        return $this->NeighborhoodsBradfabFabricatorBuilder;
+        return $this->NeighborhoodsBuphaloFabricatorBuilder;
     }
 
     protected function hasFabricatorBuilder(): bool
     {
-        return isset($this->NeighborhoodsBradfabFabricatorBuilder);
+        return isset($this->NeighborhoodsBuphaloFabricatorBuilder);
     }
 
     protected function unsetFabricatorBuilder(): self
     {
         if (!$this->hasFabricatorBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Fabricator Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo Fabricator Builder is not set.');
         }
-        unset($this->NeighborhoodsBradfabFabricatorBuilder);
+        unset($this->NeighborhoodsBuphaloFabricatorBuilder);
 
         return $this;
     }

@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TemplateTree\Builder;
+namespace Neighborhoods\Buphalo\TemplateTree\Builder;
 
 use LogicException;
-use Neighborhoods\Bradfab\TemplateTree\BuilderInterface;
+use Neighborhoods\Buphalo\TemplateTree\BuilderInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabTemplateTreeBuilder;
+    protected $NeighborhoodsBuphaloTemplateTreeBuilder;
 
     public function setTemplateTreeBuilder(BuilderInterface $templateTreeBuilder): self
     {
         if ($this->hasTemplateTreeBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Builder is already set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Builder is already set.');
         }
-        $this->NeighborhoodsBradfabTemplateTreeBuilder = $templateTreeBuilder;
+        $this->NeighborhoodsBuphaloTemplateTreeBuilder = $templateTreeBuilder;
 
         return $this;
     }
@@ -24,23 +24,23 @@ trait AwareTrait
     protected function getTemplateTreeBuilder(): BuilderInterface
     {
         if (!$this->hasTemplateTreeBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Builder is not set.');
         }
 
-        return $this->NeighborhoodsBradfabTemplateTreeBuilder;
+        return $this->NeighborhoodsBuphaloTemplateTreeBuilder;
     }
 
     protected function hasTemplateTreeBuilder(): bool
     {
-        return isset($this->NeighborhoodsBradfabTemplateTreeBuilder);
+        return isset($this->NeighborhoodsBuphaloTemplateTreeBuilder);
     }
 
     protected function unsetTemplateTreeBuilder(): self
     {
         if (!$this->hasTemplateTreeBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Builder is not set.');
         }
-        unset($this->NeighborhoodsBradfabTemplateTreeBuilder);
+        unset($this->NeighborhoodsBuphaloTemplateTreeBuilder);
 
         return $this;
     }

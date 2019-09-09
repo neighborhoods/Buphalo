@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\FloatingPointMapInterface:
-    class: Neighborhoods\Bradfab\FloatingPointMap
+  Neighborhoods\Buphalo\FloatingPointMapInterface:
+    class: Neighborhoods\Buphalo\FloatingPointMap
     public: false
     shared: false

@@ -1,7 +1,7 @@
 services:
-  Neighborhoods\Bradfab\AnnotationProcessor\FactoryInterface:
-    class: Neighborhoods\Bradfab\AnnotationProcessor\Factory
+  Neighborhoods\Buphalo\AnnotationProcessor\FactoryInterface:
+    class: Neighborhoods\Buphalo\AnnotationProcessor\Factory
     public: false
     shared: true
     calls:
-      - [setAnnotationProcessor, ['@Neighborhoods\Bradfab\AnnotationProcessorInterface']]
+      - [setAnnotationProcessor, ['@Neighborhoods\Buphalo\AnnotationProcessorInterface']]

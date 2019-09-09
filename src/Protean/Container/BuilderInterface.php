@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Protean\Container;
+namespace Neighborhoods\Buphalo\Protean\Container;
 
 use Psr\Container\ContainerInterface;
 

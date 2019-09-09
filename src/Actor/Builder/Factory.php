@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Builder;
+namespace Neighborhoods\Buphalo\Actor\Builder;
 
-use Neighborhoods\Bradfab\Actor\BuilderInterface;
+use Neighborhoods\Buphalo\Actor\BuilderInterface;
 
 class Factory implements FactoryInterface
 {

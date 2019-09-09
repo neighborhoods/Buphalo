@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\BradfabTemplateTree\Actor;
+namespace Neighborhoods\BuphaloTemplateTree\Actor;
 
-use Neighborhoods\BradfabTemplateTree\Actor;
-use Neighborhoods\BradfabTemplateTree\ActorInterface;
+use Neighborhoods\BuphaloTemplateTree\Actor;
+use Neighborhoods\BuphaloTemplateTree\ActorInterface;
 
 class Repository implements RepositoryInterface
 {
@@ -12,7 +12,7 @@ class Repository implements RepositoryInterface
 
     public function add(ActorInterface $Actor): RepositoryInterface
     {
-        /** @neighborhoods-bradfab:annotation-processor \Neighborhoods\BradfabTemplateTree\Actor\Repository.add1
+        /** @neighborhoods-buphalo:annotation-processor \Neighborhoods\BuphaloTemplateTree\Actor\Repository.add1
         // TODO: Implement add() method.
         throw new \LogicException('Unimplemented add method.');
         */
@@ -23,7 +23,7 @@ class Repository implements RepositoryInterface
     public function getByIdentity(string $identity): ActorInterface
     {
         $Actor = $this->getActorBuilderFactory()->create()->build();
-        /** @neighborhoods-bradfab:annotation-processor \Neighborhoods\BradfabTemplateTree\Actor\Repository.getByIdentity2
+        /** @neighborhoods-buphalo:annotation-processor \Neighborhoods\BuphaloTemplateTree\Actor\Repository.getByIdentity2
         // TODO: Implement getByIdentity() method.
         throw new \LogicException('Unimplemented get method.');
         */

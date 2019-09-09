@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TemplateTree;
+namespace Neighborhoods\Buphalo\TemplateTree;
 
 use ArrayIterator;
 use LogicException;
-use Neighborhoods\Bradfab\TemplateTreeInterface;
+use Neighborhoods\Buphalo\TemplateTreeInterface;
 
 /** @codeCoverageIgnore */
 class Map extends ArrayIterator implements MapInterface

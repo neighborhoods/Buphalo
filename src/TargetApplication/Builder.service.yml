@@ -1,14 +1,14 @@
 parameters:
-  Neighborhoods\Bradfab\TargetApplication\BuilderInterface.SourceDirectoryPath: '%env(Neighborhoods_Bradfab_TargetApplication_BuilderInterface__SourceDirectoryPath)%'
-  Neighborhoods\Bradfab\TargetApplication\BuilderInterface.FabricationPath: '%env(Neighborhoods_Bradfab_TargetApplication_BuilderInterface__FabricationPath)%'
-  Neighborhoods\Bradfab\TargetApplication\BuilderInterface.Namespace: '%env(Neighborhoods_Bradfab_TargetApplication_BuilderInterface__Namespace)%'
+  Neighborhoods\Buphalo\TargetApplication\BuilderInterface.SourceDirectoryPath: '%env(Neighborhoods_Buphalo_TargetApplication_BuilderInterface__SourceDirectoryPath)%'
+  Neighborhoods\Buphalo\TargetApplication\BuilderInterface.FabricationPath: '%env(Neighborhoods_Buphalo_TargetApplication_BuilderInterface__FabricationPath)%'
+  Neighborhoods\Buphalo\TargetApplication\BuilderInterface.Namespace: '%env(Neighborhoods_Buphalo_TargetApplication_BuilderInterface__Namespace)%'
 services:
-  Neighborhoods\Bradfab\TargetApplication\BuilderInterface:
-    class: Neighborhoods\Bradfab\TargetApplication\Builder
+  Neighborhoods\Buphalo\TargetApplication\BuilderInterface:
+    class: Neighborhoods\Buphalo\TargetApplication\Builder
     public: false
     shared: false
     calls:
-      - [setTargetApplicationFactory, ['@Neighborhoods\Bradfab\TargetApplication\FactoryInterface']]
-      - [setNamespace, ['%Neighborhoods\Bradfab\TargetApplication\BuilderInterface.Namespace%']]
-      - [setSourceDirectoryPath, ['%Neighborhoods\Bradfab\TargetApplication\BuilderInterface.SourceDirectoryPath%']]
-      - [setFabricationPath, ['%Neighborhoods\Bradfab\TargetApplication\BuilderInterface.FabricationPath%']]
+      - [setTargetApplicationFactory, ['@Neighborhoods\Buphalo\TargetApplication\FactoryInterface']]
+      - [setNamespace, ['%Neighborhoods\Buphalo\TargetApplication\BuilderInterface.Namespace%']]
+      - [setSourceDirectoryPath, ['%Neighborhoods\Buphalo\TargetApplication\BuilderInterface.SourceDirectoryPath%']]
+      - [setFabricationPath, ['%Neighborhoods\Buphalo\TargetApplication\BuilderInterface.FabricationPath%']]

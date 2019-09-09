@@ -1,7 +1,7 @@
 services:
-  Neighborhoods\BradfabTemplateTree\Actor\BuilderInterface:
-    class: Neighborhoods\BradfabTemplateTree\Actor\Builder
+  Neighborhoods\BuphaloTemplateTree\Actor\BuilderInterface:
+    class: Neighborhoods\BuphaloTemplateTree\Actor\Builder
     public: false
     shared: false
     calls:
-      - [setActorFactory, ['@Neighborhoods\BradfabTemplateTree\Actor\FactoryInterface']]
+      - [setActorFactory, ['@Neighborhoods\BuphaloTemplateTree\Actor\FactoryInterface']]

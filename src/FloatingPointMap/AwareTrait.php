@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\FloatingPointMap;
+namespace Neighborhoods\Buphalo\FloatingPointMap;
 
 use LogicException;
-use Neighborhoods\Bradfab\FloatingPointMapInterface;
+use Neighborhoods\Buphalo\FloatingPointMapInterface;
 
 trait AwareTrait
 {

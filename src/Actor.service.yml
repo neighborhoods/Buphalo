@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\ActorInterface:
-    class: Neighborhoods\Bradfab\Actor
+  Neighborhoods\Buphalo\ActorInterface:
+    class: Neighborhoods\Buphalo\Actor
     public: false
     shared: false

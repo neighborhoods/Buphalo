@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab;
+namespace Neighborhoods\Buphalo;
 
 use LogicException;
-use Neighborhoods\Bradfab\FabricationFile\Actor;
+use Neighborhoods\Buphalo\FabricationFile\Actor;
 
 class FabricationFile implements FabricationFileInterface
 {

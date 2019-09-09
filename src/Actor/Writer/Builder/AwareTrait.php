@@ -1,21 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Writer\Builder;
+namespace Neighborhoods\Buphalo\Actor\Writer\Builder;
 
 use LogicException;
-use Neighborhoods\Bradfab\Actor\Writer\BuilderInterface;
+use Neighborhoods\Buphalo\Actor\Writer\BuilderInterface;
 
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabActorWriterBuilder;
+    protected $NeighborhoodsBuphaloActorWriterBuilder;
 
     public function setActorWriterBuilder(BuilderInterface $actorWriterBuilder): self
     {
         if ($this->hasActorWriterBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Writer Builder is already set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Writer Builder is already set.');
         }
-        $this->NeighborhoodsBradfabActorWriterBuilder = $actorWriterBuilder;
+        $this->NeighborhoodsBuphaloActorWriterBuilder = $actorWriterBuilder;
 
         return $this;
     }
@@ -23,23 +23,23 @@ trait AwareTrait
     protected function getActorWriterBuilder(): BuilderInterface
     {
         if (!$this->hasActorWriterBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Writer Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Writer Builder is not set.');
         }
 
-        return $this->NeighborhoodsBradfabActorWriterBuilder;
+        return $this->NeighborhoodsBuphaloActorWriterBuilder;
     }
 
     protected function hasActorWriterBuilder(): bool
     {
-        return isset($this->NeighborhoodsBradfabActorWriterBuilder);
+        return isset($this->NeighborhoodsBuphaloActorWriterBuilder);
     }
 
     protected function unsetActorWriterBuilder(): self
     {
         if (!$this->hasActorWriterBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Writer Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Writer Builder is not set.');
         }
-        unset($this->NeighborhoodsBradfabActorWriterBuilder);
+        unset($this->NeighborhoodsBuphaloActorWriterBuilder);
 
         return $this;
     }

@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\TargetApplicationInterface:
-    class: Neighborhoods\Bradfab\TargetApplication
+  Neighborhoods\Buphalo\TargetApplicationInterface:
+    class: Neighborhoods\Buphalo\TargetApplication
     public: false
     shared: false

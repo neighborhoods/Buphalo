@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab;
+namespace Neighborhoods\Buphalo;
 
 /** @noinspection PhpSuperClassIncompatibleWithInterfaceInspection */
 class AnnotationProcessor implements AnnotationProcessorInterface

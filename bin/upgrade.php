@@ -3,8 +3,8 @@
 declare(strict_types=1);
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Neighborhoods\Bradfab\VersionUpgrade;
-use Neighborhoods\Bradfab\Logger;
+use Neighborhoods\Buphalo\VersionUpgrade;
+use Neighborhoods\Buphalo\Logger;
 
 $filesFound = (function(string $directory): int {
 

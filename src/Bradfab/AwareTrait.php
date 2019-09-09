@@ -1,45 +1,45 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Bradfab;
+namespace Neighborhoods\Buphalo\Buphalo;
 
 use LogicException;
-use Neighborhoods\Bradfab\BradfabInterface;
+use Neighborhoods\Buphalo\BuphaloInterface;
 
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabBradfab;
+    protected $NeighborhoodsBuphaloBuphalo;
 
-    public function setBradfab(BradfabInterface $bradfab): self
+    public function setBuphalo(BuphaloInterface $buphalo): self
     {
-        if ($this->hasBradfab()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab is already set.');
+        if ($this->hasBuphalo()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo is already set.');
         }
-        $this->NeighborhoodsBradfabBradfab = $bradfab;
+        $this->NeighborhoodsBuphaloBuphalo = $buphalo;
 
         return $this;
     }
 
-    protected function getBradfab(): BradfabInterface
+    protected function getBuphalo(): BuphaloInterface
     {
-        if (!$this->hasBradfab()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab is not set.');
+        if (!$this->hasBuphalo()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo is not set.');
         }
 
-        return $this->NeighborhoodsBradfabBradfab;
+        return $this->NeighborhoodsBuphaloBuphalo;
     }
 
-    protected function hasBradfab(): bool
+    protected function hasBuphalo(): bool
     {
-        return isset($this->NeighborhoodsBradfabBradfab);
+        return isset($this->NeighborhoodsBuphaloBuphalo);
     }
 
-    protected function unsetBradfab(): self
+    protected function unsetBuphalo(): self
     {
-        if (!$this->hasBradfab()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab is not set.');
+        if (!$this->hasBuphalo()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo is not set.');
         }
-        unset($this->NeighborhoodsBradfabBradfab);
+        unset($this->NeighborhoodsBuphaloBuphalo);
 
         return $this;
     }

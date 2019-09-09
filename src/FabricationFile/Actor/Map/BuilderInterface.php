@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\FabricationFile\Actor\Map;
+namespace Neighborhoods\Buphalo\FabricationFile\Actor\Map;
 
-use Neighborhoods\Bradfab\FabricationFile\Actor\MapInterface;
-use Neighborhoods\Bradfab\FabricationFileInterface;
+use Neighborhoods\Buphalo\FabricationFile\Actor\MapInterface;
+use Neighborhoods\Buphalo\FabricationFileInterface;
 
 interface BuilderInterface
 {

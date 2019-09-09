@@ -1,45 +1,45 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Bradfab\Factory;
+namespace Neighborhoods\Buphalo\Buphalo\Factory;
 
 use LogicException;
-use Neighborhoods\Bradfab\Bradfab\FactoryInterface;
+use Neighborhoods\Buphalo\Buphalo\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabBradfabFactory;
+    protected $NeighborhoodsBuphaloBuphaloFactory;
 
-    public function setBradfabFactory(FactoryInterface $bradfabFactory): self
+    public function setBuphaloFactory(FactoryInterface $buphaloFactory): self
     {
-        if ($this->hasBradfabFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab Factory is already set.');
+        if ($this->hasBuphaloFactory()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo Factory is already set.');
         }
-        $this->NeighborhoodsBradfabBradfabFactory = $bradfabFactory;
+        $this->NeighborhoodsBuphaloBuphaloFactory = $buphaloFactory;
 
         return $this;
     }
 
-    protected function getBradfabFactory(): FactoryInterface
+    protected function getBuphaloFactory(): FactoryInterface
     {
-        if (!$this->hasBradfabFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab Factory is not set.');
+        if (!$this->hasBuphaloFactory()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo Factory is not set.');
         }
 
-        return $this->NeighborhoodsBradfabBradfabFactory;
+        return $this->NeighborhoodsBuphaloBuphaloFactory;
     }
 
-    protected function hasBradfabFactory(): bool
+    protected function hasBuphaloFactory(): bool
     {
-        return isset($this->NeighborhoodsBradfabBradfabFactory);
+        return isset($this->NeighborhoodsBuphaloBuphaloFactory);
     }
 
-    protected function unsetBradfabFactory(): self
+    protected function unsetBuphaloFactory(): self
     {
-        if (!$this->hasBradfabFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab Factory is not set.');
+        if (!$this->hasBuphaloFactory()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo Factory is not set.');
         }
-        unset($this->NeighborhoodsBradfabBradfabFactory);
+        unset($this->NeighborhoodsBuphaloBuphaloFactory);
 
         return $this;
     }

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TargetApplication;
+namespace Neighborhoods\Buphalo\TargetApplication;
 
-use Neighborhoods\Bradfab\TargetApplication;
-use Neighborhoods\Bradfab\TargetApplicationInterface;
+use Neighborhoods\Buphalo\TargetApplication;
+use Neighborhoods\Buphalo\TargetApplicationInterface;
 
 class Repository implements RepositoryInterface
 {

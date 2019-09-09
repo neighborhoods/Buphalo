@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\BradfabTemplateTree\Actor;
+namespace Neighborhoods\BuphaloTemplateTree\Actor;
 
 use LogicException;
-use Neighborhoods\BradfabTemplateTree\ActorInterface;
+use Neighborhoods\BuphaloTemplateTree\ActorInterface;
 
 class Builder implements BuilderInterface
 {
@@ -15,9 +15,9 @@ class Builder implements BuilderInterface
     public function build(): ActorInterface
     {
         $Actor = $this->getActorFactory()->create();
-        /** @neighborhoods-bradfab:annotation-processor Neighborhoods\BradfabTemplateTree\Actor\Builder.build1
+        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\Actor\Builder.build1
          */
-        /** @neighborhoods-bradfab:annotation-processor Neighborhoods\BradfabTemplateTree\Actor\Builder.build2
+        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\Actor\Builder.build2
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
          */

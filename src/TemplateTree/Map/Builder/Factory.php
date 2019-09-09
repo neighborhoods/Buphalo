@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TemplateTree\Map\Builder;
+namespace Neighborhoods\Buphalo\TemplateTree\Map\Builder;
 
 use LogicException;
-use Neighborhoods\Bradfab\TemplateTree\Map\BuilderInterface;
+use Neighborhoods\Buphalo\TemplateTree\Map\BuilderInterface;
 
 class Factory implements FactoryInterface
 {

@@ -1,10 +1,10 @@
 services:
-  Neighborhoods\Bradfab\FabricationFile\Map\BuilderInterface:
-    class: Neighborhoods\Bradfab\FabricationFile\Map\Builder
+  Neighborhoods\Buphalo\FabricationFile\Map\BuilderInterface:
+    class: Neighborhoods\Buphalo\FabricationFile\Map\Builder
     public: false
     shared: false
     calls:
-      - [setFabricationFileMapFactory, ['@Neighborhoods\Bradfab\FabricationFile\Map\FactoryInterface']]
-      - [setTargetApplicationRepository, ['@Neighborhoods\Bradfab\TargetApplication\RepositoryInterface']]
-      - [setFabricationFileBuilderFactory, ['@Neighborhoods\Bradfab\FabricationFile\Builder\FactoryInterface']]
+      - [setFabricationFileMapFactory, ['@Neighborhoods\Buphalo\FabricationFile\Map\FactoryInterface']]
+      - [setTargetApplicationRepository, ['@Neighborhoods\Buphalo\TargetApplication\RepositoryInterface']]
+      - [setFabricationFileBuilderFactory, ['@Neighborhoods\Buphalo\FabricationFile\Builder\FactoryInterface']]
       - [setSymfonyComponentFinderFinder, ['@Symfony\Component\Finder\Finder']]

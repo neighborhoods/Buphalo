@@ -1,45 +1,45 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Bradfab\Builder\Factory;
+namespace Neighborhoods\Buphalo\Buphalo\Builder\Factory;
 
 use LogicException;
-use Neighborhoods\Bradfab\Bradfab\Builder\FactoryInterface;
+use Neighborhoods\Buphalo\Buphalo\Builder\FactoryInterface;
 
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabBradfabBuilderFactory;
+    protected $NeighborhoodsBuphaloBuphaloBuilderFactory;
 
-    public function setBradfabBuilderFactory(FactoryInterface $bradfabBuilderFactory): self
+    public function setBuphaloBuilderFactory(FactoryInterface $buphaloBuilderFactory): self
     {
-        if ($this->hasBradfabBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab Builder Factory is already set.');
+        if ($this->hasBuphaloBuilderFactory()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo Builder Factory is already set.');
         }
-        $this->NeighborhoodsBradfabBradfabBuilderFactory = $bradfabBuilderFactory;
+        $this->NeighborhoodsBuphaloBuphaloBuilderFactory = $buphaloBuilderFactory;
 
         return $this;
     }
 
-    protected function getBradfabBuilderFactory(): FactoryInterface
+    protected function getBuphaloBuilderFactory(): FactoryInterface
     {
-        if (!$this->hasBradfabBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab Builder Factory is not set.');
+        if (!$this->hasBuphaloBuilderFactory()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo Builder Factory is not set.');
         }
 
-        return $this->NeighborhoodsBradfabBradfabBuilderFactory;
+        return $this->NeighborhoodsBuphaloBuphaloBuilderFactory;
     }
 
-    protected function hasBradfabBuilderFactory(): bool
+    protected function hasBuphaloBuilderFactory(): bool
     {
-        return isset($this->NeighborhoodsBradfabBradfabBuilderFactory);
+        return isset($this->NeighborhoodsBuphaloBuphaloBuilderFactory);
     }
 
-    protected function unsetBradfabBuilderFactory(): self
+    protected function unsetBuphaloBuilderFactory(): self
     {
-        if (!$this->hasBradfabBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab Builder Factory is not set.');
+        if (!$this->hasBuphaloBuilderFactory()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo Builder Factory is not set.');
         }
-        unset($this->NeighborhoodsBradfabBradfabBuilderFactory);
+        unset($this->NeighborhoodsBuphaloBuphaloBuilderFactory);
 
         return $this;
     }
