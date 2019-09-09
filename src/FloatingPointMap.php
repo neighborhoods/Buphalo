@@ -3,13 +3,16 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-class FloatingPointMap extends \ArrayIterator implements FloatingPointMapInterface
+use ArrayIterator;
+use LogicException;
+
+class FloatingPointMap extends ArrayIterator implements FloatingPointMapInterface
 {
     /** @param float ...$floatingPoints */
     public function __construct(array $floatingPoints = array(), int $flags = 0)
     {
         if ($this->count() !== 0) {
-            throw new \LogicException('Map is not empty.');
+            throw new LogicException('Map is not empty.');
         }
 
         if (!empty($floatingPoints)) {
@@ -47,8 +50,10 @@ class FloatingPointMap extends \ArrayIterator implements FloatingPointMapInterfa
         return $floatingPoint;
     }
 
-    protected function assertValidArrayType(float ...$floatingPoints): FloatingPointMapInterface
-    {
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        float ...$floatingPoints
+    ): FloatingPointMapInterface {
         return $this;
     }
 

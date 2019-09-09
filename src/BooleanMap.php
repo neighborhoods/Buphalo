@@ -3,13 +3,16 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-class BooleanMap extends \ArrayIterator implements BooleanMapInterface
+use ArrayIterator;
+use LogicException;
+
+class BooleanMap extends ArrayIterator implements BooleanMapInterface
 {
     /** @param bool ...$booleans */
     public function __construct(array $booleans = array(), int $flags = 0)
     {
         if ($this->count() !== 0) {
-            throw new \LogicException('Map is not empty.');
+            throw new LogicException('Map is not empty.');
         }
 
         if (!empty($booleans)) {
@@ -30,11 +33,11 @@ class BooleanMap extends \ArrayIterator implements BooleanMapInterface
         parent::offsetSet($index, $this->assertValidArrayItemType($integer));
     }
 
-    /** @param bool $integer */
-    public function append($integer)
+    /** @param bool $boolean */
+    public function append($boolean)
     {
-        $this->assertValidArrayItemType($integer);
-        parent::append($integer);
+        $this->assertValidArrayItemType($boolean);
+        parent::append($boolean);
     }
 
     public function current(): bool
@@ -47,7 +50,9 @@ class BooleanMap extends \ArrayIterator implements BooleanMapInterface
         return $int;
     }
 
-    protected function assertValidArrayType(bool ...$booleans): BooleanMapInterface
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        bool ...$booleans): BooleanMapInterface
     {
         return $this;
     }

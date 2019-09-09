@@ -3,13 +3,16 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-class StringMap extends \ArrayIterator implements StringMapInterface
+use ArrayIterator;
+use LogicException;
+
+class StringMap extends ArrayIterator implements StringMapInterface
 {
     /** @param string ...$Actors */
     public function __construct(array $Actors = array(), int $flags = 0)
     {
         if ($this->count() !== 0) {
-            throw new \LogicException('Map is not empty.');
+            throw new LogicException('Map is not empty.');
         }
 
         if (!empty($Actors)) {
@@ -47,8 +50,10 @@ class StringMap extends \ArrayIterator implements StringMapInterface
         return $string;
     }
 
-    protected function assertValidArrayType(string ...$strings): StringMapInterface
-    {
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        string ...$strings
+    ): StringMapInterface {
         return $this;
     }
 

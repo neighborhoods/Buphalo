@@ -3,13 +3,16 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-class IntegerMap extends \ArrayIterator implements IntegerMapInterface
+use ArrayIterator;
+use LogicException;
+
+class IntegerMap extends ArrayIterator implements IntegerMapInterface
 {
     /** @param int ...$integer */
     public function __construct(array $integer = array(), int $flags = 0)
     {
         if ($this->count() !== 0) {
-            throw new \LogicException('Map is not empty.');
+            throw new LogicException('Map is not empty.');
         }
 
         if (!empty($integer)) {
@@ -30,11 +33,11 @@ class IntegerMap extends \ArrayIterator implements IntegerMapInterface
         parent::offsetSet($index, $this->assertValidArrayItemType($integer));
     }
 
-    /** @param int $integer */
-    public function append($integer)
+    /** @param int $boolean */
+    public function append($boolean)
     {
-        $this->assertValidArrayItemType($integer);
-        parent::append($integer);
+        $this->assertValidArrayItemType($boolean);
+        parent::append($boolean);
     }
 
     public function current(): int
@@ -47,8 +50,10 @@ class IntegerMap extends \ArrayIterator implements IntegerMapInterface
         return $integer;
     }
 
-    protected function assertValidArrayType(int ...$integers): IntegerMapInterface
-    {
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        int ...$integers
+    ): IntegerMapInterface {
         return $this;
     }
 

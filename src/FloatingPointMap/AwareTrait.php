@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\FloatingPointMap;
 
+use LogicException;
 use Neighborhoods\Bradfab\FloatingPointMapInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setFloatingPointMap(FloatingPointMapInterface $FloatingPointMap): self
     {
         if ($this->hasFloatingPointMap()) {
-            throw new \LogicException('FloatingPointMap is already set.');
+            throw new LogicException('FloatingPointMap is already set.');
         }
         $this->FloatingPointMap = $FloatingPointMap;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getFloatingPointMap(): FloatingPointMapInterface
     {
         if (!$this->hasFloatingPointMap()) {
-            throw new \LogicException('FloatingPointMap is not set.');
+            throw new LogicException('FloatingPointMap is not set.');
         }
 
         return $this->FloatingPointMap;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetFloatingPointMap(): self
     {
         if (!$this->hasFloatingPointMap()) {
-            throw new \LogicException('FloatingPointMap is not set.');
+            throw new LogicException('FloatingPointMap is not set.');
         }
         unset($this->FloatingPointMap);
 

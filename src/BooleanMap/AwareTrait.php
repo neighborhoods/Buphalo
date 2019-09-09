@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\BooleanMap;
 
+use LogicException;
 use Neighborhoods\Bradfab\BooleanMapInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setBooleanMap(BooleanMapInterface $BooleanMap): self
     {
         if ($this->hasBooleanMap()) {
-            throw new \LogicException('BooleanMap is already set.');
+            throw new LogicException('BooleanMap is already set.');
         }
         $this->BooleanMap = $BooleanMap;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getBooleanMap(): BooleanMapInterface
     {
         if (!$this->hasBooleanMap()) {
-            throw new \LogicException('BooleanMap is not set.');
+            throw new LogicException('BooleanMap is not set.');
         }
 
         return $this->BooleanMap;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetBooleanMap(): self
     {
         if (!$this->hasBooleanMap()) {
-            throw new \LogicException('BooleanMap is not set.');
+            throw new LogicException('BooleanMap is not set.');
         }
         unset($this->BooleanMap);
 

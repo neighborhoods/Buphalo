@@ -3,57 +3,83 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\FabricationFile;
 
-use Neighborhoods\Bradfab\FabricationFileInterface;
+use LogicException;
 use Neighborhoods\Bradfab\FabricationFile;
+use Neighborhoods\Bradfab\FabricationFileInterface;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Yaml\Yaml;
 
 class Builder implements BuilderInterface
 {
-    use Factory\AwareTrait;
-    use FabricationFile\SupportingActor\Map\Builder\Factory\AwareTrait;
+    use FabricationFile\Factory\AwareTrait;
+    use FabricationFile\Actor\Map\Builder\Factory\AwareTrait;
 
-    protected $spl_file_info;
+    protected $SplFileInfo;
+    protected $FileName;
 
     public function build(): FabricationFileInterface
     {
-        $fabricationFileContents = Yaml::parseFile($this->getSPLFileInfo()->getPathname(), YAML::PARSE_CONSTANT);
         $fabricationFile = $this->getFabricationFileFactory()->create();
-        $supportingActorMapBuilder = $this->getFabricationFileSupportingActorMapBuilderFactory()->create();
-        $supportingActors = $supportingActorMapBuilder->setRecords($fabricationFileContents)->build();
-        foreach ($supportingActors as $supportingActor) {
-            if ($supportingActor->hasAnnotationProcessorMap()) {
-                foreach ($supportingActor->getAnnotationProcessorMap() as $annotationProcessor) {
-                    $annotationProcessor->getAnnotationProcessorContext()->setFabricationFile($fabricationFile);
-                }
-            }
-        }
-        $fabricationFile->setSupportingActors($supportingActors);
-        $fabricationFile->setFileName($this->getSPLFileInfo()->getFilename());
-        $fabricationFile->setFilePath($this->getSPLFileInfo()->getPathname());
-        $fabricationFile->setRelativeDirectoryPath($this->getSPLFileInfo()->getRelativePath());
-        $fabricationFile->setRelativeFilePath($this->getSPLFileInfo()->getRelativePathname());
+
+        $fabricationFile->setBaseName($this->getSplFileInfo()->getBasename());
+        $fabricationFile->setFileName($this->getFileName());
+        $fabricationFile->setFilePath($this->getSplFileInfo()->getPathname());
+        $fabricationFile->setDirectoryPath($this->getSplFileInfo()->getPath());
+        $fabricationFile->setRelativeDirectoryPath($this->getSplFileInfo()->getRelativePath());
+        $fabricationFile->setRelativeFilePath($this->getSplFileInfo()->getRelativePathname());
+        $this->addActors($fabricationFile);
 
         return $fabricationFile;
     }
 
-    protected function getSPLFileInfo(): SplFileInfo
+    protected function getSplFileInfo(): SplFileInfo
     {
-        if ($this->spl_file_info === null) {
-            throw new \LogicException('Builder spl_file_info has not been set.');
+        if ($this->SplFileInfo === null) {
+            throw new LogicException('Builder SplFileInfo has not been set.');
         }
 
-        return $this->spl_file_info;
+        return $this->SplFileInfo;
     }
 
     public function setSplFileInfo(SplFileInfo $spl_file_info): BuilderInterface
     {
-        if ($this->spl_file_info !== null) {
-            throw new \LogicException('Builder spl_file_info is already set.');
+        if ($this->SplFileInfo !== null) {
+            throw new LogicException('Builder SplFileInfo is already set.');
         }
 
-        $this->spl_file_info = $spl_file_info;
+        $this->SplFileInfo = $spl_file_info;
 
         return $this;
+    }
+
+    protected function getFabricationFileContents(): array
+    {
+        $fabricationFileContents = Yaml::parseFile($this->getSplFileInfo()->getPathname(), YAML::PARSE_CONSTANT);
+
+        return $fabricationFileContents;
+    }
+
+    protected function addActors(FabricationFileInterface $fabricationFile): Builder
+    {
+        $fabricationFileContents = $this->getFabricationFileContents();
+        $fabricationFileActorMapBuilder = $this->getFabricationFileActorMapBuilderFactory()->create();
+        $fabricationFileActorMapBuilder->setFabricationFile($fabricationFile);
+        $actors = $fabricationFileActorMapBuilder->setRecords($fabricationFileContents)->build();
+        $fabricationFile->setActors($actors);
+
+        return $this;
+    }
+
+    public function getFileName(): string
+    {
+        if ($this->FileName === null) {
+            $this->FileName = substr(
+                $this->getSplFileInfo()->getBaseName(),
+                0,
+                strpos($this->getSplFileInfo()->getBaseName(), '.')
+            );
+        }
+
+        return $this->FileName;
     }
 }

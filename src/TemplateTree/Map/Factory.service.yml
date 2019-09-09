@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Bradfab\TemplateTree\Map\FactoryInterface:
+    class: Neighborhoods\Bradfab\TemplateTree\Map\Factory
+    public: false
+    shared: true
+    calls:
+      - [setTemplateTreeMap, ['@Neighborhoods\Bradfab\TemplateTree\MapInterface']]

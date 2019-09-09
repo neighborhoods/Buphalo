@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\BradfabTemplateTree\Actor\RepositoryInterface:
+    class: Neighborhoods\BradfabTemplateTree\Actor\Repository
+    public: false
+    shared: true
+    calls:
+      - [setActorBuilderFactory, ['@Neighborhoods\BradfabTemplateTree\Actor\Builder\FactoryInterface']]

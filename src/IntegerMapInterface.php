@@ -3,7 +3,12 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-interface IntegerMapInterface extends \SeekableIterator, \ArrayAccess, \Serializable, \Countable
+use ArrayAccess;
+use Countable;
+use SeekableIterator;
+use Serializable;
+
+interface IntegerMapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param int ...$integers */
     public function __construct(array $integers = array(), int $flags = 0);

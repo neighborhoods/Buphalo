@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Bradfab\TemplateTreeInterface:
+    class: Neighborhoods\Bradfab\TemplateTree
+    public: false
+    shared: false

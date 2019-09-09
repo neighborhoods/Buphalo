@@ -1,18 +1,10 @@
-parameters:
-  Neighborhoods\Bradfab\FabricatorInterface.template_actor_directory_path: '%env(BRADFAB_FABRICATOR_TEMPLATE_ACTOR_DIRECTORY_PATH)%'
 services:
   Neighborhoods\Bradfab\FabricatorInterface:
     class: Neighborhoods\Bradfab\Fabricator
     public: false
     shared: false
     calls:
-      - [setFilesystem, ['@Symfony\Component\Filesystem\FilesystemInterface']]
-      - [setFinder, ['@Symfony\Component\Finder\FinderInterface']]
-      - [setFabricationFileBuilderFactory, ['@Neighborhoods\Bradfab\FabricationFile\Builder\FactoryInterface']]
-      - [setSupportingActorTemplateFactory, ['@Neighborhoods\Bradfab\SupportingActor\Template\FactoryInterface']]
-      - [setSupportingActorTemplateTokenizerFactory, ['@Neighborhoods\Bradfab\SupportingActor\Template\Tokenizer\FactoryInterface']]
-      - [setSupportingActorTemplateCompilerFactory, ['@Neighborhoods\Bradfab\SupportingActor\Template\Compiler\FactoryInterface']]
-      - [setSupportingActorTemplateCompilerStrategyFactory, ['@Neighborhoods\Bradfab\SupportingActor\Template\Compiler\Strategy\FactoryInterface']]
-      - [setTargetActorFactory, ['@Neighborhoods\Bradfab\TargetActor\FactoryInterface']]
-      - [setSupportingActorWriterFactory, ['@Neighborhoods\Bradfab\SupportingActor\Writer\FactoryInterface']]
-      - [setTemplateActorDirectoryPath, ['%Neighborhoods\Bradfab\FabricatorInterface.template_actor_directory_path%']]
+      - [setFilesystem, ['@Symfony\Component\Filesystem\Filesystem']]
+      - [setActorWriterBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Writer\Builder\FactoryInterface']]
+      - [setTargetApplicationRepository, ['@Neighborhoods\Bradfab\TargetApplication\RepositoryInterface']]
+      - [setFabricationFileMapBuilderFactory, ['@Neighborhoods\Bradfab\FabricationFile\Map\Builder\FactoryInterface']]

@@ -3,10 +3,14 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Symfony\Component\Finder;
 
+use ArrayAccess;
+use Countable;
+use SeekableIterator;
+use Serializable;
 use Symfony\Component\Finder\Finder;
 
 /** @codeCoverageIgnore */
-interface MapInterface extends \SeekableIterator, \ArrayAccess, \Serializable, \Countable
+interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param Finder ...$finders */
     public function __construct(array $finders = array(), int $flags = 0);

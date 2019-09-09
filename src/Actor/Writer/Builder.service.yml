@@ -1,0 +1,10 @@
+services:
+  Neighborhoods\Bradfab\Actor\Writer\BuilderInterface:
+    class: Neighborhoods\Bradfab\Actor\Writer\Builder
+    public: false
+    shared: false
+    calls:
+      - [setActorWriterFactory, ['@Neighborhoods\Bradfab\Actor\Writer\FactoryInterface']]
+      - [setActorTemplateTokenizerBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\Tokenizer\Builder\FactoryInterface']]
+      - [setActorTemplateCompilerBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\Compiler\Builder\FactoryInterface']]
+      - [setActorBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Builder\FactoryInterface']]

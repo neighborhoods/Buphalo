@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Bradfab\Actor\Template\CompilerInterface:
+    class: Neighborhoods\Bradfab\Actor\Template\Compiler
+    public: false
+    shared: false

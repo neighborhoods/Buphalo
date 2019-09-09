@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\IntegerMap;
 
+use LogicException;
 use Neighborhoods\Bradfab\IntegerMapInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setIntegerMap(IntegerMapInterface $IntegerMap): self
     {
         if ($this->hasIntegerMap()) {
-            throw new \LogicException('IntegerMap is already set.');
+            throw new LogicException('IntegerMap is already set.');
         }
         $this->IntegerMap = $IntegerMap;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getIntegerMap(): IntegerMapInterface
     {
         if (!$this->hasIntegerMap()) {
-            throw new \LogicException('IntegerMap is not set.');
+            throw new LogicException('IntegerMap is not set.');
         }
 
         return $this->IntegerMap;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetIntegerMap(): self
     {
         if (!$this->hasIntegerMap()) {
-            throw new \LogicException('IntegerMap is not set.');
+            throw new LogicException('IntegerMap is not set.');
         }
         unset($this->IntegerMap);
 

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\BooleanMap\Factory;
 
+use LogicException;
 use Neighborhoods\Bradfab\BooleanMap\FactoryInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setBooleanMapFactory(FactoryInterface $BooleanMapFactory): self
     {
         if ($this->hasBooleanMapFactory()) {
-            throw new \LogicException('BooleanMapFactory is already set.');
+            throw new LogicException('BooleanMapFactory is already set.');
         }
         $this->BooleanMapFactory = $BooleanMapFactory;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getBooleanMapFactory(): FactoryInterface
     {
         if (!$this->hasBooleanMapFactory()) {
-            throw new \LogicException('BooleanMapFactory is not set.');
+            throw new LogicException('BooleanMapFactory is not set.');
         }
 
         return $this->BooleanMapFactory;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetBooleanMapFactory(): self
     {
         if (!$this->hasBooleanMapFactory()) {
-            throw new \LogicException('BooleanMapFactory is not set.');
+            throw new LogicException('BooleanMapFactory is not set.');
         }
         unset($this->BooleanMapFactory);
 

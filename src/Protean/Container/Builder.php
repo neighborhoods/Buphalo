@@ -3,13 +3,16 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Protean\Container;
 
+use LogicException;
 use Neighborhoods\Bradfab\Symfony\Component\DependencyInjection\ContainerBuilder\Facade;
+use ProjectServiceContainer;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
 use Symfony\Component\DependencyInjection\Dumper\YamlDumper;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
+use UnexpectedValueException;
 use Zend\Expressive\Application;
 
 class Builder implements BuilderInterface
@@ -25,9 +28,7 @@ class Builder implements BuilderInterface
 
     public function build(): ContainerInterface
     {
-        $container = $this->getContainer();
-
-        return $container;
+        return $this->getContainer();
     }
 
     protected function getContainer(): ContainerInterface
@@ -35,8 +36,10 @@ class Builder implements BuilderInterface
         if ($this->container === null) {
             $containerCacheFilePath = $this->getSymfonyContainerFilePath();
             if (file_exists($containerCacheFilePath)) {
+                /** @noinspection PhpIncludeInspection */
                 require_once $containerCacheFilePath;
-                $containerBuilder = new \ProjectServiceContainer();
+                /** @noinspection PhpUndefinedClassInspection */
+                $containerBuilder = new ProjectServiceContainer();
             } else {
                 if ($this->getCanBuildZendExpressive()) {
                     $this->buildZendExpressive();
@@ -57,7 +60,7 @@ class Builder implements BuilderInterface
         if ($this->can_build_zend_expressive === null) {
             $this->can_build_zend_expressive = $can_build_zend_expressive;
         } else {
-            throw new \LogicException('Builder can_build_zend_expressive is already set.');
+            throw new LogicException('Builder can_build_zend_expressive is already set.');
         }
 
         return $this;
@@ -66,7 +69,7 @@ class Builder implements BuilderInterface
     protected function getCanBuildZendExpressive(): bool
     {
         if ($this->can_build_zend_expressive === null) {
-            throw new \LogicException('Builder can_build_zend_expressive is not set.');
+            throw new LogicException('Builder can_build_zend_expressive is not set.');
         }
 
         return $this->can_build_zend_expressive;
@@ -103,7 +106,7 @@ class Builder implements BuilderInterface
     protected function getCanCacheContainer(): bool
     {
         if ($this->can_cache_container === null) {
-            throw new \LogicException('Builder can_cache_container has not been set.');
+            throw new LogicException('Builder can_cache_container has not been set.');
         }
 
         return $this->can_cache_container;
@@ -112,7 +115,7 @@ class Builder implements BuilderInterface
     public function setCanCacheContainer(bool $can_cache_container): BuilderInterface
     {
         if ($this->can_cache_container !== null) {
-            throw new \LogicException('Builder can_cache_container is already set.');
+            throw new LogicException('Builder can_cache_container is already set.');
         }
 
         $this->can_cache_container = $can_cache_container;
@@ -124,9 +127,11 @@ class Builder implements BuilderInterface
     {
         $currentWorkingDirectory = getcwd();
         chdir($this->getApplicationRootDirectoryPath());
+        /** @noinspection PhpIncludeInspection */
         $zendContainerBuilder = require $this->getZendConfigContainerFilePath();
         $ApplicationServiceDefinition = $zendContainerBuilder->findDefinition(Application::class);
-        (require_once $this->getPipelineFilePath())($ApplicationServiceDefinition);
+        /** @noinspection PhpIncludeInspection */
+        (require $this->getPipelineFilePath())($ApplicationServiceDefinition);
         file_put_contents($this->getExpressiveDIYAMLFilePath(), (new YamlDumper($zendContainerBuilder))->dump());
         chdir($currentWorkingDirectory);
 
@@ -194,7 +199,7 @@ class Builder implements BuilderInterface
     public function setApplicationRootDirectoryPath(string $applicationRootDirectoryPath): BuilderInterface
     {
         if ($this->applicationRootDirectoryPath === null) {
-            $applicationRootDirectoryPath = realpath(rtrim($applicationRootDirectoryPath, "/"));
+            $applicationRootDirectoryPath = realpath(rtrim($applicationRootDirectoryPath, '/'));
             if (is_dir($applicationRootDirectoryPath)) {
                 $this->applicationRootDirectoryPath = $applicationRootDirectoryPath;
             } else {
@@ -202,10 +207,10 @@ class Builder implements BuilderInterface
                     'Application root directory path[%s] is not a directory.',
                     $applicationRootDirectoryPath
                 );
-                throw new \UnexpectedValueException($message);
+                throw new UnexpectedValueException($message);
             }
         } else {
-            throw new \LogicException('Application root directory path is already set.');
+            throw new LogicException('Application root directory path is already set.');
         }
 
         return $this;
@@ -214,7 +219,7 @@ class Builder implements BuilderInterface
     protected function getApplicationRootDirectoryPath(): string
     {
         if ($this->applicationRootDirectoryPath === null) {
-            throw new \LogicException('Application root directory path is not set.');
+            throw new LogicException('Application root directory path is not set.');
         }
 
         return $this->applicationRootDirectoryPath;
@@ -223,7 +228,7 @@ class Builder implements BuilderInterface
     public function registerServiceAsPublic(string $serviceId): BuilderInterface
     {
         if (isset($this->serviceIdsRegisteredForPublicAccess[$serviceId])) {
-            throw new \LogicException(
+            throw new LogicException(
                 sprintf('Service ID[%s] is already registered for public access.', $serviceId)
             );
         }
@@ -249,7 +254,7 @@ class Builder implements BuilderInterface
     protected function getCachedContainerFileName(): string
     {
         if ($this->cached_container_file_name === null) {
-            throw new \LogicException('Builder cached_container_file_name has not been set.');
+            throw new LogicException('Builder cached_container_file_name has not been set.');
         }
 
         return $this->cached_container_file_name;
@@ -258,7 +263,7 @@ class Builder implements BuilderInterface
     public function setCachedContainerFileName(string $cached_container_file_name): BuilderInterface
     {
         if ($this->cached_container_file_name !== null) {
-            throw new \LogicException('Builder cached_container_file_name is already set.');
+            throw new LogicException('Builder cached_container_file_name is already set.');
         }
 
         $this->cached_container_file_name = $cached_container_file_name;

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\Protean\Container\Builder;
 
+use LogicException;
 use Neighborhoods\Bradfab\Protean\Container\BuilderInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setProteanContainerBuilder(BuilderInterface $proteanContainerBuilder): self
     {
         if ($this->hasProteanContainerBuilder()) {
-            throw new \LogicException('ProteanContainerBuilder is already set.');
+            throw new LogicException('ProteanContainerBuilder is already set.');
         }
         $this->ProteanContainerBuilder = $proteanContainerBuilder;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getProteanContainerBuilder(): BuilderInterface
     {
         if (!$this->hasProteanContainerBuilder()) {
-            throw new \LogicException('ProteanContainerBuilder is not set.');
+            throw new LogicException('ProteanContainerBuilder is not set.');
         }
 
         return $this->ProteanContainerBuilder;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetProteanContainerBuilder(): self
     {
         if (!$this->hasProteanContainerBuilder()) {
-            throw new \LogicException('ProteanContainerBuilder is not set.');
+            throw new LogicException('ProteanContainerBuilder is not set.');
         }
         unset($this->ProteanContainerBuilder);
 

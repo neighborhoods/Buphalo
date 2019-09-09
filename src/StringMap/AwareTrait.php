@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\StringMap;
 
+use LogicException;
 use Neighborhoods\Bradfab\StringMapInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setStringMap(StringMapInterface $StringMap): self
     {
         if ($this->hasStringMap()) {
-            throw new \LogicException('StringMap is already set.');
+            throw new LogicException('StringMap is already set.');
         }
         $this->StringMap = $StringMap;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getStringMap(): StringMapInterface
     {
         if (!$this->hasStringMap()) {
-            throw new \LogicException('StringMap is not set.');
+            throw new LogicException('StringMap is not set.');
         }
 
         return $this->StringMap;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetStringMap(): self
     {
         if (!$this->hasStringMap()) {
-            throw new \LogicException('StringMap is not set.');
+            throw new LogicException('StringMap is not set.');
         }
         unset($this->StringMap);
 

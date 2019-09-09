@@ -3,7 +3,12 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
-interface BooleanMapInterface extends \SeekableIterator, \ArrayAccess, \Serializable, \Countable
+use ArrayAccess;
+use Countable;
+use SeekableIterator;
+use Serializable;
+
+interface BooleanMapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param bool ...$booleans*/
     public function __construct(array $booleans = array(), int $flags = 0);
@@ -13,7 +18,7 @@ interface BooleanMapInterface extends \SeekableIterator, \ArrayAccess, \Serializ
     /** @param bool $integer */
     public function offsetSet($index, $integer);
 
-    /** @param bool $boollean */
+    /** @param bool $boolean */
     public function append($boolean);
 
     public function current(): bool;

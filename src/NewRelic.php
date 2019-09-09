@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab;
 
+use Throwable;
+
 class NewRelic implements NewRelicInterface
 {
     protected $is_extension_loaded;
@@ -70,6 +72,7 @@ class NewRelic implements NewRelicInterface
         return $this;
     }
 
+    /** @noinspection SpellCheckingInspection */
     public function disableAutorum(): NewRelicInterface
     {
         if ($this->isExtensionLoaded()) {
@@ -132,7 +135,7 @@ class NewRelic implements NewRelicInterface
         return $this;
     }
 
-    public function noticeThrowable(\Throwable $throwable): NewRelicInterface
+    public function noticeThrowable(Throwable $throwable): NewRelicInterface
     {
         if ($this->isExtensionLoaded()) {
             newrelic_notice_error($throwable);
@@ -150,6 +153,7 @@ class NewRelic implements NewRelicInterface
         return $this;
     }
 
+    /** @noinspection SpellCheckingInspection */
     public function setAppname(string $name): NewRelicInterface
     {
         if ($this->isExtensionLoaded()) {

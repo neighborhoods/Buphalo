@@ -3,11 +3,14 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\AnnotationProcessor\Map;
 
-use Neighborhoods\Bradfab\AnnotationProcessor\MapInterface;
+use LogicException;
 use Neighborhoods\Bradfab\AnnotationProcessor;
+use Neighborhoods\Bradfab\AnnotationProcessor\MapInterface;
+use Neighborhoods\Bradfab\FabricationFile;
 
 class Builder implements BuilderInterface
 {
+    use FabricationFile\AwareTrait;
     use Factory\AwareTrait;
     use AnnotationProcessor\Builder\Factory\AwareTrait;
 
@@ -19,6 +22,7 @@ class Builder implements BuilderInterface
         $map = $this->getAnnotationProcessorMapFactory()->create();
         foreach ($records as $annotationProcessorKey => $annotationProcessorDefinition) {
             $annotationProcessorBuilder = $this->getAnnotationProcessorBuilderFactory()->create();
+            $annotationProcessorBuilder->setFabricationFile($this->getFabricationFile());
             $annotationProcessorBuilder->setRecord($annotationProcessorDefinition);
             $map[$annotationProcessorKey] = $annotationProcessorBuilder->build();
         }
@@ -29,7 +33,7 @@ class Builder implements BuilderInterface
     protected function getRecords(): array
     {
         if ($this->records === null) {
-            throw new \LogicException('Builder records has not been set.');
+            throw new LogicException('Builder records has not been set.');
         }
 
         return $this->records;
@@ -38,7 +42,7 @@ class Builder implements BuilderInterface
     public function setRecords(array $records): BuilderInterface
     {
         if ($this->records !== null) {
-            throw new \LogicException('Builder records is already set.');
+            throw new LogicException('Builder records is already set.');
         }
 
         $this->records = $records;

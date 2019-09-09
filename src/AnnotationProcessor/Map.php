@@ -3,15 +3,17 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\AnnotationProcessor;
 
+use ArrayIterator;
+use LogicException;
 use Neighborhoods\Bradfab\AnnotationProcessorInterface;
 
-class Map extends \ArrayIterator implements MapInterface
+class Map extends ArrayIterator implements MapInterface
 {
     /** @param AnnotationProcessorInterface ...$AnnotationProcessors */
     public function __construct(array $AnnotationProcessors = array(), int $flags = 0)
     {
         if ($this->count() !== 0) {
-            throw new \LogicException('Map is not empty.');
+            throw new LogicException('Map is not empty.');
         }
 
         if (!empty($AnnotationProcessors)) {
@@ -49,8 +51,10 @@ class Map extends \ArrayIterator implements MapInterface
         return $AnnotationProcessor;
     }
 
-    protected function assertValidArrayType(AnnotationProcessorInterface ...$AnnotationProcessors): MapInterface
-    {
+    protected function assertValidArrayType(
+        /** @noinspection PhpUnusedParameterInspection */
+        AnnotationProcessorInterface ...$AnnotationProcessors
+    ): MapInterface {
         return $this;
     }
 

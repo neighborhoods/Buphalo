@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Bradfab\AnnotationProcessor\Map\Builder\Factory;
 
+use LogicException;
 use Neighborhoods\Bradfab\AnnotationProcessor\Map\Builder\FactoryInterface;
 
 trait AwareTrait
@@ -12,7 +13,7 @@ trait AwareTrait
     public function setAnnotationProcessorMapBuilderFactory(FactoryInterface $AnnotationProcessorMapBuilderFactory): self
     {
         if ($this->hasAnnotationProcessorMapBuilderFactory()) {
-            throw new \LogicException('AnnotationProcessorMapBuilderFactory is already set.');
+            throw new LogicException('AnnotationProcessorMapBuilderFactory is already set.');
         }
         $this->AnnotationProcessorMapBuilderFactory = $AnnotationProcessorMapBuilderFactory;
 
@@ -22,7 +23,7 @@ trait AwareTrait
     protected function getAnnotationProcessorMapBuilderFactory(): FactoryInterface
     {
         if (!$this->hasAnnotationProcessorMapBuilderFactory()) {
-            throw new \LogicException('AnnotationProcessorMapBuilderFactory is not set.');
+            throw new LogicException('AnnotationProcessorMapBuilderFactory is not set.');
         }
 
         return $this->AnnotationProcessorMapBuilderFactory;
@@ -36,7 +37,7 @@ trait AwareTrait
     protected function unsetAnnotationProcessorMapBuilderFactory(): self
     {
         if (!$this->hasAnnotationProcessorMapBuilderFactory()) {
-            throw new \LogicException('AnnotationProcessorMapBuilderFactory is not set.');
+            throw new LogicException('AnnotationProcessorMapBuilderFactory is not set.');
         }
         unset($this->AnnotationProcessorMapBuilderFactory);
 

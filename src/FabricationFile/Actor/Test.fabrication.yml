@@ -1,0 +1,83 @@
+actors:
+  <ActorName>.php:
+    template: Actor.php
+  <ActorName>.service.yml:
+    template: Actor.service.yml
+  <ActorName>Interface.php:
+    template: ActorInterface.php
+  <ActorName>/AwareTrait.php:
+    template: Actor/AwareTrait.php
+  <ActorName>/Factory.php:
+    template: Actor/Factory.php
+  <ActorName>/Factory.service.yml:
+    template: Actor/Factory.service.yml
+  <ActorName>/FactoryInterface.php:
+    template: Actor/FactoryInterface.php
+  <ActorName>/Factory/AwareTrait.php:
+    template: Actor/Factory/AwareTrait.php
+#  <ActorName>/SpecialBuilder.php:
+#    template: Actor/Builder.php
+  <ActorName>/Builder.php:
+    template: Actor/Builder.php
+    annotation_processors:
+      Neighborhoods\Bradfab\Template\Actor\Builder.build1:
+        processor_fqcn: \Neighborhoods\Bradfab\AnnotationProcessor
+      Neighborhoods\Bradfab\Template\Actor\Builder.build2:
+        processor_fqcn: \Neighborhoods\Bradfab\AnnotationProcessor
+        static_context_record:
+          key_0: 'string 0'
+          key_1: 'string 1'
+  <ActorName>/Builder.service.yml:
+    template: Actor/Builder.service.yml
+  <ActorName>/BuilderInterface.php:
+    template: Actor/BuilderInterface.php
+  <ActorName>/Builder/AwareTrait.php:
+    template: Actor/Builder/AwareTrait.php
+  <ActorName>/Builder/Factory.php:
+    template: Actor/Builder/Factory.php
+  <ActorName>/Builder/Factory.service.yml:
+    template: Actor/Builder/Factory.service.yml
+  <ActorName>/Builder/FactoryInterface.php:
+    template: Actor/Builder/FactoryInterface.php
+  <ActorName>/Builder/Factory/AwareTrait.php:
+    template: Actor/Builder/Factory/AwareTrait.php
+  <ActorName>/Repository.php:
+    template: Actor/Repository.php
+  <ActorName>/Repository.service.yml:
+    template: Actor/Repository.service.yml
+  <ActorName>/RepositoryInterface.php:
+    template: Actor/RepositoryInterface.php
+  <ActorName>/Repository/AwareTrait.php:
+    template: Actor/Repository/AwareTrait.php
+  <ActorName>/Map.php:
+    template: Actor/Map.php
+  <ActorName>/Map.service.yml:
+    template: Actor/Map.service.yml
+  <ActorName>/MapInterface.php:
+    template: Actor/MapInterface.php
+  <ActorName>/Map/AwareTrait.php:
+    template: Actor/Map/AwareTrait.php
+  <ActorName>/Map/Factory.php:
+    template: Actor/Map/Factory.php
+  <ActorName>/Map/Factory.service.yml:
+    template: Actor/Map/Factory.service.yml
+  <ActorName>/Map/FactoryInterface.php:
+    template: Actor/Map/FactoryInterface.php
+  <ActorName>/Map/Factory/AwareTrait.php:
+    template: Actor/Map/Factory/AwareTrait.php
+  <ActorName>/Map/Builder.php:
+    template: Actor/Map/Builder.php
+  <ActorName>/Map/Builder.service.yml:
+    template: Actor/Map/Builder.service.yml
+  <ActorName>/Map/BuilderInterface.php:
+    template: Actor/Map/BuilderInterface.php
+  <ActorName>/Map/Builder/AwareTrait.php:
+    template: Actor/Map/Builder/AwareTrait.php
+  <ActorName>/Map/Builder/Factory.php:
+    template: Actor/Map/Builder/Factory.php
+  <ActorName>/Map/Builder/Factory.service.yml:
+    template: Actor/Map/Builder/Factory.service.yml
+  <ActorName>/Map/Builder/FactoryInterface.php:
+    template: Actor/Map/Builder/FactoryInterface.php
+  <ActorName>/Map/Builder/Factory/AwareTrait.php:
+    template: Actor/Map/Builder/Factory/AwareTrait.php

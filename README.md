@@ -24,16 +24,16 @@ Employ an easy to change code generation tool to generate well designed patterns
 ```bash
 BRADFAB_TARGET_APPLICATION_SOURCE_PATH=/PATH/TO/SOURCE/DIRECTORY \
 BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=/PATH/TO/FABRICATION/DIRECTORY \
-BRADFAB_FABRICATOR_TEMPLATE_ACTOR_DIRECTORY_PATH=/PATH/TO/TEMPLATE/ACTOR/DIRECTORY \
-BRADFAB_TARGET_APPLICATION_NAMESPACE=VENDOR\\PRODUCT\\ \
+BRADFAB_FABRICATOR_TEMPLATE_TREE_DIRECTORY_PATH=/PATH/TO/TEMPLATE/TREE/DIRECTORY \
+BRADFAB_TARGET_APPLICATION_NAMESPACE=VENDOR\\PRODUCT \
 vendor/bin/bradfab
 ```
 * For example, in order to Bradfab Bradfab (when Bradfab is installed as a composer dependency) execute the following shell command from your product's root.
 ```bash
 BRADFAB_TARGET_APPLICATION_SOURCE_PATH=$PWD/vendor/neighborhoods/bradfab/src \
 BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=$PWD/vendor/neighborhoods/bradfab/fab \
-BRADFAB_FABRICATOR_TEMPLATE_ACTOR_DIRECTORY_PATH=$PWD/vendor/neighborhoods/bradfab/src/Template/Actor/ \
-BRADFAB_TARGET_APPLICATION_NAMESPACE=Neighborhoods\\Bradfab\\ \
+BRADFAB_FABRICATOR_TEMPLATE_TREE_DIRECTORY_PATH=$PWD/vendor/neighborhoods/bradfab/src/Template/ \
+BRADFAB_TARGET_APPLICATION_NAMESPACE=Neighborhoods\\Bradfab \
 vendor/bin/bradfab
 ```
 
@@ -218,6 +218,7 @@ The `1.x` feature series establishes the fitness precedence of Bradfab for all f
 * Annotation Processors MUST be as transparent and flexible to user space as it is in `1.x`.
 * Fabrication Files MUST be as easy to add/update/remove as they are in `1.x`.
 * Future versions of Bradfab can add to the `1.x` fitness requirements but not alter or remove a member of the `1.x` fitness requirements as it is the definition of the mission of Bradfab.
+* Bradfab uses PHPStorm inspections with th EA Extended plugin. Your code MUST be free from inspection warning to be merged.
 
 ### Setting Up Git When Developing Bradfab As A Composer Dependency
 * From your product root, and with Bradfab installed as a composer dependency

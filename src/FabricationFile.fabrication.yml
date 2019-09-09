@@ -1,14 +1,27 @@
-supporting_actors:
-  AwareTrait.php:
-  Factory.php:
-  Factory.service.yml:
-  FactoryInterface.php:
-  Factory\AwareTrait.php:
-  Builder.php:
-  Builder.service.yml:
-  BuilderInterface.php:
-  Builder\AwareTrait.php:
-  Builder\Factory.php:
-  Builder\Factory.service.yml:
-  Builder\FactoryInterface.php:
-  Builder\Factory\AwareTrait.php:
+actors:
+  <ActorName>/AwareTrait.php:
+    template: Actor/AwareTrait.php
+  <ActorName>/Factory.php:
+    template: Actor/Factory.php
+  <ActorName>/Factory.service.yml:
+    template: Actor/Factory.service.yml
+  <ActorName>/FactoryInterface.php:
+    template: Actor/FactoryInterface.php
+  <ActorName>/Factory/AwareTrait.php:
+    template: Actor/Factory/AwareTrait.php
+  <ActorName>/Builder.php:
+    template: Actor/Builder.php
+  <ActorName>/Builder.service.yml:
+    template: Actor/Builder.service.yml
+  <ActorName>/BuilderInterface.php:
+    template: Actor/BuilderInterface.php
+  <ActorName>/Builder/AwareTrait.php:
+    template: Actor/Builder/AwareTrait.php
+  <ActorName>/Builder/Factory.php:
+    template: Actor/Builder/Factory.php
+  <ActorName>/Builder/Factory.service.yml:
+    template: Actor/Builder/Factory.service.yml
+  <ActorName>/Builder/FactoryInterface.php:
+    template: Actor/Builder/FactoryInterface.php
+  <ActorName>/Builder/Factory/AwareTrait.php:
+    template: Actor/Builder/Factory/AwareTrait.php
