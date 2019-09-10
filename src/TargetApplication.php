@@ -8,8 +8,8 @@ use LogicException;
 class TargetApplication implements TargetApplicationInterface
 {
     protected $SourceDirectoryPath;
-    protected $FabricationPath;
-    protected $Namespace;
+    protected $FabricationDirectoryPath;
+    protected $NamespacePrefix;
 
     public function getSourceDirectoryPath(): string
     {
@@ -31,42 +31,42 @@ class TargetApplication implements TargetApplicationInterface
         return $this;
     }
 
-    public function getFabricationPath(): string
+    public function getFabricationDirectoryPath(): string
     {
-        if ($this->FabricationPath === null) {
-            throw new LogicException('Target Application Fabrication Path has not been set.');
+        if ($this->FabricationDirectoryPath === null) {
+            throw new LogicException('Target Application Fabrication Directory Path has not been set.');
         }
 
-        return $this->FabricationPath;
+        return $this->FabricationDirectoryPath;
     }
 
-    public function setFabricationPath(string $fabrication_path): TargetApplicationInterface
+    public function setFabricationDirectoryPath(string $FabricationDirectoryPath): TargetApplicationInterface
     {
-        if ($this->FabricationPath !== null) {
-            throw new LogicException('Target Application Fabrication Path is already set.');
+        if ($this->FabricationDirectoryPath !== null) {
+            throw new LogicException('Target Application Fabrication Directory Path is already set.');
         }
 
-        $this->FabricationPath = $fabrication_path;
+        $this->FabricationDirectoryPath = $FabricationDirectoryPath;
 
         return $this;
     }
 
-    public function getNamespace(): string
+    public function getNamespacePrefix(): string
     {
-        if ($this->Namespace === null) {
-            throw new LogicException('Target Application Namespace has not been set.');
+        if ($this->NamespacePrefix === null) {
+            throw new LogicException('Target Application Namespace Prefix has not been set.');
         }
 
-        return $this->Namespace;
+        return $this->NamespacePrefix;
     }
 
-    public function setNamespace(string $namespace): TargetApplicationInterface
+    public function setNamespacePrefix(string $NamespacePrefix): TargetApplicationInterface
     {
-        if ($this->Namespace !== null) {
-            throw new LogicException('Target Application Namespace is already set.');
+        if ($this->NamespacePrefix !== null) {
+            throw new LogicException('Target Application Namespace Prefix is already set.');
         }
 
-        $this->Namespace = $namespace;
+        $this->NamespacePrefix = $NamespacePrefix;
 
         return $this;
     }

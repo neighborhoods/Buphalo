@@ -1,7 +1,7 @@
 parameters:
   Neighborhoods\Buphalo\TargetApplication\BuilderInterface.SourceDirectoryPath: '%env(Neighborhoods_Buphalo_TargetApplication_BuilderInterface__SourceDirectoryPath)%'
-  Neighborhoods\Buphalo\TargetApplication\BuilderInterface.FabricationPath: '%env(Neighborhoods_Buphalo_TargetApplication_BuilderInterface__FabricationPath)%'
-  Neighborhoods\Buphalo\TargetApplication\BuilderInterface.Namespace: '%env(Neighborhoods_Buphalo_TargetApplication_BuilderInterface__Namespace)%'
+  Neighborhoods\Buphalo\TargetApplication\BuilderInterface.FabricationDirectoryPath: '%env(Neighborhoods_Buphalo_TargetApplication_BuilderInterface__FabricationDirectoryPath)%'
+  Neighborhoods\Buphalo\TargetApplication\BuilderInterface.NamespacePrefix: '%env(Neighborhoods_Buphalo_TargetApplication_BuilderInterface__NamespacePrefix)%'
 services:
   Neighborhoods\Buphalo\TargetApplication\BuilderInterface:
     class: Neighborhoods\Buphalo\TargetApplication\Builder
@@ -9,6 +9,6 @@ services:
     shared: false
     calls:
       - [setTargetApplicationFactory, ['@Neighborhoods\Buphalo\TargetApplication\FactoryInterface']]
-      - [setNamespace, ['%Neighborhoods\Buphalo\TargetApplication\BuilderInterface.Namespace%']]
+      - [setNamespacePrefix, ['%Neighborhoods\Buphalo\TargetApplication\BuilderInterface.NamespacePrefix%']]
       - [setSourceDirectoryPath, ['%Neighborhoods\Buphalo\TargetApplication\BuilderInterface.SourceDirectoryPath%']]
-      - [setFabricationPath, ['%Neighborhoods\Buphalo\TargetApplication\BuilderInterface.FabricationPath%']]
+      - [setFabricationDirectoryPath, ['%Neighborhoods\Buphalo\TargetApplication\BuilderInterface.FabricationDirectoryPath%']]

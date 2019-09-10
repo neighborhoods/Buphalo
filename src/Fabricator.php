@@ -34,8 +34,8 @@ class Fabricator implements FabricatorInterface
     protected function removeFabricationDirectory(): FabricatorInterface
     {
         $targetApplication = $this->getTargetApplicationRepository()->get();
-        if ($this->getFilesystem()->exists($targetApplication->getFabricationPath())) {
-            $this->getFilesystem()->remove($targetApplication->getFabricationPath());
+        if ($this->getFilesystem()->exists($targetApplication->getFabricationDirectoryPath())) {
+            $this->getFilesystem()->remove($targetApplication->getFabricationDirectoryPath());
         }
 
         return $this;
