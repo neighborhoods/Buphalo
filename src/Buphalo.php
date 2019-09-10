@@ -20,6 +20,7 @@ class Buphalo implements BuphaloInterface
             )
         );
         $this->getProteanContainerBuilder()->setCanBuildZendExpressive(false);
+        $this->getProteanContainerBuilder()->setCanCacheContainer(false);
         $this->getProteanContainerBuilder()->registerServiceAsPublic(FactoryInterface::class);
         $fabricator = $this->getProteanContainerBuilder()->build()->get(FactoryInterface::class)->create();
         $fabricator->fabricate();
