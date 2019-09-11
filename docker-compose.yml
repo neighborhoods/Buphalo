@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+
+### Mount Applications ######################################
+
+    applications:
+        image: tianon/true
+        volumes:
+            - ./:/var/www/html/buphalo.neighborhoods.com
+
+### Buphalo Container (php-fpm) #########################
+
+    buphalo:
+        build:
+            context: .
+            args:
+                - COMPOSER_TOKEN=9f506692cafe6be658ce31bcd5e2a481ffb5e884
+                - INSTALL_XDEBUG=true
+                - COMPOSER_INSTALL=false
+        volumes_from:
+            - applications
+        expose:
+            - "9001"
+        environment:
+            PHP_IDE_CONFIG: "serverName=buphalo.neighborhoods.com"
+        extra_hosts:
+            - "dockerhost:10.200.10.1"
+        dns: 10.200.10.1
