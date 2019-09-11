@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor;
+namespace Neighborhoods\Buphalo\Actor;
 
-use Neighborhoods\Bradfab\ActorInterface;
-use Neighborhoods\Bradfab\FabricationFile;
-use Neighborhoods\Bradfab\TargetApplication;
+use Neighborhoods\Buphalo\ActorInterface;
+use Neighborhoods\Buphalo\FabricationFile;
+use Neighborhoods\Buphalo\TargetApplication;
 
 class Builder implements BuilderInterface
 {
@@ -66,7 +66,7 @@ class Builder implements BuilderInterface
     protected function getNamespace(): string
     {
         if ($this->NamespacePrefix === null) {
-            $namespace = rtrim($this->getTargetApplicationRepository()->get()->getNamespace(), '\\');
+            $namespace = rtrim($this->getTargetApplicationRepository()->get()->getNamespacePrefix(), '\\');
             $this->NamespacePrefix = $namespace;
         }
 
@@ -119,7 +119,7 @@ class Builder implements BuilderInterface
         if ($this->FabricationDirectoryPath === null) {
             $fabricationDirectoryPath = str_replace(
                 $this->getTargetApplicationRepository()->get()->getSourceDirectoryPath(),
-                $this->getTargetApplicationRepository()->get()->getFabricationPath(),
+                $this->getTargetApplicationRepository()->get()->getFabricationDirectoryPath(),
                 $this->getSourceDirectoryPath()
             );
             $this->FabricationDirectoryPath = $fabricationDirectoryPath;

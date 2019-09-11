@@ -1,9 +1,9 @@
 services:
-  Neighborhoods\Bradfab\Actor\Template\Tokenizer\BuilderInterface:
-    class: Neighborhoods\Bradfab\Actor\Template\Tokenizer\Builder
+  Neighborhoods\Buphalo\Actor\Template\Tokenizer\BuilderInterface:
+    class: Neighborhoods\Buphalo\Actor\Template\Tokenizer\Builder
     public: false
     shared: false
     calls:
-      - [setActorTemplateTokenizerFactory, ['@Neighborhoods\Bradfab\Actor\Template\Tokenizer\FactoryInterface']]
-      - [setActorTemplateAnnotationTokenizerBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer\Builder\FactoryInterface']]
-      - [setActorTemplateBuilderFactory, ['@Neighborhoods\Bradfab\Actor\Template\Builder\FactoryInterface']]
+      - [setActorTemplateTokenizerFactory, ['@Neighborhoods\Buphalo\Actor\Template\Tokenizer\FactoryInterface']]
+      - [setActorTemplateAnnotationTokenizerBuilderFactory, ['@Neighborhoods\Buphalo\Actor\Template\AnnotationTokenizer\Builder\FactoryInterface']]
+      - [setActorTemplateBuilderFactory, ['@Neighborhoods\Buphalo\Actor\Template\Builder\FactoryInterface']]

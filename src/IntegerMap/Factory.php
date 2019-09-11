@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\IntegerMap;
+namespace Neighborhoods\Buphalo\IntegerMap;
 
-use Neighborhoods\Bradfab\IntegerMapInterface;
+use Neighborhoods\Buphalo\IntegerMapInterface;
 
 class Factory implements FactoryInterface
 {

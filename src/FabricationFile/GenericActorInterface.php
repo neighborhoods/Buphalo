@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\FabricationFile;
+namespace Neighborhoods\Buphalo\FabricationFile;
 
 interface GenericActorInterface
 {

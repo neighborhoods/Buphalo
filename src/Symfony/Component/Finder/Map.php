@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Symfony\Component\Finder;
+namespace Neighborhoods\Buphalo\Symfony\Component\Finder;
 
 use ArrayIterator;
 use LogicException;

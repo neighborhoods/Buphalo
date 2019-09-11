@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template\Tokenizer;
+namespace Neighborhoods\Buphalo\Actor\Template\Tokenizer;
 
-use Neighborhoods\Bradfab\Actor\Template\TokenizerInterface;
-use Neighborhoods\Bradfab\ActorInterface;
-use Neighborhoods\Bradfab\FabricationFile;
-use Neighborhoods\Bradfab\FabricationFileInterface;
+use Neighborhoods\Buphalo\Actor\Template\TokenizerInterface;
+use Neighborhoods\Buphalo\ActorInterface;
+use Neighborhoods\Buphalo\FabricationFile;
+use Neighborhoods\Buphalo\FabricationFileInterface;
 
 interface BuilderInterface
 {

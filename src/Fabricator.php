@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab;
+namespace Neighborhoods\Buphalo;
 
 use LogicException;
 use Symfony\Component\Filesystem\Filesystem;
@@ -34,8 +34,8 @@ class Fabricator implements FabricatorInterface
     protected function removeFabricationDirectory(): FabricatorInterface
     {
         $targetApplication = $this->getTargetApplicationRepository()->get();
-        if ($this->getFilesystem()->exists($targetApplication->getFabricationPath())) {
-            $this->getFilesystem()->remove($targetApplication->getFabricationPath());
+        if ($this->getFilesystem()->exists($targetApplication->getFabricationDirectoryPath())) {
+            $this->getFilesystem()->remove($targetApplication->getFabricationDirectoryPath());
         }
 
         return $this;
@@ -44,7 +44,7 @@ class Fabricator implements FabricatorInterface
     public function getFilesystem(): Filesystem
     {
         if ($this->Filesystem === null) {
-            throw new LogicException('Bradfab Filesystem has not been set.');
+            throw new LogicException('Buphalo Filesystem has not been set.');
         }
 
         return $this->Filesystem;
@@ -53,7 +53,7 @@ class Fabricator implements FabricatorInterface
     public function setFilesystem(Filesystem $filesystem): FabricatorInterface
     {
         if ($this->Filesystem !== null) {
-            throw new LogicException('Bradfab Filesystem is already set.');
+            throw new LogicException('Buphalo Filesystem is already set.');
         }
 
         $this->Filesystem = $filesystem;

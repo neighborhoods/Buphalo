@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\BradfabTemplateTree\Actor\Map;
+namespace Neighborhoods\BuphaloTemplateTree\Actor\Map;
 
-use Neighborhoods\BradfabTemplateTree\Actor\MapInterface;
+use Neighborhoods\BuphaloTemplateTree\Actor\MapInterface;
 
 interface FactoryInterface
 {

@@ -1,45 +1,45 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Bradfab\Builder;
+namespace Neighborhoods\Buphalo\Buphalo\Builder;
 
 use LogicException;
-use Neighborhoods\Bradfab\Bradfab\BuilderInterface;
+use Neighborhoods\Buphalo\Buphalo\BuilderInterface;
 
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabBradfabBuilder;
+    protected $NeighborhoodsBuphaloBuphaloBuilder;
 
-    public function setBradfabBuilder(BuilderInterface $bradfabBuilder): self
+    public function setBuphaloBuilder(BuilderInterface $buphaloBuilder): self
     {
-        if ($this->hasBradfabBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab Builder is already set.');
+        if ($this->hasBuphaloBuilder()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo Builder is already set.');
         }
-        $this->NeighborhoodsBradfabBradfabBuilder = $bradfabBuilder;
+        $this->NeighborhoodsBuphaloBuphaloBuilder = $buphaloBuilder;
 
         return $this;
     }
 
-    protected function getBradfabBuilder(): BuilderInterface
+    protected function getBuphaloBuilder(): BuilderInterface
     {
-        if (!$this->hasBradfabBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab Builder is not set.');
+        if (!$this->hasBuphaloBuilder()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo Builder is not set.');
         }
 
-        return $this->NeighborhoodsBradfabBradfabBuilder;
+        return $this->NeighborhoodsBuphaloBuphaloBuilder;
     }
 
-    protected function hasBradfabBuilder(): bool
+    protected function hasBuphaloBuilder(): bool
     {
-        return isset($this->NeighborhoodsBradfabBradfabBuilder);
+        return isset($this->NeighborhoodsBuphaloBuphaloBuilder);
     }
 
-    protected function unsetBradfabBuilder(): self
+    protected function unsetBuphaloBuilder(): self
     {
-        if (!$this->hasBradfabBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Bradfab Builder is not set.');
+        if (!$this->hasBuphaloBuilder()) {
+            throw new LogicException('Neighborhoods Buphalo Buphalo Builder is not set.');
         }
-        unset($this->NeighborhoodsBradfabBradfabBuilder);
+        unset($this->NeighborhoodsBuphaloBuphaloBuilder);
 
         return $this;
     }

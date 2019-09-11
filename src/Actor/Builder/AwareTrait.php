@@ -1,21 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Builder;
+namespace Neighborhoods\Buphalo\Actor\Builder;
 
 use LogicException;
-use Neighborhoods\Bradfab\Actor\BuilderInterface;
+use Neighborhoods\Buphalo\Actor\BuilderInterface;
 
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabActorBuilder;
+    protected $NeighborhoodsBuphaloActorBuilder;
 
     public function setActorBuilder(BuilderInterface $actorBuilder): self
     {
         if ($this->hasActorBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Builder is already set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Builder is already set.');
         }
-        $this->NeighborhoodsBradfabActorBuilder = $actorBuilder;
+        $this->NeighborhoodsBuphaloActorBuilder = $actorBuilder;
 
         return $this;
     }
@@ -23,23 +23,23 @@ trait AwareTrait
     protected function getActorBuilder(): BuilderInterface
     {
         if (!$this->hasActorBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Builder is not set.');
         }
 
-        return $this->NeighborhoodsBradfabActorBuilder;
+        return $this->NeighborhoodsBuphaloActorBuilder;
     }
 
     protected function hasActorBuilder(): bool
     {
-        return isset($this->NeighborhoodsBradfabActorBuilder);
+        return isset($this->NeighborhoodsBuphaloActorBuilder);
     }
 
     protected function unsetActorBuilder(): self
     {
         if (!$this->hasActorBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Builder is not set.');
         }
-        unset($this->NeighborhoodsBradfabActorBuilder);
+        unset($this->NeighborhoodsBuphaloActorBuilder);
 
         return $this;
     }

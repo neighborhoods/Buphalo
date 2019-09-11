@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\TemplateTree\MapInterface:
-    class: Neighborhoods\Bradfab\TemplateTree\Map
+  Neighborhoods\Buphalo\TemplateTree\MapInterface:
+    class: Neighborhoods\Buphalo\TemplateTree\Map
     public: false
     shared: false

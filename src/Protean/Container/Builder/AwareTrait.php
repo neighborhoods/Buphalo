@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Protean\Container\Builder;
+namespace Neighborhoods\Buphalo\Protean\Container\Builder;
 
 use LogicException;
-use Neighborhoods\Bradfab\Protean\Container\BuilderInterface;
+use Neighborhoods\Buphalo\Protean\Container\BuilderInterface;
 
 trait AwareTrait
 {

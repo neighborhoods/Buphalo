@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\FabricationFile\Actor\Map;
+namespace Neighborhoods\Buphalo\FabricationFile\Actor\Map;
 
 use LogicException;
-use Neighborhoods\Bradfab\FabricationFile;
-use Neighborhoods\Bradfab\FabricationFile\Actor;
-use Neighborhoods\Bradfab\FabricationFile\Actor\MapInterface;
+use Neighborhoods\Buphalo\FabricationFile;
+use Neighborhoods\Buphalo\FabricationFile\Actor;
+use Neighborhoods\Buphalo\FabricationFile\Actor\MapInterface;
 
 class Builder implements BuilderInterface
 {

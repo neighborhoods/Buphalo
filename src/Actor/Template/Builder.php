@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template;
+namespace Neighborhoods\Buphalo\Actor\Template;
 
-use Neighborhoods\Bradfab\Actor;
-use Neighborhoods\Bradfab\Actor\TemplateInterface;
-use Neighborhoods\Bradfab\FabricationFile;
-use Neighborhoods\Bradfab\TemplateTree;
+use Neighborhoods\Buphalo\Actor;
+use Neighborhoods\Buphalo\Actor\TemplateInterface;
+use Neighborhoods\Buphalo\FabricationFile;
+use Neighborhoods\Buphalo\TemplateTree;
 use RuntimeException;
 
 class Builder implements BuilderInterface

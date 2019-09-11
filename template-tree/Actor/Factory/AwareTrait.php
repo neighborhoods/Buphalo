@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\BradfabTemplateTree\Actor\Factory;
+namespace Neighborhoods\BuphaloTemplateTree\Actor\Factory;
 
 use LogicException;
-use Neighborhoods\BradfabTemplateTree\Actor\FactoryInterface;
+use Neighborhoods\BuphaloTemplateTree\Actor\FactoryInterface;
 
 trait AwareTrait
 {

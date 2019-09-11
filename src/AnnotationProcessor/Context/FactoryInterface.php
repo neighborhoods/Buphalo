@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\AnnotationProcessor\Context;
+namespace Neighborhoods\Buphalo\AnnotationProcessor\Context;
 
-use Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface;
+use Neighborhoods\Buphalo\AnnotationProcessor\ContextInterface;
 
 interface FactoryInterface
 {

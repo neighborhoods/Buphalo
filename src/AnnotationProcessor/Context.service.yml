@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface:
-    class: Neighborhoods\Bradfab\AnnotationProcessor\Context
+  Neighborhoods\Buphalo\AnnotationProcessor\ContextInterface:
+    class: Neighborhoods\Buphalo\AnnotationProcessor\Context
     public: false
     shared: false

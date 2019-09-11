@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor;
+namespace Neighborhoods\Buphalo\Actor;
 
 use LogicException;
-use Neighborhoods\Bradfab\Actor;
+use Neighborhoods\Buphalo\Actor;
 use Symfony\Component\Filesystem\Filesystem;
 
 class Writer implements WriterInterface

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\AnnotationProcessor;
+namespace Neighborhoods\Buphalo\AnnotationProcessor;
 
 use LogicException;
-use Neighborhoods\Bradfab\FabricationFile;
+use Neighborhoods\Buphalo\FabricationFile;
 
 class Context implements ContextInterface
 {

@@ -1,7 +1,7 @@
 services:
-  Neighborhoods\Bradfab\IntegerMap\FactoryInterface:
-    class: Neighborhoods\Bradfab\IntegerMap\Factory
+  Neighborhoods\Buphalo\IntegerMap\FactoryInterface:
+    class: Neighborhoods\Buphalo\IntegerMap\Factory
     public: false
     shared: true
     calls:
-      - [setIntegerMap, ['@Neighborhoods\Bradfab\IntegerMapInterface']]
+      - [setIntegerMap, ['@Neighborhoods\Buphalo\IntegerMapInterface']]

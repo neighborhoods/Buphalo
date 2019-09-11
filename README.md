@@ -1,4 +1,4 @@
-# Bradfab
+# Buphalo
 Fabricates patterns.
 
 Anything good I stole from someone else. Anything bad is mine.
@@ -9,7 +9,7 @@ Anything good I stole from someone else. Anything bad is mine.
 * [Getting Started](#getting-started) 
 * [Definitions](#definitions)
 * [Features](#features)
-* [Contributing To Bradfab](#contributing-to-bradfab) 
+* [Contributing To Buphalo](#contributing-to-buphalo) 
 
 ## Problem
 Implementing well designed patterns can become tedious and laborious which discourages their implementation in favor of patterns that are less well designed but have a faster development velocity.
@@ -19,22 +19,22 @@ Employ an easy to change code generation tool to generate well designed patterns
 
 ## Getting Started
 
-### Running Bradfab
-* Bradfab leverages an environment variable API for runtime options. The following shell command to run Bradfab illustrates the currently supported API.
+### Running Buphalo
+* Buphalo leverages an environment variable API for runtime options. The following shell command to run Buphalo illustrates the currently supported API.
 ```bash
-BRADFAB_TARGET_APPLICATION_SOURCE_PATH=/PATH/TO/SOURCE/DIRECTORY \
-BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=/PATH/TO/FABRICATION/DIRECTORY \
-BRADFAB_FABRICATOR_TEMPLATE_TREE_DIRECTORY_PATH=/PATH/TO/TEMPLATE/TREE/DIRECTORY \
-BRADFAB_TARGET_APPLICATION_NAMESPACE=VENDOR\\PRODUCT \
-vendor/bin/bradfab
+BUPHALO_TARGET_APPLICATION_SOURCE_PATH=/PATH/TO/SOURCE/DIRECTORY \
+BUPHALO_TARGET_APPLICATION_FABRICATION_PATH=/PATH/TO/FABRICATION/DIRECTORY \
+BUPHALO_FABRICATOR_TEMPLATE_TREE_DIRECTORY_PATH=/PATH/TO/TEMPLATE/TREE/DIRECTORY \
+BUPHALO_TARGET_APPLICATION_NAMESPACE=VENDOR\\PRODUCT \
+vendor/bin/buphalo
 ```
-* For example, in order to Bradfab Bradfab (when Bradfab is installed as a composer dependency) execute the following shell command from your product's root.
+* For example, in order to Buphalo Buphalo (when Buphalo is installed as a composer dependency) execute the following shell command from your product's root.
 ```bash
-BRADFAB_TARGET_APPLICATION_SOURCE_PATH=$PWD/vendor/neighborhoods/bradfab/src \
-BRADFAB_TARGET_APPLICATION_FABRICATION_PATH=$PWD/vendor/neighborhoods/bradfab/fab \
-BRADFAB_FABRICATOR_TEMPLATE_TREE_DIRECTORY_PATH=$PWD/vendor/neighborhoods/bradfab/src/Template/ \
-BRADFAB_TARGET_APPLICATION_NAMESPACE=Neighborhoods\\Bradfab \
-vendor/bin/bradfab
+BUPHALO_TARGET_APPLICATION_SOURCE_PATH=$PWD/vendor/neighborhoods/buphalo/src \
+BUPHALO_TARGET_APPLICATION_FABRICATION_PATH=$PWD/vendor/neighborhoods/buphalo/fab \
+BUPHALO_FABRICATOR_TEMPLATE_TREE_DIRECTORY_PATH=$PWD/vendor/neighborhoods/buphalo/src/Template/ \
+BUPHALO_TARGET_APPLICATION_NAMESPACE=Neighborhoods\\Buphalo \
+vendor/bin/buphalo
 ```
 
 ### Example Fabrication Files
@@ -136,12 +136,12 @@ supporting_actors:
 * Providing static context to the Annotation Processor is optional.
 * If the `static_context_record` key is provided, it MUST resolve to a PHP `array`.
 * Default annotation replacement is accomplished by using the contents of the annotation.
-* Annotation Processors MUST implement `\Neighborhoods\Bradfab\AnnotationProcessorInterface`.
+* Annotation Processors MUST implement `\Neighborhoods\Buphalo\AnnotationProcessorInterface`.
 * Annotation Processors are not shared services.
 ```php
-namespace Neighborhoods\Bradfab;
+namespace Neighborhoods\Buphalo;
 
-use Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface;
+use Neighborhoods\Buphalo\AnnotationProcessor\ContextInterface;
 
 interface AnnotationProcessorInterface
 {
@@ -152,22 +152,22 @@ interface AnnotationProcessorInterface
     public function getReplacement(): string;
 }
 ```
-* Currently, annotation processors have accesss to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Neighborhoods\Bradfab\AnnotationProcessor\ContextInterface` object.
+* Currently, annotation processors have accesss to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Neighborhoods\Buphalo\AnnotationProcessor\ContextInterface` object.
 
 ### Example Annotation Processors
-* Annotation Processor Tag: `@neighborhoods-bradfab:annotation-processor`
+* Annotation Processor Tag: `@neighborhoods-buphalo:annotation-processor`
 * Annotation Processor Keys:
-  * `Neighborhoods\Bradfab\Template\Actor\Builder.build1`
-  * `Neighborhoods\Bradfab\Template\Actor\Builder.build2`
+  * `Neighborhoods\Buphalo\Template\Actor\Builder.build1`
+  * `Neighborhoods\Buphalo\Template\Actor\Builder.build2`
 * The keys above are named according to a collision avoidance convention. However, there is no requirement on the key name except for uniqueness.
 ```php
 // src/Template/Actor/Builder.php
     public function build(): ActorInterface
     {
         $Actor = $this->getActorFactory()->create();
-        /** @neighborhoods-bradfab:annotation-processor Neighborhoods\Bradfab\Template\Actor\Builder.build1
+        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\Buphalo\Template\Actor\Builder.build1
          */
-        /** @neighborhoods-bradfab:annotation-processor Neighborhoods\Bradfab\Template\Actor\Builder.build2
+        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\Buphalo\Template\Actor\Builder.build2
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
          */
@@ -181,9 +181,9 @@ supporting_actors:
 # ...
   Builder.php:
     annotation_processors:
-      Neighborhoods\Bradfab\Template\Actor\Builder.build1:
+      Neighborhoods\Buphalo\Template\Actor\Builder.build1:
         processor_fqcn: \VENDOR\PRODUCT\AnAnnotationProcessor
-      Neighborhoods\Bradfab\Template\Actor\Builder.build2:
+      Neighborhoods\Buphalo\Template\Actor\Builder.build2:
         processor_fqcn: \VENDOR\PRODUCT\AnotherAnnotationProcessor
         static_context_record:
           head: 'shoulders'
@@ -191,7 +191,7 @@ supporting_actors:
   Builder.yml:
 # ...
 ```
-* If no annotation processors are defined then `\Neighborhoods\Bradfab\AnnotationProcessor` is used and the above compiles as 
+* If no annotation processors are defined then `\Neighborhoods\Buphalo\AnnotationProcessor` is used and the above compiles as 
 ```php
 // src/V2/Toe/Builder.php
     public function build(): ToeInterface
@@ -207,21 +207,21 @@ supporting_actors:
 ```
 
 ### User Space Template Trees
-* User space template trees are merged with the Bradfab template tree, collision precedence favors user space.
+* User space template trees are merged with the Buphalo template tree, collision precedence favors user space.
 
-## Contributing to Bradfab
-The `1.x` feature series establishes the fitness precedence of Bradfab for all future feature versions of Bradfab. All of the following fitness requirements MUST be met for all future versions. 
+## Contributing to Buphalo
+The `1.x` feature series establishes the fitness precedence of Buphalo for all future feature versions of Buphalo. All of the following fitness requirements MUST be met for all future versions. 
 * Any Supporting Actors (and any associated files) MUST be as easy to add/update/remove as they are in `1.x`.
 * Fabrication must be as fast as it is in `1.x`.
-* The source target, fabrication target, and Template Tree target MUST be user defined so that Bradfab can be composed and used to build any arbitrary Template Tree.
+* The source target, fabrication target, and Template Tree target MUST be user defined so that Buphalo can be composed and used to build any arbitrary Template Tree.
 * Annotation Processors MUST be as easy to add/update/remove as it is in `1.x`.
 * Annotation Processors MUST be as transparent and flexible to user space as it is in `1.x`.
 * Fabrication Files MUST be as easy to add/update/remove as they are in `1.x`.
-* Future versions of Bradfab can add to the `1.x` fitness requirements but not alter or remove a member of the `1.x` fitness requirements as it is the definition of the mission of Bradfab.
-* Bradfab uses PHPStorm inspections with th EA Extended plugin. Your code MUST be free from inspection warning to be merged.
+* Future versions of Buphalo can add to the `1.x` fitness requirements but not alter or remove a member of the `1.x` fitness requirements as it is the definition of the mission of Buphalo.
+* Buphalo uses PHPStorm inspections with th EA Extended plugin. Your code MUST be free from inspection warning to be merged.
 
-### Setting Up Git When Developing Bradfab As A Composer Dependency
-* From your product root, and with Bradfab installed as a composer dependency
+### Setting Up Git When Developing Buphalo As A Composer Dependency
+* From your product root, and with Buphalo installed as a composer dependency
 ```bash
-cd vendor/neighborhoods/bradfab && rm -rf .git && git clone git@github.com:neighborhoods/Bradfab.git && cp -R Bradfab/.git . && rm -rf Bradfab/ && cd ../../../
+cd vendor/neighborhoods/buphalo && rm -rf .git && git clone git@github.com:neighborhoods/Buphalo.git && cp -R Buphalo/.git . && rm -rf Buphalo/ && cd ../../../
 ```

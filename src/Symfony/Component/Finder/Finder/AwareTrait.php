@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Symfony\Component\Finder\Finder;
+namespace Neighborhoods\Buphalo\Symfony\Component\Finder\Finder;
 
 use LogicException;
 use Symfony\Component\Finder\Finder;

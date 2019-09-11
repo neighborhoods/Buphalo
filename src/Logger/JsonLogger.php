@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Logger;
+namespace Neighborhoods\Buphalo\Logger;
 
 use DateTimeImmutable;
 use Psr\Log\AbstractLogger;

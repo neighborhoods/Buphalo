@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\StringMap;
+namespace Neighborhoods\Buphalo\StringMap;
 
 use LogicException;
-use Neighborhoods\Bradfab\StringMapInterface;
+use Neighborhoods\Buphalo\StringMapInterface;
 
 trait AwareTrait
 {

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\FabricationFile;
+namespace Neighborhoods\Buphalo\FabricationFile;
 
 use ArrayAccess;
 use Countable;
-use Neighborhoods\Bradfab\FabricationFileInterface;
+use Neighborhoods\Buphalo\FabricationFileInterface;
 use SeekableIterator;
 use Serializable;
 

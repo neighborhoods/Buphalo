@@ -1,6 +1,6 @@
 services:
-  Neighborhoods\Bradfab\Actor\WriterInterface:
-    class: Neighborhoods\Bradfab\Actor\Writer
+  Neighborhoods\Buphalo\Actor\WriterInterface:
+    class: Neighborhoods\Buphalo\Actor\Writer
     public: false
     shared: false
     calls:

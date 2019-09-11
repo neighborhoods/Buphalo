@@ -1,7 +1,7 @@
 services:
-  Neighborhoods\Bradfab\AnnotationProcessor\Map\Builder\FactoryInterface:
-    class: Neighborhoods\Bradfab\AnnotationProcessor\Map\Builder\Factory
+  Neighborhoods\Buphalo\AnnotationProcessor\Map\Builder\FactoryInterface:
+    class: Neighborhoods\Buphalo\AnnotationProcessor\Map\Builder\Factory
     public: false
     shared: true
     calls:
-      - [setAnnotationProcessorMapBuilder, ['@Neighborhoods\Bradfab\AnnotationProcessor\Map\BuilderInterface']]
+      - [setAnnotationProcessorMapBuilder, ['@Neighborhoods\Buphalo\AnnotationProcessor\Map\BuilderInterface']]

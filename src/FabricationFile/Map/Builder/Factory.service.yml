@@ -1,7 +1,7 @@
 services:
-  Neighborhoods\Bradfab\FabricationFile\Map\Builder\FactoryInterface:
-    class: Neighborhoods\Bradfab\FabricationFile\Map\Builder\Factory
+  Neighborhoods\Buphalo\FabricationFile\Map\Builder\FactoryInterface:
+    class: Neighborhoods\Buphalo\FabricationFile\Map\Builder\Factory
     public: false
     shared: true
     calls:
-      - [setFabricationFileMapBuilder, ['@Neighborhoods\Bradfab\FabricationFile\Map\BuilderInterface']]
+      - [setFabricationFileMapBuilder, ['@Neighborhoods\Buphalo\FabricationFile\Map\BuilderInterface']]

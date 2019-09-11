@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\AnnotationProcessor\Map;
+namespace Neighborhoods\Buphalo\AnnotationProcessor\Map;
 
 use LogicException;
-use Neighborhoods\Bradfab\AnnotationProcessor\MapInterface;
+use Neighborhoods\Buphalo\AnnotationProcessor\MapInterface;
 
 trait AwareTrait
 {

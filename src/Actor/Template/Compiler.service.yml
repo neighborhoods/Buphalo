@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\Actor\Template\CompilerInterface:
-    class: Neighborhoods\Bradfab\Actor\Template\Compiler
+  Neighborhoods\Buphalo\Actor\Template\CompilerInterface:
+    class: Neighborhoods\Buphalo\Actor\Template\Compiler
     public: false
     shared: false

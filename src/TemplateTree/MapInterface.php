@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TemplateTree;
+namespace Neighborhoods\Buphalo\TemplateTree;
 
 use ArrayAccess;
 use Countable;
-use Neighborhoods\Bradfab\TemplateTreeInterface;
+use Neighborhoods\Buphalo\TemplateTreeInterface;
 use SeekableIterator;
 use Serializable;
 

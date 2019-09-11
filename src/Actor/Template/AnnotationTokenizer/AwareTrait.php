@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer;
+namespace Neighborhoods\Buphalo\Actor\Template\AnnotationTokenizer;
 
 use LogicException;
-use Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizerInterface;
+use Neighborhoods\Buphalo\Actor\Template\AnnotationTokenizerInterface;
 
 trait AwareTrait
 {

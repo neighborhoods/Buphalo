@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab;
+namespace Neighborhoods\Buphalo;
 
 interface TargetApplicationInterface
 {
-    public function getNamespace(): string;
+    public function getNamespacePrefix(): string;
 
-    public function setNamespace(string $namespace): TargetApplicationInterface;
+    public function setNamespacePrefix(string $NamespacePrefix): TargetApplicationInterface;
 
     public function setSourceDirectoryPath(string $source_directory_path): TargetApplicationInterface;
 
     public function getSourceDirectoryPath(): string;
 
-    public function setFabricationPath(string $fabrication_path): TargetApplicationInterface;
+    public function setFabricationDirectoryPath(string $FabricationDirectoryPath): TargetApplicationInterface;
 
-    public function getFabricationPath(): string;
+    public function getFabricationDirectoryPath(): string;
 }

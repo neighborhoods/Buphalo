@@ -1,21 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TargetApplication\Repository;
+namespace Neighborhoods\Buphalo\TargetApplication\Repository;
 
 use LogicException;
-use Neighborhoods\Bradfab\TargetApplication\RepositoryInterface;
+use Neighborhoods\Buphalo\TargetApplication\RepositoryInterface;
 
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabTargetApplicationRepository;
+    protected $NeighborhoodsBuphaloTargetApplicationRepository;
 
     public function setTargetApplicationRepository(RepositoryInterface $targetApplicationRepository): self
     {
         if ($this->hasTargetApplicationRepository()) {
-            throw new LogicException('NeighborhoodsBradfabTargetApplicationRepository is already set.');
+            throw new LogicException('NeighborhoodsBuphaloTargetApplicationRepository is already set.');
         }
-        $this->NeighborhoodsBradfabTargetApplicationRepository = $targetApplicationRepository;
+        $this->NeighborhoodsBuphaloTargetApplicationRepository = $targetApplicationRepository;
 
         return $this;
     }
@@ -23,23 +23,23 @@ trait AwareTrait
     protected function getTargetApplicationRepository(): RepositoryInterface
     {
         if (!$this->hasTargetApplicationRepository()) {
-            throw new LogicException('NeighborhoodsBradfabTargetApplicationRepository is not set.');
+            throw new LogicException('NeighborhoodsBuphaloTargetApplicationRepository is not set.');
         }
 
-        return $this->NeighborhoodsBradfabTargetApplicationRepository;
+        return $this->NeighborhoodsBuphaloTargetApplicationRepository;
     }
 
     protected function hasTargetApplicationRepository(): bool
     {
-        return isset($this->NeighborhoodsBradfabTargetApplicationRepository);
+        return isset($this->NeighborhoodsBuphaloTargetApplicationRepository);
     }
 
     protected function unsetTargetApplicationRepository(): self
     {
         if (!$this->hasTargetApplicationRepository()) {
-            throw new LogicException('NeighborhoodsBradfabTargetApplicationRepository is not set.');
+            throw new LogicException('NeighborhoodsBuphaloTargetApplicationRepository is not set.');
         }
-        unset($this->NeighborhoodsBradfabTargetApplicationRepository);
+        unset($this->NeighborhoodsBuphaloTargetApplicationRepository);
 
         return $this;
     }

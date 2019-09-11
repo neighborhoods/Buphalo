@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template;
+namespace Neighborhoods\Buphalo\Actor\Template;
 
-use Neighborhoods\Bradfab\Actor;
-use Neighborhoods\Bradfab\AnnotationProcessor;
-use Neighborhoods\Bradfab\AnnotationProcessor\BuilderInterface;
-use Neighborhoods\Bradfab\AnnotationProcessorInterface;
-use Neighborhoods\Bradfab\FabricationFile;
+use Neighborhoods\Buphalo\Actor;
+use Neighborhoods\Buphalo\AnnotationProcessor;
+use Neighborhoods\Buphalo\AnnotationProcessor\BuilderInterface;
+use Neighborhoods\Buphalo\AnnotationProcessorInterface;
+use Neighborhoods\Buphalo\FabricationFile;
 
 class AnnotationTokenizer implements AnnotationTokenizerInterface
 {

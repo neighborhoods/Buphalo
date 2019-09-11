@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\NewRelicInterface:
-    class: Neighborhoods\Bradfab\NewRelic
+  Neighborhoods\Buphalo\NewRelicInterface:
+    class: Neighborhoods\Buphalo\NewRelic
     public: false
     shared: false

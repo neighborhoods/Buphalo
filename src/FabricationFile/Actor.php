@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\FabricationFile;
+namespace Neighborhoods\Buphalo\FabricationFile;
 
 use LogicException;
-use Neighborhoods\Bradfab\AnnotationProcessor;
+use Neighborhoods\Buphalo\AnnotationProcessor;
 
 /** @noinspection PhpSuperClassIncompatibleWithInterfaceInspection */
 class Actor implements ActorInterface

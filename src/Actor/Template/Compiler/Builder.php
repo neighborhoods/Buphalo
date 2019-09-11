@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template\Compiler;
+namespace Neighborhoods\Buphalo\Actor\Template\Compiler;
 
-use Neighborhoods\Bradfab\Actor;
-use Neighborhoods\Bradfab\Actor\Template\CompilerInterface;
-use Neighborhoods\Bradfab\Actor\Template\Tokenizer;
-use Neighborhoods\Bradfab\Actor\Template\TokenizerInterface;
-use Neighborhoods\Bradfab\FabricationFile;
+use Neighborhoods\Buphalo\Actor;
+use Neighborhoods\Buphalo\Actor\Template\CompilerInterface;
+use Neighborhoods\Buphalo\Actor\Template\Tokenizer;
+use Neighborhoods\Buphalo\Actor\Template\TokenizerInterface;
+use Neighborhoods\Buphalo\FabricationFile;
 
 class Builder implements BuilderInterface
 {

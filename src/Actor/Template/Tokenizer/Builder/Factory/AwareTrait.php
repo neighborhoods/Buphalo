@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template\Tokenizer\Builder\Factory;
+namespace Neighborhoods\Buphalo\Actor\Template\Tokenizer\Builder\Factory;
 
 use LogicException;
-use Neighborhoods\Bradfab\Actor\Template\Tokenizer\Builder\FactoryInterface;
+use Neighborhoods\Buphalo\Actor\Template\Tokenizer\Builder\FactoryInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabActorTemplateTokenizerBuilderFactory;
+    protected $NeighborhoodsBuphaloActorTemplateTokenizerBuilderFactory;
 
     public function setActorTemplateTokenizerBuilderFactory(FactoryInterface $actorTemplateTokenizerBuilderFactory
     ): self {
         if ($this->hasActorTemplateTokenizerBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Template Tokenizer Builder Factory is already set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Template Tokenizer Builder Factory is already set.');
         }
-        $this->NeighborhoodsBradfabActorTemplateTokenizerBuilderFactory = $actorTemplateTokenizerBuilderFactory;
+        $this->NeighborhoodsBuphaloActorTemplateTokenizerBuilderFactory = $actorTemplateTokenizerBuilderFactory;
 
         return $this;
     }
@@ -24,23 +24,23 @@ trait AwareTrait
     protected function getActorTemplateTokenizerBuilderFactory(): FactoryInterface
     {
         if (!$this->hasActorTemplateTokenizerBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Template Tokenizer Builder Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Template Tokenizer Builder Factory is not set.');
         }
 
-        return $this->NeighborhoodsBradfabActorTemplateTokenizerBuilderFactory;
+        return $this->NeighborhoodsBuphaloActorTemplateTokenizerBuilderFactory;
     }
 
     protected function hasActorTemplateTokenizerBuilderFactory(): bool
     {
-        return isset($this->NeighborhoodsBradfabActorTemplateTokenizerBuilderFactory);
+        return isset($this->NeighborhoodsBuphaloActorTemplateTokenizerBuilderFactory);
     }
 
     protected function unsetActorTemplateTokenizerBuilderFactory(): self
     {
         if (!$this->hasActorTemplateTokenizerBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Template Tokenizer Builder Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Template Tokenizer Builder Factory is not set.');
         }
-        unset($this->NeighborhoodsBradfabActorTemplateTokenizerBuilderFactory);
+        unset($this->NeighborhoodsBuphaloActorTemplateTokenizerBuilderFactory);
 
         return $this;
     }

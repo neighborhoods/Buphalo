@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\IntegerMap\Factory;
+namespace Neighborhoods\Buphalo\IntegerMap\Factory;
 
 use LogicException;
-use Neighborhoods\Bradfab\IntegerMap\FactoryInterface;
+use Neighborhoods\Buphalo\IntegerMap\FactoryInterface;
 
 trait AwareTrait
 {

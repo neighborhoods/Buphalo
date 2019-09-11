@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\IntegerMapInterface:
-    class: Neighborhoods\Bradfab\IntegerMap
+  Neighborhoods\Buphalo\IntegerMapInterface:
+    class: Neighborhoods\Buphalo\IntegerMap
     public: false
     shared: false

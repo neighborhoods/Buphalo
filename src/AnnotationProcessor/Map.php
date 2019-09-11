@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\AnnotationProcessor;
+namespace Neighborhoods\Buphalo\AnnotationProcessor;
 
 use ArrayIterator;
 use LogicException;
-use Neighborhoods\Bradfab\AnnotationProcessorInterface;
+use Neighborhoods\Buphalo\AnnotationProcessorInterface;
 
 class Map extends ArrayIterator implements MapInterface
 {

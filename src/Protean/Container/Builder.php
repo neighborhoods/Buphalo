@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Protean\Container;
+namespace Neighborhoods\Buphalo\Protean\Container;
 
 use LogicException;
-use Neighborhoods\Bradfab\Symfony\Component\DependencyInjection\ContainerBuilder\Facade;
+use Neighborhoods\Buphalo\Symfony\Component\DependencyInjection\ContainerBuilder\Facade;
 use ProjectServiceContainer;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

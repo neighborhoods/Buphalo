@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TemplateTree\Map\Builder;
+namespace Neighborhoods\Buphalo\TemplateTree\Map\Builder;
 
 use LogicException;
-use Neighborhoods\Bradfab\TemplateTree\Map\BuilderInterface;
+use Neighborhoods\Buphalo\TemplateTree\Map\BuilderInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabTemplateTreeMapBuilder;
+    protected $NeighborhoodsBuphaloTemplateTreeMapBuilder;
 
     public function setTemplateTreeMapBuilder(BuilderInterface $templateTreeMapBuilder): self
     {
         if ($this->hasTemplateTreeMapBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Map Builder is already set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Map Builder is already set.');
         }
-        $this->NeighborhoodsBradfabTemplateTreeMapBuilder = $templateTreeMapBuilder;
+        $this->NeighborhoodsBuphaloTemplateTreeMapBuilder = $templateTreeMapBuilder;
 
         return $this;
     }
@@ -24,23 +24,23 @@ trait AwareTrait
     protected function getTemplateTreeMapBuilder(): BuilderInterface
     {
         if (!$this->hasTemplateTreeMapBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Map Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Map Builder is not set.');
         }
 
-        return $this->NeighborhoodsBradfabTemplateTreeMapBuilder;
+        return $this->NeighborhoodsBuphaloTemplateTreeMapBuilder;
     }
 
     protected function hasTemplateTreeMapBuilder(): bool
     {
-        return isset($this->NeighborhoodsBradfabTemplateTreeMapBuilder);
+        return isset($this->NeighborhoodsBuphaloTemplateTreeMapBuilder);
     }
 
     protected function unsetTemplateTreeMapBuilder(): self
     {
         if (!$this->hasTemplateTreeMapBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Map Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Map Builder is not set.');
         }
-        unset($this->NeighborhoodsBradfabTemplateTreeMapBuilder);
+        unset($this->NeighborhoodsBuphaloTemplateTreeMapBuilder);
 
         return $this;
     }

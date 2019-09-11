@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TemplateTree\Builder\Factory;
+namespace Neighborhoods\Buphalo\TemplateTree\Builder\Factory;
 
 use LogicException;
-use Neighborhoods\Bradfab\TemplateTree\Builder\FactoryInterface;
+use Neighborhoods\Buphalo\TemplateTree\Builder\FactoryInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabTemplateTreeBuilderFactory;
+    protected $NeighborhoodsBuphaloTemplateTreeBuilderFactory;
 
     public function setTemplateTreeBuilderFactory(FactoryInterface $templateTreeBuilderFactory): self
     {
         if ($this->hasTemplateTreeBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Builder Factory is already set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Builder Factory is already set.');
         }
-        $this->NeighborhoodsBradfabTemplateTreeBuilderFactory = $templateTreeBuilderFactory;
+        $this->NeighborhoodsBuphaloTemplateTreeBuilderFactory = $templateTreeBuilderFactory;
 
         return $this;
     }
@@ -24,23 +24,23 @@ trait AwareTrait
     protected function getTemplateTreeBuilderFactory(): FactoryInterface
     {
         if (!$this->hasTemplateTreeBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Builder Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Builder Factory is not set.');
         }
 
-        return $this->NeighborhoodsBradfabTemplateTreeBuilderFactory;
+        return $this->NeighborhoodsBuphaloTemplateTreeBuilderFactory;
     }
 
     protected function hasTemplateTreeBuilderFactory(): bool
     {
-        return isset($this->NeighborhoodsBradfabTemplateTreeBuilderFactory);
+        return isset($this->NeighborhoodsBuphaloTemplateTreeBuilderFactory);
     }
 
     protected function unsetTemplateTreeBuilderFactory(): self
     {
         if (!$this->hasTemplateTreeBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Builder Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Builder Factory is not set.');
         }
-        unset($this->NeighborhoodsBradfabTemplateTreeBuilderFactory);
+        unset($this->NeighborhoodsBuphaloTemplateTreeBuilderFactory);
 
         return $this;
     }

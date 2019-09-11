@@ -1,8 +1,8 @@
 services:
-  Neighborhoods\Bradfab\AnnotationProcessor\Map\BuilderInterface:
-    class: Neighborhoods\Bradfab\AnnotationProcessor\Map\Builder
+  Neighborhoods\Buphalo\AnnotationProcessor\Map\BuilderInterface:
+    class: Neighborhoods\Buphalo\AnnotationProcessor\Map\Builder
     public: false
     shared: false
     calls:
-      - [setAnnotationProcessorMapFactory, ['@Neighborhoods\Bradfab\AnnotationProcessor\Map\FactoryInterface']]
-      - [setAnnotationProcessorBuilderFactory, ['@Neighborhoods\Bradfab\AnnotationProcessor\Builder\FactoryInterface']]
+      - [setAnnotationProcessorMapFactory, ['@Neighborhoods\Buphalo\AnnotationProcessor\Map\FactoryInterface']]
+      - [setAnnotationProcessorBuilderFactory, ['@Neighborhoods\Buphalo\AnnotationProcessor\Builder\FactoryInterface']]

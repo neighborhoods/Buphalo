@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer\Builder;
+namespace Neighborhoods\Buphalo\Actor\Template\AnnotationTokenizer\Builder;
 
-use Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer\BuilderInterface;
+use Neighborhoods\Buphalo\Actor\Template\AnnotationTokenizer\BuilderInterface;
 
 /** @codeCoverageIgnore */
 class Factory implements FactoryInterface

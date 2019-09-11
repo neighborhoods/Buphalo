@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\FabricationFile\Actor;
+namespace Neighborhoods\Buphalo\FabricationFile\Actor;
 
 use ArrayIterator;
 use LogicException;
-use Neighborhoods\Bradfab\FabricationFile\ActorInterface;
+use Neighborhoods\Buphalo\FabricationFile\ActorInterface;
 
 class Map extends ArrayIterator implements MapInterface
 {

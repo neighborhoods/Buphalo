@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\BooleanMap;
+namespace Neighborhoods\Buphalo\BooleanMap;
 
-use Neighborhoods\Bradfab\BooleanMapInterface;
+use Neighborhoods\Buphalo\BooleanMapInterface;
 
 interface FactoryInterface
 {

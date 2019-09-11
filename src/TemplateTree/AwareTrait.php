@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TemplateTree;
+namespace Neighborhoods\Buphalo\TemplateTree;
 
 use LogicException;
-use Neighborhoods\Bradfab\TemplateTreeInterface;
+use Neighborhoods\Buphalo\TemplateTreeInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabTemplateTree;
+    protected $NeighborhoodsBuphaloTemplateTree;
 
     public function setTemplateTree(TemplateTreeInterface $templateTree): self
     {
         if ($this->hasTemplateTree()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree is already set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree is already set.');
         }
-        $this->NeighborhoodsBradfabTemplateTree = $templateTree;
+        $this->NeighborhoodsBuphaloTemplateTree = $templateTree;
 
         return $this;
     }
@@ -24,23 +24,23 @@ trait AwareTrait
     protected function getTemplateTree(): TemplateTreeInterface
     {
         if (!$this->hasTemplateTree()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree is not set.');
         }
 
-        return $this->NeighborhoodsBradfabTemplateTree;
+        return $this->NeighborhoodsBuphaloTemplateTree;
     }
 
     protected function hasTemplateTree(): bool
     {
-        return isset($this->NeighborhoodsBradfabTemplateTree);
+        return isset($this->NeighborhoodsBuphaloTemplateTree);
     }
 
     protected function unsetTemplateTree(): self
     {
         if (!$this->hasTemplateTree()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree is not set.');
         }
-        unset($this->NeighborhoodsBradfabTemplateTree);
+        unset($this->NeighborhoodsBuphaloTemplateTree);
 
         return $this;
     }

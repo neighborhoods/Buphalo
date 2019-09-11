@@ -20,10 +20,10 @@ actors:
   <ActorName>/Builder.php:
     template: Actor/Builder.php
     annotation_processors:
-      Neighborhoods\Bradfab\Template\Actor\Builder.build1:
-        processor_fqcn: \Neighborhoods\Bradfab\AnnotationProcessor
-      Neighborhoods\Bradfab\Template\Actor\Builder.build2:
-        processor_fqcn: \Neighborhoods\Bradfab\AnnotationProcessor
+      Neighborhoods\Buphalo\Template\Actor\Builder.build1:
+        processor_fqcn: \Neighborhoods\Buphalo\AnnotationProcessor
+      Neighborhoods\Buphalo\Template\Actor\Builder.build2:
+        processor_fqcn: \Neighborhoods\Buphalo\AnnotationProcessor
         static_context_record:
           key_0: 'string 0'
           key_1: 'string 1'

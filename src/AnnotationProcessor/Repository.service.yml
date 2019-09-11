@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\AnnotationProcessor\RepositoryInterface:
-    class: Neighborhoods\Bradfab\AnnotationProcessor\Repository
+  Neighborhoods\Buphalo\AnnotationProcessor\RepositoryInterface:
+    class: Neighborhoods\Buphalo\AnnotationProcessor\Repository
     public: false
     shared: true

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Writer;
+namespace Neighborhoods\Buphalo\Actor\Writer;
 
-use Neighborhoods\Bradfab\Actor\WriterInterface;
-use Neighborhoods\Bradfab\FabricationFile\ActorInterface;
-use Neighborhoods\Bradfab\FabricationFileInterface;
+use Neighborhoods\Buphalo\Actor\WriterInterface;
+use Neighborhoods\Buphalo\FabricationFile\ActorInterface;
+use Neighborhoods\Buphalo\FabricationFileInterface;
 
 interface BuilderInterface
 {

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Fabricator;
+namespace Neighborhoods\Buphalo\Fabricator;
 
 use LogicException;
-use Neighborhoods\Bradfab\FabricatorInterface;
+use Neighborhoods\Buphalo\FabricatorInterface;
 
 trait AwareTrait
 {

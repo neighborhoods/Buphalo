@@ -1,7 +1,7 @@
 services:
-  Neighborhoods\Bradfab\Fabricator\BuilderInterface:
-    class: Neighborhoods\Bradfab\Fabricator\Builder
+  Neighborhoods\Buphalo\Fabricator\BuilderInterface:
+    class: Neighborhoods\Buphalo\Fabricator\Builder
     public: false
     shared: true
     calls:
-      - [setFabricatorFactory, ['@Neighborhoods\Bradfab\Fabricator\FactoryInterface']]
+      - [setFabricatorFactory, ['@Neighborhoods\Buphalo\Fabricator\FactoryInterface']]

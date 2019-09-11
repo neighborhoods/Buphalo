@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TargetApplication\Builder\Factory;
+namespace Neighborhoods\Buphalo\TargetApplication\Builder\Factory;
 
 use LogicException;
-use Neighborhoods\Bradfab\TargetApplication\Builder\FactoryInterface;
+use Neighborhoods\Buphalo\TargetApplication\Builder\FactoryInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabTargetApplicationBuilderFactory;
+    protected $NeighborhoodsBuphaloTargetApplicationBuilderFactory;
 
     public function setTargetApplicationBuilderFactory(FactoryInterface $targetApplicationBuilderFactory): self
     {
         if ($this->hasTargetApplicationBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab TargetApplication Builder Factory is already set.');
+            throw new LogicException('Neighborhoods Buphalo TargetApplication Builder Factory is already set.');
         }
-        $this->NeighborhoodsBradfabTargetApplicationBuilderFactory = $targetApplicationBuilderFactory;
+        $this->NeighborhoodsBuphaloTargetApplicationBuilderFactory = $targetApplicationBuilderFactory;
 
         return $this;
     }
@@ -24,23 +24,23 @@ trait AwareTrait
     protected function getTargetApplicationBuilderFactory(): FactoryInterface
     {
         if (!$this->hasTargetApplicationBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab TargetApplication Builder Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo TargetApplication Builder Factory is not set.');
         }
 
-        return $this->NeighborhoodsBradfabTargetApplicationBuilderFactory;
+        return $this->NeighborhoodsBuphaloTargetApplicationBuilderFactory;
     }
 
     protected function hasTargetApplicationBuilderFactory(): bool
     {
-        return isset($this->NeighborhoodsBradfabTargetApplicationBuilderFactory);
+        return isset($this->NeighborhoodsBuphaloTargetApplicationBuilderFactory);
     }
 
     protected function unsetTargetApplicationBuilderFactory(): self
     {
         if (!$this->hasTargetApplicationBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab TargetApplication Builder Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo TargetApplication Builder Factory is not set.');
         }
-        unset($this->NeighborhoodsBradfabTargetApplicationBuilderFactory);
+        unset($this->NeighborhoodsBuphaloTargetApplicationBuilderFactory);
 
         return $this;
     }

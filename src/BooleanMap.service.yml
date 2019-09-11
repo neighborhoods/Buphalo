@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\BooleanMapInterface:
-    class: Neighborhoods\Bradfab\BooleanMap
+  Neighborhoods\Buphalo\BooleanMapInterface:
+    class: Neighborhoods\Buphalo\BooleanMap
     public: falses
     shared: false

@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TargetApplication\Builder;
+namespace Neighborhoods\Buphalo\TargetApplication\Builder;
 
 use LogicException;
-use Neighborhoods\Bradfab\TargetApplication\BuilderInterface;
+use Neighborhoods\Buphalo\TargetApplication\BuilderInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabTargetApplicationBuilder;
+    protected $NeighborhoodsBuphaloTargetApplicationBuilder;
 
     public function setTargetApplicationBuilder(BuilderInterface $targetApplicationBuilder): self
     {
         if ($this->hasTargetApplicationBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab TargetApplication Builder is already set.');
+            throw new LogicException('Neighborhoods Buphalo TargetApplication Builder is already set.');
         }
-        $this->NeighborhoodsBradfabTargetApplicationBuilder = $targetApplicationBuilder;
+        $this->NeighborhoodsBuphaloTargetApplicationBuilder = $targetApplicationBuilder;
 
         return $this;
     }
@@ -24,23 +24,23 @@ trait AwareTrait
     protected function getTargetApplicationBuilder(): BuilderInterface
     {
         if (!$this->hasTargetApplicationBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab TargetApplication Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo TargetApplication Builder is not set.');
         }
 
-        return $this->NeighborhoodsBradfabTargetApplicationBuilder;
+        return $this->NeighborhoodsBuphaloTargetApplicationBuilder;
     }
 
     protected function hasTargetApplicationBuilder(): bool
     {
-        return isset($this->NeighborhoodsBradfabTargetApplicationBuilder);
+        return isset($this->NeighborhoodsBuphaloTargetApplicationBuilder);
     }
 
     protected function unsetTargetApplicationBuilder(): self
     {
         if (!$this->hasTargetApplicationBuilder()) {
-            throw new LogicException('Neighborhoods Bradfab TargetApplication Builder is not set.');
+            throw new LogicException('Neighborhoods Buphalo TargetApplication Builder is not set.');
         }
-        unset($this->NeighborhoodsBradfabTargetApplicationBuilder);
+        unset($this->NeighborhoodsBuphaloTargetApplicationBuilder);
 
         return $this;
     }

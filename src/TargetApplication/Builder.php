@@ -1,25 +1,25 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TargetApplication;
+namespace Neighborhoods\Buphalo\TargetApplication;
 
 use LogicException;
-use Neighborhoods\Bradfab\TargetApplicationInterface;
+use Neighborhoods\Buphalo\TargetApplicationInterface;
 
 class Builder implements BuilderInterface
 {
     use Factory\AwareTrait;
 
     protected $SourceDirectoryPath;
-    protected $FabricationPath;
-    protected $Namespace;
+    protected $FabricationDirectoryPath;
+    protected $NamespacePrefix;
 
     public function build(): TargetApplicationInterface
     {
         return $this->getTargetApplicationFactory()->create()
             ->setSourceDirectoryPath($this->getSourceDirectoryPath())
-            ->setFabricationPath($this->getFabricationPath())
-            ->setNamespace($this->getNamespace());
+            ->setFabricationDirectoryPath($this->getFabricationDirectoryPath())
+            ->setNamespacePrefix($this->getNamespacePrefix());
     }
 
     protected function getSourceDirectoryPath(): string
@@ -42,42 +42,42 @@ class Builder implements BuilderInterface
         return $this;
     }
 
-    protected function getFabricationPath(): string
+    protected function getFabricationDirectoryPath(): string
     {
-        if ($this->FabricationPath === null) {
-            throw new LogicException('Fabrication Path has not been set.');
+        if ($this->FabricationDirectoryPath === null) {
+            throw new LogicException('Fabrication Directory Path has not been set.');
         }
 
-        return $this->FabricationPath;
+        return $this->FabricationDirectoryPath;
     }
 
-    public function setFabricationPath(string $FabricationPath): BuilderInterface
+    public function setFabricationDirectoryPath(string $FabricationDirectoryPath): BuilderInterface
     {
-        if ($this->FabricationPath !== null) {
-            throw new LogicException('Fabrication Path is already set.');
+        if ($this->FabricationDirectoryPath !== null) {
+            throw new LogicException('Fabrication Directory Path is already set.');
         }
 
-        $this->FabricationPath = $FabricationPath;
+        $this->FabricationDirectoryPath = $FabricationDirectoryPath;
 
         return $this;
     }
 
-    protected function getNamespace(): string
+    protected function getNamespacePrefix(): string
     {
-        if ($this->Namespace === null) {
-            throw new LogicException('Namespace has not been set.');
+        if ($this->NamespacePrefix === null) {
+            throw new LogicException('Namespace Prefix has not been set.');
         }
 
-        return $this->Namespace;
+        return $this->NamespacePrefix;
     }
 
-    public function setNamespace(string $Namespace): BuilderInterface
+    public function setNamespacePrefix(string $NamespacePrefix): BuilderInterface
     {
-        if ($this->Namespace !== null) {
-            throw new LogicException('Namespace is already set.');
+        if ($this->NamespacePrefix !== null) {
+            throw new LogicException('Namespace Prefix is already set.');
         }
 
-        $this->Namespace = $Namespace;
+        $this->NamespacePrefix = $NamespacePrefix;
 
         return $this;
     }

@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template\Compiler\Builder\Factory;
+namespace Neighborhoods\Buphalo\Actor\Template\Compiler\Builder\Factory;
 
 use LogicException;
-use Neighborhoods\Bradfab\Actor\Template\Compiler\Builder\FactoryInterface;
+use Neighborhoods\Buphalo\Actor\Template\Compiler\Builder\FactoryInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabActorTemplateCompilerBuilderFactory;
+    protected $NeighborhoodsBuphaloActorTemplateCompilerBuilderFactory;
 
     public function setActorTemplateCompilerBuilderFactory(FactoryInterface $actorTemplateCompilerBuilderFactory): self
     {
         if ($this->hasActorTemplateCompilerBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Template Compiler Builder Factory is already set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Template Compiler Builder Factory is already set.');
         }
-        $this->NeighborhoodsBradfabActorTemplateCompilerBuilderFactory = $actorTemplateCompilerBuilderFactory;
+        $this->NeighborhoodsBuphaloActorTemplateCompilerBuilderFactory = $actorTemplateCompilerBuilderFactory;
 
         return $this;
     }
@@ -24,23 +24,23 @@ trait AwareTrait
     protected function getActorTemplateCompilerBuilderFactory(): FactoryInterface
     {
         if (!$this->hasActorTemplateCompilerBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Template Compiler Builder Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Template Compiler Builder Factory is not set.');
         }
 
-        return $this->NeighborhoodsBradfabActorTemplateCompilerBuilderFactory;
+        return $this->NeighborhoodsBuphaloActorTemplateCompilerBuilderFactory;
     }
 
     protected function hasActorTemplateCompilerBuilderFactory(): bool
     {
-        return isset($this->NeighborhoodsBradfabActorTemplateCompilerBuilderFactory);
+        return isset($this->NeighborhoodsBuphaloActorTemplateCompilerBuilderFactory);
     }
 
     protected function unsetActorTemplateCompilerBuilderFactory(): self
     {
         if (!$this->hasActorTemplateCompilerBuilderFactory()) {
-            throw new LogicException('Neighborhoods Bradfab Actor Template Compiler Builder Factory is not set.');
+            throw new LogicException('Neighborhoods Buphalo Actor Template Compiler Builder Factory is not set.');
         }
-        unset($this->NeighborhoodsBradfabActorTemplateCompilerBuilderFactory);
+        unset($this->NeighborhoodsBuphaloActorTemplateCompilerBuilderFactory);
 
         return $this;
     }

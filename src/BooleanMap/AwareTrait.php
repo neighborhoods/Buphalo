@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\BooleanMap;
+namespace Neighborhoods\Buphalo\BooleanMap;
 
 use LogicException;
-use Neighborhoods\Bradfab\BooleanMapInterface;
+use Neighborhoods\Buphalo\BooleanMapInterface;
 
 trait AwareTrait
 {

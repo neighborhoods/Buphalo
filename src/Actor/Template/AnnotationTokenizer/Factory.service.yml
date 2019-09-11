@@ -1,7 +1,7 @@
 services:
-  Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer\FactoryInterface:
-    class: Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizer\Factory
+  Neighborhoods\Buphalo\Actor\Template\AnnotationTokenizer\FactoryInterface:
+    class: Neighborhoods\Buphalo\Actor\Template\AnnotationTokenizer\Factory
     public: false
     shared: true
     calls:
-      - [setActorTemplateAnnotationTokenizer, ['@Neighborhoods\Bradfab\Actor\Template\AnnotationTokenizerInterface']]
+      - [setActorTemplateAnnotationTokenizer, ['@Neighborhoods\Buphalo\Actor\Template\AnnotationTokenizerInterface']]

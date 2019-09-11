@@ -1,14 +1,14 @@
 {
-  "name": "neighborhoods/bradfab",
+  "name": "neighborhoods/buphalo",
   "type": "library",
   "description": "Fabricates patterns.",
   "license": "proprietary",
   "keywords": [
-    "Bradfab",
+    "Buphalo",
     "Code Generation"
   ],
   "bin": [
-    "bin/bradfab"
+    "bin/buphalo"
   ],
   "authors": [
     {
@@ -32,7 +32,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Neighborhoods\\Bradfab\\": [
+      "Neighborhoods\\Buphalo\\": [
         "src",
         "fab"
       ]

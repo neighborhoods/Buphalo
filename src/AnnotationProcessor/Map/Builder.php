@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\AnnotationProcessor\Map;
+namespace Neighborhoods\Buphalo\AnnotationProcessor\Map;
 
 use LogicException;
-use Neighborhoods\Bradfab\AnnotationProcessor;
-use Neighborhoods\Bradfab\AnnotationProcessor\MapInterface;
-use Neighborhoods\Bradfab\FabricationFile;
+use Neighborhoods\Buphalo\AnnotationProcessor;
+use Neighborhoods\Buphalo\AnnotationProcessor\MapInterface;
+use Neighborhoods\Buphalo\FabricationFile;
 
 class Builder implements BuilderInterface
 {

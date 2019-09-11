@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TemplateTree\Map;
+namespace Neighborhoods\Buphalo\TemplateTree\Map;
 
 use LogicException;
-use Neighborhoods\Bradfab\TemplateTree\MapInterface;
+use Neighborhoods\Buphalo\TemplateTree\MapInterface;
 
 /** @codeCoverageIgnore */
 trait AwareTrait
 {
-    protected $NeighborhoodsBradfabTemplateTreeMap;
+    protected $NeighborhoodsBuphaloTemplateTreeMap;
 
     public function setTemplateTreeMap(MapInterface $templateTreeMap): self
     {
         if ($this->hasTemplateTreeMap()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Map is already set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Map is already set.');
         }
-        $this->NeighborhoodsBradfabTemplateTreeMap = $templateTreeMap;
+        $this->NeighborhoodsBuphaloTemplateTreeMap = $templateTreeMap;
 
         return $this;
     }
@@ -24,23 +24,23 @@ trait AwareTrait
     protected function getTemplateTreeMap(): MapInterface
     {
         if (!$this->hasTemplateTreeMap()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Map is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Map is not set.');
         }
 
-        return $this->NeighborhoodsBradfabTemplateTreeMap;
+        return $this->NeighborhoodsBuphaloTemplateTreeMap;
     }
 
     protected function hasTemplateTreeMap(): bool
     {
-        return isset($this->NeighborhoodsBradfabTemplateTreeMap);
+        return isset($this->NeighborhoodsBuphaloTemplateTreeMap);
     }
 
     protected function unsetTemplateTreeMap(): self
     {
         if (!$this->hasTemplateTreeMap()) {
-            throw new LogicException('Neighborhoods Bradfab TemplateTree Map is not set.');
+            throw new LogicException('Neighborhoods Buphalo TemplateTree Map is not set.');
         }
-        unset($this->NeighborhoodsBradfabTemplateTreeMap);
+        unset($this->NeighborhoodsBuphaloTemplateTreeMap);
 
         return $this;
     }

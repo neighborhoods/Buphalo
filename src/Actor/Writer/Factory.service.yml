@@ -1,7 +1,7 @@
 services:
-  Neighborhoods\Bradfab\Actor\Writer\FactoryInterface:
-    class: Neighborhoods\Bradfab\Actor\Writer\Factory
+  Neighborhoods\Buphalo\Actor\Writer\FactoryInterface:
+    class: Neighborhoods\Buphalo\Actor\Writer\Factory
     public: false
     shared: true
     calls:
-      - [setActorWriter, ['@Neighborhoods\Bradfab\Actor\WriterInterface']]
+      - [setActorWriter, ['@Neighborhoods\Buphalo\Actor\WriterInterface']]

@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\FabricationFile\Map;
+namespace Neighborhoods\Buphalo\FabricationFile\Map;
 
-use Neighborhoods\Bradfab\FabricationFile;
-use Neighborhoods\Bradfab\FabricationFile\MapInterface;
-use Neighborhoods\Bradfab\FabricationFileInterface;
-use Neighborhoods\Bradfab\Symfony;
-use Neighborhoods\Bradfab\TargetApplication;
+use Neighborhoods\Buphalo\FabricationFile;
+use Neighborhoods\Buphalo\FabricationFile\MapInterface;
+use Neighborhoods\Buphalo\FabricationFileInterface;
+use Neighborhoods\Buphalo\Symfony;
+use Neighborhoods\Buphalo\TargetApplication;
 use Symfony\Component\Finder\SplFileInfo;
 
 class Builder implements BuilderInterface

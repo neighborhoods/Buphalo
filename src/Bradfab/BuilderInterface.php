@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Bradfab;
+namespace Neighborhoods\Buphalo\Buphalo;
 
-use Neighborhoods\Bradfab\BradfabInterface;
+use Neighborhoods\Buphalo\BuphaloInterface;
 
 interface BuilderInterface
 {
-    public function build(): BradfabInterface;
+    public function build(): BuphaloInterface;
 }

@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\AnnotationProcessor\MapInterface:
-    class: Neighborhoods\Bradfab\AnnotationProcessor\Map
+  Neighborhoods\Buphalo\AnnotationProcessor\MapInterface:
+    class: Neighborhoods\Buphalo\AnnotationProcessor\Map
     public: false
     shared: false

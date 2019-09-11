@@ -1,7 +1,7 @@
 services:
-  Neighborhoods\Bradfab\TargetApplication\Builder\FactoryInterface:
-    class: Neighborhoods\Bradfab\TargetApplication\Builder\Factory
+  Neighborhoods\Buphalo\TargetApplication\Builder\FactoryInterface:
+    class: Neighborhoods\Buphalo\TargetApplication\Builder\Factory
     public: false
     shared: true
     calls:
-      - [setTargetApplicationBuilder, ['@Neighborhoods\Bradfab\TargetApplication\BuilderInterface']]
+      - [setTargetApplicationBuilder, ['@Neighborhoods\Buphalo\TargetApplication\BuilderInterface']]

@@ -55,12 +55,12 @@ The Actor that this Supporting Actor relates to.
 The Fabrication File Supporting Actor that this Supporting Actor relates to.
 
 ## Assumptions
-Bradfab makes the following assumptions. If an assumption is not within this inventory either Bradfab makes no assumption or the assumption yet needs to be documented.
+Buphalo makes the following assumptions. If an assumption is not within this inventory either Buphalo makes no assumption or the assumption yet needs to be documented.
 
 ### Motivation
-The reason that these assumptions exist are to focus on a working code generation tool instead of style preference. The only reason that any assumption is made is to that end. Bradfab does not aim to enforce a style guide in the slightest. It aims to make as few assumptions as possible to work without spending what is thought to be an expensive amount of effort to adhere to a style guide.
+The reason that these assumptions exist are to focus on a working code generation tool instead of style preference. The only reason that any assumption is made is to that end. Buphalo does not aim to enforce a style guide in the slightest. It aims to make as few assumptions as possible to work without spending what is thought to be an expensive amount of effort to adhere to a style guide.
 
-In the future it may be possible to additionally apply a style guide to Bradfab through a DSL.
+In the future it may be possible to additionally apply a style guide to Buphalo through a DSL.
 
 ### Naming 
 #### [PascalCase](https://chaseonsoftware.com/most-common-programming-case-types/#pascalcase)
@@ -79,7 +79,7 @@ In the future it may be possible to additionally apply a style guide to Bradfab 
 * **FQSEN** - Fully Qualified Structural Element. [Examples](https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#examples-10)
 
 ```
-\Neighborhoods\Bradfab\Template\Actor\Map\Builder\Factory
+\Neighborhoods\Buphalo\Template\Actor\Map\Builder\Factory
  |--namespace-prefix-|-|------namesapce-relative--------|
 |----------------------fqcn-----------------------------|
 ```

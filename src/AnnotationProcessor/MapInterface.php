@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\AnnotationProcessor;
+namespace Neighborhoods\Buphalo\AnnotationProcessor;
 
 use ArrayAccess;
 use Countable;
-use Neighborhoods\Bradfab\AnnotationProcessorInterface;
+use Neighborhoods\Buphalo\AnnotationProcessorInterface;
 use SeekableIterator;
 use Serializable;
 

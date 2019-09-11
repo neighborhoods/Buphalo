@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template;
+namespace Neighborhoods\Buphalo\Actor\Template;
 
-use Neighborhoods\Bradfab\Actor\TemplateInterface;
-use Neighborhoods\Bradfab\FabricationFileInterface;
+use Neighborhoods\Buphalo\Actor\TemplateInterface;
+use Neighborhoods\Buphalo\FabricationFileInterface;
 
 interface AnnotationTokenizerInterface
 {
-    public const ANNOTATION_TAG = '@neighborhoods-bradfab:annotation-processor';
+    public const ANNOTATION_TAG = '@neighborhoods-buphalo:annotation-processor';
     public const ANNOTATION_REGEX = '/(?<=\/\*\*)(\s+' . self::ANNOTATION_TAG . ')(.*)([\s\S]*?)(?=\*\/)/';
 
     public function setFabricationFile(FabricationFileInterface $FabricationFile);

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Fabricator;
+namespace Neighborhoods\Buphalo\Fabricator;
 
-use Neighborhoods\Bradfab\FabricatorInterface;
+use Neighborhoods\Buphalo\FabricatorInterface;
 
 class Builder implements BuilderInterface
 {

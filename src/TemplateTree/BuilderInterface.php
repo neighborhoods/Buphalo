@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\TemplateTree;
+namespace Neighborhoods\Buphalo\TemplateTree;
 
-use Neighborhoods\Bradfab\TemplateTreeInterface;
+use Neighborhoods\Buphalo\TemplateTreeInterface;
 
 interface BuilderInterface
 {

@@ -1,7 +1,7 @@
 services:
-  Neighborhoods\Bradfab\StringMap\FactoryInterface:
-    class: Neighborhoods\Bradfab\StringMap\Factory
+  Neighborhoods\Buphalo\StringMap\FactoryInterface:
+    class: Neighborhoods\Buphalo\StringMap\Factory
     public: false
     shared: true
     calls:
-      - [setStringMap, ['@Neighborhoods\Bradfab\StringMapInterface']]
+      - [setStringMap, ['@Neighborhoods\Buphalo\StringMapInterface']]

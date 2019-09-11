@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Bradfab\Actor\Template;
+namespace Neighborhoods\Buphalo\Actor\Template;
 
 interface CompilerInterface
 {

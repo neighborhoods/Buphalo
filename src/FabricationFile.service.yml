@@ -1,5 +1,5 @@
 services:
-  Neighborhoods\Bradfab\FabricationFileInterface:
-    class: Neighborhoods\Bradfab\FabricationFile
+  Neighborhoods\Buphalo\FabricationFileInterface:
+    class: Neighborhoods\Buphalo\FabricationFile
     public: false
     shared: false
