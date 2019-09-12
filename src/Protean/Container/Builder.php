@@ -140,25 +140,25 @@ class Builder implements BuilderInterface
 
     protected function getFabricationDirectoryPath(): string
     {
-        if (!realpath($this->getApplicationRootDirectoryPath() . '/fab')) {
+        if (!$this->realpath($this->getApplicationRootDirectoryPath() . '/fab')) {
             $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/fab');
         }
 
-        return realpath($this->getApplicationRootDirectoryPath() . '/fab');
+        return $this->realpath($this->getApplicationRootDirectoryPath() . '/fab');
     }
 
     protected function getSourceDirectoryPath(): string
     {
-        return realpath($this->getApplicationRootDirectoryPath() . '/src');
+        return $this->realpath($this->getApplicationRootDirectoryPath() . '/src');
     }
 
     protected function getCacheDirectoryPath(): string
     {
-        if (!realpath($this->getApplicationRootDirectoryPath() . '/data/cache')) {
+        if (!$this->realpath($this->getApplicationRootDirectoryPath() . '/data/cache')) {
             $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/data/cache');
         }
 
-        return realpath($this->getApplicationRootDirectoryPath() . '/data/cache');
+        return $this->realpath($this->getApplicationRootDirectoryPath() . '/data/cache');
     }
 
     protected function getPipelineFilePath(): string
@@ -173,11 +173,11 @@ class Builder implements BuilderInterface
 
     protected function getConfigurationDirectoryPath(): string
     {
-        if (!realpath($this->getApplicationRootDirectoryPath() . '/config')) {
+        if (!$this->realpath($this->getApplicationRootDirectoryPath() . '/config')) {
             $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/config');
         }
 
-        return realpath($this->getApplicationRootDirectoryPath() . '/config');
+        return $this->realpath($this->getApplicationRootDirectoryPath() . '/config');
     }
 
     protected function getExpressiveDIYAMLFilePath(): string
@@ -199,7 +199,7 @@ class Builder implements BuilderInterface
     public function setApplicationRootDirectoryPath(string $applicationRootDirectoryPath): BuilderInterface
     {
         if ($this->applicationRootDirectoryPath === null) {
-            $applicationRootDirectoryPath = realpath(rtrim($applicationRootDirectoryPath, '/'));
+            $applicationRootDirectoryPath = $this->realpath(rtrim($applicationRootDirectoryPath, '/'));
             if (is_dir($applicationRootDirectoryPath)) {
                 $this->applicationRootDirectoryPath = $applicationRootDirectoryPath;
             } else {
@@ -278,5 +278,22 @@ class Builder implements BuilderInterface
         }
 
         return $this->filesystem;
+    }
+
+    /**
+     * Hacky version of realpath for use inside a Phar. May not cover all cases.
+     *
+     * @param string $path
+     * @return string|false
+     */
+    private function realpath(string $path)
+    {
+        $pathInfo = pathinfo($path);
+        $realpath = $pathInfo['dirname'] . DIRECTORY_SEPARATOR . $pathInfo['basename'];
+        if ($this->getFilesystem()->exists($realpath)) {
+            return $realpath;
+        }
+
+        return false;
     }
 }
