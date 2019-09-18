@@ -56,7 +56,7 @@ class Builder implements BuilderInterface
             $this->ParentRelativeClassPath = str_replace(
                 DIRECTORY_SEPARATOR,
                 '\\',
-                $this->getFabricationFileActor()->getGenerateRelativeDirectoryPath()
+                $this->getFabricationFileActor()->getRelativeDirectoryPath()
             );
         }
 
@@ -80,7 +80,7 @@ class Builder implements BuilderInterface
             $fullPascalCaseName = sprintf(
                 '%s%s',
                 str_replace('\\', '', $relativeClassPath),
-                $this->getFabricationFileActor()->getGenerateFileName()
+                $this->getFabricationFileActor()->getFileName()
             );
             $this->FullPascalCaseName = $fullPascalCaseName;
         }
@@ -91,7 +91,7 @@ class Builder implements BuilderInterface
     protected function getShortPascalCaseName(): string
     {
         if ($this->ShortPascalCaseName === null) {
-            $this->ShortPascalCaseName = $this->getFabricationFileActor()->getGenerateFileName();
+            $this->ShortPascalCaseName = $this->getFabricationFileActor()->getFileName();
         }
 
         return $this->ShortPascalCaseName;
@@ -100,11 +100,11 @@ class Builder implements BuilderInterface
     protected function getSourceDirectoryPath(): string
     {
         if ($this->SourceDirectoryPath === null) {
-            if ($this->getFabricationFileActor()->getGenerateRelativeDirectoryPath() !== '') {
+            if ($this->getFabricationFileActor()->getRelativeDirectoryPath() !== '') {
                 $this->SourceDirectoryPath = sprintf(
                     '%s/%s',
                     $this->getFabricationFile()->getDirectoryPath(),
-                    $this->getFabricationFileActor()->getGenerateRelativeDirectoryPath()
+                    $this->getFabricationFileActor()->getRelativeDirectoryPath()
                 );
             } else {
                 $this->SourceDirectoryPath = $this->getFabricationFile()->getDirectoryPath();
@@ -151,8 +151,8 @@ class Builder implements BuilderInterface
             $this->SourceFilePath = sprintf(
                 '%s/%s.%s',
                 $this->getSourceDirectoryPath(),
-                $this->getFabricationFileActor()->getGenerateFileName(),
-                $this->getFabricationFileActor()->getGenerateFileExtension()
+                $this->getFabricationFileActor()->getFileName(),
+                $this->getFabricationFileActor()->getFileExtension()
             );
         }
 
@@ -175,7 +175,7 @@ class Builder implements BuilderInterface
     protected function getFileName(): string
     {
         if ($this->FileName === null) {
-            $this->FileName = $this->getFabricationFileActor()->getGenerateFileName();
+            $this->FileName = $this->getFabricationFileActor()->getFileName();
         }
 
         return $this->FileName;
@@ -184,7 +184,7 @@ class Builder implements BuilderInterface
     protected function getFileExtension(): string
     {
         if ($this->FileExtension === null) {
-            $this->FileExtension = $this->getFabricationFileActor()->getGenerateFileExtension();
+            $this->FileExtension = $this->getFabricationFileActor()->getFileExtension();
         }
 
         return $this->FileExtension;

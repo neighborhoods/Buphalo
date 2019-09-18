@@ -23,18 +23,20 @@ class Builder implements BuilderInterface
     protected $TemplateFileExtension;
     protected $TemplateRelativeFilePath;
     protected $GenerateRelativeDirectoryPath;
-    protected $GenerateBaseName;
-    protected $GenerateFileName;
-    protected $GenerateFileExtension;
+    protected $RelativeFilePath;
+    protected $BaseName;
+    protected $FileName;
+    protected $FileExtension;
 
     public function build(): ActorInterface
     {
-        $this->getGenerateFileName();
+        $this->getFileName();
         $record = $this->getRecord();
         $actor = $this->getFabricationFileActorFactory()->create();
-        $actor->setGenerateRelativeDirectoryPath($this->getGenerateRelativeDirectoryPath());
-        $actor->setGenerateFileName($this->getGenerateFileName());
-        $actor->setGenerateFileExtension($this->getGenerateFileExtension());
+        $actor->setRelativeDirectoryPath($this->getRelativeDirectoryPath());
+        $actor->setFileName($this->getFileName());
+        $actor->setFileExtension($this->getFileExtension());
+        $actor->setRelativeFilePath($this->getRelativeFilePath());
         $actor->setTemplateRelativeDirectoryPath($this->getTemplateRelativeDirectoryPath());
         $actor->setTemplateFileName($this->getTemplateFileName());
         $actor->setTemplateFileExtension($this->getTemplateFileExtension());
@@ -50,48 +52,48 @@ class Builder implements BuilderInterface
         return $actor;
     }
 
-    protected function getGenerateFileName(): string
+    protected function getFileName(): string
     {
-        if ($this->GenerateFileName === null) {
-            $this->GenerateFileName = substr(
-                $this->getGenerateBaseName(),
+        if ($this->FileName === null) {
+            $this->FileName = substr(
+                $this->getBaseName(),
                 0,
-                strpos($this->getGenerateBaseName(), '.')
+                strpos($this->getBaseName(), '.')
             );
         }
 
-        return $this->GenerateFileName;
+        return $this->FileName;
     }
 
-    protected function getGenerateBaseName(): string
+    protected function getBaseName(): string
     {
-        if ($this->GenerateBaseName === null) {
+        if ($this->BaseName === null) {
             $GenerateBaseName = pathinfo($this->getRecord()[BuilderInterface::GENERATE], PATHINFO_BASENAME);
-            $this->GenerateBaseName = str_replace(
+            $this->BaseName = str_replace(
                 BuilderInterface::ACTOR_NAME,
                 $this->getFabricationFile()->getFileName(),
                 $GenerateBaseName
             );
         }
 
-        return $this->GenerateBaseName;
+        return $this->BaseName;
     }
 
 
-    protected function getGenerateFileExtension(): string
+    protected function getFileExtension(): string
     {
-        if ($this->GenerateFileExtension === null) {
-            $this->GenerateFileExtension = substr(
-                $this->getGenerateBaseName(),
-                strpos($this->getGenerateBaseName(), '.') + 1,
-                strlen($this->getGenerateBaseName())
+        if ($this->FileExtension === null) {
+            $this->FileExtension = substr(
+                $this->getBaseName(),
+                strpos($this->getBaseName(), '.') + 1,
+                strlen($this->getBaseName())
             );
         }
 
-        return $this->GenerateFileExtension;
+        return $this->FileExtension;
     }
 
-    protected function getGenerateRelativeDirectoryPath(): string
+    protected function getRelativeDirectoryPath(): string
     {
         if ($this->GenerateRelativeDirectoryPath === null) {
             $RelativeGeneratedDirectoryPath = pathinfo(
@@ -110,6 +112,20 @@ class Builder implements BuilderInterface
         }
 
         return $this->GenerateRelativeDirectoryPath;
+    }
+
+    protected function getRelativeFilePath(): string
+    {
+        if ($this->RelativeFilePath === null) {
+            $this->RelativeFilePath = sprintf(
+                '%s/%s.%s',
+                $this->getRelativeDirectoryPath(),
+                $this->getFileName(),
+                $this->getFileExtension()
+            );
+        }
+
+        return $this->RelativeFilePath;
     }
 
     protected function getTemplateFileName(): string

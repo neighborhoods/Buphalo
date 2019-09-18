@@ -15,7 +15,7 @@ class Builder implements BuilderInterface
     public function build(): ActorInterface
     {
         $Actor = $this->getActorFactory()->create();
-        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\Actor\Builder.build1
+        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\Buphalo\Actor\Builder.build1
          */
         /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\Actor\Builder.build2
         // @TODO - build the object.

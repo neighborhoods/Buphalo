@@ -99,13 +99,31 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
+                sprintf('\%s;', $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
+                sprintf('%s;', TokenizerInterface::EMPTY_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
                 '\ActorInterface',
                 sprintf('\%sInterface', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
+                sprintf('\%sInterface', $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
+                sprintf('\%sInterface', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
                 '\Actor\\',
+                sprintf('%s\\', TokenizerInterface::EMPTY_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                sprintf('\%s\\', $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
                 sprintf('%s\\', TokenizerInterface::EMPTY_TOKEN),
                 $tokenizedContents
             );
@@ -117,7 +135,19 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
+                sprintf('\%s', $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
+                sprintf('\%s', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
                 'Template',
+                TokenizerInterface::RELATIVE_CLASS_PATH_TOKEN,
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                '\\Template',
                 TokenizerInterface::RELATIVE_CLASS_PATH_TOKEN,
                 $tokenizedContents
             );
@@ -128,8 +158,23 @@ class Tokenizer implements TokenizerInterface
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = preg_replace(
+                sprintf(
+                    '/protected(\s+)\$%s/',
+                    $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()
+                ),
+                sprintf('protected $%s', TokenizerInterface::PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 '$this->Actor',
+                sprintf('$this->%s', TokenizerInterface::PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                sprintf('$this->%s', $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
                 sprintf('$this->%s', TokenizerInterface::PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
@@ -140,8 +185,20 @@ class Tokenizer implements TokenizerInterface
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = preg_replace(
+                sprintf('/class(\s+)%s/', $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
+                sprintf('class %s', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 '$Actor',
+                sprintf('$%s', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                sprintf('$%s', $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
                 sprintf('$%s', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
@@ -152,14 +209,35 @@ class Tokenizer implements TokenizerInterface
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = preg_replace(
+                sprintf(
+                    '/interface(\s+)%s/',
+                    $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()
+                ),
+                sprintf('interface %s', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
                 'ActorInterface',
                 sprintf('%sInterface', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                sprintf('%sInterface', $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
+                sprintf('%sInterface', TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = preg_replace(
                 '/use(\s+)Actor/',
+                sprintf('use %s', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = preg_replace(
+                sprintf('/use(\s+)%s/', $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
                 sprintf('use %s', TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN),
                 $tokenizedContents
             );
@@ -177,8 +255,20 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
+                sprintf("%s\n", $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
+                sprintf('%s%s', TokenizerInterface::PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN, "\n"),
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
                 'Actor',
                 TokenizerInterface::PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN,
+                $tokenizedContents
+            );
+            /** @noinspection CascadeStringReplacementInspection */
+            $tokenizedContents = str_replace(
+                sprintf('%s', $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
+                TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN,
                 $tokenizedContents
             );
             $this->getActorTemplate()->applyTokenizedContents($tokenizedContents);
