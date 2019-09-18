@@ -14,50 +14,51 @@ class Actor implements ActorInterface
         hasAnnotationProcessorMap as public;
     }
 
-    protected $GenerateRelativeDirectoryPath;
-    protected $GenerateFileName;
-    protected $GenerateFileExtension;
+    protected $RelativeDirectoryPath;
+    protected $RelativeFilePath;
+    protected $FileName;
+    protected $FileExtension;
     protected $TemplateRelativeDirectoryPath;
     protected $TemplateFileName;
     protected $TemplateFileExtension;
     protected $TemplateRelativeFilePath;
 
-    public function getGenerateRelativeDirectoryPath(): string
+    public function getRelativeDirectoryPath(): string
     {
-        if ($this->GenerateRelativeDirectoryPath === null) {
-            throw new LogicException('Actor Generate Relative Directory Path has not been set.');
+        if ($this->RelativeDirectoryPath === null) {
+            throw new LogicException('Actor Relative Directory Path has not been set.');
         }
 
-        return $this->GenerateRelativeDirectoryPath;
+        return $this->RelativeDirectoryPath;
     }
 
-    public function setGenerateRelativeDirectoryPath(string $GenerateRelativeDirectoryPath): ActorInterface
+    public function setRelativeDirectoryPath(string $RelativeDirectoryPath): ActorInterface
     {
-        if ($this->GenerateRelativeDirectoryPath !== null) {
-            throw new LogicException('Actor Generate Relative Directory Path is already set.');
+        if ($this->RelativeDirectoryPath !== null) {
+            throw new LogicException('Actor Relative Directory Path is already set.');
         }
 
-        $this->GenerateRelativeDirectoryPath = $GenerateRelativeDirectoryPath;
+        $this->RelativeDirectoryPath = $RelativeDirectoryPath;
 
         return $this;
     }
 
-    public function getGenerateFileExtension(): string
+    public function getFileExtension(): string
     {
-        if ($this->GenerateFileExtension === null) {
-            throw new LogicException('Actor Generate File Extension has not been set.');
+        if ($this->FileExtension === null) {
+            throw new LogicException('Actor File Extension has not been set.');
         }
 
-        return $this->GenerateFileExtension;
+        return $this->FileExtension;
     }
 
-    public function setGenerateFileExtension(string $GenerateFileExtension): ActorInterface
+    public function setFileExtension(string $FileExtension): ActorInterface
     {
-        if ($this->GenerateFileExtension !== null) {
-            throw new LogicException('Actor Generated File Extension is already set.');
+        if ($this->FileExtension !== null) {
+            throw new LogicException('Actor File Extension is already set.');
         }
 
-        $this->GenerateFileExtension = $GenerateFileExtension;
+        $this->FileExtension = $FileExtension;
 
         return $this;
     }
@@ -102,22 +103,22 @@ class Actor implements ActorInterface
         return $this;
     }
 
-    public function getGenerateFileName(): string
+    public function getFileName(): string
     {
-        if ($this->GenerateFileName === null) {
-            throw new LogicException('Generate File Name has not been set.');
+        if ($this->FileName === null) {
+            throw new LogicException('File Name has not been set.');
         }
 
-        return $this->GenerateFileName;
+        return $this->FileName;
     }
 
-    public function setGenerateFileName(string $GenerateFileName): ActorInterface
+    public function setFileName(string $FileName): ActorInterface
     {
-        if ($this->GenerateFileName !== null) {
-            throw new LogicException('Generate File Name is already set.');
+        if ($this->FileName !== null) {
+            throw new LogicException('File Name is already set.');
         }
 
-        $this->GenerateFileName = $GenerateFileName;
+        $this->FileName = $FileName;
 
         return $this;
     }
@@ -158,6 +159,26 @@ class Actor implements ActorInterface
         }
 
         $this->TemplateRelativeFilePath = $TemplateRelativeFilePath;
+
+        return $this;
+    }
+
+    public function getRelativeFilePath(): string
+    {
+        if ($this->RelativeFilePath === null) {
+            throw new LogicException('Relative File Path has not been set.');
+        }
+
+        return $this->RelativeFilePath;
+    }
+
+    public function setRelativeFilePath(string $RelativeFilePath): ActorInterface
+    {
+        if ($this->RelativeFilePath !== null) {
+            throw new LogicException('Relative File Path is already set.');
+        }
+
+        $this->RelativeFilePath = $RelativeFilePath;
 
         return $this;
     }

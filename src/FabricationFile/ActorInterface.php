@@ -7,13 +7,13 @@ use Neighborhoods\Buphalo\AnnotationProcessor\MapInterface;
 
 interface ActorInterface extends GenericActorInterface
 {
-    public function getGenerateRelativeDirectoryPath(): string;
+    public function getRelativeDirectoryPath(): string;
 
-    public function setGenerateRelativeDirectoryPath(string $GenerateRelativeDirectoryPath): ActorInterface;
+    public function setRelativeDirectoryPath(string $RelativeDirectoryPath): ActorInterface;
 
-    public function setGenerateFileExtension(string $GenerateFileExtension): ActorInterface;
+    public function setFileExtension(string $FileExtension): ActorInterface;
 
-    public function getGenerateFileExtension(): string;
+    public function getFileExtension(): string;
 
     public function setAnnotationProcessorMap(MapInterface $AnnotationProcessors);
 

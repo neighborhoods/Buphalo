@@ -5,9 +5,9 @@ namespace Neighborhoods\Buphalo\FabricationFile;
 
 interface GenericActorInterface
 {
-    public function setGenerateFileName(string $GenerateFileName): ActorInterface;
+    public function setFileName(string $FileName): ActorInterface;
 
-    public function getGenerateFileName(): string;
+    public function getFileName(): string;
 
     public function setTemplateFileName(string $TemplateFileName): ActorInterface;
 
