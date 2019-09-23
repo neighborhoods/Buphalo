@@ -26,7 +26,7 @@ class Tokenizer implements TokenizerInterface
     {
         if ($this->TokenizedContents === null) {
             $this->getActorTemplateAnnotationTokenizer()->tokenize();
-            $templateContents = $this->getActorTemplate()->getContents();
+            $templateContents = $this->getActorTemplate()->getTokenizedContents();
             $tokenizedContents = preg_replace(
                 '/namespace(\s+)Neighborhoods\\\BuphaloTemplateTree\\\Actor/',
                 sprintf(

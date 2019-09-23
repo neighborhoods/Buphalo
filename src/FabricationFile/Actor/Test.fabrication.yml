@@ -15,8 +15,12 @@ actors:
     template: Actor/FactoryInterface.php
   <ActorName>/Factory/AwareTrait.php:
     template: Actor/Factory/AwareTrait.php
-#  <ActorName>/SpecialBuilder.php:
-#    template: Actor/Builder.php
+  <ActorName>/SpecialBuilder.php:
+    template: Actor/Builder.php
+  <ActorName>/SpecialBuilder.service.yml:
+    template: Actor/Builder.service.yml
+  <ActorName>/SpecialBuilderInterface.php:
+    template: Actor/BuilderInterface.php
   <ActorName>/Builder.php:
     template: Actor/Builder.php
     annotation_processors:
