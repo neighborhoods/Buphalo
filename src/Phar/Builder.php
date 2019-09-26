@@ -10,6 +10,8 @@ use LogicException;
 use Phar;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use Throwable;
+use RuntimeException;
 
 final class Builder implements BuilderInterface
 {
@@ -41,30 +43,44 @@ final class Builder implements BuilderInterface
 
     public function build()
     {
-        $this->makeBackup();
+        try {
+            $this->makeBackup();
 
-        $phar = new Phar($this->getPharLocation(), $this->getFlags(), $this->getPharAlias());
+            $phar = new Phar($this->getPharLocation(), $this->getFlags(), $this->getPharAlias());
 
-        $pharEntryPointPath = $this->copyEntryPoint();
+            $pharEntryPointPath = $this->copyEntryPointFile();
 
-        $phar->buildFromIterator($this->buildIterator(), $this->getApplicationRootPath());
+            $phar->buildFromIterator($this->buildIterator(), $this->getApplicationRootPath());
 
-        $phar->setStub($phar->createDefaultStub($pharEntryPointPath));
+            $phar->setStub($phar->createDefaultStub($pharEntryPointPath));
+        } catch (Throwable $t) {
+            $this->restoreBackup();
+            throw $t;
+        } finally {
+            $this->removeBackup();
 
-        unlink($pharEntryPointPath);
+            $filename = $this->getPharEntryPointPath();
+            if (is_file($filename)) {
+                unlink($filename);
+            }
+        }
 
-        $this->removeBackup();
+
     }
 
-    private function getPharEntryPoint() : string
+    private function getPharEntryPointPath() : string
     {
-        return preg_replace('/.php$/','-phar.php', $this->getEntryPoint());
+        return preg_replace('/(.php)?$/','-phar\1', $this->getEntryPoint());
     }
 
-    private function copyEntryPoint() : string
+    private function copyEntryPointFile() : string
     {
         $entryPointPath = $this->getEntryPoint();
-        $pharEntryPointPath = $this->getPharEntryPoint();
+        $pharEntryPointPath = $this->getPharEntryPointPath();
+
+        if (!is_file($entryPointPath)) {
+            throw new RuntimeException("File $entryPointPath not found.");
+        }
 
         $entryPointData = file($entryPointPath);
         if (strpos(current($entryPointData), '#!') === 0) {
@@ -89,7 +105,7 @@ final class Builder implements BuilderInterface
     private function getPharAlias(): string
     {
         if ($this->phar_alias === null) {
-            throw new LogicException('PharOut phar_name has not been set.');
+            throw new LogicException('Builder phar_alias has not been set.');
         }
 
         return $this->phar_alias;
@@ -98,7 +114,7 @@ final class Builder implements BuilderInterface
     public function setPharAlias(string $phar_alias): BuilderInterface
     {
         if ($this->phar_alias !== null) {
-            throw new LogicException('PharOut phar_name is already set.');
+            throw new LogicException('Builder phar_alias is already set.');
         }
 
         $this->phar_alias = $phar_alias;
@@ -109,7 +125,7 @@ final class Builder implements BuilderInterface
     private function getApplicationRootPath(): string
     {
         if ($this->application_root_path === null) {
-            throw new LogicException('PharOut application_root_path has not been set.');
+            throw new LogicException('Builder application_root_path has not been set.');
         }
 
         return $this->application_root_path;
@@ -118,7 +134,7 @@ final class Builder implements BuilderInterface
     public function setApplicationRootPath(string $application_root_path): BuilderInterface
     {
         if ($this->application_root_path !== null) {
-            throw new LogicException('PharOut application_root_path is already set.');
+            throw new LogicException('Builder application_root_path is already set.');
         }
 
         $this->application_root_path = $application_root_path;
@@ -129,7 +145,7 @@ final class Builder implements BuilderInterface
     private function getEntryPoint(): string
     {
         if ($this->entry_point === null) {
-            throw new LogicException('PharOut entry_point has not been set.');
+            throw new LogicException('Builder entry_point has not been set.');
         }
 
         return $this->entry_point;
@@ -138,7 +154,7 @@ final class Builder implements BuilderInterface
     public function setEntryPoint(string $entry_point): BuilderInterface
     {
         if ($this->entry_point !== null) {
-            throw new LogicException('PharOut entry_point is already set.');
+            throw new LogicException('Builder entry_point is already set.');
         }
 
         $this->entry_point = $entry_point;
@@ -149,7 +165,7 @@ final class Builder implements BuilderInterface
     private function getPharLocation(): string
     {
         if ($this->phar_location === null) {
-            throw new LogicException('PharOut phar_location has not been set.');
+            throw new LogicException('Builder phar_location has not been set.');
         }
 
         return $this->phar_location;
@@ -158,7 +174,7 @@ final class Builder implements BuilderInterface
     public function setPharLocation(string $phar_location): BuilderInterface
     {
         if ($this->phar_location !== null) {
-            throw new LogicException('PharOut phar_location is already set.');
+            throw new LogicException('Builder phar_location is already set.');
         }
 
         $this->phar_location = $phar_location;
@@ -178,7 +194,7 @@ final class Builder implements BuilderInterface
     public function setFlags(int $flags): BuilderInterface
     {
         if ($this->flags !== null) {
-            throw new LogicException('PharOut flags is already set.');
+            throw new LogicException('Builder flags is already set.');
         }
 
         $this->flags = $flags;
@@ -238,6 +254,7 @@ final class Builder implements BuilderInterface
 
         foreach ($this->getIncludeFiles() as $file) {
             $path = $this->getApplicationRootPath() . DIRECTORY_SEPARATOR . $file;
+
             if (!is_file($path)) {
                 continue;
             }
@@ -254,6 +271,13 @@ final class Builder implements BuilderInterface
     {
         if (is_file($this->getPharLocation())) {
             rename($this->getPharLocation(), $this->getPharLocation() . self::FILE_EXTENSION_BACKUP);
+        }
+    }
+
+    private function restoreBackup(): void
+    {
+        if (is_file($this->getPharLocation() . self::FILE_EXTENSION_BACKUP)) {
+            rename($this->getPharLocation() . self::FILE_EXTENSION_BACKUP, $this->getPharLocation());
         }
     }
 
