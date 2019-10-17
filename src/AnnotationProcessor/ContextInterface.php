@@ -9,6 +9,8 @@ interface ContextInterface
 {
     public function setFabricationFile(FabricationFileInterface $FabricationFile);
 
+    public function getFabricationFile(): FabricationFileInterface;
+
     public function getStaticContextRecord(): array;
 
     public function setStaticContextRecord(array $static_context_record): ContextInterface;

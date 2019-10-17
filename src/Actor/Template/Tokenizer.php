@@ -123,12 +123,6 @@ class Tokenizer implements TokenizerInterface
             );
             /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = str_replace(
-                sprintf('\%s\\', $this->getActorTemplate()->getFabricationFileActor()->getTemplateFileName()),
-                sprintf('%s\\', TokenizerInterface::EMPTY_TOKEN),
-                $tokenizedContents
-            );
-            /** @noinspection CascadeStringReplacementInspection */
-            $tokenizedContents = str_replace(
                 '\Actor',
                 sprintf('\%s', TokenizerInterface::RELATIVE_CLASS_PATH_TOKEN),
                 $tokenizedContents
