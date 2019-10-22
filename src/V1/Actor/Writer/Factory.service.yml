@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Writer\FactoryInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Writer\Factory
+    public: false
+    shared: true
+    calls:
+      - [setActorWriter, ['@Neighborhoods\Buphalo\V1\Actor\WriterInterface']]

@@ -1,8 +1,0 @@
-services:
-  Neighborhoods\Buphalo\Actor\BuilderInterface:
-    class: Neighborhoods\Buphalo\Actor\Builder
-    public: false
-    shared: false
-    calls:
-      - [setActorFactory, ['@Neighborhoods\Buphalo\Actor\FactoryInterface']]
-      - [setTargetApplicationRepository, ['@Neighborhoods\Buphalo\TargetApplication\RepositoryInterface']]

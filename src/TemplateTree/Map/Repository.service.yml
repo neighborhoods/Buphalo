@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\Buphalo\TemplateTree\Map\RepositoryInterface:
-    class: Neighborhoods\Buphalo\TemplateTree\Map\Repository
-    public: false
-    shared: true
-    calls:
-      - [setTemplateTreeMapBuilderFactory, ['@Neighborhoods\Buphalo\TemplateTree\Map\Builder\FactoryInterface']]

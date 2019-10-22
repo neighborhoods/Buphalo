@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Buphalo\TemplateTreeInterface:
-    class: Neighborhoods\Buphalo\TemplateTree
-    public: false
-    shared: false

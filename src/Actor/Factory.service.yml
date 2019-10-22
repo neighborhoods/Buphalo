@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\Buphalo\Actor\FactoryInterface:
-    class: Neighborhoods\Buphalo\Actor\Factory
-    public: false
-    shared: true
-    calls:
-      - [setActor, ['@Neighborhoods\Buphalo\ActorInterface']]

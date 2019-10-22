@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Buphalo\TargetApplicationInterface:
-    class: Neighborhoods\Buphalo\TargetApplication
-    public: false
-    shared: false

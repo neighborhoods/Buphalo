@@ -1,0 +1,10 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Writer\BuilderInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Writer\Builder
+    public: false
+    shared: false
+    calls:
+      - [setActorWriterFactory, ['@Neighborhoods\Buphalo\V1\Actor\Writer\FactoryInterface']]
+      - [setActorTemplateTokenizerBuilderFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Builder\FactoryInterface']]
+      - [setActorTemplateCompilerBuilderFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Compiler\Builder\FactoryInterface']]
+      - [setActorBuilderFactory, ['@Neighborhoods\Buphalo\V1\Actor\Builder\FactoryInterface']]

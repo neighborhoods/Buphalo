@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Buphalo\V1\TemplateTree\FactoryInterface:
+    class: Neighborhoods\Buphalo\V1\TemplateTree\Factory
+    public: false
+    shared: true
+    calls:
+      - [setTemplateTree, ['@Neighborhoods\Buphalo\V1\TemplateTreeInterface']]

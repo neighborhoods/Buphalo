@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Buphalo\V1\BooleanMapInterface:
+    class: Neighborhoods\Buphalo\V1\BooleanMap
+    public: falses
+    shared: false

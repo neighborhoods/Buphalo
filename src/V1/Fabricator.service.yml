@@ -1,0 +1,10 @@
+services:
+  Neighborhoods\Buphalo\V1\FabricatorInterface:
+    class: Neighborhoods\Buphalo\V1\Fabricator
+    public: false
+    shared: false
+    calls:
+      - [setFilesystem, ['@Symfony\Component\Filesystem\Filesystem']]
+      - [setActorWriterBuilderFactory, ['@Neighborhoods\Buphalo\V1\Actor\Writer\Builder\FactoryInterface']]
+      - [setTargetApplicationRepository, ['@Neighborhoods\Buphalo\V1\TargetApplication\RepositoryInterface']]
+      - [setFabricationFileMapBuilderFactory, ['@Neighborhoods\Buphalo\V1\FabricationFile\Map\Builder\FactoryInterface']]

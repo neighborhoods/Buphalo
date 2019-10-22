@@ -1,0 +1,8 @@
+services:
+  Neighborhoods\Buphalo\V1\AnnotationProcessor\Map\BuilderInterface:
+    class: Neighborhoods\Buphalo\V1\AnnotationProcessor\Map\Builder
+    public: false
+    shared: false
+    calls:
+      - [setAnnotationProcessorMapFactory, ['@Neighborhoods\Buphalo\V1\AnnotationProcessor\Map\FactoryInterface']]
+      - [setAnnotationProcessorBuilderFactory, ['@Neighborhoods\Buphalo\V1\AnnotationProcessor\Builder\FactoryInterface']]

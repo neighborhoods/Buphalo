@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Buphalo\V1\IntegerMap\FactoryInterface:
+    class: Neighborhoods\Buphalo\V1\IntegerMap\Factory
+    public: false
+    shared: true
+    calls:
+      - [setIntegerMap, ['@Neighborhoods\Buphalo\V1\IntegerMapInterface']]

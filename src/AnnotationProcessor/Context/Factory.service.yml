@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\Buphalo\AnnotationProcessor\Context\FactoryInterface:
-    class: Neighborhoods\Buphalo\AnnotationProcessor\Context\Factory
-    public: false
-    shared: true
-    calls:
-      - [setAnnotationProcessorContext, ['@Neighborhoods\Buphalo\AnnotationProcessor\ContextInterface']]

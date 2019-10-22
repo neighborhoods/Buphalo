@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Template\TokenizerInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer
+    public: false
+    shared: false
