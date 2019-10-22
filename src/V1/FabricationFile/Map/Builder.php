@@ -23,7 +23,7 @@ class Builder implements BuilderInterface
         $sourceDirectoryPath = $this->getTargetApplicationRepository()->get()->getSourceDirectoryPath();
         $finder = $this->getSymfonyComponentFinderFinder()->in($sourceDirectoryPath);
         $finder->name('*' . FabricationFileInterface::FILE_EXTENSION_FABRICATION);
-        //$finder->files()->name('Test.fabrication.yml');
+        //$finder->files()->name(sprintf('Test.%s', FabricationFileInterface::FILE_EXTENSION_FABRICATION));
 
         /** @var $fileInfo SplFileInfo */
         foreach ($finder as $directoryPath => $fileInfo) {
