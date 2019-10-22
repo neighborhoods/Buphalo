@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Buphalo\V1\NewRelicInterface:
+    class: Neighborhoods\Buphalo\V1\NewRelic
+    public: false
+    shared: false

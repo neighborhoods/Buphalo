@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Buphalo\AnnotationProcessor\MapInterface:
-    class: Neighborhoods\Buphalo\AnnotationProcessor\Map
-    public: false
-    shared: false

@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Buphalo\V1\BooleanMap\FactoryInterface:
+    class: Neighborhoods\Buphalo\V1\BooleanMap\Factory
+    public: false
+    shared: true
+    calls:
+      - [setBooleanMap, ['@Neighborhoods\Buphalo\V1\BooleanMapInterface']]

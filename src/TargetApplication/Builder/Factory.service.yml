@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\Buphalo\TargetApplication\Builder\FactoryInterface:
-    class: Neighborhoods\Buphalo\TargetApplication\Builder\Factory
-    public: false
-    shared: true
-    calls:
-      - [setTargetApplicationBuilder, ['@Neighborhoods\Buphalo\TargetApplication\BuilderInterface']]

@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\Buphalo\Actor\Template\FactoryInterface:
-    class: Neighborhoods\Buphalo\Actor\Template\Factory
-    public: false
-    shared: true
-    calls:
-      - [setActorTemplate, ['@Neighborhoods\Buphalo\Actor\TemplateInterface']]

@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Template\Compiler\FactoryInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Template\Compiler\Factory
+    public: false
+    shared: true
+    calls:
+      - [setActorTemplateCompiler, ['@Neighborhoods\Buphalo\V1\Actor\Template\CompilerInterface']]

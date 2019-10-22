@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Buphalo\FabricationFile\Actor\MapInterface:
-    class: Neighborhoods\Buphalo\FabricationFile\Actor\Map
-    public: false
-    shared: false

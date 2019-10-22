@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Buphalo\V1\IntegerMapInterface:
+    class: Neighborhoods\Buphalo\V1\IntegerMap
+    public: false
+    shared: false

@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Buphalo\FloatingPointMapInterface:
-    class: Neighborhoods\Buphalo\FloatingPointMap
-    public: false
-    shared: false

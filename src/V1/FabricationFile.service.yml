@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Buphalo\V1\FabricationFileInterface:
+    class: Neighborhoods\Buphalo\V1\FabricationFile
+    public: false
+    shared: false
