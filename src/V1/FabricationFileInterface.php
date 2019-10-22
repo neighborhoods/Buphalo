@@ -7,7 +7,7 @@ use Neighborhoods\Buphalo\V1\FabricationFile\Actor;
 
 interface FabricationFileInterface
 {
-    public const FILE_EXTENSION_FABRICATION = '.fabrication.yml';
+    public const FILE_EXTENSION_FABRICATION = 'buphalo.v1.fabrication.yml';
 
     public function getActors(): Actor\MapInterface;
 
