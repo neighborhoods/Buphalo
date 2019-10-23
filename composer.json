@@ -8,7 +8,9 @@
     "Code Generation"
   ],
   "bin": [
-    "bin/buphalo"
+    "bin/v1/buphalo",
+    "bin/v1/makephar",
+    "bin/v1/upgrade"
   ],
   "authors": [
     {
