@@ -8,5 +8,7 @@ use Neighborhoods\Buphalo\V1\FabricationFile\MapInterface;
 interface BuilderInterface
 {
     public function build(): MapInterface;
+
+    public function setFinderFileNames(array $FinderFileNames): BuilderInterface;
 }
 
