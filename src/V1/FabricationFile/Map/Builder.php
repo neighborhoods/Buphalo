@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Buphalo\V1\FabricationFile\Map;
 
+use LogicException;
 use Neighborhoods\Buphalo\V1\FabricationFile;
 use Neighborhoods\Buphalo\V1\FabricationFile\MapInterface;
 use Neighborhoods\Buphalo\V1\FabricationFileInterface;
@@ -17,13 +18,20 @@ class Builder implements BuilderInterface
     use Symfony\Component\Finder\Finder\AwareTrait;
     use FabricationFile\Builder\Factory\AwareTrait;
 
+    protected $FinderFileNames;
+
     public function build(): MapInterface
     {
         $map = $this->getFabricationFileMapFactory()->create();
         $sourceDirectoryPath = $this->getTargetApplicationRepository()->get()->getSourceDirectoryPath();
-        $finder = $this->getSymfonyComponentFinderFinder()->in($sourceDirectoryPath);
-        $finder->name('*' . FabricationFileInterface::FILE_EXTENSION_FABRICATION);
-        //$finder->files()->name(sprintf('Test.%s', FabricationFileInterface::FILE_EXTENSION_FABRICATION));
+        $finder = $this->getSymfonyComponentFinderFinder();
+        $finder->in($sourceDirectoryPath);
+
+        if ($this->hasFinderFileNames()) {
+            $finder->files()->name($this->getFinderFileNames());
+        } else {
+            $finder->name(sprintf('*.%s', FabricationFileInterface::FILE_EXTENSION_FABRICATION));
+        }
 
         /** @var $fileInfo SplFileInfo */
         foreach ($finder as $directoryPath => $fileInfo) {
@@ -34,5 +42,30 @@ class Builder implements BuilderInterface
         }
 
         return $map;
+    }
+
+    protected function hasFinderFileNames(): bool
+    {
+        return ($this->FinderFileNames !== null);
+    }
+
+    protected function getFinderFileNames(): array
+    {
+        if ($this->FinderFileNames === null) {
+            throw new LogicException('Finder File Names has not been set.');
+        }
+
+        return $this->FinderFileNames;
+    }
+
+    public function setFinderFileNames(array $FinderFileNames): BuilderInterface
+    {
+        if ($this->FinderFileNames !== null) {
+            throw new LogicException('Finder File Names is already set.');
+        }
+
+        $this->FinderFileNames = $FinderFileNames;
+
+        return $this;
     }
 }

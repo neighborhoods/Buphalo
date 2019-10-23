@@ -1,3 +1,5 @@
+parameters:
+  Neighborhoods\Buphalo\V1\FabricationFile\Map\BuilderInterface.FinderFileNames: '%env(csv:Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames)%'
 services:
   Neighborhoods\Buphalo\V1\FabricationFile\Map\BuilderInterface:
     class: Neighborhoods\Buphalo\V1\FabricationFile\Map\Builder
@@ -8,3 +10,4 @@ services:
       - [setTargetApplicationRepository, ['@Neighborhoods\Buphalo\V1\TargetApplication\RepositoryInterface']]
       - [setFabricationFileBuilderFactory, ['@Neighborhoods\Buphalo\V1\FabricationFile\Builder\FactoryInterface']]
       - [setSymfonyComponentFinderFinder, ['@Symfony\Component\Finder\Finder']]
+      - [setFinderFileNames, ['%Neighborhoods\Buphalo\V1\FabricationFile\Map\BuilderInterface.FinderFileNames%']]
