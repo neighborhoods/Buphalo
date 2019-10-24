@@ -13,7 +13,7 @@ Anything good we stole from someone else. Anything bad is ours.
 * [Contributing To Buphalo](#contributing-to-buphalo) 
 
 ## Summary
-This document attempts to describe how to use Buphalo's public APIs in addition to offering some insight into the problem it attempts to solve and the motivation to solve it. If it is not described in this document, it is not considered to be a public API and is subject to change in any arbitrary release.
+This document attempts to describe how to use Buphalo's public APIs. In addition, it tries to offer some insight into the problem that Buphalo attempts to solve and the motivation for it to solve it. If it is not described in this document, it is not considered to be a public API and is subject to change in any arbitrary release, i.e. you should not depend on it.
 
 ## Problem
 Patterns are solutions to problems within a context. Implementing well designed patterns can become tedious and laborious which discourages their implementation in favor of patterns that are less well designed but have a faster development velocity.
@@ -25,7 +25,8 @@ Employ an easy to change code generation tool that generates well designed patte
 
 ### Running Buphalo
 #### Environmental Variable API
-* Buphalo leverages an environment variable API for runtime options. The following shell command to run Buphalo illustrates the currently supported API.
+
+Buphalo leverages an environment variable API for runtime options. The following shell command to run Buphalo illustrates the currently supported API.
 ```bash
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath=/PATH/TO/SOURCE/DIRECTORY \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__FabricationDirectoryPath=/PATH/TO/FABRICATION/DIRECTORY \
@@ -33,7 +34,8 @@ Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__NamespacePrefix=VEN
 Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=/PATH/TO/TEMPLATE/TREE/DIRECTORY \
 php bin/v1/buphalo
 ```
-* For example, in order to Buphalo Buphalo (when Buphalo is installed as a composer dependency) execute the following shell command from your product's root directory.
+
+For example, in order to Buphalo Buphalo (when Buphalo is installed as a composer dependency) execute the following shell command from your product's root directory.
 ```bash
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath=$PWD/vendor/neighborhoods/buphalo/src/v1 \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__FabricationDirectoryPath=$PWD/vendor/neighborhoods/buphalo/fab/v1 \
@@ -41,6 +43,18 @@ Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__NamespacePrefix=Nei
 Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=$PWD/vendor/neighborhoods/buphalo/template-tree/V1 \
 php vendor/bin/v1/buphalo
 ```
+
+Buphalo also allows you to specify any number of specific filter rules for files with the `Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames` environment variable. As an env var this is a CSV. It is cast to an array that is injected into `\Symfony\Component\Finder\Finder::name`. Any rule that works for `\Symfony\Component\Finder\Finder::name` will work here.
+```bash
+Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath=$PWD/vendor/neighborhoods/buphalo/src/v1 \
+Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__FabricationDirectoryPath=$PWD/vendor/neighborhoods/buphalo/fab/v1 \
+Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__NamespacePrefix=Neighborhoods\\Buphalo\\ \
+Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=$PWD/vendor/neighborhoods/buphalo/template-tree/V1 \
+Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames=Connection.buphalo.v1.fabrication.yml,Connection2.buphalo.v1.fabrication.yml 
+php vendor/bin/v1/buphalo
+```
+
+It is very easy to trace through the code where an environment variable is used. Buphalo uses Symfony's environment feature of the DI component to inject runtime options into objects in the container. 
 
 ### Example Fabrication Files
 * Relative to the root of your software product.
