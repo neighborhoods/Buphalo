@@ -134,18 +134,6 @@ class Tokenizer implements TokenizerInterface
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
-            $tokenizedContents = str_replace(
-                'Template',
-                TokenizerInterface::RELATIVE_CLASS_PATH_TOKEN,
-                $tokenizedContents
-            );
-            /** @noinspection CascadeStringReplacementInspection */
-            $tokenizedContents = str_replace(
-                '\\Template',
-                TokenizerInterface::RELATIVE_CLASS_PATH_TOKEN,
-                $tokenizedContents
-            );
-            /** @noinspection CascadeStringReplacementInspection */
             $tokenizedContents = preg_replace(
                 '/protected(\s+)\$Actor/',
                 sprintf('protected $%s', TokenizerInterface::PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN),
