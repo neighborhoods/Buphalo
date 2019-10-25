@@ -213,7 +213,7 @@ Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTree
     ```json
     "autoload": {
     "psr-4": {
-      "COMAPNY\\PRODUCT\\": [
+      "VENDOR\\PRODUCT\\": [
         "src",
         "fab"
       ]
