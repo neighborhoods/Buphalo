@@ -57,9 +57,10 @@ php vendor/bin/v1/buphalo
 It is very easy to trace through the code where an environment variable is used. Buphalo uses Symfony's environment feature of the DI component to inject runtime options into objects in the container. 
 
 ### Example Fabrication Files
-* Relative to the root of your software product.
+
 ```yml
-# src/V2/Toe.buphalo.v1.fabrication.yml
+# This lives in /PATH/TO/SOFTWARE_PRODUCT_ROOT/src/V2/Toe.buphalo.v1.fabrication.yml
+
 # I WANT ALL THE ACTORS!
 actors:
   <ActorName>.php:
@@ -136,7 +137,8 @@ actors:
     template: Actor/Map/Builder/Factory/AwareTrait.php
 ```
 ```yml
-# src/V2/Toe/Nail.buphalo.v1.fabrication.yml
+# This lives in /PATH/TO/SOFTWARE_PRODUCT_ROOT/src/V2/Toe/Nail.buphalo.v1.fabrication.yml
+
 # I only want SOME actors!
 actors:
   <ActorName>.php:
