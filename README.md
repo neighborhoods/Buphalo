@@ -195,17 +195,32 @@ Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTree
 ## Definitions
 
 ### Fabrication File
-* A Fabrication File contains the instructions for fabricating a [Fablet](#fablet) for any arbitrary `<Object>`.
-* The [Fablet](#fablet) `<Object>` is identified by the Fabrication File file name, and the location of the `Fabrication File` within the directory structure that it resides.
-* In the [Example Fabrication Files](#example-fabrication-files) section one [Fablet](#fablet) `<Object>` is `Toe` and another [Fablet](#fablet) `<Object>` is `Toe\Nail`.
+* A Fabrication File contains the instructions for fabricating a [Fablet](#fablet).
+* The [Fablet](#fablet) primary Actor is identified by the Fabrication File file name, and the location of the `Fabrication File` within the directory structure that it resides.
+* The `<ActorName>` token is an alias to the Fabrication File name without the extension and is the name of the primary actor.
+* In the [Example Fabrication Files](#example-fabrication-files) section one [Fablet](#fablet) is `Toe` and the other [Fablet](#fablet) is `Toe\Nail`.
 * A [Fablet](#fablet) `<Object>` can be any PHP object.
 
 ### Fablet
 (credit [Mucha](https://github.com/pmucha-55places))
-* A Fablet is the collection of Actors that are built from the Fabrication File for an `<Object>`.
+* A Fablet is the collection of Actors that are built from the Fabrication File.
+* A Primary Actor is the class that shares the same name as the Fabrication File without the extension.
+* This collection contains the Primary Actor and/or any number of supporting actors.
 
 ## Features
-* Only fabricates files that do not exist in `src`.
+### Autoloading
+* Be sure to update your `composer.json` to fallback to a `fab` directory, e.g.
+    ```json
+    "autoload": {
+    "psr-4": {
+      "COMAPNY\\PRODUCT\\": [
+        "src",
+        "fab"
+      ]
+    }
+  }
+  ```
+* In order to be efficient, Buphalo will only fabricate files that do not exist in `src` since anything in `src` will override what exists in `fab`.
 
 ### Annotation Processors
 * Annotation Processors allow user space to define dynamic template content before tokenization or compilation of the template.
@@ -229,7 +244,7 @@ interface AnnotationProcessorInterface
     public function getReplacement(): string;
 }
 ```
-* Currently, annotation processors have accesss to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Neighborhoods\Buphalo\AnnotationProcessor\ContextInterface` object.
+* Currently, annotation processors have access to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Neighborhoods\Buphalo\AnnotationProcessor\ContextInterface` object.
 
 ### Example Annotation Processors
 * Annotation Processor Tag: `@neighborhoods-buphalo:annotation-processor`
