@@ -199,7 +199,7 @@ Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTree
 * The [Fablet](#fablet) primary Actor is identified by the Fabrication File file name, and the location of the `Fabrication File` within the directory structure that it resides.
 * The `<ActorName>` token is an alias to the Fabrication File name without the extension and is the name of the primary actor.
 * In the [Example Fabrication Files](#example-fabrication-files) section one [Fablet](#fablet) is `Toe` and the other [Fablet](#fablet) is `Toe\Nail`.
-* A [Fablet](#fablet) `<Object>` can be any PHP object.
+* A [Fablet](#fablet) Actor can be anything.
 
 ### Fablet
 (credit [Mucha](https://github.com/pmucha-55places))
