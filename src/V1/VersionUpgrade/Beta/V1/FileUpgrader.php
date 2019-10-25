@@ -12,7 +12,7 @@ class FileUpgrader implements FileUpgraderInterface
 {
     use AwareTrait;
 
-    private const REGEX_QUOTE_REPLACEMENT_PATTERN = "/^ {%d}'(<ActorName>.*)':$/m";
+    private const REGEX_QUOTE_REPLACEMENT_PATTERN = "/^ {%d}'(<PrimaryActorName>.*)':$/m";
     private const REGEX_QUOTE_REPLACEMENT_REPLACE = '$1:';
 
     private const INDENT_SIZE = 2;
@@ -38,7 +38,7 @@ class FileUpgrader implements FileUpgraderInterface
         $newData = ['actors' => []];
 
         foreach ($oldData['supporting_actors'] as $oldActorPath => $oldActorData) {
-            $newActorPath = '<ActorName>' . DIRECTORY_SEPARATOR . $oldActorPath;
+            $newActorPath = '<PrimaryActorName>' . DIRECTORY_SEPARATOR . $oldActorPath;
             $newData['actors'][$newActorPath] = [
                     'template' => 'Actor' . DIRECTORY_SEPARATOR . $oldActorPath
                 ] + ($oldActorData ?? []);
