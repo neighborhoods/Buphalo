@@ -10,7 +10,6 @@ Anything good we stole from someone else. Anything bad is ours.
 * [Getting Started](#getting-started) 
 * [Definitions](#definitions)
 * [Features](#features)
-* [Contributing To Buphalo](#contributing-to-buphalo) 
 
 ## Summary
 This document attempts to describe how to use Buphalo's public APIs. In addition, it tries to offer some insight into the problem that Buphalo attempts to solve and the motivation for it to solve it. If it is not described in this document, it is not considered to be a public API and is subject to change in any arbitrary release, i.e. you should not depend on it.
@@ -44,6 +43,7 @@ Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTree
 php vendor/bin/v1/buphalo
 ```
 
+##### Filtering
 Buphalo also allows you to specify any number of specific filter rules for files with the
 
 `Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames` 
