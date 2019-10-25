@@ -180,15 +180,17 @@ actors:
 ```
 
 ### Turning Off Fabrication Of An Actor
-* Just don't include the Actor entry in the Fabrication File for the `<Object>` to begin with.
-* Remove the Actor entry from the Fabrication File for the `<Object>`.
-* Comment the Actor entry from the Fabrication File for the `<Object>`.
+* Just don't include the Actor entry in the Fabrication File to begin with.
+* Remove the Actor entry from the Fabrication File.
+* Comment the Actor entry from the Fabrication File.
 
-### Adding A New Template
-* Add the appropriate PHP and DI service definition YAML files in the position that you want them under a directory like Buphalo's `template-tree/v1` directory.
-
-### Updating An Existing Template
-* Update the PHP and/or DI service definition YAML files under `src/Template/Actor`.
+### Adding A New Or Updating An Existing Template
+* Copy Buphalo's `template-tree` directory to your software product's root directory.
+* Add or change the appropriate PHP and DI service definition YAML files in the position that you want them under your `template-tree/v1` directory.
+* Be sure to update your environmental varaible to the following
+```bash
+Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=/PATH/TO/SOFTWARE_PRODUCT/ROOT/template-tree/v1 \
+```
 
 ## Definitions
 
