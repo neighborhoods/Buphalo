@@ -44,7 +44,11 @@ Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTree
 php vendor/bin/v1/buphalo
 ```
 
-Buphalo also allows you to specify any number of specific filter rules for files with the `Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames` environment variable. As an env var this is a CSV. It is cast to an array that is injected into `\Symfony\Component\Finder\Finder::name`. Any rule that works for `\Symfony\Component\Finder\Finder::name` will work here.
+Buphalo also allows you to specify any number of specific filter rules for files with the
+
+`Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames` 
+
+environment variable. As an env var this is "typed" a CSV. It is cast to an array that is injected into `\Symfony\Component\Finder\Finder::name`. Any rule that works for `\Symfony\Component\Finder\Finder::name` will work here.
 ```bash
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath=$PWD/vendor/neighborhoods/buphalo/src/v1 \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__FabricationDirectoryPath=$PWD/vendor/neighborhoods/buphalo/fab/v1 \
