@@ -48,7 +48,7 @@ Buphalo also allows you to specify any number of specific filter rules for files
 
 `Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames` 
 
-environment variable. As an env var this is "typed" a CSV. It is cast to an array that is injected into `\Symfony\Component\Finder\Finder::name`. Any rule that works for `\Symfony\Component\Finder\Finder::name` will work here.
+environment variable. As an env var this is "typed" as a CSV. It is then cast to an array by the Symfony DI componnent and is eventually injected into `\Symfony\Component\Finder\Finder::name`. Any rule that works for `\Symfony\Component\Finder\Finder::name` will work here.
 ```bash
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath=$PWD/vendor/neighborhoods/buphalo/src/v1 \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__FabricationDirectoryPath=$PWD/vendor/neighborhoods/buphalo/fab/v1 \
