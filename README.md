@@ -67,77 +67,77 @@ It is very easy to trace through the code where an environment variable is used.
 
 # I WANT ALL THE ACTORS!
 actors:
-  <ActorName>.php:
+  <PrimaryActorName>.php:
     template: Actor.php
-  <ActorName>.service.yml:
+  <PrimaryActorName>.service.yml:
     template: Actor.service.yml
-  <ActorName>Interface.php:
+  <PrimaryActorName>Interface.php:
     template: ActorInterface.php
-  <ActorName>/AwareTrait.php:
+  <PrimaryActorName>/AwareTrait.php:
     template: Actor/AwareTrait.php
-  <ActorName>/Factory.php:
+  <PrimaryActorName>/Factory.php:
     template: Actor/Factory.php
-  <ActorName>/Factory.service.yml:
+  <PrimaryActorName>/Factory.service.yml:
     template: Actor/Factory.service.yml
-  <ActorName>/FactoryInterface.php:
+  <PrimaryActorName>/FactoryInterface.php:
     template: Actor/FactoryInterface.php
-  <ActorName>/Factory/AwareTrait.php:
+  <PrimaryActorName>/Factory/AwareTrait.php:
     template: Actor/Factory/AwareTrait.php
-  <ActorName>/Builder.php:
+  <PrimaryActorName>/Builder.php:
     template: Actor/Builder.php
-  <ActorName>/Builder.service.yml:
+  <PrimaryActorName>/Builder.service.yml:
     template: Actor/Builder.service.yml
-  <ActorName>/BuilderInterface.php:
+  <PrimaryActorName>/BuilderInterface.php:
     template: Actor/BuilderInterface.php
-  <ActorName>/Builder/AwareTrait.php:
+  <PrimaryActorName>/Builder/AwareTrait.php:
     template: Actor/Builder/AwareTrait.php
-  <ActorName>/Builder/Factory.php:
+  <PrimaryActorName>/Builder/Factory.php:
     template: Actor/Builder/Factory.php
-  <ActorName>/Builder/Factory.service.yml:
+  <PrimaryActorName>/Builder/Factory.service.yml:
     template: Actor/Builder/Factory.service.yml
-  <ActorName>/Builder/FactoryInterface.php:
+  <PrimaryActorName>/Builder/FactoryInterface.php:
     template: Actor/Builder/FactoryInterface.php
-  <ActorName>/Builder/Factory/AwareTrait.php:
+  <PrimaryActorName>/Builder/Factory/AwareTrait.php:
     template: Actor/Builder/Factory/AwareTrait.php
-  <ActorName>/Repository.php:
+  <PrimaryActorName>/Repository.php:
     template: Actor/Repository.php
-  <ActorName>/Repository.service.yml:
+  <PrimaryActorName>/Repository.service.yml:
     template: Actor/Repository.service.yml
-  <ActorName>/RepositoryInterface.php:
+  <PrimaryActorName>/RepositoryInterface.php:
     template: Actor/RepositoryInterface.php
-  <ActorName>/Repository/AwareTrait.php:
+  <PrimaryActorName>/Repository/AwareTrait.php:
     template: Actor/Repository/AwareTrait.php
-  <ActorName>/Map.php:
+  <PrimaryActorName>/Map.php:
     template: Actor/Map.php
-  <ActorName>/Map.service.yml:
+  <PrimaryActorName>/Map.service.yml:
     template: Actor/Map.service.yml
-  <ActorName>/MapInterface.php:
+  <PrimaryActorName>/MapInterface.php:
     template: Actor/MapInterface.php
-  <ActorName>/Map/AwareTrait.php:
+  <PrimaryActorName>/Map/AwareTrait.php:
     template: Actor/Map/AwareTrait.php
-  <ActorName>/Map/Factory.php:
+  <PrimaryActorName>/Map/Factory.php:
     template: Actor/Map/Factory.php
-  <ActorName>/Map/Factory.service.yml:
+  <PrimaryActorName>/Map/Factory.service.yml:
     template: Actor/Map/Factory.service.yml
-  <ActorName>/Map/FactoryInterface.php:
+  <PrimaryActorName>/Map/FactoryInterface.php:
     template: Actor/Map/FactoryInterface.php
-  <ActorName>/Map/Factory/AwareTrait.php:
+  <PrimaryActorName>/Map/Factory/AwareTrait.php:
     template: Actor/Map/Factory/AwareTrait.php
-  <ActorName>/Map/Builder.php:
+  <PrimaryActorName>/Map/Builder.php:
     template: Actor/Map/Builder.php
-  <ActorName>/Map/Builder.service.yml:
+  <PrimaryActorName>/Map/Builder.service.yml:
     template: Actor/Map/Builder.service.yml
-  <ActorName>/Map/BuilderInterface.php:
+  <PrimaryActorName>/Map/BuilderInterface.php:
     template: Actor/Map/BuilderInterface.php
-  <ActorName>/Map/Builder/AwareTrait.php:
+  <PrimaryActorName>/Map/Builder/AwareTrait.php:
     template: Actor/Map/Builder/AwareTrait.php
-  <ActorName>/Map/Builder/Factory.php:
+  <PrimaryActorName>/Map/Builder/Factory.php:
     template: Actor/Map/Builder/Factory.php
-  <ActorName>/Map/Builder/Factory.service.yml:
+  <PrimaryActorName>/Map/Builder/Factory.service.yml:
     template: Actor/Map/Builder/Factory.service.yml
-  <ActorName>/Map/Builder/FactoryInterface.php:
+  <PrimaryActorName>/Map/Builder/FactoryInterface.php:
     template: Actor/Map/Builder/FactoryInterface.php
-  <ActorName>/Map/Builder/Factory/AwareTrait.php:
+  <PrimaryActorName>/Map/Builder/Factory/AwareTrait.php:
     template: Actor/Map/Builder/Factory/AwareTrait.php
 ```
 ```yml
@@ -145,37 +145,37 @@ actors:
 
 # I only want SOME actors!
 actors:
-  <ActorName>.php:
+  <PrimaryActorName>.php:
     template: Actor.php
-  <ActorName>.service.yml:
+  <PrimaryActorName>.service.yml:
     template: Actor.service.yml
-  <ActorName>Interface.php:
+  <PrimaryActorName>Interface.php:
     template: ActorInterface.php
-  <ActorName>/AwareTrait.php:
+  <PrimaryActorName>/AwareTrait.php:
     template: Actor/AwareTrait.php
-  <ActorName>/Factory.php:
+  <PrimaryActorName>/Factory.php:
     template: Actor/Factory.php
-  <ActorName>/Factory.service.yml:
+  <PrimaryActorName>/Factory.service.yml:
     template: Actor/Factory.service.yml
-  <ActorName>/FactoryInterface.php:
+  <PrimaryActorName>/FactoryInterface.php:
     template: Actor/FactoryInterface.php
-  <ActorName>/Factory/AwareTrait.php:
+  <PrimaryActorName>/Factory/AwareTrait.php:
     template: Actor/Factory/AwareTrait.php
-  <ActorName>/Builder.php:
+  <PrimaryActorName>/Builder.php:
     template: Actor/Builder.php
-  <ActorName>/Builder.service.yml:
+  <PrimaryActorName>/Builder.service.yml:
     template: Actor/Builder.service.yml
-  <ActorName>/BuilderInterface.php:
+  <PrimaryActorName>/BuilderInterface.php:
     template: Actor/BuilderInterface.php
-  <ActorName>/Builder/AwareTrait.php:
+  <PrimaryActorName>/Builder/AwareTrait.php:
     template: Actor/Builder/AwareTrait.php
-  <ActorName>/Builder/Factory.php:
+  <PrimaryActorName>/Builder/Factory.php:
     template: Actor/Builder/Factory.php
-  <ActorName>/Builder/Factory.service.yml:
+  <PrimaryActorName>/Builder/Factory.service.yml:
     template: Actor/Builder/Factory.service.yml
-  <ActorName>/Builder/FactoryInterface.php:
+  <PrimaryActorName>/Builder/FactoryInterface.php:
     template: Actor/Builder/FactoryInterface.php
-  <ActorName>/Builder/Factory/AwareTrait.php:
+  <PrimaryActorName>/Builder/Factory/AwareTrait.php:
     template: Actor/Builder/Factory/AwareTrait.php
 ```
 
@@ -197,7 +197,7 @@ Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTree
 ### Fabrication File
 * A Fabrication File contains the instructions for fabricating a [Fablet](#fablet).
 * The [Fablet](#fablet) primary Actor is identified by the Fabrication File file name, and the location of the `Fabrication File` within the directory structure that it resides.
-* The `<ActorName>` token is an alias to the Fabrication File name without the extension and is the name of the primary actor.
+* The `<PrimaryActorName>` token is an alias to the Fabrication File name without the extension and is the name of the primary actor.
 * In the [Example Fabrication Files](#example-fabrication-files) section one [Fablet](#fablet) is `Toe` and the other [Fablet](#fablet) is `Toe\Nail`.
 * A [Fablet](#fablet) Actor can be anything.
 
@@ -271,7 +271,7 @@ interface AnnotationProcessorInterface
 # src/V2/Toe.fabrication.yml
 actors:
 # ...
-  <ActorName>/Builder.php:
+  <PrimaryActorName>/Builder.php:
     template: Actor/Builder.php
     annotation_processors:
       Neighborhoods\Buphalo\V1\Template\Actor\Builder.build1:
@@ -281,7 +281,7 @@ actors:
         static_context_record:
           head: 'shoulders'
           knees: 'toes'
-  <ActorName>/Builder.service.yml:
+  <PrimaryActorName>/Builder.service.yml:
     template: Actor/Builder.service.yml
 # ...
 ```
