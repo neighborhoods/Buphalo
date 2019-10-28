@@ -1,4 +1,5 @@
 parameters:
+  env(Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames): '*.%Neighborhoods_Buphalo_V1_FabricationFileInterface__FILE_EXTENSION_FABRICATION%'
   Neighborhoods\Buphalo\V1\FabricationFile\Map\BuilderInterface.FinderFileNames: '%env(csv:Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames)%'
 services:
   Neighborhoods\Buphalo\V1\FabricationFile\Map\BuilderInterface:

@@ -1,3 +1,5 @@
+parameters:
+  Neighborhoods_Buphalo_V1_FabricationFileInterface__FILE_EXTENSION_FABRICATION: !php/const \Neighborhoods\Buphalo\V1\FabricationFileInterface::FILE_EXTENSION_FABRICATION
 services:
   Neighborhoods\Buphalo\V1\FabricationFileInterface:
     class: Neighborhoods\Buphalo\V1\FabricationFile

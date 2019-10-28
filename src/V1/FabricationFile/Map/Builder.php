@@ -26,12 +26,7 @@ class Builder implements BuilderInterface
         $sourceDirectoryPath = $this->getTargetApplicationRepository()->get()->getSourceDirectoryPath();
         $finder = $this->getSymfonyComponentFinderFinder();
         $finder->in($sourceDirectoryPath);
-
-        if ($this->hasFinderFileNames()) {
-            $finder->files()->name($this->getFinderFileNames());
-        } else {
-            $finder->name(sprintf('*.%s', FabricationFileInterface::FILE_EXTENSION_FABRICATION));
-        }
+        $finder->files()->name($this->getFinderFileNames());
 
         /** @var $fileInfo SplFileInfo */
         foreach ($finder as $directoryPath => $fileInfo) {
@@ -42,11 +37,6 @@ class Builder implements BuilderInterface
         }
 
         return $map;
-    }
-
-    protected function hasFinderFileNames(): bool
-    {
-        return ($this->FinderFileNames !== null);
     }
 
     protected function getFinderFileNames(): array
