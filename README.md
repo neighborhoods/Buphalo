@@ -189,7 +189,7 @@ actors:
 ### Adding A New Or Updating An Existing Template
 * Copy Buphalo's `template-tree` directory to your software product's root directory if you have not done so already.
 * Add or change the appropriate PHP and DI service definition YAML files in the position that you want them under your `template-tree/v1` directory.
-* Be sure to update your environmental varaible to the following
+* Be sure to update your environmental varaible to the following (or the equivalent if you used a different path for the copied directory)
 ```bash
 Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=/PATH/TO/SOFTWARE_PRODUCT/ROOT/template-tree/v1 \
 ```
