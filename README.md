@@ -183,7 +183,7 @@ actors:
 * Just don't include the Actor entry in the Fabrication File to begin with.
 * Remove the Actor entry from the Fabrication File.
 * Comment the Actor entry from the Fabrication File.
-* Include the equivalent file in path referenced by `Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath`
+* Include the equivalent file in the path referenced by `Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath`
   * Buphalo will not fabricate files that already exist in the source directory path, since the idea is that they will be preferred over the fabricated files.
 
 ### Adding A New Or Updating An Existing Template
