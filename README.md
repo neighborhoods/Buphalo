@@ -187,7 +187,7 @@ actors:
   * Buphalo will not fabricate files that already exist in the source directory path, since the idea is that they will be preferred over the fabricated files.
 
 ### Adding A New Or Updating An Existing Template
-* Copy Buphalo's `template-tree` directory to your software product's root directory.
+* Copy Buphalo's `template-tree` directory to your software product's root directory if you have not done so already.
 * Add or change the appropriate PHP and DI service definition YAML files in the position that you want them under your `template-tree/v1` directory.
 * Be sure to update your environmental varaible to the following
 ```bash
