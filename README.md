@@ -251,7 +251,7 @@ interface AnnotationProcessorInterface
 ### Example Annotation Processors
 * Annotation Processor Tag: `@neighborhoods-buphalo:annotation-processor`
 * Annotation Processor Keys:
-  * `Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Actor\Builder.build1`
+  * `Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build1`
   * `Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Actor\Builder.build2`
 * The keys above are named according to a collision avoidance convention. However, there is no requirement on the key name except for uniqueness.
 ```php
