@@ -13,7 +13,7 @@ interface BuilderInterface
     public const GENERATE = 'generate';
     public const TEMPLATE = 'template';
     public const ANNOTATION_PROCESSORS = 'annotation_processors';
-    public const ACTOR_NAME = '<ActorName>';
+    public const ACTOR_NAME = '<PrimaryActorName>';
 
     public function build(): ActorInterface;
 
