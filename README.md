@@ -24,6 +24,7 @@ Employ an easy to change code generation tool that generates well designed patte
 
 ### Running Buphalo
 #### Environmental Variable API
+It is very easy to trace through the code where an environment variable is used. Buphalo uses the environment feature of the [DI component](#references) to inject runtime options into objects in the container. 
 
 Buphalo leverages an environment variable API for runtime options. The following shell command to run Buphalo illustrates the currently supported API.
 ```bash
@@ -48,7 +49,7 @@ Buphalo also allows you to specify any number of specific filter rules for files
 
 `Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames` 
 
-environment variable. As an env var this is "typed" as a CSV. It is then cast to an array by the Symfony DI componnent and is eventually injected into `\Symfony\Component\Finder\Finder::name`. Any rule that works for `\Symfony\Component\Finder\Finder::name` will work here.
+environment variable. As an env var this is "typed" as a CSV. It is then cast to an array by the [DI componnent](#references) and is eventually injected into the [Finder Component's](#references) `\Symfony\Component\Finder\Finder::name`. Any rule that works for `\Symfony\Component\Finder\Finder::name` will work here.
 ```bash
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath=$PWD/vendor/neighborhoods/buphalo/src/v1 \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__FabricationDirectoryPath=$PWD/vendor/neighborhoods/buphalo/fab/v1 \
@@ -58,8 +59,6 @@ Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames=C
 php vendor/bin/v1/buphalo
 ```
 
-It is very easy to trace through the code where an environment variable is used. Buphalo uses Symfony's environment feature of the DI component to inject runtime options into objects in the container. 
-
 ### Example Fabrication Files
 
 ```yml
@@ -68,77 +67,77 @@ It is very easy to trace through the code where an environment variable is used.
 # I WANT ALL THE ACTORS!
 actors:
   <PrimaryActorName>.php:
-    template: Actor.php
+    template: PrimaryActorName.php
   <PrimaryActorName>.service.yml:
-    template: Actor.service.yml
+    template: PrimaryActorName.service.yml
   <PrimaryActorName>Interface.php:
-    template: ActorInterface.php
+    template: PrimaryActorNameInterface.php
   <PrimaryActorName>/AwareTrait.php:
-    template: Actor/AwareTrait.php
+    template: PrimaryActorName/AwareTrait.php
   <PrimaryActorName>/Factory.php:
-    template: Actor/Factory.php
+    template: PrimaryActorName/Factory.php
   <PrimaryActorName>/Factory.service.yml:
-    template: Actor/Factory.service.yml
+    template: PrimaryActorName/Factory.service.yml
   <PrimaryActorName>/FactoryInterface.php:
-    template: Actor/FactoryInterface.php
+    template: PrimaryActorName/FactoryInterface.php
   <PrimaryActorName>/Factory/AwareTrait.php:
-    template: Actor/Factory/AwareTrait.php
+    template: PrimaryActorName/Factory/AwareTrait.php
   <PrimaryActorName>/Builder.php:
-    template: Actor/Builder.php
+    template: PrimaryActorName/Builder.php
   <PrimaryActorName>/Builder.service.yml:
-    template: Actor/Builder.service.yml
+    template: PrimaryActorName/Builder.service.yml
   <PrimaryActorName>/BuilderInterface.php:
-    template: Actor/BuilderInterface.php
+    template: PrimaryActorName/BuilderInterface.php
   <PrimaryActorName>/Builder/AwareTrait.php:
-    template: Actor/Builder/AwareTrait.php
+    template: PrimaryActorName/Builder/AwareTrait.php
   <PrimaryActorName>/Builder/Factory.php:
-    template: Actor/Builder/Factory.php
+    template: PrimaryActorName/Builder/Factory.php
   <PrimaryActorName>/Builder/Factory.service.yml:
-    template: Actor/Builder/Factory.service.yml
+    template: PrimaryActorName/Builder/Factory.service.yml
   <PrimaryActorName>/Builder/FactoryInterface.php:
-    template: Actor/Builder/FactoryInterface.php
+    template: PrimaryActorName/Builder/FactoryInterface.php
   <PrimaryActorName>/Builder/Factory/AwareTrait.php:
-    template: Actor/Builder/Factory/AwareTrait.php
+    template: PrimaryActorName/Builder/Factory/AwareTrait.php
   <PrimaryActorName>/Repository.php:
-    template: Actor/Repository.php
+    template: PrimaryActorName/Repository.php
   <PrimaryActorName>/Repository.service.yml:
-    template: Actor/Repository.service.yml
+    template: PrimaryActorName/Repository.service.yml
   <PrimaryActorName>/RepositoryInterface.php:
-    template: Actor/RepositoryInterface.php
+    template: PrimaryActorName/RepositoryInterface.php
   <PrimaryActorName>/Repository/AwareTrait.php:
-    template: Actor/Repository/AwareTrait.php
+    template: PrimaryActorName/Repository/AwareTrait.php
   <PrimaryActorName>/Map.php:
-    template: Actor/Map.php
+    template: PrimaryActorName/Map.php
   <PrimaryActorName>/Map.service.yml:
-    template: Actor/Map.service.yml
+    template: PrimaryActorName/Map.service.yml
   <PrimaryActorName>/MapInterface.php:
-    template: Actor/MapInterface.php
+    template: PrimaryActorName/MapInterface.php
   <PrimaryActorName>/Map/AwareTrait.php:
-    template: Actor/Map/AwareTrait.php
+    template: PrimaryActorName/Map/AwareTrait.php
   <PrimaryActorName>/Map/Factory.php:
-    template: Actor/Map/Factory.php
+    template: PrimaryActorName/Map/Factory.php
   <PrimaryActorName>/Map/Factory.service.yml:
-    template: Actor/Map/Factory.service.yml
+    template: PrimaryActorName/Map/Factory.service.yml
   <PrimaryActorName>/Map/FactoryInterface.php:
-    template: Actor/Map/FactoryInterface.php
+    template: PrimaryActorName/Map/FactoryInterface.php
   <PrimaryActorName>/Map/Factory/AwareTrait.php:
-    template: Actor/Map/Factory/AwareTrait.php
+    template: PrimaryActorName/Map/Factory/AwareTrait.php
   <PrimaryActorName>/Map/Builder.php:
-    template: Actor/Map/Builder.php
+    template: PrimaryActorName/Map/Builder.php
   <PrimaryActorName>/Map/Builder.service.yml:
-    template: Actor/Map/Builder.service.yml
+    template: PrimaryActorName/Map/Builder.service.yml
   <PrimaryActorName>/Map/BuilderInterface.php:
-    template: Actor/Map/BuilderInterface.php
+    template: PrimaryActorName/Map/BuilderInterface.php
   <PrimaryActorName>/Map/Builder/AwareTrait.php:
-    template: Actor/Map/Builder/AwareTrait.php
+    template: PrimaryActorName/Map/Builder/AwareTrait.php
   <PrimaryActorName>/Map/Builder/Factory.php:
-    template: Actor/Map/Builder/Factory.php
+    template: PrimaryActorName/Map/Builder/Factory.php
   <PrimaryActorName>/Map/Builder/Factory.service.yml:
-    template: Actor/Map/Builder/Factory.service.yml
+    template: PrimaryActorName/Map/Builder/Factory.service.yml
   <PrimaryActorName>/Map/Builder/FactoryInterface.php:
-    template: Actor/Map/Builder/FactoryInterface.php
+    template: PrimaryActorName/Map/Builder/FactoryInterface.php
   <PrimaryActorName>/Map/Builder/Factory/AwareTrait.php:
-    template: Actor/Map/Builder/Factory/AwareTrait.php
+    template: PrimaryActorName/Map/Builder/Factory/AwareTrait.php
 ```
 ```yml
 # This lives in /PATH/TO/SOFTWARE_PRODUCT_ROOT/src/V2/Toe/Nail.buphalo.v1.fabrication.yml
@@ -146,37 +145,37 @@ actors:
 # I only want SOME actors!
 actors:
   <PrimaryActorName>.php:
-    template: Actor.php
+    template: PrimaryActorName.php
   <PrimaryActorName>.service.yml:
-    template: Actor.service.yml
+    template: PrimaryActorName.service.yml
   <PrimaryActorName>Interface.php:
-    template: ActorInterface.php
+    template: PrimaryActorNameInterface.php
   <PrimaryActorName>/AwareTrait.php:
-    template: Actor/AwareTrait.php
+    template: PrimaryActorName/AwareTrait.php
   <PrimaryActorName>/Factory.php:
-    template: Actor/Factory.php
+    template: PrimaryActorName/Factory.php
   <PrimaryActorName>/Factory.service.yml:
-    template: Actor/Factory.service.yml
+    template: PrimaryActorName/Factory.service.yml
   <PrimaryActorName>/FactoryInterface.php:
-    template: Actor/FactoryInterface.php
+    template: PrimaryActorName/FactoryInterface.php
   <PrimaryActorName>/Factory/AwareTrait.php:
-    template: Actor/Factory/AwareTrait.php
+    template: PrimaryActorName/Factory/AwareTrait.php
   <PrimaryActorName>/Builder.php:
-    template: Actor/Builder.php
+    template: PrimaryActorName/Builder.php
   <PrimaryActorName>/Builder.service.yml:
-    template: Actor/Builder.service.yml
+    template: PrimaryActorName/Builder.service.yml
   <PrimaryActorName>/BuilderInterface.php:
-    template: Actor/BuilderInterface.php
+    template: PrimaryActorName/BuilderInterface.php
   <PrimaryActorName>/Builder/AwareTrait.php:
-    template: Actor/Builder/AwareTrait.php
+    template: PrimaryActorName/Builder/AwareTrait.php
   <PrimaryActorName>/Builder/Factory.php:
-    template: Actor/Builder/Factory.php
+    template: PrimaryActorName/Builder/Factory.php
   <PrimaryActorName>/Builder/Factory.service.yml:
-    template: Actor/Builder/Factory.service.yml
+    template: PrimaryActorName/Builder/Factory.service.yml
   <PrimaryActorName>/Builder/FactoryInterface.php:
-    template: Actor/Builder/FactoryInterface.php
+    template: PrimaryActorName/Builder/FactoryInterface.php
   <PrimaryActorName>/Builder/Factory/AwareTrait.php:
-    template: Actor/Builder/Factory/AwareTrait.php
+    template: PrimaryActorName/Builder/Factory/AwareTrait.php
 ```
 
 ### Turning Off Fabrication Of An Actor
@@ -188,7 +187,7 @@ actors:
 
 ### Adding A New Or Updating An Existing Template
 * Copy Buphalo's `template-tree` directory to your software product's root directory if you have not done so already.
-* Add or change the appropriate PHP and DI service definition YAML files in the position that you want them under your `template-tree/v1` directory.
+* Add or change the appropriate PHP and dependency injection service definition YAML files in the position that you want them under your `template-tree/v1` directory.
 * Be sure to update your environmental varaible to the following (or the equivalent if you used a different path for the copied directory)
 ```bash
 Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=/PATH/TO/SOFTWARE_PRODUCT/ROOT/template-tree/v1 \
@@ -230,12 +229,12 @@ Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTree
 * Providing static context to the Annotation Processor is optional.
 * If the `static_context_record` key is provided, it MUST resolve to a PHP `array`.
 * Default annotation replacement is accomplished by using the contents of the annotation.
-* Annotation Processors MUST implement `\Neighborhoods\Buphalo\AnnotationProcessorInterface`.
+* Annotation Processors MUST implement `\Neighborhoods\Buphalo\V1\AnnotationProcessorInterface`.
 * Annotation Processors are not shared services.
 ```php
-namespace Neighborhoods\Buphalo;
+namespace Neighborhoods\Buphalo\V1;
 
-use Neighborhoods\Buphalo\AnnotationProcessor\ContextInterface;
+use Neighborhoods\Buphalo\V1\AnnotationProcessor\ContextInterface;
 
 interface AnnotationProcessorInterface
 {
@@ -246,27 +245,27 @@ interface AnnotationProcessorInterface
     public function getReplacement(): string;
 }
 ```
-* Currently, annotation processors have access to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Neighborhoods\Buphalo\AnnotationProcessor\ContextInterface` object.
+* Currently, annotation processors have access to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Neighborhoods\Buphalo\V1\AnnotationProcessor\ContextInterface` object.
 
 ### Example Annotation Processors
 * Annotation Processor Tag: `@neighborhoods-buphalo:annotation-processor`
 * Annotation Processor Keys:
-  * `Neighborhoods\Buphalo\Template\Actor\Builder.build1`
-  * `Neighborhoods\Buphalo\Template\Actor\Builder.build2`
+  * `Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Actor\Builder.build1`
+  * `Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Actor\Builder.build2`
 * The keys above are named according to a collision avoidance convention. However, there is no requirement on the key name except for uniqueness.
 ```php
-// template-tree/V1/Actor/Builder.php
-    public function build(): ActorInterface
+// template-tree/V1/PrimaryActorName/Builder.php
+    public function build(): PrimaryActorNameInterface
     {
-        $Actor = $this->getActorFactory()->create();
-        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\Buphalo\Actor\Builder.build1
+        $PrimaryActorName = $this->getPrimaryActorNameFactory()->create();
+        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build1
          */
-        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\Actor\Builder.build2
+        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build2
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
          */
 
-        return $Actor;
+        return $PrimaryActorName;
     }
 ```
 ```yml
@@ -274,17 +273,17 @@ interface AnnotationProcessorInterface
 actors:
 # ...
   <PrimaryActorName>/Builder.php:
-    template: Actor/Builder.php
+    template: PrimaryActorName/Builder.php
     annotation_processors:
-      Neighborhoods\Buphalo\V1\Template\Actor\Builder.build1:
+      Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build1:
         processor_fqcn: \Neighborhoods\Buphalo\V1\AnnotationProcessor
-      Neighborhoods\Buphalo\V1\Template\Actor\Builder.build2:
+      Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build2:
         processor_fqcn: \Neighborhoods\Buphalo\V1\AnnotationProcessor
         static_context_record:
           head: 'shoulders'
           knees: 'toes'
   <PrimaryActorName>/Builder.service.yml:
-    template: Actor/Builder.service.yml
+    template: PrimaryActorName/Builder.service.yml
 # ...
 ```
 * If no annotation processors are defined then `\Neighborhoods\Buphalo\V1\AnnotationProcessor` is used and the above compiles as 
@@ -302,8 +301,6 @@ actors:
     }
 ```
 
-### Setting Up Git When Developing Buphalo As A Composer Dependency
-* From your product root, and with Buphalo installed as a composer dependency
-```bash
-cd vendor/neighborhoods/buphalo && rm -rf .git && git clone git@github.com:neighborhoods/Buphalo.git && cp -R Buphalo/.git . && rm -rf Buphalo/ && cd ../../../
-```
+## References
+* [Symfony Finder Component](https://symfony.com/doc/current/components/finder.html)
+* [Symfony Dependency Injection Component](https://symfony.com/doc/current/components/dependency_injection.html)
