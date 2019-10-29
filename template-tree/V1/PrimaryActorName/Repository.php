@@ -12,7 +12,7 @@ class Repository implements RepositoryInterface
 
     public function add(PrimaryActorNameInterface $PrimaryActorName): RepositoryInterface
     {
-        /** @neighborhoods-buphalo:annotation-processor \Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Repository.add1
+        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Repository.add1
         // TODO: Implement add() method.
         throw new \LogicException('Unimplemented add method.');
         */
@@ -23,7 +23,7 @@ class Repository implements RepositoryInterface
     public function getByIdentity(string $identity): PrimaryActorNameInterface
     {
         $PrimaryActorName = $this->getPrimaryActorNameBuilderFactory()->create()->build();
-        /** @neighborhoods-buphalo:annotation-processor \Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Repository.getByIdentity2
+        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Repository.getByIdentity2
         // TODO: Implement getByIdentity() method.
         throw new \LogicException('Unimplemented get method.');
         */

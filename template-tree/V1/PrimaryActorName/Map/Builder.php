@@ -15,7 +15,7 @@ class Builder implements BuilderInterface
     public function build(): MapInterface
     {
         $map = $this->getPrimaryActorNameMapFactory()->create();
-        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\Buphalo\PrimaryActorName\Map\Builder.build1
+        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Map\Builder.build1
         // @TODO - build the object.
         throw new \LogicException('Unimplemented build method.');
         */

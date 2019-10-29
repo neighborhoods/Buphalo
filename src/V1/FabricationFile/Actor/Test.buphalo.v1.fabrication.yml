@@ -24,9 +24,9 @@ actors:
   <PrimaryActorName>/Builder.php:
     template: PrimaryActorName/Builder.php
     annotation_processors:
-      Neighborhoods\Buphalo\V1\Template\Actor\Builder.build1:
+      Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build1:
         processor_fqcn: \Neighborhoods\Buphalo\V1\AnnotationProcessor
-      Neighborhoods\Buphalo\V1\Template\Actor\Builder.build2:
+      Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build2:
         processor_fqcn: \Neighborhoods\Buphalo\V1\AnnotationProcessor
         static_context_record:
           key_0: 'string 0'
