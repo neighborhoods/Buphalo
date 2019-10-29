@@ -277,7 +277,7 @@ actors:
     template: PrimaryActorName/Builder.php
     annotation_processors:
       Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build1:
-        processor_fqcn: \Neighborhoods\Buphalo\V1\AnnotationProcessor
+        processor_fqcn: \VENDOR\PRODUCT\AnAnnotationProcessor
       Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build2:
         processor_fqcn: \Neighborhoods\Buphalo\V1\AnnotationProcessor
         static_context_record:
