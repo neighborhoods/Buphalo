@@ -34,7 +34,7 @@ Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTree
 php bin/v1/buphalo
 ```
 
-For example, in order to Buphalo Buphalo (when Buphalo is installed as a composer dependency) execute the following shell command from your product's root directory.
+For example, in order to Buphalo Buphalo (assuming Buphalo is installed as a composer dependency) execute the following shell command from your product's root directory.
 ```bash
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath=$PWD/vendor/neighborhoods/buphalo/src/v1 \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__FabricationDirectoryPath=$PWD/vendor/neighborhoods/buphalo/fab/v1 \
