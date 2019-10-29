@@ -10,6 +10,7 @@ Anything good we stole from someone else. Anything bad is ours.
 * [Getting Started](#getting-started) 
 * [Definitions](#definitions)
 * [Features](#features)
+* [References](#references)
 
 ## Summary
 This document attempts to describe how to use Buphalo's public APIs. In addition, it tries to offer some insight into the problem that Buphalo attempts to solve and the motivation for it to solve that problem. If it is not described in this document, it is not considered to be a public API and is subject to change in any arbitrary release, i.e. you should not depend on it.
