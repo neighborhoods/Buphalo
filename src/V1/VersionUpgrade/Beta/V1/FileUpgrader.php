@@ -40,7 +40,7 @@ class FileUpgrader implements FileUpgraderInterface
         foreach ($oldData['supporting_actors'] as $oldActorPath => $oldActorData) {
             $newActorPath = '<PrimaryActorName>' . DIRECTORY_SEPARATOR . $oldActorPath;
             $newData['actors'][$newActorPath] = [
-                    'template' => 'Actor' . DIRECTORY_SEPARATOR . $oldActorPath
+                    'template' => 'PrimaryActorName' . DIRECTORY_SEPARATOR . $oldActorPath
                 ] + ($oldActorData ?? []);
         }
 
