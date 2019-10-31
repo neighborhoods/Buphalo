@@ -23,7 +23,10 @@ class DirectoryUpgrader implements DirectoryUpgraderInterface
         $this->setNumFilesProcessed(0);
 
         $finder = new Finder();
-        $finder->name('*' . FileUpgraderInterface::FILE_EXTENSION_OLD)->in($this->getDirectory());
+        $finder
+            ->name('*.' . FileUpgraderInterface::FILE_EXTENSION_OLD)
+            ->notName('*.' . FileUpgraderInterface::FILE_EXTENSION_NEW)
+            ->in($this->getDirectory());
 
         /** @var SplFileInfo $file */
         foreach ($finder as $file) {
