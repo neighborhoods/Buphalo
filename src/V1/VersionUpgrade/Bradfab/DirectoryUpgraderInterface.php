@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Buphalo\V1\VersionUpgrade\Beta\V1;
+namespace Neighborhoods\Buphalo\V1\VersionUpgrade\Bradfab;
 
 use Psr\Log\LoggerAwareInterface;
 
