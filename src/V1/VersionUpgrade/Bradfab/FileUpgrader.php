@@ -38,6 +38,8 @@ class FileUpgrader implements FileUpgraderInterface
         $newData = ['actors' => []];
 
         foreach ($oldData['supporting_actors'] as $oldActorPath => $oldActorData) {
+            // Because bradfab allowed for either directory separator.
+            $oldActorPath = str_replace('\\', DIRECTORY_SEPARATOR, $oldActorPath);
             $newActorPath = '<PrimaryActorName>' . DIRECTORY_SEPARATOR . $oldActorPath;
             $newData['actors'][$newActorPath] = [
                     'template' => 'PrimaryActorName' . DIRECTORY_SEPARATOR . $oldActorPath

@@ -11,8 +11,13 @@ if (file_exists($autoloaderFilePath = dirname(__DIR__, 4) . '/autoload.php')) {
     throw new RuntimeException('Unable to find the Composer autoloader.');
 }
 
+use Neighborhoods\Buphalo\V1\ErrorHandler;
+use Neighborhoods\Buphalo\V1\ExceptionHandler;
 use Neighborhoods\Buphalo\V1\VersionUpgrade;
 use Neighborhoods\Buphalo\V1\Logger;
+
+set_exception_handler(new ExceptionHandler());
+set_error_handler(new ErrorHandler());
 
 $filesFound = (function(string $version, string $directory): int {
 

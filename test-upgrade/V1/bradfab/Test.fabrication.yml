@@ -32,7 +32,7 @@ supporting_actors:
   Map/Factory.service.yml:
   Map/FactoryInterface.php:
   Map/Factory/AwareTrait.php:
-  Map/Builder.php:
+  Map\Builder.php: null # Because Bradfab allowed this
   Map/Builder.service.yml:
   Map/BuilderInterface.php:
   Map/Builder/AwareTrait.php:
