@@ -12,10 +12,10 @@ This should allow you to upgrade specific files as desired in case there's an is
     As such, we recommend maintaining your own template directory where it'll be easier to include your own templates
     as you find the need for them.
  
-- Do a search/replace to change all occurences of `Bradfab` in your new template directory to `Buphalo`
-  - This is especially important for the `Neighborhoods\Bradfab` namespaces that are used as placeholders
+- Do a search/replace to change all occurences of `Neighborhoods\Bradfab` in your new template directory to
+  `Neighborhoods\BuphaloTemplateTree`
   
-- Run `vendor/bin/upgrade.php <directory>`
+- Run `vendor/bin/upgrade.php bradfab <directory>`
   - Where `<directory>` is the top level directory of all of your current `.fabrication.yml` files.
     (probably `src`.)
   - This script will create new `.buphalo.v1.fabrication.yml` files

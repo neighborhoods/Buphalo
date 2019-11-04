@@ -14,17 +14,21 @@ if (file_exists($autoloaderFilePath = dirname(__DIR__, 4) . '/autoload.php')) {
 use Neighborhoods\Buphalo\V1\VersionUpgrade;
 use Neighborhoods\Buphalo\V1\Logger;
 
-$filesFound = (function(string $directory): int {
+$filesFound = (function(string $version, string $directory): int {
 
-    // TODO: Accept Versions as Arguments?
-    $upgrader = new VersionUpgrade\Beta\V1\DirectoryUpgrader();
+    if (strtolower($version) == 'bradfab') {
+        $upgrader = new VersionUpgrade\Bradfab\DirectoryUpgrader();
+    } else {
+        throw new \InvalidArgumentException("Upgrading to V1 from version $version is not supported.");
+    }
+
     $upgrader->setLogger(new Logger\EchoLogger());
     $upgrader->setDirectory($directory);
     $upgrader->upgrade();
 
     return $upgrader->getNumFilesProcessed();
 
-})($argv[1]);
+})($argv[1], $argv[2]);
 
 exit;
 
