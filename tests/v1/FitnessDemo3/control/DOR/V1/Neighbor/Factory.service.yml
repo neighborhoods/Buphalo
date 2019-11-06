@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\BuphaloFitness\Demo3\DOR\V1\Neighbor\FactoryInterface:
+    class: Neighborhoods\BuphaloFitness\Demo3\DOR\V1\Neighbor\Factory
+    public: false
+    shared: true
+    calls:
+      - [setDORV1Neighbor, ['@Neighborhoods\BuphaloFitness\Demo3\DOR\V1\NeighborInterface']]
