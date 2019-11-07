@@ -33,6 +33,6 @@ require_once($PWD . '/../../../bin/v1/buphalo.php');
 // Diff the two directories
 exec("diff -r $PWD/control/ $PWD/fab/", $output, $return);
 
-if ($return) {
+if ($return > 0) {
     die(implode(PHP_EOL, $output) . PHP_EOL);
 }
