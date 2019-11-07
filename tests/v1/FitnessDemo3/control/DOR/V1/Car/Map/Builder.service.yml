@@ -1,0 +1,8 @@
+services:
+  Neighborhoods\BuphaloFitness\Demo3\DOR\V1\Car\Map\BuilderInterface:
+    class: Neighborhoods\BuphaloFitness\Demo3\DOR\V1\Car\Map\Builder
+    public: false
+    shared: false
+    calls:
+      - [setDORV1CarMapFactory, ['@Neighborhoods\BuphaloFitness\Demo3\DOR\V1\Car\Map\FactoryInterface']]
+      - [setDORV1CarBuilderFactory, ['@Neighborhoods\BuphaloFitness\Demo3\DOR\V1\Car\Builder\FactoryInterface']]
