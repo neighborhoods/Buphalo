@@ -1,0 +1,9 @@
+actors:
+  <PrimaryActorName>.php:
+    template: PrimaryActorName.php
+    annotation_processors:
+      TestSymfonyExpressionAnnotationProcessor:
+        processor_fqcn: \Neighborhoods\Buphalo\V1\AnnotationProcessors\SymfonyExpression
+        static_context_record:
+          expression: 'context.getFabricationFile().getFileName() ~ " " ~ context.getStaticContextRecord()["word"]'
+          word: 'Language'
