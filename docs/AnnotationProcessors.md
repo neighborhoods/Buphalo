@@ -16,7 +16,7 @@ Default Contents
 ```
 - `AnnotationProcessorKey`: Also used in the fabrication file to tie the annotation to the specific AP.
 - `Default Contents`: If no AnnotationProcessor is specified in the fabrication file, this is used instead
-- _N.B._ There MUST be a newline after the `AnnotationProcessorKey`
+- There MUST be a newline between the `AnnotationProcessorKey` and `Default Contents`
 
 #### Example Template
 ```php
