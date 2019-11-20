@@ -164,12 +164,18 @@ class Builder {
 }
 ```
 
+### General Purpose Annotation Processors
+For more exmaples of Annotation Processors and for processors you can use out-of-the-box,
+see [General Purpose Annotation Processors][GPAP]
+
 ### Known Issues
 - Each Annotation Processor can only be used once.
 - `getAnnotationProcessorContext` is required to be public
 
 ## References
-[PHP Annotations][Annotations]
-[RFC 2119: Keywords](https://tools.ietf.org/html/rfc2119)
+- [General Purpose Annotation Processors][GPAP]
+- [PHP Annotations][Annotations]
+- [RFC 2119: Keywords](https://tools.ietf.org/html/rfc2119)
 
 [Annotations]: https://php-annotations.readthedocs.io/en/latest/UsingAnnotations.html
+[GPAP]: GeneralPurposeAnnotationProcessors.md
