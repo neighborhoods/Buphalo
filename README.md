@@ -225,82 +225,9 @@ Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTree
 * In order to be efficient, Buphalo will only fabricate files that do not exist in `src` since anything in `src` will override what exists in `fab`.
 
 ### Annotation Processors
-* Annotation Processors allow user space to define dynamic template content before tokenization or compilation of the template.
-* Annotation Processors are optional.
-* Providing static context to the Annotation Processor is optional.
-* If the `static_context_record` key is provided, it MUST resolve to a PHP `array`.
-* Default annotation replacement is accomplished by using the contents of the annotation.
-* Annotation Processors MUST implement `\Neighborhoods\Buphalo\V1\AnnotationProcessorInterface`.
-* Annotation Processors are not shared services.
-```php
-namespace Neighborhoods\Buphalo\V1;
+Annotation Processors (APs) are optional configuration tools that allow user space to define dynamic template content.
 
-use Neighborhoods\Buphalo\V1\AnnotationProcessor\ContextInterface;
-
-interface AnnotationProcessorInterface
-{
-    public function setAnnotationProcessorContext(ContextInterface $Context);
-
-    public function getAnnotationProcessorContext(): ContextInterface;
-
-    public function getReplacement(): string;
-}
-```
-* Currently, annotation processors have access to the static context, the annotation contents, and the Fabrication File by accessing the injected `\Neighborhoods\Buphalo\V1\AnnotationProcessor\ContextInterface` object.
-
-### Example Annotation Processors
-* Annotation Processor Tag: `@neighborhoods-buphalo:annotation-processor`
-* Annotation Processor Keys:
-  * `Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build1`
-  * `Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build2`
-* The keys above are named according to a collision avoidance convention. However, there is no requirement on the key name except for uniqueness.
-```php
-// template-tree/V1/PrimaryActorName/Builder.php
-    public function build(): PrimaryActorNameInterface
-    {
-        $PrimaryActorName = $this->getPrimaryActorNameFactory()->create();
-        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build1
-         */
-        /** @neighborhoods-buphalo:annotation-processor Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build2
-        // @TODO - build the object.
-        throw new \LogicException('Unimplemented build method.');
-         */
-
-        return $PrimaryActorName;
-    }
-```
-```yml
-# src/V2/Toe.fabrication.yml
-actors:
-# ...
-  <PrimaryActorName>/Builder.php:
-    template: PrimaryActorName/Builder.php
-    annotation_processors:
-      Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build1:
-        processor_fqcn: \VENDOR\PRODUCT\AnAnnotationProcessor
-      Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder.build2:
-        processor_fqcn: \VENDOR\PRODUCT\AnotherAnnotationProcessor
-        static_context_record:
-          head: 'shoulders'
-          knees: 'toes'
-  <PrimaryActorName>/Builder.service.yml:
-    template: PrimaryActorName/Builder.service.yml
-# ...
-```
-* If no annotation processors are defined then `\Neighborhoods\Buphalo\V1\AnnotationProcessor` is used and the above compiles as 
-```php
-// src/V2/Toe/Builder.php
-    public function build(): ToeInterface
-    {
-        $Toe = $this->getToeFactory()->create();
-        
-        
-        // @TODO - build the object.
-        throw new \LogicException('Unimplemented build method.');
-
-        return $Toe;
-    }
-```
+See [AnnotationProcessors](docs/AnnotationProcessors.md) for more information.
 
 ## References
 * [Symfony Finder Component](https://symfony.com/doc/current/components/finder.html)
