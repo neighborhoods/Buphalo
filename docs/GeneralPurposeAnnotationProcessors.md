@@ -17,7 +17,8 @@ Each General Purpose Annotation Processor listed below has a number of similar q
 
 **Example:**
 ```php
-/** @neighborhoods-buphalo:annotation-processor annotation1 */
+/** @neighborhoods-buphalo:annotation-processor annotation1
+*/
 ```
 ```yaml
 annotation1:

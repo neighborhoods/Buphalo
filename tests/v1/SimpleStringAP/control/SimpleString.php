@@ -5,7 +5,5 @@ namespace Neighborhoods\BuphaloTest;
 
 class SimpleString
 {
-    public const TEST_STRING =<<<EOC
-this is a string
-EOC;
+    public const TEST_STRING = "this is a string";
 }
