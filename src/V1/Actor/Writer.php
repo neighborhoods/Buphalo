@@ -19,10 +19,10 @@ class Writer implements WriterInterface
         if (!is_file($actor->getSourceFilePath())) {
             $fabricationFilePath = $actor->getFabricationFilePath();
             $this->getFilesystem()->mkdir(dirname($fabricationFilePath));
-            if (is_file($fabricationFilePath)) {
-                $message = sprintf('Actor with fabrication file path [%s] already exists.', $fabricationFilePath);
-                throw new LogicException($message);
-            }
+            //if (is_file($fabricationFilePath)) {
+            //    $message = sprintf('Actor with fabrication file path [%s] already exists.', $fabricationFilePath);
+            //    throw new LogicException($message);
+            //}
             $compiledContents = $this->getActorTemplateCompiler()->getCompiledContents();
             file_put_contents($fabricationFilePath, $compiledContents);
         }

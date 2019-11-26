@@ -3,3 +3,5 @@ services:
     class: Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer
     public: false
     shared: false
+    calls:
+      - [setV1ActorTemplateTokenizerRuleBuilderRepository, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\RepositoryInterface']]

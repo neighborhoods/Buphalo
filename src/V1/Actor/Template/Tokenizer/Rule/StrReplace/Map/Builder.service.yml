@@ -1,0 +1,19 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Map\BuilderInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Map\Builder
+    public: false
+    shared: false
+    calls:
+      - [setV1ActorTemplateTokenizerRuleStrReplaceMapFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Map\FactoryInterface']]
+      - [setV1ActorTemplateTokenizerRuleStrReplaceBuilderFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Builder\FactoryInterface']]
+      - [addInstruction, [{
+         search: "['@Neighborhoods\\BuphaloTemplateTree\\PrimaryActorName",
+         replace: "sprintf(
+           '[\\'@%%s%%s\\\\%%s',
+           TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
+           TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
+           TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
+         )"}]]
+      - [addInstruction, [{
+          search: "\\PrimaryActorName;",
+          replace: "sprintf('%%s;', TokenizerInterface::EMPTY_TOKEN)"}]]

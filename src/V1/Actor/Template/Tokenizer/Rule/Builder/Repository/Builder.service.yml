@@ -1,0 +1,26 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Repository\BuilderInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Repository\Builder
+    public: false
+    shared: true
+    calls:
+      - [setV1ActorTemplateTokenizerRuleBuilderMapMapFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Map\Map\FactoryInterface']]
+      - [setV1ActorTemplateTokenizerRuleBuilderMapFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Map\FactoryInterface']]
+      - [setV1ActorTemplateTokenizerRuleBuilderRepositoryFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Repository\FactoryInterface']]
+      - [addRuleDefinition,
+         [{
+            file.extension: !php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\RepositoryInterface::FILE_TYPE_ALL,
+            builder.factory: '@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Builder\FactoryInterface',
+            builder.definition.search: "\"['@Neighborhoods\\\\BuphaloTemplateTree\\\\PrimaryActorName\"",
+            builder.definition.replace: "sprintf(
+         '[\\'@%%s%%s\\\\%%s',
+         constant(\"Neighborhoods\\\\Buphalo\\\\V1\\\\Actor\\\\Template\\\\TokenizerInterface::NAMESPACE_PREFIX_TOKEN\"),
+         constant(\"Neighborhoods\\\\Buphalo\\\\V1\\\\Actor\\\\Template\\\\TokenizerInterface::NAMESPACE_RELATIVE_TOKEN\"),
+         constant(\"Neighborhoods\\\\Buphalo\\\\V1\\\\Actor\\\\Template\\\\TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN\")
+         )"}]]
+      - [addRuleDefinition,
+         [{
+            file.extension: !php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\RepositoryInterface::FILE_TYPE_ALL,
+            builder.factory: '@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Builder\FactoryInterface',
+            builder.definition.search: "\\PrimaryActorName;",
+            builder.definition.replace: "sprintf('%%s;', TokenizerInterface::EMPTY_TOKEN)"}]]
