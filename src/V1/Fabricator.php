@@ -16,7 +16,7 @@ class Fabricator implements FabricatorInterface
 
     public function fabricate(): FabricatorInterface
     {
-        //$this->removeFabricationDirectory();
+        $this->removeFabricationDirectory();
         $fabricationFileMap = $this->getFabricationFileMapBuilderFactory()->create()->build();
         foreach ($fabricationFileMap as $fabricationFile) {
             foreach ($fabricationFile->getActors() as $fabricationFileActor) {
