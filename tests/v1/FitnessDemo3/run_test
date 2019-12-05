@@ -34,5 +34,6 @@ require_once($PWD . '/../../../bin/v1/buphalo.php');
 exec("diff -r $PWD/control/ $PWD/fab/", $output, $return);
 
 if ($return > 0) {
-    die(implode(PHP_EOL, $output) . PHP_EOL);
+    echo(implode(PHP_EOL, $output) . PHP_EOL);
+    die(1);
 }
