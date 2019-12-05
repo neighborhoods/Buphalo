@@ -1,0 +1,8 @@
+{
+  "http-basic": {
+    "satis.neighborhoods.com": {
+      "username": "USERNAME",
+      "password": "PASSWORD"
+    }
+  }
+}
