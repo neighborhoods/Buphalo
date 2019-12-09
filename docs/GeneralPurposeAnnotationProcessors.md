@@ -36,6 +36,8 @@ this is a string
 
 **FQCN:** `\Neighborhoods\Buphalo\V1\AnnotationProcessors\EmptyString`
 
+**Contract:** None
+
 **Example:**
 ```php
 Before
@@ -54,8 +56,36 @@ Before
 After
 ```
 
+## Symfony Expression Language
+**Description:** Uses [Symfony Expression Language][Symfony EL] to generate the replacement.
+Includes access to the `AnnotationProcessorContext` under the `context` alias.
+  
+**FQCN:** `\Neighborhoods\Buphalo\V1\AnnotationProcessors\SymfonyExpression`
+
+**Contract:** A single object with an `expression` key.
+May include other keys used by the expression.
+Other keys can be accessed via `context.getStaticContextRecord()["key"]`
+
+**Example:**
+```php
+/** @neighborhoods-buphalo:annotation-processor annotation1
+*/
+```
+```yaml
+# Expression.buphalo.v1.fabrication.yml
+annotation1:
+  processor_fqcn: \Neighborhoods\Buphalo\V1\AnnotationProcessors\SymfonyExpression
+  static_context_record:
+    expression: 'context.getFabricationFile().getFileName() ~ " " ~ context.getStaticContextRecord()["word"]'
+    word: 'Language'
+```
+```php
+Expression Language
+```
+
 ## References
 - [Annotation Processors][Annotation Processors]
 
 [Annotation Processors]: AnnotationProcessors.md
 [Fabrication File]: AnnotationProcessors.md#fabrication-file-definitions
+[Symfony EL]: https://symfony.com/doc/current/components/expression_language.html

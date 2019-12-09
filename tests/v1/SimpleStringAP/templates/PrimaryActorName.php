@@ -5,6 +5,5 @@ namespace Neighborhoods\BuphaloTemplateTree;
 
 class PrimaryActorName
 {
-    public const TEST_STRING = "/** @neighborhoods-buphalo:annotation-processor TestSimpleStringAnnotationProcessor
-    This should be replaced by something else */";
+    public const TEST_STRING = "/** @neighborhoods-buphalo:annotation-processor TestSimpleStringAnnotationProcessor */";
 }
