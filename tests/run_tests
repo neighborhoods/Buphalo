@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
-cd "$(dirname "$0")" || exit
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+error_reporting(E_ALL);
 
-find . -depth -name "run_test" -exec sh -c 'name="${0#./}"; echo Running test ${name%/run_test} ... && $0' {} \;
+include_once 'run_tests.php';
