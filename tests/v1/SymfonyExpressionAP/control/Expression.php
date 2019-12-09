@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\BuphaloTest;
 
-class SimpleString
+class Expression
 {
-    public const TEST_STRING = "this is a string";
+    public const TEST_STRING = "Expression Language";
 }
