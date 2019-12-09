@@ -17,6 +17,8 @@ Default Contents
 - `AnnotationProcessorKey`: Also used in the fabrication file to tie the annotation to the specific AP.
 - `Default Contents`: If no AnnotationProcessor is specified in the fabrication file, this is used instead
 - There MUST be a newline between the `AnnotationProcessorKey` and `Default Contents`
+  - If no Default Contents exist, there SHOULD be a newline after the `AnnotationProcessorKey`.
+    - If more than one annotation is used in a template, there MUST be a newline after the `AnnotationProcessorKey`
 
 #### Example Template
 ```php
@@ -172,6 +174,7 @@ see [General Purpose Annotation Processors][GPAP]
 ### Known Issues
 - Each Annotation Processor can only be used once.
 - `getAnnotationProcessorContext` is required to be public
+- Newlines MUST be present after the `AnnotationProcessorKey` even with no `Default Contents`
 
 ## References
 - [General Purpose Annotation Processors][GPAP]
