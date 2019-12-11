@@ -24,6 +24,3 @@ services:
             - "9001"
         environment:
             PHP_IDE_CONFIG: "serverName=buphalo.neighborhoods.com"
-        extra_hosts:
-            - "dockerhost:10.200.10.1"
-        dns: 10.200.10.1
