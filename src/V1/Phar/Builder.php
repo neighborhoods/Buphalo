@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Neighborhoods\Buphalo\V1\Phar;
 
@@ -41,8 +42,9 @@ final class Builder implements BuilderInterface
     /** @var SearchReplacementInterface[] */
     private $entry_point_replacements = [];
 
-    public function build()
+    public function build(): void
     {
+        /** @noinspection BadExceptionsProcessingInspection */
         try {
             $this->makeBackup();
 
@@ -52,10 +54,10 @@ final class Builder implements BuilderInterface
 
             $phar->buildFromIterator($this->buildIterator(), $this->getApplicationRootPath());
 
-            $phar->setStub($phar->createDefaultStub($pharEntryPointPath));
-        } catch (Throwable $t) {
+            $phar->setStub($phar::createDefaultStub($pharEntryPointPath));
+        } catch (Throwable $throwable) {
             $this->restoreBackup();
-            throw $t;
+            throw $throwable;
         } finally {
             $this->removeBackup();
 
@@ -83,18 +85,18 @@ final class Builder implements BuilderInterface
         }
 
         $entryPointData = file($entryPointPath);
-        if (strpos(current($entryPointData), '#!') === 0) {
+        if (strncmp(current($entryPointData), '#!', 2) === 0) {
             // Remove #! line which are only usable via shell, not via phar
             array_shift($entryPointData);
         }
 
-        $fh = fopen($pharEntryPointPath, 'w');
+        $fileHandle = fopen($pharEntryPointPath, 'wb');
 
         foreach ($entryPointData as $line) {
             foreach($this->getEntryPointReplacements() as $searchReplacement) {
                 $line = str_replace($searchReplacement->getSearch(), $searchReplacement->getReplacement(), $line);
             }
-            fwrite($fh, $line);
+            fwrite($fileHandle, $line);
         }
 
         $this->addIncludeFile($pharEntryPointPath);
@@ -205,7 +207,7 @@ final class Builder implements BuilderInterface
     private function getIncludeDirectories(): array
     {
         if ($this->include_directories === null) {
-            throw new \LogicException('Builder include_directories has not been set.');
+            throw new LogicException('Builder include_directories has not been set.');
         }
 
         return $this->include_directories;
@@ -221,7 +223,7 @@ final class Builder implements BuilderInterface
     private function getIncludeFiles(): array
     {
         if ($this->include_files === null) {
-            throw new \LogicException('Builder include_files has not been set.');
+            throw new LogicException('Builder include_files has not been set.');
         }
 
         return $this->include_files;
@@ -288,7 +290,7 @@ final class Builder implements BuilderInterface
         }
     }
 
-    public function addEntryPointReplacement(string $search, string $replacement)
+    public function addEntryPointReplacement(string $search, string $replacement): void
     {
         $patternReplacement = new SearchReplacement();
         $patternReplacement->setSearch($search)->setReplacement($replacement);
@@ -300,7 +302,7 @@ final class Builder implements BuilderInterface
     private function getEntryPointReplacements(): array
     {
         if ($this->entry_point_replacements === null) {
-            throw new \LogicException('Builder entry_point_replacements has not been set.');
+            throw new LogicException('Builder entry_point_replacements has not been set.');
         }
 
         return $this->entry_point_replacements;

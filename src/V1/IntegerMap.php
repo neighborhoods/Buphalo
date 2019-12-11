@@ -9,7 +9,7 @@ use LogicException;
 class IntegerMap extends ArrayIterator implements IntegerMapInterface
 {
     /** @param int ...$integer */
-    public function __construct(array $integer = array(), int $flags = 0)
+    public function __construct(array $integer = [], int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new LogicException('Map is not empty.');

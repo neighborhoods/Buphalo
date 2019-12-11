@@ -7,6 +7,7 @@ use LogicException;
 use Neighborhoods\Buphalo\V1\AnnotationProcessor;
 use Neighborhoods\Buphalo\V1\FabricationFile;
 use Neighborhoods\Buphalo\V1\FabricationFile\ActorInterface;
+use function strlen;
 
 class Builder implements BuilderInterface
 {
@@ -68,11 +69,11 @@ class Builder implements BuilderInterface
     protected function getBaseName(): string
     {
         if ($this->BaseName === null) {
-            $GenerateBaseName = pathinfo($this->getRecord()[BuilderInterface::GENERATE], PATHINFO_BASENAME);
+            $generatedBaseName = pathinfo($this->getRecord()[BuilderInterface::GENERATE], PATHINFO_BASENAME);
             $this->BaseName = str_replace(
                 BuilderInterface::ACTOR_NAME,
                 $this->getFabricationFile()->getFileName(),
-                $GenerateBaseName
+                $generatedBaseName
             );
         }
 
@@ -96,7 +97,7 @@ class Builder implements BuilderInterface
     protected function getRelativeDirectoryPath(): string
     {
         if ($this->GenerateRelativeDirectoryPath === null) {
-            $RelativeGeneratedDirectoryPath = pathinfo(
+            $relativeGeneratedDirectoryPath = pathinfo(
                 str_replace(
                     BuilderInterface::ACTOR_NAME,
                     $this->getFabricationFile()->getFileName(),
@@ -104,10 +105,10 @@ class Builder implements BuilderInterface
                 ),
                 PATHINFO_DIRNAME
             );
-            if ($RelativeGeneratedDirectoryPath === self::CURRENT_DIRECTORY) {
+            if ($relativeGeneratedDirectoryPath === self::CURRENT_DIRECTORY) {
                 $this->GenerateRelativeDirectoryPath = '';
             } else {
-                $this->GenerateRelativeDirectoryPath = $RelativeGeneratedDirectoryPath;
+                $this->GenerateRelativeDirectoryPath = $relativeGeneratedDirectoryPath;
             }
         }
 
@@ -169,14 +170,14 @@ class Builder implements BuilderInterface
     protected function getTemplateRelativeDirectoryPath(): string
     {
         if ($this->TemplateRelativeDirectoryPath === null) {
-            $RelativeTemplateDirectoryPath = pathinfo(
+            $relativeTemplateDirectoryPath = pathinfo(
                 $this->getRecord()[BuilderInterface::TEMPLATE],
                 PATHINFO_DIRNAME
             );
-            if ($RelativeTemplateDirectoryPath === self::CURRENT_DIRECTORY) {
+            if ($relativeTemplateDirectoryPath === self::CURRENT_DIRECTORY) {
                 $this->TemplateRelativeDirectoryPath = '';
             } else {
-                $this->TemplateRelativeDirectoryPath = $RelativeTemplateDirectoryPath;
+                $this->TemplateRelativeDirectoryPath = $relativeTemplateDirectoryPath;
             }
         }
 

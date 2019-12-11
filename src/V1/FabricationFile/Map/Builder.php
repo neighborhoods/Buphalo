@@ -6,7 +6,6 @@ namespace Neighborhoods\Buphalo\V1\FabricationFile\Map;
 use LogicException;
 use Neighborhoods\Buphalo\V1\FabricationFile;
 use Neighborhoods\Buphalo\V1\FabricationFile\MapInterface;
-use Neighborhoods\Buphalo\V1\FabricationFileInterface;
 use Neighborhoods\Buphalo\V1\Symfony;
 use Neighborhoods\Buphalo\V1\TargetApplication;
 use Symfony\Component\Finder\SplFileInfo;
@@ -28,7 +27,7 @@ class Builder implements BuilderInterface
         $finder->in($sourceDirectoryPath);
         $finder->files()->name($this->getFinderFileNames());
 
-        /** @var $fileInfo SplFileInfo */
+        /** @var SplFileInfo $fileInfo */
         foreach ($finder as $directoryPath => $fileInfo) {
             $pathname = $fileInfo->getPathname();
             $fabricationFileBuilder = $this->getFabricationFileBuilderFactory()->create();

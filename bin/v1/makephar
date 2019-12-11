@@ -2,4 +2,5 @@
 <?php
 declare(strict_types=1);
 error_reporting(E_ALL);
-include_once 'makephar.php';
+
+include_once __DIR__ . 'makephar.php';

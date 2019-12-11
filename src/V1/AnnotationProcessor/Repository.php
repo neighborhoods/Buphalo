@@ -14,6 +14,6 @@ class Repository implements RepositoryInterface
 
     public function getByFQCN(string $annotationProcessorFQCN): AnnotationProcessorInterface
     {
-        return new $annotationProcessorFQCN;
+        return new $annotationProcessorFQCN();
     }
 }

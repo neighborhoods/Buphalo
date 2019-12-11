@@ -12,7 +12,7 @@ use Serializable;
 interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param PrimaryActorNameInterface ...$PrimaryActorNames */
-    public function __construct(array $PrimaryActorNames = array(), int $flags = 0);
+    public function __construct(array $PrimaryActorNames = [], int $flags = 0);
 
     public function offsetGet($index): PrimaryActorNameInterface;
 

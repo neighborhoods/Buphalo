@@ -214,13 +214,13 @@ Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTree
 * Be sure to update your `composer.json` to fallback to a `fab` directory, e.g.
     ```json
     "autoload": {
-    "psr-4": {
-      "VENDOR\\PRODUCT\\": [
-        "src",
-        "fab"
-      ]
+      "psr-4": {
+        "VENDOR\\PRODUCT\\": [
+          "src",
+          "fab"
+        ]
+      }
     }
-  }
   ```
 * In order to be efficient, Buphalo will only fabricate files that do not exist in `src` since anything in `src` will override what exists in `fab`.
 

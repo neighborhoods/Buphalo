@@ -9,7 +9,7 @@ class EchoLogger extends AbstractLogger
 {
     public const CONTEXT_EXCEPTION = 'exception';
 
-    public function log($level, $message, array $context = [])
+    public function log($level, $message, array $context = []): void
     {
         echo $message . PHP_EOL;
     }

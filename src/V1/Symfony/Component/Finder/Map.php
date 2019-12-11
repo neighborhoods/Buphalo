@@ -11,7 +11,7 @@ use Symfony\Component\Finder\Finder;
 class Map extends ArrayIterator implements MapInterface
 {
     /** @param Finder ...$finders */
-    public function __construct(array $finders = array(), int $flags = 0)
+    public function __construct(array $finders = [], int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new LogicException('Map is not empty.');

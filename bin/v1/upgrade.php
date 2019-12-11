@@ -19,12 +19,12 @@ use Neighborhoods\Buphalo\V1\Logger;
 set_exception_handler(new ExceptionHandler());
 set_error_handler(new ErrorHandler());
 
-$filesFound = (function(string $version, string $directory): int {
+$filesFound = (static function(string $version, string $directory): int {
 
-    if (strtolower($version) == 'bradfab') {
+    if (strtolower($version) === 'bradfab') {
         $upgrader = new VersionUpgrade\Bradfab\DirectoryUpgrader();
     } else {
-        throw new \InvalidArgumentException("Upgrading to V1 from version $version is not supported.");
+        throw new InvalidArgumentException("Upgrading to V1 from version $version is not supported.");
     }
 
     $upgrader->setLogger(new Logger\EchoLogger());

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Neighborhoods\Buphalo\V1\Logger;
 
+use LogicException;
 use Psr\Log\LoggerInterface;
 
 /** @codeCoverageIgnore */
@@ -13,7 +14,7 @@ trait AwareTrait
     public function setLogger(LoggerInterface $logger) : self
     {
         if ($this->hasLogger()) {
-            throw new \LogicException('NeighborhoodsBuphaloLogger is already set.');
+            throw new LogicException('NeighborhoodsBuphaloLogger is already set.');
         }
         $this->NeighborhoodsBuphaloLogger = $logger;
 
@@ -23,7 +24,7 @@ trait AwareTrait
     protected function getLogger() : LoggerInterface
     {
         if (!$this->hasLogger()) {
-            throw new \LogicException('NeighborhoodsBuphaloLogger is not set.');
+            throw new LogicException('NeighborhoodsBuphaloLogger is not set.');
         }
 
         return $this->NeighborhoodsBuphaloLogger;
@@ -37,7 +38,7 @@ trait AwareTrait
     protected function unsetLogger() : self
     {
         if (!$this->hasLogger()) {
-            throw new \LogicException('NeighborhoodsBuphaloLogger is not set.');
+            throw new LogicException('NeighborhoodsBuphaloLogger is not set.');
         }
         unset($this->NeighborhoodsBuphaloLogger);
 

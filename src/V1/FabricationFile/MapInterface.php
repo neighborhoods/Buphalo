@@ -12,7 +12,7 @@ use Serializable;
 interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param FabricationFileInterface ...$FabricationFiles */
-    public function __construct(array $FabricationFiles = array(), int $flags = 0);
+    public function __construct(array $FabricationFiles = [], int $flags = 0);
 
     public function offsetGet($index): FabricationFileInterface;
 

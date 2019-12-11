@@ -72,14 +72,14 @@ class Facade implements FacadeInterface
 
     public function assembleYaml(): FacadeInterface
     {
-        if ($this->isYamlAssembled === false) {
-            $containerBuilder = $this->getContainerBuilder();
-            $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__));
-            foreach ($this->getYamlServicesFilePaths() as $servicesYmlFilePath) {
-                $loader->import($servicesYmlFilePath);
-            }
-        } else {
+        if ($this->isYamlAssembled) {
             throw new LogicException('Yaml is already assembled.');
+        }
+
+        $containerBuilder = $this->getContainerBuilder();
+        $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__));
+        foreach ($this->getYamlServicesFilePaths() as $servicesYmlFilePath) {
+            $loader->import($servicesYmlFilePath);
         }
 
         return $this;
@@ -87,15 +87,15 @@ class Facade implements FacadeInterface
 
     public function build(): FacadeInterface
     {
-        if ($this->containerIsBuilt === false) {
-            $containerBuilder = $this->getContainerBuilder();
-            $containerBuilder->addCompilerPass(new AnalyzeServiceReferencesPass());
-            $containerBuilder->addCompilerPass(new InlineServiceDefinitionsPass());
-            $containerBuilder->compile(true);
-            $this->containerIsBuilt = true;
-        } else {
+        if ($this->containerIsBuilt) {
             throw new LogicException('Container is already built.');
         }
+
+        $containerBuilder = $this->getContainerBuilder();
+        $containerBuilder->addCompilerPass(new AnalyzeServiceReferencesPass());
+        $containerBuilder->addCompilerPass(new InlineServiceDefinitionsPass());
+        $containerBuilder->compile(true);
+        $this->containerIsBuilt = true;
 
         return $this;
     }

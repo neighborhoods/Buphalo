@@ -11,7 +11,7 @@ use Neighborhoods\Buphalo\V1\TemplateTreeInterface;
 class Map extends ArrayIterator implements MapInterface
 {
     /** @param TemplateTreeInterface ...$templateTrees */
-    public function __construct(array $templateTrees = array(), int $flags = 0)
+    public function __construct(array $templateTrees = [], int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new LogicException('Map is not empty.');

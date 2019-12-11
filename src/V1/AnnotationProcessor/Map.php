@@ -10,7 +10,7 @@ use Neighborhoods\Buphalo\V1\AnnotationProcessorInterface;
 class Map extends ArrayIterator implements MapInterface
 {
     /** @param AnnotationProcessorInterface ...$AnnotationProcessors */
-    public function __construct(array $AnnotationProcessors = array(), int $flags = 0)
+    public function __construct(array $AnnotationProcessors = [], int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new LogicException('Map is not empty.');

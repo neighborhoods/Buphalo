@@ -9,7 +9,7 @@ use LogicException;
 class BooleanMap extends ArrayIterator implements BooleanMapInterface
 {
     /** @param bool ...$booleans */
-    public function __construct(array $booleans = array(), int $flags = 0)
+    public function __construct(array $booleans = [], int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new LogicException('Map is not empty.');
@@ -27,10 +27,9 @@ class BooleanMap extends ArrayIterator implements BooleanMapInterface
         return $this->assertValidArrayItemType(parent::offsetGet($index));
     }
 
-    /** @param bool $boolesn */
-    public function offsetSet($index, $integer)
+    public function offsetSet($index, $boolean)
     {
-        parent::offsetSet($index, $this->assertValidArrayItemType($integer));
+        parent::offsetSet($index, $this->assertValidArrayItemType($boolean));
     }
 
     /** @param bool $boolean */

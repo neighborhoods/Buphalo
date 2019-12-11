@@ -9,7 +9,7 @@ $PWD = __DIR__;
 if (file_exists($autoloaderFilePath = dirname($PWD, 5) . '/autoload.php')) {
     /** @noinspection PhpIncludeInspection */
     require_once $autoloaderFilePath;
-} else if (file_exists($autoloaderFilePath = dirname($PWD, 3) . '/vendor/autoload.php')) {
+} elseif (file_exists($autoloaderFilePath = dirname($PWD, 3) . '/vendor/autoload.php')) {
     /** @noinspection PhpIncludeInspection */
     require_once $autoloaderFilePath;
 } else {
