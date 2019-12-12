@@ -11,6 +11,7 @@ interface FileUpgraderInterface extends LoggerAwareInterface
 {
     public const FILE_EXTENSION_NEW = FabricationFileInterface::FILE_EXTENSION_FABRICATION;
     public const FILE_EXTENSION_OLD = 'fabrication.yml';
+    public const FILE_EXTENSION_UPGRADED = 'buphgraded';
 
     public function setOldFile(SplFileInfo $oldFile): self;
 

@@ -52,6 +52,8 @@ class FileUpgrader implements FileUpgraderInterface
         $fh = fopen($newFilePath, 'w');
         fwrite($fh, $yaml);
 
+        rename($oldFilePath, $oldFilePath . '.' . self::FILE_EXTENSION_UPGRADED);
+
         return $this;
     }
 
