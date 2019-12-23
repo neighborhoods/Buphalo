@@ -11,7 +11,7 @@ use Serializable;
 interface IntegerMapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param int ...$integers */
-    public function __construct(array $integers = array(), int $flags = 0);
+    public function __construct(array $integers = [], int $flags = 0);
 
     public function offsetGet($index): int;
 

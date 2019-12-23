@@ -10,7 +10,7 @@ use Neighborhoods\Buphalo\V1\FabricationFile\ActorInterface;
 class Map extends ArrayIterator implements MapInterface
 {
     /** @param ActorInterface ...$Actors */
-    public function __construct(array $Actors = array(), int $flags = 0)
+    public function __construct(array $Actors = [], int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new LogicException('Map is not empty.');

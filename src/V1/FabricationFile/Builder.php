@@ -54,7 +54,7 @@ class Builder implements BuilderInterface
 
     protected function getFabricationFileContents(): array
     {
-        $fabricationFileContents = Yaml::parseFile($this->getSplFileInfo()->getPathname(), YAML::PARSE_CONSTANT);
+        $fabricationFileContents = Yaml::parseFile($this->getSplFileInfo()->getPathname(), Yaml::PARSE_CONSTANT);
 
         return $fabricationFileContents;
     }
@@ -74,9 +74,9 @@ class Builder implements BuilderInterface
     {
         if ($this->FileName === null) {
             $this->FileName = substr(
-                $this->getSplFileInfo()->getBaseName(),
+                $this->getSplFileInfo()->getBasename(),
                 0,
-                strpos($this->getSplFileInfo()->getBaseName(), '.')
+                strpos($this->getSplFileInfo()->getBasename(), '.')
             );
         }
 

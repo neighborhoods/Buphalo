@@ -6,6 +6,7 @@ namespace Neighborhoods\Buphalo\V1\Actor;
 use LogicException;
 use Neighborhoods\Buphalo\V1\Actor;
 use Symfony\Component\Filesystem\Filesystem;
+use function dirname;
 
 class Writer implements WriterInterface
 {

@@ -6,6 +6,7 @@ namespace Neighborhoods\Buphalo\V1\AnnotationProcessor;
 use LogicException;
 use Neighborhoods\Buphalo\V1\FabricationFile;
 
+/** @noinspection PhpSuperClassIncompatibleWithInterfaceInspection PHPStorm doesn't detect Trait override */
 class Context implements ContextInterface
 {
     use FabricationFile\AwareTrait {

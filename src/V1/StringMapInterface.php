@@ -11,7 +11,7 @@ use Serializable;
 interface StringMapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param string ...$string */
-    public function __construct(array $string = array(), int $flags = 0);
+    public function __construct(array $string = [], int $flags = 0);
 
     public function offsetGet($index): string;
 

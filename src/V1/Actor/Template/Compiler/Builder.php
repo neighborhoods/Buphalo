@@ -28,6 +28,7 @@ class Builder implements BuilderInterface
         return $compiler;
     }
 
+    /** @noinspection PhpHierarchyChecksInspection */ // PHPStorm thinks this extends CompilerInterface?
     protected function getActorTemplateTokenizer(): TokenizerInterface
     {
         if ($this->ActorTemplateTokenizer === null) {

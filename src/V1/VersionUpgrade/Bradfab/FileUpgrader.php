@@ -26,7 +26,7 @@ class FileUpgrader implements FileUpgraderInterface
         $newFilePath = str_replace(self::FILE_EXTENSION_OLD, self::FILE_EXTENSION_NEW, $oldFilePath);
 
         $this->getLogger()->notice(
-            sprintf('Uprading %s to %s', $oldFilePath, $newFilePath),
+            sprintf('Upgrading %s to %s', $oldFilePath, $newFilePath),
             [
                 'old_file' => $oldFilePath,
                 'new_file' => $newFilePath
@@ -49,8 +49,8 @@ class FileUpgrader implements FileUpgraderInterface
         $yaml = Yaml::dump($newData, PHP_INT_MAX, self::INDENT_SIZE);
         $yaml = $this->cleanYaml($yaml);
 
-        $fh = fopen($newFilePath, 'w');
-        fwrite($fh, $yaml);
+        $fileHandle = fopen($newFilePath, 'wb');
+        fwrite($fileHandle, $yaml);
 
         rename($oldFilePath, $oldFilePath . '.' . self::FILE_EXTENSION_UPGRADED);
 

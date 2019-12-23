@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpUndefinedNamespaceInspection */ // TODO: Fix Container (BUPH-95)
+/** @noinspection PhpUndefinedClassInspection */
 declare(strict_types=1);
 
 namespace Neighborhoods\Buphalo\V1\Protean\Container;
@@ -128,10 +130,12 @@ class Builder implements BuilderInterface
         $currentWorkingDirectory = getcwd();
         chdir($this->getApplicationRootDirectoryPath());
         /** @noinspection PhpIncludeInspection */
+        /** @noinspection UsingInclusionReturnValueInspection */
         $zendContainerBuilder = require $this->getZendConfigContainerFilePath();
-        $ApplicationServiceDefinition = $zendContainerBuilder->findDefinition(Application::class);
+        $applicationServiceDefinition = $zendContainerBuilder->findDefinition(Application::class);
         /** @noinspection PhpIncludeInspection */
-        (require $this->getPipelineFilePath())($ApplicationServiceDefinition);
+        /** @noinspection UsingInclusionReturnValueInspection */
+        (require $this->getPipelineFilePath())($applicationServiceDefinition);
         file_put_contents($this->getExpressiveDIYAMLFilePath(), (new YamlDumper($zendContainerBuilder))->dump());
         chdir($currentWorkingDirectory);
 
@@ -199,6 +203,7 @@ class Builder implements BuilderInterface
     public function setApplicationRootDirectoryPath(string $applicationRootDirectoryPath): BuilderInterface
     {
         if ($this->applicationRootDirectoryPath === null) {
+            /** @noinspection CallableParameterUseCaseInTypeContextInspection */
             $applicationRootDirectoryPath = $this->realpath(rtrim($applicationRootDirectoryPath, '/'));
             if (is_dir($applicationRootDirectoryPath)) {
                 $this->applicationRootDirectoryPath = $applicationRootDirectoryPath;

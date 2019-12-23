@@ -9,7 +9,7 @@ use LogicException;
 class FloatingPointMap extends ArrayIterator implements FloatingPointMapInterface
 {
     /** @param float ...$floatingPoints */
-    public function __construct(array $floatingPoints = array(), int $flags = 0)
+    public function __construct(array $floatingPoints = [], int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new LogicException('Map is not empty.');

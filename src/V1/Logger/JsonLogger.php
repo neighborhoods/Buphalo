@@ -11,7 +11,7 @@ class JsonLogger extends AbstractLogger
 {
     public const CONTEXT_EXCEPTION = 'exception';
 
-    public function log($level, $message, array $context = [])
+    public function log($level, $message, array $context = []): void
     {
         if (isset($context[self::CONTEXT_EXCEPTION])) {
             /** @var Throwable $throwable */
@@ -26,7 +26,7 @@ class JsonLogger extends AbstractLogger
         }
 
         echo json_encode([
-                'timestamp' => (new DateTimeImmutable())->format(DATE_ISO8601),
+                'timestamp' => (new DateTimeImmutable())->format(DATE_ATOM),
                 'level' => $level,
                 'message' => $message,
                 'context' => $context,

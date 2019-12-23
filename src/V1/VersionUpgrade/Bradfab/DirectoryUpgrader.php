@@ -69,7 +69,7 @@ class DirectoryUpgrader implements DirectoryUpgraderInterface
         return $this;
     }
 
-    private function incrementNumFilesProcessed()
+    private function incrementNumFilesProcessed(): void
     {
         $this->num_files_processed++;
     }
