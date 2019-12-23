@@ -72,7 +72,7 @@ class Facade implements FacadeInterface
 
     public function assembleYaml(): FacadeInterface
     {
-        if ($this->isYamlAssembled) {
+        if ($this->isYamlAssembled !== false) {
             throw new LogicException('Yaml is already assembled.');
         }
 
@@ -87,7 +87,7 @@ class Facade implements FacadeInterface
 
     public function build(): FacadeInterface
     {
-        if ($this->containerIsBuilt) {
+        if ($this->containerIsBuilt !== false) {
             throw new LogicException('Container is already built.');
         }
 
