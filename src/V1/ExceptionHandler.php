@@ -11,6 +11,6 @@ class ExceptionHandler implements ExceptionHandlerInterface
     {
         fwrite(STDERR, $throwable . PHP_EOL);
 
-        return $this;
+        exit(255);
     }
 }
