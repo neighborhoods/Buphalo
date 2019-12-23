@@ -7,10 +7,10 @@ use Throwable;
 
 class ExceptionHandler implements ExceptionHandlerInterface
 {
-    public function __invoke(Throwable $throwable): ExceptionHandlerInterface
+    public function __invoke(Throwable $throwable): void
     {
         fwrite(STDERR, $throwable . PHP_EOL);
 
-        return $this;
+        exit(255);
     }
 }
