@@ -7,5 +7,5 @@ use Throwable;
 
 interface ExceptionHandlerInterface
 {
-    public function __invoke(Throwable $throwable): ExceptionHandlerInterface;
+    public function __invoke(Throwable $throwable): void;
 }

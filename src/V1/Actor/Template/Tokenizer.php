@@ -38,6 +38,7 @@ class Tokenizer implements TokenizerInterface
                 $tokenizedContents = $rule->getTokenizedContents();
             }
 
+            /** @noinspection NotOptimalRegularExpressionsInspection */
             $tokenizedContents = preg_replace(
                 '/namespace(\s+)Neighborhoods\\\BuphaloTemplateTree\\\PrimaryActorName/',
                 sprintf(
@@ -59,6 +60,7 @@ class Tokenizer implements TokenizerInterface
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
+            /** @noinspection NotOptimalRegularExpressionsInspection */
             $tokenizedContents = preg_replace(
                 '/use(\s+)Neighborhoods\\\BuphaloTemplateTree\\\PrimaryActorName/',
                 sprintf(
@@ -70,6 +72,7 @@ class Tokenizer implements TokenizerInterface
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
+            /** @noinspection NotOptimalRegularExpressionsInspection */
             $tokenizedContents = preg_replace(
                 '/services:\n(\s+)Neighborhoods\\\BuphaloTemplateTree\\\PrimaryActorName/',
                 sprintf(
@@ -81,6 +84,7 @@ class Tokenizer implements TokenizerInterface
                 $tokenizedContents
             );
             /** @noinspection CascadeStringReplacementInspection */
+            /** @noinspection NotOptimalRegularExpressionsInspection */
             $tokenizedContents = preg_replace(
                 '/class:(\s+)Neighborhoods\\\BuphaloTemplateTree\\\PrimaryActorName/',
                 sprintf(

@@ -11,7 +11,7 @@ use Serializable;
 interface BooleanMapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param bool ...$booleans*/
-    public function __construct(array $booleans = array(), int $flags = 0);
+    public function __construct(array $booleans = [], int $flags = 0);
 
     public function offsetGet($index): bool;
 

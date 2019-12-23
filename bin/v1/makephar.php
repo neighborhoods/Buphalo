@@ -9,9 +9,9 @@ require_once __DIR__ . '/../../vendor/autoload.php'; # Buphalo's Vendor Director
 use Neighborhoods\Buphalo\V1\Phar;
 
 $pharFileName = 'buphalo.phar';
-$applicationRootDirectoryPath = dirname(__DIR__);
-$entryFileRelativePath = 'bin/buphalo.php';
-$pharFilePath = sprintf('%s/bin/%s', $applicationRootDirectoryPath, $pharFileName);
+$applicationRootDirectoryPath = dirname(__DIR__, 2);
+$entryFileRelativePath = 'bin/v1/buphalo.php';
+$pharFilePath = sprintf('%s/bin/v1/%s', $applicationRootDirectoryPath, $pharFileName);
 
 $pharBuilder = new Phar\Builder();
 $pharBuilder

@@ -10,7 +10,7 @@ use Neighborhoods\BuphaloTemplateTree\PrimaryActorNameInterface;
 class Map extends ArrayIterator implements MapInterface
 {
     /** @param PrimaryActorNameInterface ...$PrimaryActorNames */
-    public function __construct(array $PrimaryActorNames = array(), int $flags = 0)
+    public function __construct(array $PrimaryActorNames = [], int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new LogicException('Map is not empty.');

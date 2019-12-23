@@ -13,7 +13,7 @@ use Serializable;
 interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param TemplateTreeInterface ...$templateTrees */
-    public function __construct(array $templateTrees = array(), int $flags = 0);
+    public function __construct(array $templateTrees = [], int $flags = 0);
 
     public function offsetGet($index): TemplateTreeInterface;
 

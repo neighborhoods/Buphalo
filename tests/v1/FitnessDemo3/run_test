@@ -9,7 +9,7 @@ $PWD = __DIR__;
 if (file_exists($autoloaderFilePath = dirname($PWD, 5) . '/autoload.php')) {
     /** @noinspection PhpIncludeInspection */
     require_once $autoloaderFilePath;
-} else if (file_exists($autoloaderFilePath = dirname($PWD, 3) . '/vendor/autoload.php')) {
+} elseif (file_exists($autoloaderFilePath = dirname($PWD, 3) . '/vendor/autoload.php')) {
     /** @noinspection PhpIncludeInspection */
     require_once $autoloaderFilePath;
 } else {
@@ -34,5 +34,6 @@ require_once($PWD . '/../../../bin/v1/buphalo.php');
 exec("diff -r $PWD/control/ $PWD/fab/", $output, $return);
 
 if ($return > 0) {
-    die(implode(PHP_EOL, $output) . PHP_EOL);
+    echo(implode(PHP_EOL, $output) . PHP_EOL);
+    die(1);
 }

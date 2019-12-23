@@ -13,7 +13,7 @@ use Symfony\Component\Finder\Finder;
 interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param Finder ...$finders */
-    public function __construct(array $finders = array(), int $flags = 0);
+    public function __construct(array $finders = [], int $flags = 0);
 
     public function offsetGet($index): Finder;
 

@@ -11,7 +11,7 @@ use Serializable;
 interface FloatingPointMapInterface extends SeekableIterator, ArrayAccess, Serializable, Countable
 {
     /** @param float ...$floatingPoints */
-    public function __construct(array $floatingPoints = array(), int $flags = 0);
+    public function __construct(array $floatingPoints = [], int $flags = 0);
 
     public function offsetGet($index): float;
 
