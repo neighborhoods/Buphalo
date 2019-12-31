@@ -23,7 +23,7 @@ class Builder implements BuilderInterface
         $map = $this->getV1ActorTemplateTokenizerRuleStrReplaceMapFactory()->create();
         foreach ($this->getInstructions() as $instruction) {
             $ruleBuilder = $this->getV1ActorTemplateTokenizerRuleStrReplaceBuilderFactory()->create();
-            $ruleBuilder->setRuleDefinition($instruction);
+            $ruleBuilder->setOptions($instruction);
             $ruleBuilder->setV1ActorTemplateTokenizerRuleContext($this->getV1ActorTemplateTokenizerRuleContext());
             $map->append($ruleBuilder->build());
         }
@@ -45,19 +45,19 @@ class Builder implements BuilderInterface
         if (count($instruction) !== 2) {
             throw new InvalidArgumentException('Instruction does not have exactly two fields.');
         }
-        if (!array_key_exists(StrReplace\BuilderInterface::DEFINITION_KEY_SEARCH, $instruction)) {
+        if (!array_key_exists(StrReplace\BuilderInterface::OPTION_SEARCH, $instruction)) {
             throw new InvalidArgumentException(
                 sprintf(
                     'Instruction does not contain a "%s" field.',
-                    StrReplace\BuilderInterface::DEFINITION_KEY_SEARCH
+                    StrReplace\BuilderInterface::OPTION_SEARCH
                 )
             );
         }
-        if (!array_key_exists(StrReplace\BuilderInterface::DEFINITION_KEY_REPLACE, $instruction)) {
+        if (!array_key_exists(StrReplace\BuilderInterface::OPTION_REPLACE, $instruction)) {
             throw new InvalidArgumentException(
                 sprintf(
                     'Instruction does not contain a "%s" field.',
-                    StrReplace\BuilderInterface::DEFINITION_KEY_REPLACE
+                    StrReplace\BuilderInterface::OPTION_REPLACE
                 )
             );
         }

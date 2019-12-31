@@ -10,9 +10,9 @@ interface RepositoryInterface
 {
     public const FILE_TYPE_ALL = '*';
 
-    public function add(string $FileExtension, BuilderInterface $Builder): RepositoryInterface;
+    public function add(BuilderInterface $Builder): RepositoryInterface;
 
-    public function getByFileExtension(string $FileExtension): MapInterface;
+    public function getMapByFileExtension(string $FileExtension): MapInterface;
 
     public function setV1ActorTemplateTokenizerRuleBuilderMapFactory(
         FactoryInterface $v1ActorTemplateTokenizerRuleBuilderMapFactory

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Neighborhoods\Buphalo\V1\Actor\Template;
 
 use Neighborhoods\Buphalo\V1\Actor;
+use Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\RepositoryInterface;
 
 class Tokenizer implements TokenizerInterface
 {
@@ -30,12 +31,14 @@ class Tokenizer implements TokenizerInterface
             $templateContents = $this->getActorTemplate()->getTokenizedContents();
 
             $ruleBuilderRepository = $this->getV1ActorTemplateTokenizerRuleBuilderRepository();
-            foreach ($ruleBuilderRepository->getByFileExtension('*') as $ruleBuilder){
+            $ruleBuilderMap = $ruleBuilderRepository->getMapByFileExtension(RepositoryInterface::FILE_TYPE_ALL);
+            foreach ($ruleBuilderMap as $key => $ruleBuilder) {
                 $ruleBuilder->setTemplateContents($templateContents);
                 $ruleBuilder->setActor($this->getActor());
                 $ruleBuilder->setActorTemplate($this->getActorTemplate());
                 $rule = $ruleBuilder->build();
                 $tokenizedContents = $rule->getTokenizedContents();
+                continue;
             }
 
             /** @noinspection NotOptimalRegularExpressionsInspection */

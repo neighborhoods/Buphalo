@@ -9,15 +9,17 @@ use Neighborhoods\Buphalo\V1\ActorInterface;
 
 interface BuilderInterface
 {
-    /** @noinspection ReturnTypeCanBeDeclaredInspection */
-    /** @return RuleInterface */
-    public function build();
+    public const OPTION_FILE_EXTENSION_AFFINITY = 'file.extension.affinity';
 
-    public function setRuleDefinition(array $ruleDefinition);
+    public function build(): RuleInterface;
+
+    public function setOptions(array $options);
 
     public function setTemplateContents(string $TemplateContents);
 
     public function setActor(ActorInterface $Actor);
 
     public function setActorTemplate(TemplateInterface $Template);
+
+    public function getOptions(): array;
 }

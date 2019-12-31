@@ -1,0 +1,9 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\PregReplace\BuilderInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\PregReplace\Builder
+    public: false
+    shared: false
+    calls:
+      - [setV1ActorTemplateTokenizerRulePregReplaceFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\PregReplace\FactoryInterface']]
+      - [setV1ActorTemplateTokenizerRulePregReplaceBuilderOptionsResolverDecorator, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\PregReplace\Builder\OptionsResolverDecoratorInterface']]
+      - [setV1ActorTemplateTokenizerRuleContextBuilderFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Context\Builder\FactoryInterface']]

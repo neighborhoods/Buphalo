@@ -15,14 +15,11 @@ class Builder implements BuilderInterface
     use V1\Actor\Template\Tokenizer\Rule\Builder\Map\Factory\AwareTrait;
     use V1\Actor\Template\Tokenizer\Rule\Builder\Map\Map\Factory\AwareTrait;
 
-    private $RuleDefinitions;
+    private $Options;
 
     public function build(): RepositoryInterface
     {
-        if ($this->hasV1ActorTemplateTokenizerRuleBuilderRepository()) {
-            throw new LogicException('Repository builder build method was called twice.');
-        }
-
+        $this->assertRepositoryIsNotBuilt();
         $repository = $this->getV1ActorTemplateTokenizerRuleBuilderRepositoryFactory()->create();
         $repository->setV1ActorTemplateTokenizerRuleBuilderMapFactory(
             $this->getV1ActorTemplateTokenizerRuleBuilderMapFactory()
@@ -30,39 +27,45 @@ class Builder implements BuilderInterface
         $repository->setV1ActorTemplateTokenizerRuleBuilderMapMap(
             $this->getV1ActorTemplateTokenizerRuleBuilderMapMapFactory()->create()
         );
+
         $this->setV1ActorTemplateTokenizerRuleBuilderRepository($repository);
 
-        foreach ($this->getRuleDefinitions() as $ruleDefinition) {
-            $ruleBuilder = $this->extractRuleBuilder($ruleDefinition);
-            $ruleBuilder->setRuleDefinition($ruleDefinition);
-            $repository->add($this->extractFileExtension($ruleDefinition), $ruleBuilder);
+        foreach ($this->getRuleOptions() as $options) {
+            $ruleBuilder = $this->extractRuleBuilder($options);
+            $ruleBuilder->setOptions($options);
+            $repository->add($ruleBuilder);
         }
 
         return $repository;
     }
 
-    private function extractFileExtension(array $ruleDefinition): string
+    private function extractRuleBuilder(array $options): Rule\BuilderInterface
     {
-        return $ruleDefinition['file.extension'];
+        return $options[BuilderInterface::OPTION_BUILDER_FACTORY_SERVICE]->create();
     }
 
-    private function extractRuleBuilder(array $ruleDefinition): Rule\BuilderInterface
+    protected function getRuleOptions(): array
     {
-        return $ruleDefinition['builder.factory']->create();
-    }
-
-    protected function getRuleDefinitions(): array
-    {
-        if ($this->RuleDefinitions === null) {
-            throw new LogicException('Builder rule definitions has not been set.');
+        if ($this->Options === null) {
+            throw new LogicException('Builder options has not been set.');
         }
 
-        return $this->RuleDefinitions;
+        return $this->Options;
     }
 
-    public function addRuleDefinition(array $ruleDefinition): BuilderInterface
+    public function addOptions(array $options): BuilderInterface
     {
-        $this->RuleDefinitions[] = $ruleDefinition;
+        $this->assertRepositoryIsNotBuilt();
+        $this->Options[] = $options;
+
+        return $this;
+    }
+
+    private function assertRepositoryIsNotBuilt(): BuilderInterface
+    {
+        if ($this->hasV1ActorTemplateTokenizerRuleBuilderRepository()) {
+            throw new LogicException('Repository is already built.');
+        }
 
         return $this;
     }

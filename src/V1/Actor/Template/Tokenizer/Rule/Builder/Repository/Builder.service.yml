@@ -7,20 +7,32 @@ services:
       - [setV1ActorTemplateTokenizerRuleBuilderMapMapFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Map\Map\FactoryInterface']]
       - [setV1ActorTemplateTokenizerRuleBuilderMapFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Map\FactoryInterface']]
       - [setV1ActorTemplateTokenizerRuleBuilderRepositoryFactory, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Repository\FactoryInterface']]
-      - [addRuleDefinition,
+      - [addOptions,
          [{
-            file.extension: !php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\RepositoryInterface::FILE_TYPE_ALL,
-            builder.factory: '@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Builder\FactoryInterface',
-            builder.definition.search: "\"['@Neighborhoods\\\\BuphaloTemplateTree\\\\PrimaryActorName\"",
-            builder.definition.replace: "sprintf(
+            file.extension.affinity: !php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\RepositoryInterface::FILE_TYPE_ALL,
+            builder.factory.service: '@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Builder\FactoryInterface',
+            rule.search: "\"['@Neighborhoods\\\\BuphaloTemplateTree\\\\PrimaryActorName\"",
+            rule.replace: "sprintf(
          '[\\'@%%s%%s\\\\%%s',
          constant(\"Neighborhoods\\\\Buphalo\\\\V1\\\\Actor\\\\Template\\\\TokenizerInterface::NAMESPACE_PREFIX_TOKEN\"),
          constant(\"Neighborhoods\\\\Buphalo\\\\V1\\\\Actor\\\\Template\\\\TokenizerInterface::NAMESPACE_RELATIVE_TOKEN\"),
          constant(\"Neighborhoods\\\\Buphalo\\\\V1\\\\Actor\\\\Template\\\\TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN\")
          )"}]]
-      - [addRuleDefinition,
+      - [addOptions,
          [{
-            file.extension: !php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\RepositoryInterface::FILE_TYPE_ALL,
-            builder.factory: '@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Builder\FactoryInterface',
-            builder.definition.search: "\\PrimaryActorName;",
-            builder.definition.replace: "sprintf('%%s;', TokenizerInterface::EMPTY_TOKEN)"}]]
+            file.extension.affinity: !php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\RepositoryInterface::FILE_TYPE_ALL,
+            builder.factory.service: '@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Builder\FactoryInterface',
+            rule.search: "'\\PrimaryActorName;'",
+            rule.replace: "sprintf('%%s;', constant(\"Neighborhoods\\\\Buphalo\\\\V1\\\\Actor\\\\Template\\\\TokenizerInterface::EMPTY_TOKEN\")
+         )"}]]
+      - [addOptions,
+         [{
+            file.extension.affinity: !php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\RepositoryInterface::FILE_TYPE_ALL,
+            builder.factory.service: '@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\PregReplace\Builder\FactoryInterface',
+            rule.pattern: "'/namespace(\\s+)Neighborhoods\\\\\\BuphaloTemplateTree\\\\\\PrimaryActorName/'",
+            rule.replacement: "sprintf(
+               'namespace %%s%%s\\\\%%s',
+               constant(\"Neighborhoods\\\\Buphalo\\\\V1\\\\Actor\\\\Template\\\\TokenizerInterface::NAMESPACE_PREFIX_TOKEN\"),
+               constant(\"Neighborhoods\\\\Buphalo\\\\V1\\\\Actor\\\\Template\\\\TokenizerInterface::NAMESPACE_RELATIVE_TOKEN\"),
+               constant(\"Neighborhoods\\\\Buphalo\\\\V1\\\\Actor\\\\Template\\\\TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN\")
+            )"}]]

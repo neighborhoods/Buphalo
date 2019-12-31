@@ -12,4 +12,6 @@ interface RuleInterface
     public function getTokenizedContents(): string;
 
     public function setV1ActorTemplateTokenizerRuleContext(ContextInterface $Context);
+
+    public function getFileExtensionAffinity(): string;
 }

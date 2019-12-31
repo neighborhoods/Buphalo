@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace;
+namespace Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\PregReplace;
 
 use LogicException;
 use Neighborhoods\Buphalo\V1;
@@ -13,26 +13,28 @@ class Builder implements BuilderInterface
     use V1\Actor\Template\Tokenizer\Rule\Context\Builder\Factory\AwareTrait;
     use V1\Actor\AwareTrait;
     use V1\Actor\Template\AwareTrait;
-    use V1\Actor\Template\Tokenizer\Rule\StrReplace\Builder\OptionsResolverDecorator\AwareTrait;
+    use V1\Actor\Template\Tokenizer\Rule\PregReplace\Builder\OptionsResolverDecorator\AwareTrait;
 
     private $Options;
     private $TemplateContents;
 
     public function build(): V1\Actor\Template\Tokenizer\RuleInterface
     {
-        $StrReplace = $this->getV1ActorTemplateTokenizerRuleStrReplaceFactory()->create();
-        $StrReplace->setSearch($this->getOptions()[BuilderInterface::OPTION_SEARCH]);
-        $StrReplace->setReplace($this->getOptions()[BuilderInterface::OPTION_REPLACE]);
-        $StrReplace->setFileExtensionAffinity(
+        $pregReplace = $this->getV1ActorTemplateTokenizerRulePregReplaceFactory()->create();
+        $pregReplace->setPattern($this->getOptions()[V1\Actor\Template\Tokenizer\Rule\StrReplace\BuilderInterface::OPTION_SEARCH]);
+        $pregReplace->setReplacement(
+            $this->getOptions()[V1\Actor\Template\Tokenizer\Rule\StrReplace\BuilderInterface::OPTION_REPLACE]
+        );
+        $pregReplace->setFileExtensionAffinity(
             $this->getOptions()[V1\Actor\Template\Tokenizer\Rule\BuilderInterface::OPTION_FILE_EXTENSION_AFFINITY]
         );
-        $StrReplace->setTemplateContents($this->getTemplateContents());
+        $pregReplace->setTemplateContents($this->getTemplateContents());
         $ruleContextBuilder = $this->getV1ActorTemplateTokenizerRuleContextBuilderFactory()->create();
         $ruleContextBuilder->setActorTemplate($this->getActorTemplate());
         $ruleContextBuilder->setActor($this->getActor());
-        $StrReplace->setV1ActorTemplateTokenizerRuleContext($ruleContextBuilder->build());
+        $pregReplace->setV1ActorTemplateTokenizerRuleContext($ruleContextBuilder->build());
 
-        return $StrReplace;
+        return $pregReplace;
     }
 
     public function getOptions(): array
@@ -50,7 +52,7 @@ class Builder implements BuilderInterface
             throw new LogicException('Builder options is already set.');
         }
 
-        $this->getV1ActorTemplateTokenizerRuleStrReplaceBuilderOptionsResolverDecorator()->resolve($options);
+        $this->getV1ActorTemplateTokenizerRulePregReplaceBuilderOptionsResolverDecorator()->resolve($options);
 
         $this->Options = $options;
 

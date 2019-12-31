@@ -11,21 +11,34 @@ class Repository implements RepositoryInterface
     use V1\Actor\Template\Tokenizer\Rule\Builder\Map\Factory\AwareTrait;
     use V1\Actor\Template\Tokenizer\Rule\Builder\Map\Map\AwareTrait;
 
-    private $FileTypeIndex;
-
-    public function add(string $FileExtension, BuilderInterface $Builder): RepositoryInterface
+    public function add(BuilderInterface $Builder): RepositoryInterface
     {
-        if (!isset($this->getV1ActorTemplateTokenizerRuleBuilderMapMap()[$FileExtension])) {
+        $fileExtensionAffinity = $Builder->getOptions()[BuilderInterface::OPTION_FILE_EXTENSION_AFFINITY];
+        if (!isset($this->getV1ActorTemplateTokenizerRuleBuilderMapMap()[$fileExtensionAffinity])) {
             $builderMap = $this->getV1ActorTemplateTokenizerRuleBuilderMapFactory()->create();
-            $this->getV1ActorTemplateTokenizerRuleBuilderMapMap()[$FileExtension] = $builderMap;
+            $this->getV1ActorTemplateTokenizerRuleBuilderMapMap()[$fileExtensionAffinity] = $builderMap;
         }
-        $this->getV1ActorTemplateTokenizerRuleBuilderMapMap()[$FileExtension]->append($Builder);
+        $this->getV1ActorTemplateTokenizerRuleBuilderMapMap()[$fileExtensionAffinity]->append($Builder);
 
         return $this;
     }
 
-    public function getByFileExtension(string $FileExtension): MapInterface
+    public function getMapByFileExtension(string $FileExtension): MapInterface
     {
-        return $this->getV1ActorTemplateTokenizerRuleBuilderMapMap()[$FileExtension];
+        $map = $this->getV1ActorTemplateTokenizerRuleBuilderMapFactory()->create();
+        foreach ($this->getV1ActorTemplateTokenizerRuleBuilderMapMap()[$FileExtension] as $prototype) {
+            $map[] = $this->copy($prototype);
+        }
+
+        return $map;
+    }
+
+    private function copy(BuilderInterface $prototype): BuilderInterface
+    {
+        /** @var BuilderInterface $builder */
+        $builder = $prototype->getOptions()[Repository\BuilderInterface::OPTION_BUILDER_FACTORY_SERVICE]->create();
+        $builder->setOptions($prototype->getOptions());
+
+        return $builder;
     }
 }

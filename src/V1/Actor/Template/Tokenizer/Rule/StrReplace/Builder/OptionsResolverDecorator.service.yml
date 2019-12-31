@@ -1,0 +1,18 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Builder\OptionsResolverDecoratorInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\Builder\OptionsResolverDecorator
+    public: false
+    shared: false
+    calls:
+      - [setV1SymfonyComponentOptionsResolverOptionsResolver, ['@Symfony\Component\OptionsResolver\OptionsResolver']]
+      - [setRequired,
+         [[
+            !php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\BuilderInterface::OPTION_FILE_EXTENSION_AFFINITY,
+            !php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Repository\BuilderInterface::OPTION_BUILDER_FACTORY_SERVICE,
+            !php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\BuilderInterface::OPTION_SEARCH,
+            !php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\BuilderInterface::OPTION_REPLACE
+          ]]]
+      - [setAllowedTypes, [!php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\BuilderInterface::OPTION_FILE_EXTENSION_AFFINITY, "string",]]
+      - [setAllowedTypes, [!php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Repository\BuilderInterface::OPTION_BUILDER_FACTORY_SERVICE, "\\Neighborhoods\\Buphalo\\V1\\Actor\\Template\\Tokenizer\\Rule\\Builder\\FactoryInterface"]]
+      - [setAllowedTypes, [!php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\BuilderInterface::OPTION_SEARCH, "string"]]
+      - [setAllowedTypes, [!php/const \Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\StrReplace\BuilderInterface::OPTION_REPLACE, "string"]]

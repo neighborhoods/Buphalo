@@ -8,12 +8,12 @@ use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Neighborhoods\Buphalo\V1;
 
-class StrReplace implements StrReplaceInterface
+class PregReplace implements PregReplaceInterface
 {
     use V1\Actor\Template\Tokenizer\Rule\Context\AwareTrait;
 
-    private $Search;
-    private $Replace;
+    private $Pattern;
+    private $Replacement;
     private $TemplateContents;
     private $FileExtensionAffinity;
 
@@ -21,52 +21,52 @@ class StrReplace implements StrReplaceInterface
     {
         $expressionLanguage = new ExpressionLanguage();
         $expressionLanguage->addFunction(ExpressionFunction::fromPhp('sprintf'));
-        $search = $expressionLanguage->evaluate($this->getSearch());
-        $replace = $expressionLanguage->evaluate($this->getReplace());
-        $tokenizedContents = str_replace(
-            $search,
-            $replace,
+        $pattern = $expressionLanguage->evaluate($this->getPattern());
+        $replacement = $expressionLanguage->evaluate($this->getReplacement());
+        $tokenizedContents = preg_replace(
+            $pattern,
+            $replacement,
             $this->getTemplateContents()
         );
 
         return $tokenizedContents;
     }
 
-    private function getSearch(): string
+    private function getPattern(): string
     {
-        if ($this->Search === null) {
-            throw new LogicException('Search has not been set.');
+        if ($this->Pattern === null) {
+            throw new LogicException('Pattern has not been set.');
         }
 
-        return $this->Search;
+        return $this->Pattern;
     }
 
-    public function setSearch(string $Search): StrReplaceInterface
+    public function setPattern(string $Pattern): PregReplaceInterface
     {
-        if ($this->Search !== null) {
-            throw new LogicException('Search is already set.');
+        if ($this->Pattern !== null) {
+            throw new LogicException('Pattern is already set.');
         }
-        $this->Search = $Search;
+        $this->Pattern = $Pattern;
 
         return $this;
     }
 
-    private function getReplace(): string
+    private function getReplacement(): string
     {
-        if ($this->Replace === null) {
-            throw new LogicException('Replace has not been set.');
+        if ($this->Replacement === null) {
+            throw new LogicException('Replacement has not been set.');
         }
 
-        return $this->Replace;
+        return $this->Replacement;
     }
 
-    public function setReplace(string $Replace): StrReplaceInterface
+    public function setReplacement(string $Replacement): PregReplaceInterface
     {
-        if ($this->Replace !== null) {
-            throw new LogicException('Replace is already set.');
+        if ($this->Replacement !== null) {
+            throw new LogicException('Replacement is already set.');
         }
 
-        $this->Replace = $Replace;
+        $this->Replacement = $Replacement;
 
         return $this;
     }
@@ -80,7 +80,7 @@ class StrReplace implements StrReplaceInterface
         return $this->TemplateContents;
     }
 
-    public function setTemplateContents(string $TemplateContents): StrReplaceInterface
+    public function setTemplateContents(string $TemplateContents): PregReplaceInterface
     {
         if ($this->TemplateContents !== null) {
             throw new LogicException('Template Contents is already set.');
@@ -100,7 +100,7 @@ class StrReplace implements StrReplaceInterface
         return $this->FileExtensionAffinity;
     }
 
-    public function setFileExtensionAffinity(string $FileExtensionAffinity): StrReplaceInterface
+    public function setFileExtensionAffinity(string $FileExtensionAffinity): PregReplaceInterface
     {
         if ($this->FileExtensionAffinity !== null) {
             throw new LogicException('File Extension Affinity is already set.');

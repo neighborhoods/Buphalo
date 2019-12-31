@@ -7,5 +7,7 @@ use Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\RepositoryInt
 
 interface BuilderInterface
 {
+    public const OPTION_BUILDER_FACTORY_SERVICE = 'builder.factory.service';
+
     public function build(): RepositoryInterface;
 }
