@@ -27,7 +27,7 @@ This should allow you to upgrade specific files as desired in case there are iss
       probably ended in `Template/Actor/` (because Bradfab did not support Primary Actor Generation).
       Because Buphalo *does* support Primary Actor Generation, you should probably remove `Actor/` from this variable.
   - If you are using both Bradfab and Buphalo during a transition period:
-    - Use the bradfab `1.0.0-eol` release which has fixes to prevent it from reading Buphalo files.
+    - Use the bradfab `1.0.0-beta9` release which has fixes to prevent it from reading Buphalo files.
     - Have your `buphalo.sh` script target a different directory than bradfab does and then merge the two directories
       with something like `cp -R`.
     
@@ -36,4 +36,4 @@ If you find that the automatic upgrade script isn't sufficient and you need to k
 let us know.
 In the interim, you can delete any `.buphalo.v1.fabrication.yml` files that aren't working for you and stick with your
 old bradfab files until you can get everything working in Buphalo.
-(As above, you will need to upgrade bradfab to `1.0.0-eol`.)
+(As above, you will need to upgrade bradfab to `1.0.0-beta9`.)
