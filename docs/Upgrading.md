@@ -12,7 +12,7 @@ This should allow you to upgrade specific files as desired in case there are iss
     As such, we recommend maintaining your own template directory where it'll be easier to include your own templates
     as you find the need for them.
  
-- Do a search/replace to change all occurences of `Neighborhoods\Bradfab` in your new template directory to
+- Do a search/replace to change all occurences of `Neighborhoods\Bradfab\Template` in your new template directory to
   `Neighborhoods\BuphaloTemplateTree`
 - Replace all `Actor` references with `PrimaryActorName`, including moving files/directories.
   
