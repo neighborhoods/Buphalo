@@ -31,7 +31,7 @@ putenv(
     build_env(
         'TemplateTree_Map_Builder_FactoryInterface',
         'TemplateTreeDirectoryPaths',
-        "$PWD/templates/primary,$PWD/templates/secondary"
+        "primary:$PWD/templates/primary,secondary:$PWD/templates/secondary"
     )
 );
 
