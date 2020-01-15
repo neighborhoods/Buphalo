@@ -31,7 +31,7 @@ function runTest(Finder\SplFileInfo $test): bool
 
     ob_start();
     exec($test, $output, $return);
-    ob_clean();
+    ob_end_clean();
 
     //echo "Return $return; Output: " . PHP_EOL . implode(PHP_EOL, $output) . PHP_EOL;
 
@@ -42,7 +42,7 @@ function runTest(Finder\SplFileInfo $test): bool
         return true;
     }
 
-    echo mb_str_pad(SYMBOL_FAIL . "  $testName Failed!", mb_strlen($runningMessage)) . PHP_EOL;
+    echo PHP_EOL . mb_str_pad(SYMBOL_FAIL . "  $testName Failed!", mb_strlen($runningMessage)) . PHP_EOL;
     echo implode(PHP_EOL, $output) . PHP_EOL . PHP_EOL;
 
     return false;
