@@ -8,6 +8,7 @@ use Neighborhoods\Buphalo\V1\FabricationFile\Actor;
 interface FabricationFileInterface
 {
     public const FILE_EXTENSION_FABRICATION = 'buphalo.v1.fabrication.yml';
+    public const KEY_PREFERRED_TEMPLATE_TREES = 'preferredTemplateTrees';
 
     public function getActors(): Actor\MapInterface;
 
@@ -36,4 +37,10 @@ interface FabricationFileInterface
     public function getDirectoryPath(): string;
 
     public function setDirectoryPath(string $DirectoryPath): FabricationFileInterface;
+
+    public function getPreferredTemplateTrees(): array;
+
+    public function hasPreferredTemplateTrees(): bool;
+
+    public function setPreferredTemplateTrees(string ...$PreferredTemplateTrees): FabricationFileInterface;
 }

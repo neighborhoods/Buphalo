@@ -1,0 +1,13 @@
+preferredTemplateTrees:
+  - secondary
+actors:
+  <PrimaryActorName>.php:
+    template: PrimaryActorName.php
+  <PrimaryActorName>Interface.php:
+    template: PrimaryActorNameInterface.php
+  <PrimaryActorName>.service.yml:
+    template: PrimaryActorName.service.yml
+  <PrimaryActorName>/Factory.php:
+    template: PrimaryActorName/Factory.php
+  <PrimaryActorName>/FactoryInterface.php:
+    template: PrimaryActorName/FactoryInterface.php
