@@ -42,12 +42,17 @@ class Builder implements BuilderInterface
         $actor->setTemplateFileName($this->getTemplateFileName());
         $actor->setTemplateFileExtension($this->getTemplateFileExtension());
         $actor->setTemplateRelativeFilePath($this->getTemplateRelativeFilePath());
+
         if (isset($record[BuilderInterface::ANNOTATION_PROCESSORS])) {
             $annotationProcessorMapBuilder = $this->getAnnotationProcessorMapBuilderFactory()->create();
             $annotationProcessorMapBuilder->setRecords($record[BuilderInterface::ANNOTATION_PROCESSORS]);
             $annotationProcessorMapBuilder->setFabricationFile($this->getFabricationFile());
             $annotationProcessorMap = $annotationProcessorMapBuilder->build();
             $actor->setAnnotationProcessorMap($annotationProcessorMap);
+        }
+
+        if (isset($record[BuilderInterface::PREFERRED_TEMPLATE_TREES])) {
+            $actor->setPreferredTemplateTrees($record[BuilderInterface::PREFERRED_TEMPLATE_TREES]);
         }
 
         return $actor;

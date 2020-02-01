@@ -28,4 +28,10 @@ interface ActorInterface extends GenericActorInterface
     public function setTemplateFileExtension(string $TemplateFileExtension): ActorInterface;
 
     public function getTemplateFileExtension(): string;
+
+    public function getPreferredTemplateTrees();
+
+    public function hasPreferredTemplateTrees(): bool;
+
+    public function setPreferredTemplateTrees($PreferredTemplateTrees): ActorInterface;
 }

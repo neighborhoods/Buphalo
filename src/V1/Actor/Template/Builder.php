@@ -57,6 +57,24 @@ class Builder implements BuilderInterface
 
         $templateTreeMap = $this->getTemplateTreeMapRepository()->get();
 
+        // Let the Actor preferences be used over the Fabrication File ones
+        if ($this->getFabricationFileActor()->hasPreferredTemplateTrees()) {
+            foreach($this->getFabricationFileActor()->getPreferredTemplateTrees() as $treeName) {
+                if (isset($templateTreeMap[$treeName])) {
+                    $path = $this->buildTemplatePath($templateTreeMap[$treeName]);
+                    $actorTemplateFilePathCandidates[$path] = true;
+                } else {
+                    throw new \RuntimeException(
+                        sprintf('Template tree %s referenced in %s > %s has not been defined.',
+                            $treeName,
+                            $this->getFabricationFile()->getFilePath(),
+                            $this->getFabricationFileActor()->getFileName()
+                        )
+                    );
+                }
+            }
+        }
+
         // Let the Fabrication File preferences be used over global ones
         if ($this->getFabricationFile()->hasPreferredTemplateTrees()) {
             foreach ($this->getFabricationFile()->getPreferredTemplateTrees() as $treeName) {
