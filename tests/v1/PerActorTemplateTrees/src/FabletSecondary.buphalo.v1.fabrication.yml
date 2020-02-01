@@ -1,4 +1,4 @@
-preferredTemplateTrees:
+preferred_template_trees:
   - secondary
 actors:
   <PrimaryActorName>/AA.php:
