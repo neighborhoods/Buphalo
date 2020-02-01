@@ -5,7 +5,7 @@ This is to test per-Fablet template tree preferences.
 ## Test Cases:
 Based on the fabrication file using the following definition
 ```yaml
-preferredTemplateTrees:
+preferred_template_trees:
   - secondary
 ```
 
