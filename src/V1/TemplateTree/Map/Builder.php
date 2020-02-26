@@ -24,7 +24,7 @@ class Builder implements BuilderInterface
                         'Unnamed Template Trees are not compatible with Multiple Template Trees'
                     );
                 }
-                $templateTreeDirectoryKey = 'default';
+                $templateTreeDirectoryKey = self::TEMPLATE_TREE_NAME_DEFAULT;
                 $templateTreeDirectoryPath = $templateTreeDirectoryId;
             } else {
                 [$templateTreeDirectoryKey, $templateTreeDirectoryPath] = explode(':', $templateTreeDirectoryId, 2);
