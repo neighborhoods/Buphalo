@@ -20,6 +20,7 @@ class Builder implements BuilderInterface
     public function build(): FabricationFileInterface
     {
         $fabricationFile = $this->getFabricationFileFactory()->create();
+        $fabricationFileContents = $this->getFabricationFileContents();
 
         $fabricationFile->setBaseName($this->getSplFileInfo()->getBasename());
         $fabricationFile->setFileName($this->getFileName());
@@ -27,6 +28,13 @@ class Builder implements BuilderInterface
         $fabricationFile->setDirectoryPath($this->getSplFileInfo()->getPath());
         $fabricationFile->setRelativeDirectoryPath($this->getSplFileInfo()->getRelativePath());
         $fabricationFile->setRelativeFilePath($this->getSplFileInfo()->getRelativePathname());
+
+        if (isset($fabricationFileContents[FabricationFileInterface::KEY_PREFERRED_TEMPLATE_TREES])) {
+            $fabricationFile->setPreferredTemplateTrees(
+                ...$fabricationFileContents[FabricationFileInterface::KEY_PREFERRED_TEMPLATE_TREES]
+            );
+        }
+
         $this->addActors($fabricationFile);
 
         return $fabricationFile;
