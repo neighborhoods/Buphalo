@@ -178,7 +178,7 @@ class Actor implements ActorInterface
         return $this->PreferredTemplateTrees !== null;
     }
 
-    public function setPreferredTemplateTrees($PreferredTemplateTrees): ActorInterface
+    public function setPreferredTemplateTrees(string ...$PreferredTemplateTrees): ActorInterface
     {
         if ($this->PreferredTemplateTrees !== null) {
             throw new \LogicException('Actor PreferredTemplateTrees is already set.');

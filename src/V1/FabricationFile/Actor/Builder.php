@@ -52,7 +52,7 @@ class Builder implements BuilderInterface
         }
 
         if (isset($record[BuilderInterface::PREFERRED_TEMPLATE_TREES])) {
-            $actor->setPreferredTemplateTrees($record[BuilderInterface::PREFERRED_TEMPLATE_TREES]);
+            $actor->setPreferredTemplateTrees(...$record[BuilderInterface::PREFERRED_TEMPLATE_TREES]);
         }
 
         return $actor;
