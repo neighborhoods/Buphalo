@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Neighborhoods\Buphalo\V1\TemplateTree\Map;
 
 use LogicException;
+use RuntimeException;
 use Neighborhoods\Buphalo\V1\TemplateTree;
 use Neighborhoods\Buphalo\V1\TemplateTree\MapInterface;
 
@@ -16,10 +17,32 @@ class Builder implements BuilderInterface
     public function build(): MapInterface
     {
         $map = $this->getTemplateTreeMapFactory()->create();
-        foreach ($this->getTemplateTreeDirectoryPaths() as $templateTreeDirectoryPath) {
+        foreach ($this->getTemplateTreeDirectoryPaths() as $templateTreeDirectoryId) {
+            if (strpos($templateTreeDirectoryId, ':') === false) {
+                if (\count($this->getTemplateTreeDirectoryPaths()) > 1) {
+                    throw new RuntimeException(
+                        'Unnamed Template Trees are not compatible with Multiple Template Trees'
+                    );
+                }
+                $templateTreeDirectoryKey = self::TEMPLATE_TREE_NAME_DEFAULT;
+                $templateTreeDirectoryPath = $templateTreeDirectoryId;
+            } else {
+                [$templateTreeDirectoryKey, $templateTreeDirectoryPath] = explode(':', $templateTreeDirectoryId, 2);
+            }
+
             $templateTreeBuilder = $this->getTemplateTreeBuilderFactory()->create();
             $templateTreeBuilder->setDirectoryPath($templateTreeDirectoryPath);
-            $map[] = $templateTreeBuilder->build();
+
+            if (isset($map[$templateTreeDirectoryKey])) {
+                throw new RuntimeException(
+                    sprintf(
+                        'TemplateTreeDirectory with key %s is already defined as %s',
+                        $templateTreeDirectoryKey,
+                        $templateTreeDirectoryPath
+                    )
+                );
+            }
+            $map[$templateTreeDirectoryKey] = $templateTreeBuilder->build();
         }
 
         return $map;

@@ -32,20 +32,38 @@ class Builder implements BuilderInterface
     protected function getFilePath(): string
     {
         if ($this->FilePath === null) {
-            $actorTemplateFilePathCandidate = sprintf(
-                '%s/%s',
-                $this->getTemplateTreeMapRepository()->get()->current()->getDirectoryPath(),
-                $this->getFabricationFileActor()->getTemplateRelativeFilePath()
-            );
-            $actorTemplateFilePath = realpath($actorTemplateFilePathCandidate);
-            if ($actorTemplateFilePath === false) {
-                throw new RuntimeException(
-                    sprintf('The actor template file [%s] does not exist.', $actorTemplateFilePathCandidate)
-                );
+            $actorTemplateFilePathCandidates = $this->buildActorTemplateFilePathCandidates();
+            foreach($actorTemplateFilePathCandidates as $actorTemplateFilePathCandidate) {
+                $actorTemplateFilePath = realpath($actorTemplateFilePathCandidate);
+                if ($actorTemplateFilePath !== false) {
+                    $this->FilePath = $actorTemplateFilePath;
+                    return $this->FilePath;
+                }
             }
-            $this->FilePath = $actorTemplateFilePath;
+
+            throw new RuntimeException(
+                sprintf('No actor template file was found, checked: %s', implode(',', $actorTemplateFilePathCandidates))
+            );
         }
 
         return $this->FilePath;
+    }
+
+    private function buildActorTemplateFilePathCandidates(): array
+    {
+        $actorTemplateFilePathCandidates = [];
+
+        $templateTreeMap = $this->getTemplateTreeMapRepository()->get();
+        foreach($templateTreeMap as $templateTree) {
+            $actorTemplateFilePathCandidate = sprintf(
+                '%s/%s',
+                $templateTree->getDirectoryPath(),
+                $this->getFabricationFileActor()->getTemplateRelativeFilePath()
+            );
+
+            $actorTemplateFilePathCandidates[] = $actorTemplateFilePathCandidate;
+        }
+
+        return $actorTemplateFilePathCandidates;
     }
 }

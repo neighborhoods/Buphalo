@@ -32,7 +32,7 @@ Buphalo leverages an environment variable API for runtime options. The following
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath=/PATH/TO/SOURCE/DIRECTORY \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__FabricationDirectoryPath=/PATH/TO/FABRICATION/DIRECTORY \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__NamespacePrefix=VENDOR\\PRODUCT\\ \
-Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=/PATH/TO/TEMPLATE/TREE/DIRECTORY \
+Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=TreeName:/PATH/TO/TEMPLATE/TREE/DIRECTORY \
 php bin/v1/buphalo
 ```
 
@@ -41,7 +41,7 @@ For example, in order to Buphalo Buphalo (assuming Buphalo is installed as a com
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath=$PWD/vendor/neighborhoods/buphalo/src/v1 \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__FabricationDirectoryPath=$PWD/vendor/neighborhoods/buphalo/fab/v1 \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__NamespacePrefix=Neighborhoods\\Buphalo\\ \
-Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=$PWD/vendor/neighborhoods/buphalo/template-tree/V1 \
+Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=buphalo:$PWD/vendor/neighborhoods/buphalo/template-tree/V1 \
 php vendor/bin/v1/buphalo
 ```
 
@@ -55,7 +55,7 @@ environment variable. As an env var this is "typed" as a CSV. It is then cast to
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath=$PWD/vendor/neighborhoods/buphalo/src/v1 \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__FabricationDirectoryPath=$PWD/vendor/neighborhoods/buphalo/fab/v1 \
 Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__NamespacePrefix=Neighborhoods\\Buphalo\\ \
-Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=$PWD/vendor/neighborhoods/buphalo/template-tree/V1 \
+Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=buphalo:$PWD/vendor/neighborhoods/buphalo/template-tree/V1 \
 Neighborhoods_Buphalo_V1_FabricationFile_Map_BuilderInterface__FinderFileNames=Connection.buphalo.v1.fabrication.yml,Connection2.buphalo.v1.fabrication.yml 
 php vendor/bin/v1/buphalo
 ```
@@ -189,10 +189,22 @@ actors:
 ### Adding A New Or Updating An Existing Template
 * Copy Buphalo's `template-tree` directory to your software product's root directory if you have not done so already.
 * Add or change the appropriate PHP and dependency injection service definition YAML files in the position that you want them under your `template-tree/v1` directory.
-* Be sure to update your environmental varaible to the following (or the equivalent if you used a different path for the copied directory)
+* Be sure to update your environmental variable to the following (or the equivalent if you used a different path for the copied directory)
 ```bash
-Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=/PATH/TO/SOFTWARE_PRODUCT/ROOT/template-tree/v1 \
+Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=TreeName:/PATH/TO/SOFTWARE_PRODUCT/ROOT/template-tree/v1 \
 ```
+
+### Using Multiple Template Trees
+* Buphalo supports using multiple template trees.
+* If using multiple trees, each template tree MUST be named by including a "TreeName:" prefix to the directory path
+* If using a single template tree, the template tree identifier MAY be left unnamed.
+* Separate each path identifier with a comma
+* Buphalo will attempt to look through the template tree directories in the order specified, and will use the first matching template it finds
+* example:
+```
+Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=primary:/PATH/TO/SOFTWARE_PRODUCT/ROOT/template-tree/primary,secondary:/PATH/TO/SOFTWARE_PRODUCT/ROOT/template-tree/secondary \
+```
+
 
 ## Definitions
 
