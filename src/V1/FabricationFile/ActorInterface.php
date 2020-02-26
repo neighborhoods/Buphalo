@@ -29,7 +29,7 @@ interface ActorInterface extends GenericActorInterface
 
     public function getTemplateFileExtension(): string;
 
-    public function getPreferredTemplateTrees();
+    public function getPreferredTemplateTrees(): iterable;
 
     public function hasPreferredTemplateTrees(): bool;
 

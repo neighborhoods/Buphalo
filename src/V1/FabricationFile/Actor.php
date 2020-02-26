@@ -164,7 +164,7 @@ class Actor implements ActorInterface
         return $this;
     }
 
-    public function getPreferredTemplateTrees()
+    public function getPreferredTemplateTrees(): iterable
     {
         if ($this->PreferredTemplateTrees === null) {
             throw new \LogicException('Actor PreferredTemplateTrees has not been set.');
