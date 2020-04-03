@@ -1,0 +1,5 @@
+services:
+  Symfony\Component\ExpressionLanguage\ExpressionLanguage:
+    class: Symfony\Component\ExpressionLanguage\ExpressionLanguage
+    public: false
+    shared: false
