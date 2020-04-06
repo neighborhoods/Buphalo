@@ -9,6 +9,5 @@ class PrimaryActorName
     */";
 
     public const ANOTHER_STRING = "/** @neighborhoods-buphalo:annotation-processor DifferentSimpleStringAnnotationProcessor
-    remove me
     */";
 }

@@ -8,6 +8,6 @@ class PrimaryActorName
     public const TEST_STRING = "/** @neighborhoods-buphalo:annotation-processor TestSimpleStringAnnotationProcessor
     */";
 
-    public const ANOTHER_STRING = "/** @neighborhoods-buphalo:annotation-processor TestSimpleStringAnnotationProcessor
+    public const DUPLICATE_STRING = "/** @neighborhoods-buphalo:annotation-processor TestSimpleStringAnnotationProcessor
     */";
 }
