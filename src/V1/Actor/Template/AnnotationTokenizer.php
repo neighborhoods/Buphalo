@@ -17,6 +17,8 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
 
     protected $TokenizedContents;
 
+    private $memoizedAnnotationProcessors = [];
+
     public function tokenize(): AnnotationTokenizerInterface
     {
         $this->getTokenizedContents();
@@ -60,10 +62,15 @@ class AnnotationTokenizer implements AnnotationTokenizerInterface
         $targetActor = $this->getActorTemplate()->getFabricationFileActor();
         $annotationProcessor = null;
         if ($targetActor->hasAnnotationProcessorMap()) {
-            $annotationProcessors = $targetActor->getAnnotationProcessorMap();
             $annotationProcessorIndex = trim($annotations[2][$index]);
+            if (isset($this->memoizedAnnotationProcessors[$annotationProcessorIndex])) {
+                return $this->memoizedAnnotationProcessors[$annotationProcessorIndex];
+            }
+
+            $annotationProcessors = $targetActor->getAnnotationProcessorMap();
             if (isset($annotationProcessors[$annotationProcessorIndex])) {
                 $annotationProcessor = $annotationProcessors[$annotationProcessorIndex];
+                $this->memoizedAnnotationProcessors[$annotationProcessorIndex] = $annotationProcessor;
             }
         }
         // "default" processor - trim out the annotation.
