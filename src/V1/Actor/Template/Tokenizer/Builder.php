@@ -21,6 +21,7 @@ class Builder implements BuilderInterface
         $templateBuilder = $this->getActorTemplateBuilderFactory()->create();
         $templateBuilder->setActor($this->getActor());
         $templateBuilder->setFabricationFileActor($this->getFabricationFileActor());
+        $templateBuilder->setFabricationFile($this->getFabricationFile());
         $actorTemplate = $templateBuilder->build();
 
         $annotationTokenizerBuilder = $this->getActorTemplateAnnotationTokenizerBuilderFactory()->create();

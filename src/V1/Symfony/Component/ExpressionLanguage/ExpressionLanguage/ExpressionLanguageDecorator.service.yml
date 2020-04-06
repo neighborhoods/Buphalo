@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Buphalo\V1\Symfony\Component\ExpressionLanguage\ExpressionLanguageDecoratorInterface:
+    class: Neighborhoods\Buphalo\V1\Symfony\Component\ExpressionLanguage\ExpressionLanguageDecorator
+    public: false
+    shared: false
+    calls:
+      - [setExpressionLanguage, ['@Symfony\Component\ExpressionLanguage\ExpressionLanguage']]

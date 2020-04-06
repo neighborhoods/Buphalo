@@ -15,6 +15,7 @@ class FabricationFile implements FabricationFileInterface
     protected $RelativeDirectoryPath;
     protected $DirectoryPath;
     protected $Actors;
+    protected $PreferredTemplateTrees;
 
     public function getActors(): Actor\MapInterface
     {
@@ -152,6 +153,31 @@ class FabricationFile implements FabricationFileInterface
         }
 
         $this->DirectoryPath = $DirectoryPath;
+
+        return $this;
+    }
+
+    public function getPreferredTemplateTrees(): array
+    {
+        if ($this->PreferredTemplateTrees === null) {
+            throw new \LogicException('FabricationFile PreferredTemplateTrees has not been set.');
+        }
+
+        return $this->PreferredTemplateTrees;
+    }
+
+    public function hasPreferredTemplateTrees(): bool
+    {
+        return $this->PreferredTemplateTrees !== null;
+    }
+
+    public function setPreferredTemplateTrees(string ...$PreferredTemplateTrees): FabricationFileInterface
+    {
+        if ($this->PreferredTemplateTrees !== null) {
+            throw new \LogicException('FabricationFile PreferredTemplateTrees is already set.');
+        }
+
+        $this->PreferredTemplateTrees = $PreferredTemplateTrees;
 
         return $this;
     }

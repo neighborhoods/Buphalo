@@ -22,6 +22,7 @@ class Actor implements ActorInterface
     protected $TemplateFileName;
     protected $TemplateFileExtension;
     protected $TemplateRelativeFilePath;
+    protected $PreferredTemplateTrees;
 
     public function getRelativeDirectoryPath(): string
     {
@@ -159,6 +160,31 @@ class Actor implements ActorInterface
         }
 
         $this->TemplateRelativeFilePath = $TemplateRelativeFilePath;
+
+        return $this;
+    }
+
+    public function getPreferredTemplateTrees(): iterable
+    {
+        if ($this->PreferredTemplateTrees === null) {
+            throw new \LogicException('Actor PreferredTemplateTrees has not been set.');
+        }
+
+        return $this->PreferredTemplateTrees;
+    }
+
+    public function hasPreferredTemplateTrees(): bool
+    {
+        return $this->PreferredTemplateTrees !== null;
+    }
+
+    public function setPreferredTemplateTrees(string ...$PreferredTemplateTrees): ActorInterface
+    {
+        if ($this->PreferredTemplateTrees !== null) {
+            throw new \LogicException('Actor PreferredTemplateTrees is already set.');
+        }
+
+        $this->PreferredTemplateTrees = $PreferredTemplateTrees;
 
         return $this;
     }
