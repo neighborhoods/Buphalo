@@ -7,7 +7,7 @@ If this is your first rodeo wrangling Buphalo, then hopefully you can learn from
 The Buphalo is a unique beast. Its only known to live 'round these parts. If you get cornered by an angry Buphalo, unfortunately, Google will not be able help. However, there are a couple people who can lend a hand. The code owners, Jacques and Brad, are said to have tamed the first wild Buphalo. These two know everything there is to know about this magnificent creature. They can help you out.
 
 ## Fabrication
-Perhaps the most well known feature of Buphalo, is their ability to produce patterns from fabrication files. A Buphalo should be given a carefully named fabrication file from a carefully named path. If the path contains directories or fabrication files that aren't named well, the Buphalo will produce some weirdly named actors. If this happens, don't worry; no use crying over spilt Buphalo milk. Just delete the generated actors, rename the fabrication files and directories in the path, and get back on that horse. Here are some examples:
+Perhaps the most well known feature of Buphalo, is their ability to produce patterns from fabrication files. A Buphalo should be given a carefully named fabrication file from a carefully named path. If the path contains directories or fabrication files that aren't named well, the Buphalo will produce some weirdly named actors. If this happens, don't worry; no use crying over spilt Buphalo milk. Just rename the fabrication files and directories in the path, and get back on that horse. If you are moving generated actors from `fab` to `src`, you will need to delete them from `src`. Here are some examples:
 
 ### Bad Example
 Path: `src/V1/SIWA/SignInWithAppleTokenResponse.buphalo.v1.fabrication.yml`
