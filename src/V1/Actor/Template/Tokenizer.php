@@ -60,6 +60,14 @@ class Tokenizer implements TokenizerInterface
                 ),
                 $tokenizedContents
             );
+            $tokenizedContents = preg_replace(
+                '/use(\s+)Neighborhoods\\\BuphaloTemplateTree/',
+                sprintf(
+                    'use %s',
+                    TokenizerInterface::NAMESPACE_PREFIX_TOKEN
+                ),
+                $tokenizedContents
+            );
             /** @noinspection CascadeStringReplacementInspection */
             /** @noinspection NotOptimalRegularExpressionsInspection */
             $tokenizedContents = preg_replace(
