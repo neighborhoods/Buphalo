@@ -24,7 +24,7 @@ class DAOInterface implements AnnotationProcessorInterface
             $accessors[] = $this->buildAccessors($name, $type);
         }
 
-        return implode($accessors, PHP_EOL . PHP_EOL);
+        return implode(PHP_EOL . PHP_EOL, $accessors);
     }
 
     private function buildAccessors($name, $type): string
