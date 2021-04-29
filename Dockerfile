@@ -1,4 +1,4 @@
-FROM neighborhoods/php-fpm:7.4
+FROM neighborhoods/php-fpm:php-7.4-datadog
 RUN apt-get update -y && apt-get install -y unzip procps
 ARG PROJECT_NAME=buphalo
 
