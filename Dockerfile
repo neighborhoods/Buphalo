@@ -1,4 +1,4 @@
-FROM neighborhoods/php-fpm-phalcon:php7.2_phalcon3.4
+FROM neighborhoods/php-fpm:7.4
 RUN apt-get update -y && apt-get install -y unzip procps
 ARG PROJECT_NAME=buphalo
 
