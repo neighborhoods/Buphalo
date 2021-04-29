@@ -23,7 +23,7 @@ class Builder implements AnnotationProcessorInterface
             $accessors[] = $this->buildAccessors($name);
         }
 
-        return implode($accessors, PHP_EOL);
+        return implode(PHP_EOL, $accessors);
     }
 
     private function buildAccessors($name): string

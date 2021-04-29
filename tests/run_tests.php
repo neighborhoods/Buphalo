@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require_once(__DIR__ . '/../vendor/autoload.php');
 
 use Symfony\Component\Finder;
@@ -30,7 +32,7 @@ function runTest(Finder\SplFileInfo $test): bool
     echo $runningMessage;
 
     ob_start();
-    exec($test, $output, $return);
+    exec((string)$test, $output, $return);
     ob_end_clean();
 
     //echo "Return $return; Output: " . PHP_EOL . implode(PHP_EOL, $output) . PHP_EOL;
