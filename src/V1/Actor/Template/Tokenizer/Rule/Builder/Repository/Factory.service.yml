@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Repository\FactoryInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Repository\Factory
+    public: false
+    shared: true
+    calls:
+      - [setV1ActorTemplateTokenizerRuleBuilderRepositoryFQCN, ['%Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\RepositoryInterface.fqcn%']]

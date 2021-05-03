@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Map\MapInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Map\Map
+    public: false
+    shared: false

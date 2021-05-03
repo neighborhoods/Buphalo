@@ -1,0 +1,5 @@
+actors:
+  <PrimaryActorName>.service.yml:
+    template: PrimaryActorName.service.yml
+  <PrimaryActorName>/AwareTrait.php:
+    template: PrimaryActorName/AwareTrait.php

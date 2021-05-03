@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Map\FactoryInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\Map\Factory
+    public: false
+    shared: true
+    calls:
+      - [setV1ActorTemplateTokenizerRuleBuilderMap, ['@Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\Builder\MapInterface']]

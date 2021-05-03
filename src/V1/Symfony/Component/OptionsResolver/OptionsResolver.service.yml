@@ -1,0 +1,5 @@
+services:
+  Symfony\Component\OptionsResolver\OptionsResolver:
+    class: Symfony\Component\OptionsResolver\OptionsResolver
+    public: false
+    shared: false

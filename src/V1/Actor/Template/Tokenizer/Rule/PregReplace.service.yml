@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\PregReplaceInterface:
+    class: Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Rule\PregReplace
+    public: false
+    shared: false
