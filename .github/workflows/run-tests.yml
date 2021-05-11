@@ -2,8 +2,6 @@ name: "Run Tests"
 
 on:
   pull_request:
-    branches:
-      - 'master'
 
 jobs:
   run_tests:
