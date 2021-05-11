@@ -1,0 +1,35 @@
+name: "Run Tests"
+
+on:
+  pull_request:
+    branches:
+      - 'master'
+
+jobs:
+  newer_tests:
+    name: "Run Tests on PHP ${{ matrix.php_version }}"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-18.04
+            php_version: 7.2
+          - os: ubuntu-18.04
+            php_version: 7.3
+          - os: ubuntu-latest
+            php_version: 7.4
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php_version }}
+          coverage: none
+
+      - name: Install Dependencies
+        run: composer install
+
+      - name: Run Tests
+        run: tests/run_tests
