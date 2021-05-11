@@ -6,7 +6,7 @@ on:
       - 'master'
 
 jobs:
-  newer_tests:
+  run_tests:
     name: "Run Tests on PHP ${{ matrix.php_version }}"
     runs-on: ${{ matrix.os }}
     strategy:
