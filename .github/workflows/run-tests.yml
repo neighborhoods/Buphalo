@@ -10,19 +10,18 @@ jobs:
     continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
+        os: [ubuntu-latest]
+        php_version: ['7.4', '8.0']
         experimental: [false]
         include:
-          - os: ubuntu-18.04
-            php_version: '7.2'
-          - os: ubuntu-18.04
-            php_version: '7.3'
-          - os: ubuntu-latest
-            php_version: '7.4'
-          - os: ubuntu-latest
-            php_version: '8.0'
-            experimental: true
-          - os: ubuntu-latest
-            php_version: '8.1'
+          - php_version: '7.2'
+            os: ubuntu-18.04
+            experimental: false
+          - php_version: '7.3'
+            os: ubuntu-18.04
+            experimental: false
+          - php_version: '8.1'
+            os: ubuntu-latest
             experimental: true
     steps:
       - name: Checkout Code
