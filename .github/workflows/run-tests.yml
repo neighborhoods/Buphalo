@@ -10,6 +10,7 @@ jobs:
     continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
+        experimental: [false]
         include:
           - os: ubuntu-18.04
             php_version: '7.2'
