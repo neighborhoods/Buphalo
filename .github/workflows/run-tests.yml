@@ -2,22 +2,27 @@ name: "Run Tests"
 
 on:
   pull_request:
-    branches:
-      - 'master'
 
 jobs:
   run_tests:
     name: "Run Tests on PHP ${{ matrix.php_version }}"
     runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
+        os: [ubuntu-latest]
+        php_version: ['7.4', '8.0']
+        experimental: [false]
         include:
-          - os: ubuntu-18.04
-            php_version: 7.2
-          - os: ubuntu-18.04
-            php_version: 7.3
-          - os: ubuntu-latest
-            php_version: 7.4
+          - php_version: '7.2'
+            os: ubuntu-18.04
+            experimental: false
+          - php_version: '7.3'
+            os: ubuntu-18.04
+            experimental: false
+          - php_version: '8.1'
+            os: ubuntu-latest
+            experimental: true
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
