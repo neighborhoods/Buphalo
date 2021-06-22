@@ -1,0 +1,10 @@
+actors:
+  <PrimaryActorName>.php:
+    template: PrimaryActorName.php
+    annotation_processors:
+      FirstAnnotation:
+        processor_fqcn: \Neighborhoods\Buphalo\V2\AnnotationProcessors\EmptyString
+      SecondAnnotation:
+        processor_fqcn: \Neighborhoods\Buphalo\V2\AnnotationProcessors\SimpleString
+        static_context_record:
+          string: "public const SECOND = 'second';"

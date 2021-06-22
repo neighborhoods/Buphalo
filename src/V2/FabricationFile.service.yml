@@ -1,0 +1,7 @@
+parameters:
+  Neighborhoods_Buphalo_V2_FabricationFileInterface__FILE_EXTENSION_FABRICATION: !php/const \Neighborhoods\Buphalo\V2\FabricationFileInterface::FILE_EXTENSION_FABRICATION
+services:
+  Neighborhoods\Buphalo\V2\FabricationFileInterface:
+    class: Neighborhoods\Buphalo\V2\FabricationFile
+    public: false
+    shared: false

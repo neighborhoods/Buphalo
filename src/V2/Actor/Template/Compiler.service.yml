@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Buphalo\V2\Actor\Template\CompilerInterface:
+    class: Neighborhoods\Buphalo\V2\Actor\Template\Compiler
+    public: false
+    shared: false

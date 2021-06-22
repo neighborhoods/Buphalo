@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Buphalo\V2\Fabricator\FactoryInterface:
+    class: Neighborhoods\Buphalo\V2\Fabricator\Factory
+    public: false
+    shared: true
+    calls:
+      - [setFabricator, ['@Neighborhoods\Buphalo\V2\FabricatorInterface']]

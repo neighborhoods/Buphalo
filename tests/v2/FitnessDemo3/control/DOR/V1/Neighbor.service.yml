@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\BuphaloFitness\Demo3\DOR\V1\NeighborInterface:
+    class: Neighborhoods\BuphaloFitness\Demo3\DOR\V1\Neighbor
+    public: false
+    shared: false
