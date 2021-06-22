@@ -82,8 +82,8 @@ class Builder implements BuilderInterface
         if ($this->symfonyContainerBuilder === null) {
             $containerBuilder = new ContainerBuilder();
             $discoverableDirectories[] = $this->getCacheDirectoryPath();
-            $discoverableDirectories[] = $this->getFabricationDirectoryPath();
-            $discoverableDirectories[] = $this->getSourceDirectoryPath();
+            $discoverableDirectories[] = $this->getFabricationDirectoryPath() . '/V2';
+            $discoverableDirectories[] = $this->getSourceDirectoryPath() . '/V2';
             $containerBuilderFacade = (new Facade())->setContainerBuilder($containerBuilder);
             $containerBuilderFacade->addFinder(
                 (new Finder())->name('*.service.yml')->files()->in($discoverableDirectories)
