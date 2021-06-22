@@ -82,8 +82,8 @@ class Builder implements BuilderInterface
         if ($this->symfonyContainerBuilder === null) {
             $containerBuilder = new ContainerBuilder();
             $discoverableDirectories[] = $this->getCacheDirectoryPath();
-            $discoverableDirectories[] = $this->getFabricationDirectoryPath() . '/V1';
-            $discoverableDirectories[] = $this->getSourceDirectoryPath() . '/V1';
+            $discoverableDirectories[] = $this->getFabricationDirectoryPath();
+            $discoverableDirectories[] = $this->getSourceDirectoryPath();
             $containerBuilderFacade = (new Facade())->setContainerBuilder($containerBuilder);
             $containerBuilderFacade->addFinder(
                 (new Finder())->name('*.service.yml')->files()->in($discoverableDirectories)
@@ -144,25 +144,25 @@ class Builder implements BuilderInterface
 
     protected function getFabricationDirectoryPath(): string
     {
-        if (!$this->realpath($this->getApplicationRootDirectoryPath() . '/fab')) {
-            $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/fab');
+        if (!$this->realpath($this->getApplicationRootDirectoryPath() . '/fab/V1')) {
+            $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/fab/V1');
         }
 
-        return $this->realpath($this->getApplicationRootDirectoryPath() . '/fab');
+        return $this->realpath($this->getApplicationRootDirectoryPath() . '/fab/V1');
     }
 
     protected function getSourceDirectoryPath(): string
     {
-        return $this->realpath($this->getApplicationRootDirectoryPath() . '/src');
+        return $this->realpath($this->getApplicationRootDirectoryPath() . '/src/V1');
     }
 
     protected function getCacheDirectoryPath(): string
     {
-        if (!$this->realpath($this->getApplicationRootDirectoryPath() . '/data/cache')) {
-            $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/data/cache');
+        if (!$this->realpath($this->getApplicationRootDirectoryPath() . '/data/cache/V1')) {
+            $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/data/cache/V1');
         }
 
-        return $this->realpath($this->getApplicationRootDirectoryPath() . '/data/cache');
+        return $this->realpath($this->getApplicationRootDirectoryPath() . '/data/cache/V1');
     }
 
     protected function getPipelineFilePath(): string
