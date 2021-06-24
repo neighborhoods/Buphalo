@@ -1,0 +1,8 @@
+services:
+  Neighborhoods\Buphalo\V2\FabricationFile\Actor\BuilderInterface:
+    class: Neighborhoods\Buphalo\V2\FabricationFile\Actor\Builder
+    public: false
+    shared: false
+    calls:
+      - [setFabricationFileActorFactory, ['@Neighborhoods\Buphalo\V2\FabricationFile\Actor\FactoryInterface']]
+      - [setAnnotationProcessorMapBuilderFactory, ['@Neighborhoods\Buphalo\V2\AnnotationProcessor\Map\Builder\FactoryInterface']]

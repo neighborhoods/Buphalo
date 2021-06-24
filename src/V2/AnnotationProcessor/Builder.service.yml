@@ -1,0 +1,9 @@
+services:
+  Neighborhoods\Buphalo\V2\AnnotationProcessor\BuilderInterface:
+    class: Neighborhoods\Buphalo\V2\AnnotationProcessor\Builder
+    public: false
+    shared: false
+    calls:
+      - [setAnnotationProcessorFactory, ['@Neighborhoods\Buphalo\V2\AnnotationProcessor\FactoryInterface']]
+      - [setAnnotationProcessorRepository, ['@Neighborhoods\Buphalo\V2\AnnotationProcessor\RepositoryInterface']]
+      - [setAnnotationProcessorContextBuilderFactory, ['@Neighborhoods\Buphalo\V2\AnnotationProcessor\Context\Builder\FactoryInterface']]

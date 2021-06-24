@@ -1,0 +1,10 @@
+parameters:
+  Neighborhoods\Buphalo\V2\TemplateTree\Map\Builder\FactoryInterface.TemplateTreeDirectoryPaths: '%env(csv:Neighborhoods_Buphalo_V2_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths)%'
+services:
+  Neighborhoods\Buphalo\V2\TemplateTree\Map\Builder\FactoryInterface:
+    class: Neighborhoods\Buphalo\V2\TemplateTree\Map\Builder\Factory
+    public: false
+    shared: false
+    calls:
+      - [setTemplateTreeMapBuilder, ['@Neighborhoods\Buphalo\V2\TemplateTree\Map\BuilderInterface']]
+      - [setTemplateTreeDirectoryPaths, ['%Neighborhoods\Buphalo\V2\TemplateTree\Map\Builder\FactoryInterface.TemplateTreeDirectoryPaths%']]

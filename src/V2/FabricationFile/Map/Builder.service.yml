@@ -1,0 +1,14 @@
+parameters:
+  env(Neighborhoods_Buphalo_V2_FabricationFile_Map_BuilderInterface__FinderFileNames): '*.%Neighborhoods_Buphalo_V2_FabricationFileInterface__FILE_EXTENSION_FABRICATION%'
+  Neighborhoods\Buphalo\V2\FabricationFile\Map\BuilderInterface.FinderFileNames: '%env(csv:Neighborhoods_Buphalo_V2_FabricationFile_Map_BuilderInterface__FinderFileNames)%'
+services:
+  Neighborhoods\Buphalo\V2\FabricationFile\Map\BuilderInterface:
+    class: Neighborhoods\Buphalo\V2\FabricationFile\Map\Builder
+    public: false
+    shared: false
+    calls:
+      - [setFabricationFileMapFactory, ['@Neighborhoods\Buphalo\V2\FabricationFile\Map\FactoryInterface']]
+      - [setTargetApplicationRepository, ['@Neighborhoods\Buphalo\V2\TargetApplication\RepositoryInterface']]
+      - [setFabricationFileBuilderFactory, ['@Neighborhoods\Buphalo\V2\FabricationFile\Builder\FactoryInterface']]
+      - [setSymfonyComponentFinderFinder, ['@Symfony\Component\Finder\Finder']]
+      - [setFinderFileNames, ['%Neighborhoods\Buphalo\V2\FabricationFile\Map\BuilderInterface.FinderFileNames%']]
