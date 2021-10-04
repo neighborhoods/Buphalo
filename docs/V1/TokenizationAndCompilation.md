@@ -83,7 +83,7 @@ The compiler replaces each token with a dynamic string as follows:
 |`**NAMESPACE_RELATIVE_TOKEN**`|`getNamespaceRelative()`|`\DOR\V1`||
 |`**PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN**`|`getPrimaryActorFullPascalCaseName()`|`DORV1Car`||
 |`**PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN**`|`getPrimaryActorShortPascalCaseName()`|`Car`||
-|`**EMPTY_TOKEN**`|||]()
+|`**EMPTY_TOKEN**`||||
 
 
 ## Effective Results

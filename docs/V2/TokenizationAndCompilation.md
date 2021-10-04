@@ -48,9 +48,9 @@ Note that in the Regex/String column, {} represents a dynamic string:
 Old Template: `namespace Neighborhoods\BuphaloTemplateTree\PrimaryActorName`
 Old Replacement: `namespace **NAMESPACE_PREFIX_TOKEN****NAMESPACE_RELATIVE_TOKEN**\**PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN**`
 New Template: `namespace Neighborhoods\BuphaloTemplateTree\RelativeNamespace\PrimaryActorName`
-New Replacement: namespace `**TOKEN_NAMESPACE_PREFIX****TOKEN_NAMESPACE_RELATIVE**\**TOKEN_PRIMARY_ACTOR_NAME_SHORT_PASCAL`
+New Replacement: `namespace **TOKEN_NAMESPACE_PREFIX****TOKEN_NAMESPACE_RELATIVE**\**TOKEN_PRIMARY_ACTOR_NAME_SHORT_PASCAL**`
 
-Old Tempalte: `namespace Neighborhoods\BuphaloTemplateTree`
+Old Template: `namespace Neighborhoods\BuphaloTemplateTree`
 Old Replacement: `namespace **NAMESPACE_PREFIX_TOKEN****NAMESPACE_RELATIVE_TOKEN**`
 New Template: `namespace Neighborhoods\BuphaloTemplateTree\RelativeNamespace`
 New Replacement: `namespace **TOKEN_NAMESPACE_PREFIX****TOKEN_NAMESPACE_RELATIVE**`
@@ -58,7 +58,7 @@ New Replacement: `namespace **TOKEN_NAMESPACE_PREFIX****TOKEN_NAMESPACE_RELATIVE
 Old Template: `use Neighborhoods\BuphaloTemplateTree\PrimaryActorName`
 Old Replacement: `use **NAMESPACE_PREFIX_TOKEN****NAMESPACE_RELATIVE_TOKEN**\**PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN**`
 New Template: `use Neighborhoods\BuphaloTemplateTree\RelativeNamespace\PrimaryActorName`
-New Replacement: `use **TOKEN_NAMESPACE_PREFIX****TOKEN_NAMESPACE_RELATIVE\**TOKEN_PRIMARY_ACTOR_NAME_SHORT_PASCAL**`
+New Replacement: `use **TOKEN_NAMESPACE_PREFIX****TOKEN_NAMESPACE_RELATIVE**\**TOKEN_PRIMARY_ACTOR_NAME_SHORT_PASCAL**`
 
 Old Template: `use Neighborhoods\BuphaloTemplateTree`
 Old Replacement: `use **NAMESPACE_PREFIX_TOKEN**`
