@@ -59,6 +59,7 @@ class Map extends ArrayIterator implements MapInterface
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function getArrayCopy(): MapInterface
     {
         return new self(parent::getArrayCopy(), (int)$this->getFlags());
