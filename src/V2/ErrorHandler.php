@@ -12,7 +12,7 @@ class ErrorHandler implements ErrorHandlerInterface
         string $errorString,
         string $errorFile,
         int $errorLine,
-        array $errorContext = []
+        array $errorContext = [] // deprecated in PHP 7.2, Removed in 8.0
     ): ErrorHandlerInterface {
         throw new ErrorException($errorString, $errorNumber, $errorNumber, $errorFile, $errorLine);
     }
