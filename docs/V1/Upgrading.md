@@ -22,7 +22,7 @@ This should allow you to upgrade specific files as desired in case there are iss
   - This script will create new `.buphalo.v1.fabrication.yml` files
   
 - Create a `buphalo.sh` script that uses the new template directory created above.
-  - (see [README](../README.md) for details
+  - (see [README](../../README.md) for details
     - _N.B._ If you were using Bradfab's template directory, the `BRADFAB_FABRICATOR_TEMPLATE_ACTOR_DIRECTORY_PATH`
       probably ended in `Template/Actor/` (because Bradfab did not support Primary Actor Generation).
       Because Buphalo *does* support Primary Actor Generation, you should probably remove `Actor/` from this variable.
