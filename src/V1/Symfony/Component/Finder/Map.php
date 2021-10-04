@@ -36,7 +36,7 @@ class Map extends ArrayIterator implements MapInterface
     }
 
     /** @param Finder $finder */
-    public function append($finder)
+    public function append($finder): void
     {
         $this->assertValidArrayItemType($finder);
         parent::append($finder);
