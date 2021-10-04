@@ -12,7 +12,7 @@ class ErrorHandler implements ErrorHandlerInterface
         string $errorString,
         string $errorFile,
         int $errorLine,
-        array $errorContext
+        array $errorContext = []
     ): ErrorHandlerInterface {
         throw new ErrorException($errorString, $errorNumber, $errorNumber, $errorFile, $errorLine);
     }
