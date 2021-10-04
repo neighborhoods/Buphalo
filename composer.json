@@ -30,7 +30,7 @@
     "symfony/dependency-injection": "^4.2",
     "symfony/expression-language": "^4.2",
     "symfony/filesystem": "^4.2",
-    "symfony/finder": "^4.2",
+    "symfony/finder": "^4.4.30",
     "symfony/yaml": "^4.2"
   },
   "autoload": {
