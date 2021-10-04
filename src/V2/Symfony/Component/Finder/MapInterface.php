@@ -21,7 +21,7 @@ interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Coun
     public function offsetSet($index, $finder): void;
 
     /** @param Finder $finder */
-    public function append($finder);
+    public function append($finder): void;
 
     public function current(): Finder;
 
