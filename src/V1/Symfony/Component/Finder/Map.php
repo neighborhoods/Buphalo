@@ -30,7 +30,7 @@ class Map extends ArrayIterator implements MapInterface
     }
 
     /** @param Finder $finder */
-    public function offsetSet($index, $finder)
+    public function offsetSet($index, $finder): void
     {
         parent::offsetSet($index, $this->assertValidArrayItemType($finder));
     }
