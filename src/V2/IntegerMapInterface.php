@@ -16,10 +16,10 @@ interface IntegerMapInterface extends SeekableIterator, ArrayAccess, Serializabl
     public function offsetGet($index): int;
 
     /** @param int $integer */
-    public function offsetSet($index, $integer);
+    public function offsetSet($index, $integer): void;
 
     /** @param int $integer */
-    public function append($integer);
+    public function append($integer): void;
 
     public function current(): int;
 

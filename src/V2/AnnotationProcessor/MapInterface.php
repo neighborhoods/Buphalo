@@ -17,10 +17,10 @@ interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Coun
     public function offsetGet($index): AnnotationProcessorInterface;
 
     /** @param AnnotationProcessorInterface $AnnotationProcessor */
-    public function offsetSet($index, $AnnotationProcessor);
+    public function offsetSet($index, $AnnotationProcessor): void;
 
     /** @param AnnotationProcessorInterface $AnnotationProcessor */
-    public function append($AnnotationProcessor);
+    public function append($AnnotationProcessor): void;
 
     public function current(): AnnotationProcessorInterface;
 

@@ -16,10 +16,10 @@ interface StringMapInterface extends SeekableIterator, ArrayAccess, Serializable
     public function offsetGet($index): string;
 
     /** @param string $string */
-    public function offsetSet($index, $string);
+    public function offsetSet($index, $string): void;
 
     /** @param string $string */
-    public function append($string);
+    public function append($string): void;
 
     public function current(): string;
 

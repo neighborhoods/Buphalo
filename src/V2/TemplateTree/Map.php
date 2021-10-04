@@ -30,13 +30,13 @@ class Map extends ArrayIterator implements MapInterface
     }
 
     /** @param TemplateTreeInterface $templateTree */
-    public function offsetSet($index, $templateTree)
+    public function offsetSet($index, $templateTree): void
     {
         parent::offsetSet($index, $this->assertValidArrayItemType($templateTree));
     }
 
     /** @param TemplateTreeInterface $templateTree */
-    public function append($templateTree)
+    public function append($templateTree): void
     {
         $this->assertValidArrayItemType($templateTree);
         parent::append($templateTree);
@@ -58,6 +58,7 @@ class Map extends ArrayIterator implements MapInterface
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function getArrayCopy(): MapInterface
     {
         return new self(parent::getArrayCopy(), (int)$this->getFlags());

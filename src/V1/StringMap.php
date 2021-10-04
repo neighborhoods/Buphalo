@@ -28,13 +28,13 @@ class StringMap extends ArrayIterator implements StringMapInterface
     }
 
     /** @param string $string */
-    public function offsetSet($index, $string)
+    public function offsetSet($index, $string): void
     {
         parent::offsetSet($index, $this->assertValidArrayItemType($string));
     }
 
     /** @param string $string */
-    public function append($string)
+    public function append($string): void
     {
         $this->assertValidArrayItemType($string);
         parent::append($string);
@@ -57,6 +57,7 @@ class StringMap extends ArrayIterator implements StringMapInterface
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function getArrayCopy(): StringMapInterface
     {
         return new self(parent::getArrayCopy(), (int)$this->getFlags());

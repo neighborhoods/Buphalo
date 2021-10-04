@@ -18,10 +18,10 @@ interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Coun
     public function offsetGet($index): TemplateTreeInterface;
 
     /** @param TemplateTreeInterface $templateTree */
-    public function offsetSet($index, $templateTree);
+    public function offsetSet($index, $templateTree): void;
 
     /** @param TemplateTreeInterface $templateTree */
-    public function append($templateTree);
+    public function append($templateTree): void;
 
     public function current(): TemplateTreeInterface;
 

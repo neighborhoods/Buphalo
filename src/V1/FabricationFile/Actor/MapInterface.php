@@ -17,10 +17,10 @@ interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Coun
     public function offsetGet($index): ActorInterface;
 
     /** @param ActorInterface $Actor */
-    public function offsetSet($index, $Actor);
+    public function offsetSet($index, $Actor): void;
 
     /** @param ActorInterface $Actor */
-    public function append($Actor);
+    public function append($Actor): void;
 
     public function current(): ActorInterface;
 

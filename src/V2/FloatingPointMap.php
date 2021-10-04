@@ -28,13 +28,13 @@ class FloatingPointMap extends ArrayIterator implements FloatingPointMapInterfac
     }
 
     /** @param float $floatingPoint */
-    public function offsetSet($index, $floatingPoint)
+    public function offsetSet($index, $floatingPoint): void
     {
         parent::offsetSet($index, $this->assertValidArrayItemType($floatingPoint));
     }
 
     /** @param float $floatingPoint */
-    public function append($floatingPoint)
+    public function append($floatingPoint): void
     {
         $this->assertValidArrayItemType($floatingPoint);
         parent::append($floatingPoint);
@@ -57,6 +57,7 @@ class FloatingPointMap extends ArrayIterator implements FloatingPointMapInterfac
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function getArrayCopy(): FloatingPointMapInterface
     {
         return new self(parent::getArrayCopy(), (int)$this->getFlags());
