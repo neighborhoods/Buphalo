@@ -17,10 +17,10 @@ interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Coun
     public function offsetGet($index): NeighborInterface;
 
     /** @param NeighborInterface $Neighbor */
-    public function offsetSet($index, $Neighbor);
+    public function offsetSet($index, $Neighbor): void;
 
     /** @param NeighborInterface $Neighbor */
-    public function append($Neighbor);
+    public function append($Neighbor): void;
 
     public function current(): NeighborInterface;
 

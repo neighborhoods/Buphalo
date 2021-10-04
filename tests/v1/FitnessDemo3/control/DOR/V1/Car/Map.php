@@ -29,13 +29,13 @@ class Map extends ArrayIterator implements MapInterface
     }
 
     /** @param CarInterface $Car */
-    public function offsetSet($index, $Car)
+    public function offsetSet($index, $Car): void
     {
         parent::offsetSet($index, $this->assertValidArrayItemType($Car));
     }
 
     /** @param CarInterface $Car */
-    public function append($Car)
+    public function append($Car): void
     {
         $this->assertValidArrayItemType($Car);
         parent::append($Car);
@@ -58,6 +58,7 @@ class Map extends ArrayIterator implements MapInterface
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function getArrayCopy(): MapInterface
     {
         return new self(parent::getArrayCopy(), (int)$this->getFlags());
