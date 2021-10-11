@@ -17,10 +17,10 @@ interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Coun
     public function offsetGet($index): CarInterface;
 
     /** @param CarInterface $Car */
-    public function offsetSet($index, $Car);
+    public function offsetSet($index, $Car): void;
 
     /** @param CarInterface $Car */
-    public function append($Car);
+    public function append($Car): void;
 
     public function current(): CarInterface;
 

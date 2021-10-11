@@ -17,10 +17,10 @@ interface MapInterface extends SeekableIterator, ArrayAccess, Serializable, Coun
     public function offsetGet($index): FabricationFileInterface;
 
     /** @param FabricationFileInterface $FabricationFile */
-    public function offsetSet($index, $FabricationFile);
+    public function offsetSet($index, $FabricationFile): void;
 
     /** @param FabricationFileInterface $FabricationFile */
-    public function append($FabricationFile);
+    public function append($FabricationFile): void;
 
     public function current(): FabricationFileInterface;
 

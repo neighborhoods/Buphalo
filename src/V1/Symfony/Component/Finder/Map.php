@@ -30,13 +30,13 @@ class Map extends ArrayIterator implements MapInterface
     }
 
     /** @param Finder $finder */
-    public function offsetSet($index, $finder)
+    public function offsetSet($index, $finder): void
     {
         parent::offsetSet($index, $this->assertValidArrayItemType($finder));
     }
 
     /** @param Finder $finder */
-    public function append($finder)
+    public function append($finder): void
     {
         $this->assertValidArrayItemType($finder);
         parent::append($finder);
@@ -59,6 +59,7 @@ class Map extends ArrayIterator implements MapInterface
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function getArrayCopy(): MapInterface
     {
         return new self(parent::getArrayCopy(), (int)$this->getFlags());

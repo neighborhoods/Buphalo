@@ -16,10 +16,10 @@ interface FloatingPointMapInterface extends SeekableIterator, ArrayAccess, Seria
     public function offsetGet($index): float;
 
     /** @param float $floatingPoint */
-    public function offsetSet($index, $floatingPoint);
+    public function offsetSet($index, $floatingPoint): void;
 
     /** @param float $floatingPoint */
-    public function append($floatingPoint);
+    public function append($floatingPoint): void;
 
     public function current(): float;
 
