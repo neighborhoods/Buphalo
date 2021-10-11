@@ -40,7 +40,7 @@ Note that in the Regex/String column, {} represents a dynamic string:
 |Regex|`namespace(\s+)Neighborhoods\\BuphaloTemplateTree\\PrimaryActorName`|`namespace **NAMESPACE_PREFIX_TOKEN****NAMESPACE_RELATIVE_TOKEN**\**PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN**`|
 |Regex|`namespace(\s+)Neighborhoods\\BuphaloTemplateTree`|`namespace **NAMESPACE_PREFIX_TOKEN****NAMESPACE_RELATIVE_TOKEN**`|
 |Regex|`use(\s+)Neighborhoods\\BuphaloTemplateTree\\PrimaryActorName`|`use **NAMESPACE_PREFIX_TOKEN****NAMESPACE_RELATIVE_TOKEN**\**PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN**`|
-|Regex|`use(\s+)Neighborhoods\\BuphaloTemplateTree/`|`use **NAMESPACE_PREFIX_TOKEN**`|
+|Regex|`use(\s+)Neighborhoods\\BuphaloTemplateTree`|`use **NAMESPACE_PREFIX_TOKEN**`|
 |Regex|`services:\n(\s+)Neighborhoods\\BuphaloTemplateTree\\PrimaryActorName`|`services:\n  **NAMESPACE_PREFIX_TOKEN****NAMESPACE_RELATIVE_TOKEN**\**PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN**`|
 |Regex|`class:(\s+)Neighborhoods\\BuphaloTemplateTree\\PrimaryActorName`|`class: **NAMESPACE_PREFIX_TOKEN****NAMESPACE_RELATIVE_TOKEN**\**PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN**`|
 |String|`['@Neighborhoods\BuphaloTemplateTree\PrimaryActorName`|`['@**NAMESPACE_PREFIX_TOKEN****NAMESPACE_RELATIVE_TOKEN**\**PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN**`|
@@ -74,16 +74,16 @@ Note that in the Regex/String column, {} represents a dynamic string:
 ## Compilation
 The compiler replaces each token with a dynamic string as follows:
 
-|Token|Actor Method|Example|
-|---|---|---|
-|`**SHORT_PASCAL_CASE_NAME_TOKEN**`|`getShortPascalCaseName()`|`Factory`|
-|`**FULL_PASCAL_CASE_NAME_TOKEN**`|`getFullPascalCaseName()`|`CarBuilderFactory`|
-|`**RELATIVE_CLASS_PATH_TOKEN**`|`getRelativeClassPath()`|`Car\Builder\Factory`|
-|`**NAMESPACE_PREFIX_TOKEN**`|`getNamespacePrefix()`|`Neighborhoods\BuphaloFitness\Demo3`|
-|`**NAMESPACE_RELATIVE_TOKEN**`|`getNamespaceRelative()`|`\DOR\V1`|
-|`**PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN**`|`getPrimaryActorFullPascalCaseName()`|`DORV1Car`|
-|`**PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN**`|`getPrimaryActorShortPascalCaseName()`|`Car`|
-|`**EMPTY_TOKEN**`|||]()
+|Token|Actor Method|Example|Notes|
+|---|---|---|---|
+|`**SHORT_PASCAL_CASE_NAME_TOKEN**`|`getShortPascalCaseName()`|`Factory`|Only used to replace things that match Actor/Filename, which is redundant|
+|`**FULL_PASCAL_CASE_NAME_TOKEN**`|`getFullPascalCaseName()`|`CarBuilderFactory`|Unused|
+|`**RELATIVE_CLASS_PATH_TOKEN**`|`getRelativeClassPath()`|`Car\Builder\Factory`|Only used in one very odd case|
+|`**NAMESPACE_PREFIX_TOKEN**`|`getNamespacePrefix()`|`Neighborhoods\BuphaloFitness\Demo3`||
+|`**NAMESPACE_RELATIVE_TOKEN**`|`getNamespaceRelative()`|`\DOR\V1`||
+|`**PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN**`|`getPrimaryActorFullPascalCaseName()`|`DORV1Car`||
+|`**PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN**`|`getPrimaryActorShortPascalCaseName()`|`Car`||
+|`**EMPTY_TOKEN**`||||
 
 
 ## Effective Results
