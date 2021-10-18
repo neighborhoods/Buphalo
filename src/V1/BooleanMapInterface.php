@@ -16,10 +16,10 @@ interface BooleanMapInterface extends SeekableIterator, ArrayAccess, Serializabl
     public function offsetGet($index): bool;
 
     /** @param bool $integer */
-    public function offsetSet($index, $integer);
+    public function offsetSet($index, $integer): void;
 
     /** @param bool $boolean */
-    public function append($boolean);
+    public function append($boolean): void;
 
     public function current(): bool;
 
