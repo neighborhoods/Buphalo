@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\BuphaloTemplateTree\PrimaryActorName\RepositoryInterface:
-    class: Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Repository
-    public: false
-    shared: true
-    calls:
-      - [setPrimaryActorNameBuilderFactory, ['@Neighborhoods\BuphaloTemplateTree\PrimaryActorName\Builder\FactoryInterface']]
