@@ -1,7 +1,0 @@
-actors:
-  <PrimaryActorName>.php:
-    template: PrimaryActorName.php
-  <PrimaryActorName>Interface.php:
-    template: PrimaryActorNameInterface.php
-  <PrimaryActorName>.service.yml:
-    template: PrimaryActorName.service.yml

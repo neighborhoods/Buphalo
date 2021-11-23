@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Neighborhoods\Buphalo\V2\Actor\Template;
 
 use Neighborhoods\Buphalo\V2\Actor;
 
+/** @noinspection PhpSuperClassIncompatibleWithInterfaceInspection */ // PhpStorm doesn't recognize visibility override
 class Compiler implements CompilerInterface
 {
     use Actor\Template\Tokenizer\AwareTrait {
@@ -17,53 +19,23 @@ class Compiler implements CompilerInterface
     {
         if ($this->CompiledContents === null) {
             $tokenizedContents = $this->getActorTemplateTokenizer()->getTokenizedContents();
+
+            $actor = $this->getActorTemplateTokenizer()->getActor();
+
+            $replacements = [
+                TokenizerInterface::TOKEN_NAMESPACE_PREFIX => $actor->getNamespacePrefix(),
+                TokenizerInterface::TOKEN_NAMESPACE_RELATIVE => $actor->getNamespaceRelative(),
+                TokenizerInterface::TOKEN_PRIMARY_ACTOR_NAME_FULL_PASCAL => $actor->getPrimaryActorFullPascalCaseName(),
+                TokenizerInterface::TOKEN_PRIMARY_ACTOR_NAME_SHORT_PASCAL =>
+                    $actor->getPrimaryActorShortPascalCaseName(),
+            ];
+
             $compiledContents = str_replace(
-                TokenizerInterface::SHORT_PASCAL_CASE_NAME_TOKEN,
-                $this->getActorTemplateTokenizer()->getActor()->getShortPascalCaseName(),
+                array_keys($replacements),
+                array_values($replacements),
                 $tokenizedContents
             );
-            /** @noinspection CascadeStringReplacementInspection */
-            $compiledContents = str_replace(
-                TokenizerInterface::FULL_PASCAL_CASE_NAME_TOKEN,
-                $this->getActorTemplateTokenizer()->getActor()->getFullPascalCaseName(),
-                $compiledContents
-            );
-            /** @noinspection CascadeStringReplacementInspection */
-            $compiledContents = str_replace(
-                TokenizerInterface::RELATIVE_CLASS_PATH_TOKEN,
-                $this->getActorTemplateTokenizer()->getActor()->getRelativeClassPath(),
-                $compiledContents
-            );
-            /** @noinspection CascadeStringReplacementInspection */
-            $compiledContents = str_replace(
-                TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
-                $this->getActorTemplateTokenizer()->getActor()->getNamespacePrefix(),
-                $compiledContents
-            );
-            /** @noinspection CascadeStringReplacementInspection */
-            $compiledContents = str_replace(
-                TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
-                $this->getActorTemplateTokenizer()->getActor()->getNamespaceRelative(),
-                $compiledContents
-            );
-            /** @noinspection CascadeStringReplacementInspection */
-            $compiledContents = str_replace(
-                TokenizerInterface::PRIMARY_ACTOR_FULL_PASCAL_CASE_NAME_TOKEN,
-                $this->getActorTemplateTokenizer()->getActor()->getPrimaryActorFullPascalCaseName(),
-                $compiledContents
-            );
-            /** @noinspection CascadeStringReplacementInspection */
-            $compiledContents = str_replace(
-                TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN,
-                $this->getActorTemplateTokenizer()->getActor()->getPrimaryActorShortPascalCaseName(),
-                $compiledContents
-            );
-            /** @noinspection CascadeStringReplacementInspection */
-            $compiledContents = str_replace(
-                TokenizerInterface::EMPTY_TOKEN,
-                '',
-                $compiledContents
-            );
+
             $this->CompiledContents = $compiledContents;
         }
 

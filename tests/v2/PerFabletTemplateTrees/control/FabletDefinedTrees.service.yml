@@ -1,6 +1,0 @@
-# secondary
-services:
-  Neighborhoods\BuphaloTest\FabletDefinedTreesInterface:
-    class: Neighborhoods\BuphaloTest\FabletDefinedTrees
-    public: false
-    shared: false
