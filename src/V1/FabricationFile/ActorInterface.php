@@ -34,4 +34,8 @@ interface ActorInterface extends GenericActorInterface
     public function hasPreferredTemplateTrees(): bool;
 
     public function setPreferredTemplateTrees(string ...$PreferredTemplateTrees): ActorInterface;
+
+    public function setRelativeFilePath(string $RelativeFilePath): ActorInterface;
+
+    public function getRelativeFilePath(): string;
 }
