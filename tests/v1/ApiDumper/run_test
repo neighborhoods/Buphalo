@@ -1,0 +1,109 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+error_reporting(E_ALL);
+
+use Neighborhoods\Buphalo\V1\Api\FabricationFile;
+use Neighborhoods\Buphalo\V1\Api\FabricationFile\Actor\AnnotationProcessor;
+use Neighborhoods\Buphalo\V1\Api\Dumper;
+use Neighborhoods\Buphalo\V1\StringMap;
+use Neighborhoods\Buphalo\V1\AnnotationProcessors;
+
+$PWD = __DIR__;
+
+// Must load autoloader before including any Annotation Processors
+if (file_exists($autoloaderFilePath = dirname($PWD, 5) . '/autoload.php')) {
+    /** @noinspection PhpIncludeInspection */
+    require_once $autoloaderFilePath;
+} elseif (file_exists($autoloaderFilePath = dirname($PWD, 3) . '/vendor/autoload.php')) {
+    /** @noinspection PhpIncludeInspection */
+    require_once $autoloaderFilePath;
+} else {
+    throw new RuntimeException('Unable to find the Composer autoloader.');
+}
+
+buildAndWriteBuphaloFile();
+
+// Diff the two directories
+exec("diff -r $PWD/control-src/ $PWD/src/", $output, $return);
+
+if ($return) {
+    die(implode(PHP_EOL, $output) . PHP_EOL);
+}
+
+putenv(build_env('TargetApplication_BuilderInterface', 'SourceDirectoryPath', "$PWD/src"));
+putenv(build_env('TargetApplication_BuilderInterface', 'FabricationDirectoryPath', "$PWD/fab"));
+putenv(build_env('TargetApplication_BuilderInterface', 'NamespacePrefix', "Neighborhoods\\BuphaloTest"));
+putenv(
+    build_env(
+        'TemplateTree_Map_Builder_FactoryInterface',
+        'TemplateTreeDirectoryPaths',
+        "primary:$PWD/templates/primary,secondary:$PWD/templates/secondary"
+    )
+);
+
+// Include Buphalo
+require_once($PWD . '/../../../bin/v1/buphalo.php');
+
+// Diff the two directories
+exec("diff -r $PWD/control-fab/ $PWD/fab/", $output, $return);
+
+if ($return) {
+    die(implode(PHP_EOL, $output) . PHP_EOL);
+}
+
+
+function build_env(string $namespace, string $variable, string $value): string
+{
+    $prefix = 'Neighborhoods_Buphalo_V1';
+    return sprintf('%s_%s__%s=%s', $prefix, $namespace, $variable, $value);
+}
+
+function buildAndWriteBuphaloFile(): void
+{
+    $filePath = __DIR__ . '/src/DOR/V1/WrittenFile.buphalo.v1.fabrication.yml';
+
+    $fabricationFile = new FabricationFile();
+    $fabricationFile
+        ->setPreferredTemplateTrees(new StringMap(['primary', 'secondary']))
+        ->setActors(buildActors());
+
+    $dumper = new Dumper();
+    $dumper->dump($fabricationFile, $filePath);
+}
+
+function buildActors(): FabricationFile\Actor\MapInterface
+{
+    $actors = new FabricationFile\Actor\Map();
+
+    $primaryActor = new FabricationFile\Actor();
+    $primaryActor
+        ->setAnnotationProcessors(buildAnnotationProcessors())
+        ->setPreferredTemplateTrees(new StringMap(['primary', 'secondary']))
+        ->setTemplate('PrimaryActorName.php');
+    $actors['<PrimaryActorName>.php'] = $primaryActor;
+
+    $secondaryActor = new FabricationFile\Actor();
+    $secondaryActor
+        ->setTemplate('PrimaryActorName/AwareTrait.php');
+
+    $actors['<PrimaryActorName>/AwareTrait.php'] = $secondaryActor;
+
+    return $actors;
+}
+
+function buildAnnotationProcessors(): AnnotationProcessor\MapInterface
+{
+    $annotationProcessors = new AnnotationProcessor\Map();
+
+    $firstAP = new AnnotationProcessor();
+    $firstAP->setProcessorFqcn('\\' . AnnotationProcessors\EmptyString::class);
+    $annotationProcessors['FirstAnnotation'] = $firstAP;
+
+    $secondAP = new AnnotationProcessor();
+    $secondAP->setProcessorFqcn('\\' . AnnotationProcessors\SimpleString::class);
+    $secondAP->setStaticContextRecord(['string' => 'this is a string']);
+    $annotationProcessors['SecondAnnotation'] = $secondAP;
+
+    return $annotationProcessors;
+}
