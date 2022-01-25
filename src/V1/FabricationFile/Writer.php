@@ -87,6 +87,7 @@ class Writer implements WriterInterface
     private function buildAnnotationProcessor(AnnotationProcessorInterface $annotationProcessor): array
     {
         $annotationProcessorDatum = [
+            // Prefixing with `\` isn't necessary, but can be an optimization
             AnnotationProcessor\BuilderInterface::PROCESSOR_FQCN => '\\' . \get_class($annotationProcessor),
         ];
 
