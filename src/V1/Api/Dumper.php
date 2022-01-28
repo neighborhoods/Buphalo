@@ -43,7 +43,19 @@ class Dumper implements DumperInterface
         $this->setFilesystem(new Filesystem());
     }
 
-    public function dump(FabricationFileInterface $fabricationFile, string $filePath): Dumper
+    public function dumpFile(FabricationFileInterface $fabricationFile, string $filePath): Dumper
+    {
+        // alternatively, make $filePath optional and build from
+        // - local base directory
+        // - new relative path / filename properties on the FabricationFileInterface
+        // - V1\FabricationFileInterface::FILE_EXTENSION_FABRICATION
+
+        $this->getFilesystem()->dumpFile($filePath, $this->dump($fabricationFile));
+
+        return $this;
+    }
+
+    public function dump(FabricationFileInterface $fabricationFile): string
     {
         $output = $this->getSerializer()->serialize(
             $fabricationFile,
@@ -58,9 +70,7 @@ class Dumper implements DumperInterface
         // This is the alternative to using the JsonSerializer
         //$output = Yaml\Yaml::dump(\json_decode(\json_encode($fabricationFile), true), PHP_INT_MAX, 2);
 
-        $this->getFilesystem()->dumpFile($filePath, $output);
-
-        return $this;
+        return $output;
     }
 
     private function setSerializer(Serializer\Serializer $serializer): void
