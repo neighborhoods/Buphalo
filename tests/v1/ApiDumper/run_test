@@ -61,15 +61,15 @@ function build_env(string $namespace, string $variable, string $value): string
 
 function buildAndWriteBuphaloFile(): void
 {
-    $filePath = __DIR__ . '/src/DOR/V1/WrittenFile.buphalo.v1.fabrication.yml';
-
     $fabricationFile = new FabricationFile();
     $fabricationFile
         ->setPreferredTemplateTrees(new StringMap(['primary', 'secondary']))
-        ->setActors(buildActors());
+        ->setActors(buildActors())
+        ->setRelativePath('DOR/V1')
+        ->setPrimaryActorName('WrittenFile');
 
-    $dumper = new Dumper();
-    $dumper->dumpFile($fabricationFile, $filePath);
+    $dumper = new Dumper(__DIR__ . '/src');
+    $dumper->dumpFile($fabricationFile);
 }
 
 function buildActors(): FabricationFile\Actor\MapInterface
