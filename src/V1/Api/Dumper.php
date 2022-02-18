@@ -16,11 +16,11 @@ class Dumper implements DumperInterface
     /** @var string */
     private $basePath;
 
-    public function __construct(string $basePath)
+    public function __construct(?string $basePath = null)
     {
-        $this->setBasePath($basePath);
-
-        $this->setFilesystem(new Filesystem());
+        if ($basePath) {
+            $this->setBasePath($basePath);
+        }
     }
 
     public function dumpFile(FabricationFileInterface $fabricationFile): Dumper
@@ -54,15 +54,10 @@ class Dumper implements DumperInterface
         return Yaml\Yaml::dump($data, PHP_INT_MAX, 2);
     }
 
-    public function setFilesystem(Filesystem $filesystem): void
-    {
-        $this->filesystem = $filesystem;
-    }
-
     private function getFilesystem(): Filesystem
     {
         if ($this->filesystem === null) {
-            throw new \LogicException('Dumper filesystem has not been set.');
+            $this->filesystem = new Filesystem();
         }
 
         return $this->filesystem;
