@@ -12,11 +12,13 @@ class SimpleString implements V2\AnnotationProcessorInterface
         getAnnotationProcessorContext as public;
     }
 
+    public const CONTEXT_KEY_STRING = 'string';
+
     public function getReplacement(): string
     {
         $staticContextRecord = $this->getAnnotationProcessorContext()->getStaticContextRecord();
 
-        return $staticContextRecord['string'];
+        return $staticContextRecord[self::CONTEXT_KEY_STRING];
     }
 
 

@@ -13,6 +13,8 @@ class SymfonyExpression implements V2\AnnotationProcessorInterface
         getAnnotationProcessorContext as public;
     }
 
+    public const CONTEXT_KEY_EXPRESSION = 'expression';
+
     public function getReplacement(): string
     {
         $context = $this->getAnnotationProcessorContext()->getStaticContextRecord();
@@ -20,7 +22,7 @@ class SymfonyExpression implements V2\AnnotationProcessorInterface
 
         $expressionLanguage = new ExpressionLanguage();
         return (string) $expressionLanguage->evaluate(
-            $context['expression'],
+            $context[self::CONTEXT_KEY_EXPRESSION],
             [
                 'context' => $this->getAnnotationProcessorContext()
             ]

@@ -33,7 +33,7 @@ class BooleanMap extends ArrayIterator implements BooleanMapInterface
     }
 
     /** @param bool $boolean */
-    public function append($boolean)
+    public function append($boolean): void
     {
         $this->assertValidArrayItemType($boolean);
         parent::append($boolean);
