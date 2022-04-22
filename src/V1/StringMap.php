@@ -8,18 +8,18 @@ use LogicException;
 
 class StringMap extends ArrayIterator implements StringMapInterface
 {
-    /** @param string ...$Actors */
-    public function __construct(array $Actors = [], int $flags = 0)
+    /** @param string ...$strings */
+    public function __construct(array $strings = [], int $flags = 0)
     {
         if ($this->count() !== 0) {
             throw new LogicException('Map is not empty.');
         }
 
-        if (!empty($Actors)) {
-            $this->assertValidArrayType(...array_values($Actors));
+        if (!empty($strings)) {
+            $this->assertValidArrayType(...array_values($strings));
         }
 
-        parent::__construct($Actors, $flags);
+        parent::__construct($strings, $flags);
     }
 
     public function offsetGet($index): string

@@ -1,0 +1,21 @@
+preferred_template_trees:
+  - primary
+  - secondary
+actors:
+  '<PrimaryActorName>.php':
+    template: PrimaryActorName.php
+    preferred_template_trees:
+      - primary
+      - secondary
+    annotation_processors:
+      FirstAnnotation:
+        processor_fqcn: \Neighborhoods\Buphalo\V1\AnnotationProcessors\EmptyString
+        static_context_record: null
+      SecondAnnotation:
+        processor_fqcn: \Neighborhoods\Buphalo\V1\AnnotationProcessors\SimpleString
+        static_context_record:
+          string: 'this is a string'
+  '<PrimaryActorName>/AwareTrait.php':
+    template: PrimaryActorName/AwareTrait.php
+    preferred_template_trees: null
+    annotation_processors: null
