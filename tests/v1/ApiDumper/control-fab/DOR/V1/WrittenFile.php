@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Neighborhoods\BuphaloTest\DOR\V1;
+namespace Neighborhoods\BuphaloTest\DOR\Version;
 
 class WrittenFile implements WrittenFileInterface
 {

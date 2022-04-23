@@ -1,45 +1,45 @@
 <?php
 declare(strict_types=1);
 
-namespace Neighborhoods\BuphaloTest\DOR\V1\WrittenFile;
+namespace Neighborhoods\BuphaloTest\DOR\Version\WrittenFile;
 
 use LogicException;
-use Neighborhoods\BuphaloTest\DOR\V1\WrittenFileInterface;
+use Neighborhoods\BuphaloTest\DOR\Version\WrittenFileInterface;
 
 trait AwareTrait
 {
-    protected $DORV1WrittenFile;
+    protected $DORVersionWrittenFile;
 
-    public function setDORV1WrittenFile(WrittenFileInterface $WrittenFile): self
+    public function setDORVersionWrittenFile(WrittenFileInterface $WrittenFile): self
     {
-        if ($this->hasDORV1WrittenFile()) {
-            throw new LogicException('DORV1WrittenFile is already set.');
+        if ($this->hasDORVersionWrittenFile()) {
+            throw new LogicException('DORVersionWrittenFile is already set.');
         }
-        $this->DORV1WrittenFile = $WrittenFile;
+        $this->DORVersionWrittenFile = $WrittenFile;
 
         return $this;
     }
 
-    protected function getDORV1WrittenFile(): WrittenFileInterface
+    protected function getDORVersionWrittenFile(): WrittenFileInterface
     {
-        if (!$this->hasDORV1WrittenFile()) {
-            throw new LogicException('DORV1WrittenFile is not set.');
+        if (!$this->hasDORVersionWrittenFile()) {
+            throw new LogicException('DORVersionWrittenFile is not set.');
         }
 
-        return $this->DORV1WrittenFile;
+        return $this->DORVersionWrittenFile;
     }
 
-    protected function hasDORV1WrittenFile(): bool
+    protected function hasDORVersionWrittenFile(): bool
     {
-        return isset($this->DORV1WrittenFile);
+        return isset($this->DORVersionWrittenFile);
     }
 
-    protected function unsetDORV1WrittenFile(): self
+    protected function unsetDORVersionWrittenFile(): self
     {
-        if (!$this->hasDORV1WrittenFile()) {
-            throw new LogicException('DORV1WrittenFile is not set.');
+        if (!$this->hasDORVersionWrittenFile()) {
+            throw new LogicException('DORVersionWrittenFile is not set.');
         }
-        unset($this->DORV1WrittenFile);
+        unset($this->DORVersionWrittenFile);
 
         return $this;
     }

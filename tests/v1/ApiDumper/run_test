@@ -65,7 +65,7 @@ function buildAndWriteBuphaloFile(): void
     $fabricationFile
         ->setPreferredTemplateTrees(new StringMap(['primary', 'secondary']))
         ->setActors(buildActors())
-        ->setRelativePath('DOR/V1')
+        ->setRelativePath('DOR/Version')
         ->setPrimaryActorName('WrittenFile');
 
     $dumper = new Dumper(__DIR__ . '/src');

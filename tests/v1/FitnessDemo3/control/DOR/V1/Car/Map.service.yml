@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\BuphaloFitness\Demo3\DOR\V1\Car\MapInterface:
-    class: Neighborhoods\BuphaloFitness\Demo3\DOR\V1\Car\Map
-    public: false
-    shared: false
