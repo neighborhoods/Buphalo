@@ -1,0 +1,6 @@
+# primary
+services:
+  Neighborhoods\BuphaloTest\GlobalTreeTestInterface:
+    class: Neighborhoods\BuphaloTest\GlobalTreeTest
+    public: false
+    shared: false
