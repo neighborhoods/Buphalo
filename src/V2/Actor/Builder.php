@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Neighborhoods\Buphalo\V2\Actor;
@@ -18,6 +19,9 @@ class Builder implements BuilderInterface
     protected $NamespaceRelative;
     protected $RelativeClassPath;
     protected $ParentRelativeClassPath;
+    protected $ParentActorFullPascalCaseName;
+    protected $ParentActorRelativePascalCaseName;
+    protected $ParentActorShortPascalCaseName;
     protected $PrimaryActorFullPascalCaseName;
     protected $PrimaryActorShortPascalCaseName;
     protected $FullPascalCaseName;
@@ -35,7 +39,10 @@ class Builder implements BuilderInterface
         $actor->setNamespacePrefix($this->getNamespace());
         $actor->setNamespaceRelative($this->getNamespaceRelative());
         $actor->setRelativeClassPath($this->getRelativeClassPath());
-        $actor->setParentRelativeClassPath($this->getParentRelativeClassPath());
+        $actor->setParentActorRelativeClassPath($this->getParentRelativeClassPath());
+        $actor->setParentActorFullPascalCaseName($this->getParentActorFullPascalCaseName());
+        $actor->setParentActorRelativePascalCaseName($this->getParentActorRelativePascalCaseName());
+        $actor->setParentActorShortPascalCaseName($this->getParentActorShortPascalCaseName());
         $actor->setPrimaryActorFullPascalCaseName($this->getPrimaryActorFullPascalCaseName());
         $actor->setPrimaryActorShortPascalCaseName($this->getPrimaryActorShortPascalCaseName());
         $actor->setFullPascalCaseName($this->getFullPascalCaseName());
@@ -61,6 +68,42 @@ class Builder implements BuilderInterface
         }
 
         return $this->ParentRelativeClassPath;
+    }
+
+    protected function getParentActorFullPascalCaseName(): string
+    {
+        if ($this->ParentActorFullPascalCaseName === null) {
+            $this->ParentActorFullPascalCaseName = str_replace(
+                '\\',
+                '',
+                $this->getNamespaceRelative() . $this->getParentRelativeClassPath()
+            );
+        }
+
+        return $this->ParentActorFullPascalCaseName;
+    }
+
+    protected function getParentActorRelativePascalCaseName(): string
+    {
+        if ($this->ParentActorRelativePascalCaseName === null) {
+            $this->ParentActorRelativePascalCaseName = str_replace(
+                '\\',
+                '',
+                $this->getParentRelativeClassPath()
+            );
+        }
+
+        return $this->ParentActorRelativePascalCaseName;
+    }
+
+    protected function getParentActorShortPascalCaseName(): string
+    {
+        if ($this->ParentActorShortPascalCaseName === null) {
+            $parts = explode('\\', $this->getParentRelativeClassPath());
+            $this->ParentActorShortPascalCaseName = array_pop($parts);
+        }
+
+        return $this->ParentActorShortPascalCaseName;
     }
 
     protected function getNamespace(): string

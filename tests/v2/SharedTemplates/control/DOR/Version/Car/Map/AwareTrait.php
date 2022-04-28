@@ -8,14 +8,14 @@ use Neighborhoods\BuphaloTest\SharedTemplates\DOR\Version\Car\MapInterface;
 
 trait AwareTrait
 {
-    protected $DORVersionCars;
+    protected $DORVersionCarMap;
 
-    public function setDORVersionCarMap(MapInterface $Cars): self
+    public function setDORVersionCarMap(MapInterface $CarMap): self
     {
         if ($this->hasDORVersionCarMap()) {
-            throw new LogicException('DORVersionCars is already set.');
+            throw new LogicException('DORVersionCarMap is already set.');
         }
-        $this->DORVersionCars = $Cars;
+        $this->DORVersionCarMap = $CarMap;
 
         return $this;
     }
@@ -23,23 +23,23 @@ trait AwareTrait
     protected function getDORVersionCarMap(): MapInterface
     {
         if (!$this->hasDORVersionCarMap()) {
-            throw new LogicException('DORVersionCars is not set.');
+            throw new LogicException('DORVersionCarMap is not set.');
         }
 
-        return $this->DORVersionCars;
+        return $this->DORVersionCarMap;
     }
 
     protected function hasDORVersionCarMap(): bool
     {
-        return isset($this->DORVersionCars);
+        return isset($this->DORVersionCarMap);
     }
 
     protected function unsetDORVersionCarMap(): self
     {
         if (!$this->hasDORVersionCarMap()) {
-            throw new LogicException('DORVersionCars is not set.');
+            throw new LogicException('DORVersionCarMap is not set.');
         }
-        unset($this->DORVersionCars);
+        unset($this->DORVersionCarMap);
 
         return $this;
     }
