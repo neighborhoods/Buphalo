@@ -55,7 +55,7 @@ To upgrade a file, it's recommended that you:
 - Run your fabrication scripts (_e.g._ `composer prebake`, `bin/fab/buphalo.sh`, etc.)
 - Create a backup of your `fab/` directory (_e.g._`mv fab fab-bak`)
 - Change the extension of the file
-  (_e.g._ `mv src/Directory/Actor.buphalo.v1.fabrication.yml src/Directory/Actor.buphalo.v2.fabrication.yml`)
+  (_e.g._ `mv src/Directory/Actor.buphalo.{v1,v2}.fabrication.yml`)
 - Rerun the fabrication script
 - Perform a diff between the backup and the new `fab/` directory (_e.g._ `diff -r fab-bak fab`)
 
