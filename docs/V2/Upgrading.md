@@ -40,6 +40,8 @@ The following replacements will _probably_ get you most of the way there. Some o
 | `LogicException('PrimaryActorName`   | `LogicException('NamespacedPrimaryActorName`          |
 | `protected $PrimaryActorName`        | `protected $NamespacedPrimaryActorName`               |
 
+_n.b._ `protected` above is because a previous Buphalo rule had hardcoded replacements,
+and replacing equivalent occurrences of `private`/`public` are probably not necessary.
 
 ## File Extensions
 
