@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\BuphaloTemplateTree\RelativeNamespace\PrimaryActorName\MapInterface:
+    class: Neighborhoods\BuphaloTemplateTree\RelativeNamespace\PrimaryActorName\Map
+    public: false
+    shared: false

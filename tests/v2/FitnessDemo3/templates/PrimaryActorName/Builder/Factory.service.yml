@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\BuphaloTemplateTree\RelativeNamespace\PrimaryActorName\Builder\FactoryInterface:
+    class: Neighborhoods\BuphaloTemplateTree\RelativeNamespace\PrimaryActorName\Builder\Factory
+    public: false
+    shared: true
+    calls:
+      - [setNamespacedPrimaryActorNameBuilder, ['@Neighborhoods\BuphaloTemplateTree\RelativeNamespace\PrimaryActorName\BuilderInterface']]

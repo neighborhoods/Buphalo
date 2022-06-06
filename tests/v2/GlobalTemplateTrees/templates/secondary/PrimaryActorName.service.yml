@@ -1,0 +1,6 @@
+# secondary
+services:
+  Neighborhoods\BuphaloTemplateTree\RelativeNamespace\PrimaryActorNameInterface:
+    class: Neighborhoods\BuphaloTemplateTree\RelativeNamespace\PrimaryActorName
+    public: false
+    shared: false

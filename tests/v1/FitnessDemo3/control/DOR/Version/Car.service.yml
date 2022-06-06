@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\BuphaloFitness\Demo3\DOR\Version\CarInterface:
+    class: Neighborhoods\BuphaloFitness\Demo3\DOR\Version\Car
+    public: false
+    shared: false
