@@ -33,6 +33,9 @@
     "symfony/finder": "^4.4.30",
     "symfony/yaml": "^4.2"
   },
+  "replace": {
+    "neighborhoods/buphalo": "1.4.*"
+  },
   "autoload": {
     "psr-4": {
       "Neighborhoods\\Buphalo\\": [
