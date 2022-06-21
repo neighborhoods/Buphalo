@@ -20,6 +20,10 @@ class Tokenizer implements TokenizerInterface
         '\RelativeNamespace' => self::TOKEN_NAMESPACE_RELATIVE,
         'NamespacedPrimaryActorName' => self::TOKEN_PRIMARY_ACTOR_NAME_FULL_PASCAL,
         'PrimaryActorName' => self::TOKEN_PRIMARY_ACTOR_NAME_SHORT_PASCAL,
+        'NamespacedParentActorName' => self::TOKEN_PARENT_ACTOR_NAME_FULL_PASCAL,
+        'RelativeParentActorName' => self::TOKEN_PARENT_ACTOR_NAME_RELATIVE_PASCAL,
+        'ParentActorName' => self::TOKEN_PARENT_ACTOR_NAME_SHORT_PASCAL,
+        'RelativeParentActorClassPath' => self::TOKEN_PARENT_ACTOR_CLASS_PATH_RELATIVE,
     ];
 
     protected $TokenizedContents;

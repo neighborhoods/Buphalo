@@ -28,6 +28,11 @@ class Compiler implements CompilerInterface
                 TokenizerInterface::TOKEN_PRIMARY_ACTOR_NAME_FULL_PASCAL => $actor->getPrimaryActorFullPascalCaseName(),
                 TokenizerInterface::TOKEN_PRIMARY_ACTOR_NAME_SHORT_PASCAL =>
                     $actor->getPrimaryActorShortPascalCaseName(),
+                TokenizerInterface::TOKEN_PARENT_ACTOR_NAME_FULL_PASCAL => $actor->getParentActorFullPascalCaseName(),
+                TokenizerInterface::TOKEN_PARENT_ACTOR_NAME_RELATIVE_PASCAL =>
+                    $actor->getParentActorRelativePascalCaseName(),
+                TokenizerInterface::TOKEN_PARENT_ACTOR_NAME_SHORT_PASCAL => $actor->getParentActorShortPascalCaseName(),
+                TokenizerInterface::TOKEN_PARENT_ACTOR_CLASS_PATH_RELATIVE => $actor->getParentActorRelativeClassPath(),
             ];
 
             $compiledContents = str_replace(

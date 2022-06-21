@@ -1,0 +1,8 @@
+services:
+  Neighborhoods\BuphaloTest\SharedTemplates\DOR\Version\Car\Map\BuilderInterface:
+    class: Neighborhoods\BuphaloTest\SharedTemplates\DOR\Version\Car\Map\Builder
+    public: false
+    shared: false
+    calls:
+      - [setDORVersionCarMapFactory, ['@Neighborhoods\BuphaloTest\SharedTemplates\DOR\Version\Car\Map\FactoryInterface']]
+      - [setDORVersionCarBuilderFactory, ['@Neighborhoods\BuphaloTest\SharedTemplates\DOR\Version\Car\Builder\FactoryInterface']]

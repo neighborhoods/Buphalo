@@ -10,7 +10,10 @@ class Actor implements ActorInterface
     protected $NamespacePrefix;
     protected $NamespaceRelative;
     protected $RelativeClassPath;
-    protected $ParentRelativeClassPath;
+    protected $ParentActorRelativeClassPath;
+    protected $ParentActorFullPascalCaseName;
+    protected $ParentActorRelativePascalCaseName;
+    protected $ParentActorShortPascalCaseName;
     protected $PrimaryActorFullPascalCaseName;
     protected $PrimaryActorShortPascalCaseName;
     protected $FullPascalCaseName;
@@ -22,22 +25,82 @@ class Actor implements ActorInterface
     protected $FileName;
     protected $FileExtension;
 
-    public function getParentRelativeClassPath(): string
+    public function getParentActorRelativeClassPath(): string
     {
-        if ($this->ParentRelativeClassPath === null) {
+        if ($this->ParentActorRelativeClassPath === null) {
             throw new LogicException('Parent Relative Class Path has not been set.');
         }
 
-        return $this->ParentRelativeClassPath;
+        return $this->ParentActorRelativeClassPath;
     }
 
-    public function setParentRelativeClassPath(string $ParentRelativeClassPath): ActorInterface
+    public function setParentActorRelativeClassPath(string $ParentActorRelativeClassPath): ActorInterface
     {
-        if ($this->ParentRelativeClassPath !== null) {
+        if ($this->ParentActorRelativeClassPath !== null) {
             throw new LogicException('Parent Relative Class Path is already set.');
         }
 
-        $this->ParentRelativeClassPath = $ParentRelativeClassPath;
+        $this->ParentActorRelativeClassPath = $ParentActorRelativeClassPath;
+
+        return $this;
+    }
+
+    public function getParentActorFullPascalCaseName(): string
+    {
+        if ($this->ParentActorFullPascalCaseName === null) {
+            throw new LogicException('Parent Actor Full Pascal Case Name has not been set.');
+        }
+
+        return $this->ParentActorFullPascalCaseName;
+    }
+
+    public function setParentActorFullPascalCaseName(string $ParentActorFullPascalCaseName): ActorInterface
+    {
+        if ($this->ParentActorFullPascalCaseName !== null) {
+            throw new LogicException('Parent Actor Full Pascal Case Name is already set.');
+        }
+
+        $this->ParentActorFullPascalCaseName = $ParentActorFullPascalCaseName;
+
+        return $this;
+    }
+
+    public function getParentActorRelativePascalCaseName(): string
+    {
+        if ($this->ParentActorRelativePascalCaseName === null) {
+            throw new LogicException('Parent Actor Relative Pascal Case Name has not been set.');
+        }
+
+        return $this->ParentActorRelativePascalCaseName;
+    }
+
+    public function setParentActorRelativePascalCaseName(string $ParentActorRelativePascalCaseName): ActorInterface
+    {
+        if ($this->ParentActorRelativePascalCaseName !== null) {
+            throw new LogicException('Parent Actor Relative Pascal Case Name is already set.');
+        }
+
+        $this->ParentActorRelativePascalCaseName = $ParentActorRelativePascalCaseName;
+
+        return $this;
+    }
+
+    public function getParentActorShortPascalCaseName(): string
+    {
+        if ($this->ParentActorShortPascalCaseName === null) {
+            throw new LogicException('Parent Actor Short Pascal Case Name has not been set.');
+        }
+
+        return $this->ParentActorShortPascalCaseName;
+    }
+
+    public function setParentActorShortPascalCaseName(string $ParentActorFullPascalCaseName): ActorInterface
+    {
+        if ($this->ParentActorShortPascalCaseName !== null) {
+            throw new LogicException('Parent Actor Short Pascal Case Name is already set.');
+        }
+
+        $this->ParentActorShortPascalCaseName = $ParentActorFullPascalCaseName;
 
         return $this;
     }

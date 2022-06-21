@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Neighborhoods\Buphalo\V2;
@@ -7,7 +8,13 @@ interface GenericActorInterface
 {
     public function getRelativeClassPath(): string;
 
-    public function getParentRelativeClassPath(): string;
+    public function getParentActorRelativeClassPath(): string;
+
+    public function getParentActorFullPascalCaseName(): string;
+
+    public function getParentActorRelativePascalCaseName(): string;
+
+    public function getParentActorShortPascalCaseName(): string;
 
     public function getNamespacePrefix(): string;
 
@@ -31,7 +38,13 @@ interface GenericActorInterface
 
     public function setNamespacePrefix(string $NamespacePrefix): ActorInterface;
 
-    public function setParentRelativeClassPath(string $ParentRelativeClassPath): ActorInterface;
+    public function setParentActorRelativeClassPath(string $ParentRelativeClassPath): ActorInterface;
+
+    public function setParentActorFullPascalCaseName(string $ParentActorFullPascalCaseName): ActorInterface;
+
+    public function setParentActorRelativePascalCaseName(string $ParentActorRelativePascalCaseName): ActorInterface;
+
+    public function setParentActorShortPascalCaseName(string $ParentActorShortPascalCaseName): ActorInterface;
 
     public function setSourceDirectoryPath(string $SourceDirectoryPath): ActorInterface;
 
