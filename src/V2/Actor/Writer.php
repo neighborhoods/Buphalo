@@ -13,11 +13,12 @@ class Writer implements WriterInterface
     use Actor\Template\Compiler\AwareTrait;
 
     protected $filesystem;
+    protected $ignore_source_directory_files;
 
     public function write(): WriterInterface
     {
         $actor = $this->getActorTemplateCompiler()->getActorTemplateTokenizer()->getActor();
-        if (!is_file($actor->getSourceFilePath())) {
+        if ($this->getIgnoreSourceDirectoryFiles() || !is_file($actor->getSourceFilePath())) {
             $fabricationFilePath = $actor->getFabricationFilePath();
             $this->getFilesystem()->mkdir(dirname($fabricationFilePath));
             if (is_file($fabricationFilePath)) {
@@ -48,6 +49,26 @@ class Writer implements WriterInterface
         }
 
         $this->filesystem = $filesystem;
+
+        return $this;
+    }
+
+    protected function getIgnoreSourceDirectoryFiles(): bool
+    {
+        if ($this->ignore_source_directory_files === null) {
+            throw new LogicException('Writer ignore_source_directory_files has not been set.');
+        }
+
+        return $this->ignore_source_directory_files;
+    }
+
+    public function setIgnoreSourceDirectoryFiles(bool $ignoreSourceDirectoryFiles)
+    {
+        if ($this->ignore_source_directory_files !== null) {
+            throw new \LogicException('Writer ignore_source_directory_files is already set.');
+        }
+
+        $this->ignore_source_directory_files = $ignoreSourceDirectoryFiles;
 
         return $this;
     }

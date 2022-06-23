@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+error_reporting(E_ALL);
+
+$PWD = __DIR__;
+
+// Must load autoloader before including any Annotation Processors
+if (file_exists($autoloaderFilePath = dirname($PWD, 5) . '/autoload.php')) {
+    /** @noinspection PhpIncludeInspection */
+    require_once $autoloaderFilePath;
+} elseif (file_exists($autoloaderFilePath = dirname($PWD, 3) . '/vendor/autoload.php')) {
+    /** @noinspection PhpIncludeInspection */
+    require_once $autoloaderFilePath;
+} else {
+    throw new RuntimeException('Unable to find the Composer autoloader.');
+}
+
+// Add exec envs
+putenv("Neighborhoods_Buphalo_V2_TargetApplication_BuilderInterface__SourceDirectoryPath=$PWD/src");
+putenv("Neighborhoods_Buphalo_V2_TargetApplication_BuilderInterface__FabricationDirectoryPath=$PWD/fab");
+putenv("Neighborhoods_Buphalo_V2_TargetApplication_BuilderInterface__NamespacePrefix=Neighborhoods\\BuphaloTest");
+putenv("Neighborhoods_Buphalo_V2_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=$PWD/templates");
+putenv("Neighborhoods_Buphalo_V2_Actor_WriterInterface__IgnoreSourceDirectoryFiles=false");
+
+// Include Buphalo
+require_once($PWD . '/../../../bin/v2/buphalo.php');
+
+// Diff the two directories
+exec("diff -r $PWD/control/ $PWD/fab/", $output, $return);
+
+if ($return > 0) {
+    echo(implode(PHP_EOL, $output) . PHP_EOL);
+    die(1);
+}
