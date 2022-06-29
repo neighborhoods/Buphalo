@@ -1,0 +1,5 @@
+actors:
+  <PrimaryActorName>.php:
+    template: PrimaryActorName.php
+  <PrimaryActorName>Interface.php:
+    template: PrimaryActorNameInterface.php
