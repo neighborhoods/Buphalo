@@ -28,13 +28,13 @@ class IntegerMap extends ArrayIterator implements IntegerMapInterface
     }
 
     /** @param int $integer */
-    public function offsetSet($index, $integer)
+    public function offsetSet($index, $integer): void
     {
         parent::offsetSet($index, $this->assertValidArrayItemType($integer));
     }
 
     /** @param int $boolean */
-    public function append($boolean)
+    public function append($boolean): void
     {
         $this->assertValidArrayItemType($boolean);
         parent::append($boolean);
@@ -57,6 +57,7 @@ class IntegerMap extends ArrayIterator implements IntegerMapInterface
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function getArrayCopy(): IntegerMapInterface
     {
         return new self(parent::getArrayCopy(), (int)$this->getFlags());

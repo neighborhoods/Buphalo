@@ -51,9 +51,9 @@ class Tokenizer implements TokenizerInterface
             /** @noinspection CascadeStringReplacementInspection */
             /** @noinspection NotOptimalRegularExpressionsInspection */
             $tokenizedContents = preg_replace(
-                '/use(\s+)Neighborhoods\\\BuphaloTemplateTree\\\PrimaryActorName/',
+                '/use\\s+(\\\\?)Neighborhoods\\\\BuphaloTemplateTree\\\\PrimaryActorName/',
                 sprintf(
-                    'use %s%s\\%s',
+                    'use \\1%s%s\\%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN,
                     TokenizerInterface::NAMESPACE_RELATIVE_TOKEN,
                     TokenizerInterface::PRIMARY_ACTOR_SHORT_PASCAL_CASE_NAME_TOKEN
@@ -61,9 +61,9 @@ class Tokenizer implements TokenizerInterface
                 $tokenizedContents
             );
             $tokenizedContents = preg_replace(
-                '/use(\s+)Neighborhoods\\\BuphaloTemplateTree/',
+                '/use\\s+(\\\\?)Neighborhoods\\\\BuphaloTemplateTree/',
                 sprintf(
-                    'use %s',
+                    'use \\1%s',
                     TokenizerInterface::NAMESPACE_PREFIX_TOKEN
                 ),
                 $tokenizedContents

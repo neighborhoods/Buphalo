@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Buphalo\V2\AnnotationProcessor\RepositoryInterface:
+    class: Neighborhoods\Buphalo\V2\AnnotationProcessor\Repository
+    public: false
+    shared: true

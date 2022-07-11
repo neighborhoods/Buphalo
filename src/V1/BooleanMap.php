@@ -27,13 +27,13 @@ class BooleanMap extends ArrayIterator implements BooleanMapInterface
         return $this->assertValidArrayItemType(parent::offsetGet($index));
     }
 
-    public function offsetSet($index, $boolean)
+    public function offsetSet($index, $boolean): void
     {
         parent::offsetSet($index, $this->assertValidArrayItemType($boolean));
     }
 
     /** @param bool $boolean */
-    public function append($boolean)
+    public function append($boolean): void
     {
         $this->assertValidArrayItemType($boolean);
         parent::append($boolean);
@@ -56,6 +56,7 @@ class BooleanMap extends ArrayIterator implements BooleanMapInterface
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function getArrayCopy(): BooleanMapInterface
     {
         return new self(parent::getArrayCopy(), (int)$this->getFlags());

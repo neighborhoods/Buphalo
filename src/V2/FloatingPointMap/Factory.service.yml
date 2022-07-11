@@ -1,0 +1,7 @@
+services:
+  Neighborhoods\Buphalo\V2\FloatingPointMap\FactoryInterface:
+    class: Neighborhoods\Buphalo\V2\FloatingPointMap\Factory
+    public: false
+    shared: true
+    calls:
+      - [setFloatingPointMap, ['@Neighborhoods\Buphalo\V2\FloatingPointMapInterface']]

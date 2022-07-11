@@ -1,0 +1,6 @@
+actors:
+  <PrimaryActorName>.php:
+    template: PrimaryActorName.php
+    annotation_processors:
+      TestEmptyStringAnnotationProcessor:
+        processor_fqcn: \Neighborhoods\Buphalo\V2\AnnotationProcessors\EmptyString

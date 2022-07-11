@@ -144,25 +144,25 @@ class Builder implements BuilderInterface
 
     protected function getFabricationDirectoryPath(): string
     {
-        if (!$this->realpath($this->getApplicationRootDirectoryPath() . '/fab')) {
-            $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/fab');
+        if (!$this->realpath($this->getApplicationRootDirectoryPath() . '/fab/V1')) {
+            $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/fab/V1');
         }
 
-        return $this->realpath($this->getApplicationRootDirectoryPath() . '/fab');
+        return $this->realpath($this->getApplicationRootDirectoryPath() . '/fab/V1');
     }
 
     protected function getSourceDirectoryPath(): string
     {
-        return $this->realpath($this->getApplicationRootDirectoryPath() . '/src');
+        return $this->realpath($this->getApplicationRootDirectoryPath() . '/src/V1');
     }
 
     protected function getCacheDirectoryPath(): string
     {
-        if (!$this->realpath($this->getApplicationRootDirectoryPath() . '/data/cache')) {
-            $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/data/cache');
+        if (!$this->realpath($this->getApplicationRootDirectoryPath() . '/data/cache/V1')) {
+            $this->getFilesystem()->mkdir($this->getApplicationRootDirectoryPath() . '/data/cache/V1');
         }
 
-        return $this->realpath($this->getApplicationRootDirectoryPath() . '/data/cache');
+        return $this->realpath($this->getApplicationRootDirectoryPath() . '/data/cache/V1');
     }
 
     protected function getPipelineFilePath(): string

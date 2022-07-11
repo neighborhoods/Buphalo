@@ -1,0 +1,5 @@
+services:
+  Neighborhoods\Buphalo\V2\Actor\Template\AnnotationTokenizer\Builder\FactoryInterface:
+    class: Neighborhoods\Buphalo\V2\Actor\Template\AnnotationTokenizer\Builder\Factory
+    calls:
+      - [setActorTemplateAnnotationTokenizerBuilder, ['@Neighborhoods\Buphalo\V2\Actor\Template\AnnotationTokenizer\BuilderInterface']]
