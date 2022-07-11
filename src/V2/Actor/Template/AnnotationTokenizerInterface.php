@@ -9,7 +9,7 @@ use Neighborhoods\Buphalo\V2\FabricationFileInterface;
 interface AnnotationTokenizerInterface
 {
     public const ANNOTATION_TAG = '@neighborhoods-buphalo:annotation-processor';
-    public const ANNOTATION_REGEX = '/(?<=\/\*\*)(\s+' . self::ANNOTATION_TAG . ')(.*)([\s\S]*?)(?=\*\/)/';
+    public const ANNOTATION_REGEX = '/(?<=\/\*\*)\s+(' . self::ANNOTATION_TAG . ')\s+(\S*)([\s\S]*?)(?=\*\/)/';
 
     public function setFabricationFile(FabricationFileInterface $FabricationFile);
 
