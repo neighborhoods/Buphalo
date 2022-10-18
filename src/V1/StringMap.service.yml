@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Buphalo\V1\StringMapInterface:
-    class: Neighborhoods\Buphalo\V1\StringMap
-    public: false
-    shared: false

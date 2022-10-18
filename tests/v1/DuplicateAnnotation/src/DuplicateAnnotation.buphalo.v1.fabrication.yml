@@ -1,8 +1,0 @@
-actors:
-  <PrimaryActorName>.php:
-    template: PrimaryActorName.php
-    annotation_processors:
-      TestSimpleStringAnnotationProcessor:
-        processor_fqcn: \Neighborhoods\Buphalo\V1\AnnotationProcessors\SimpleString
-        static_context_record:
-          string: 'this is a string'

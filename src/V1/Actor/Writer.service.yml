@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\Buphalo\V1\Actor\WriterInterface:
-    class: Neighborhoods\Buphalo\V1\Actor\Writer
-    public: false
-    shared: false
-    calls:
-      - [setFilesystem, ['@Symfony\Component\Filesystem\Filesystem']]

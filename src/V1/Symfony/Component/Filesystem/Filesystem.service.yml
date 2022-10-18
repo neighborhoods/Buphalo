@@ -1,5 +1,0 @@
-services:
-  Symfony\Component\Filesystem\Filesystem:
-    class: Symfony\Component\Filesystem\Filesystem
-    public: false
-    shared: false
