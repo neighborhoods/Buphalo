@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\BuphaloFitness\Demo3\DOR\Version\Car\FactoryInterface:
-    class: Neighborhoods\BuphaloFitness\Demo3\DOR\Version\Car\Factory
-    public: false
-    shared: true
-    calls:
-      - [setDORVersionCar, ['@Neighborhoods\BuphaloFitness\Demo3\DOR\Version\CarInterface']]

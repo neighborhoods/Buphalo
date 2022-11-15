@@ -1,8 +1,0 @@
-services:
-  Neighborhoods\BuphaloFitness\Demo3\DOR\Version\Car\Map\BuilderInterface:
-    class: Neighborhoods\BuphaloFitness\Demo3\DOR\Version\Car\Map\Builder
-    public: false
-    shared: false
-    calls:
-      - [setDORVersionCarMapFactory, ['@Neighborhoods\BuphaloFitness\Demo3\DOR\Version\Car\Map\FactoryInterface']]
-      - [setDORVersionCarBuilderFactory, ['@Neighborhoods\BuphaloFitness\Demo3\DOR\Version\Car\Builder\FactoryInterface']]

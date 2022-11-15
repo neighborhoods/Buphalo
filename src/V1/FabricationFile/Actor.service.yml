@@ -1,5 +1,0 @@
-services:
-  Neighborhoods\Buphalo\V1\FabricationFile\ActorInterface:
-    class: Neighborhoods\Buphalo\V1\FabricationFile\Actor
-    public: false
-    shared: false

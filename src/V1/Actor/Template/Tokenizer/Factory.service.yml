@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\FactoryInterface:
-    class: Neighborhoods\Buphalo\V1\Actor\Template\Tokenizer\Factory
-    public: false
-    shared: true
-    calls:
-      - [setActorTemplateTokenizer, ['@Neighborhoods\Buphalo\V1\Actor\Template\TokenizerInterface']]

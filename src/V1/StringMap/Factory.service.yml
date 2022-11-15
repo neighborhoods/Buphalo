@@ -1,7 +1,0 @@
-services:
-  Neighborhoods\Buphalo\V1\StringMap\FactoryInterface:
-    class: Neighborhoods\Buphalo\V1\StringMap\Factory
-    public: false
-    shared: true
-    calls:
-      - [setStringMap, ['@Neighborhoods\Buphalo\V1\StringMapInterface']]
