@@ -1,3 +1,6 @@
+parameters:
+  env(Neighborhoods_Buphalo_V1_Actor_WriterInterface__SourceOverrideBehavior): !php/const \Neighborhoods\Buphalo\V1\Actor\WriterInterface::SOURCE_OVERRIDE_BEHAVIOR_DEFAULT
+  Neighborhoods\Buphalo\V1\Actor\WriterInterface.SourceOverrideBehavior: '%env(Neighborhoods_Buphalo_V1_Actor_WriterInterface__SourceOverrideBehavior)%'
 services:
   Neighborhoods\Buphalo\V1\Actor\WriterInterface:
     class: Neighborhoods\Buphalo\V1\Actor\Writer
@@ -5,3 +8,4 @@ services:
     shared: false
     calls:
       - [setFilesystem, ['@Symfony\Component\Filesystem\Filesystem']]
+      - [setSourceOverrideBehavior, ['%Neighborhoods\Buphalo\V1\Actor\WriterInterface.SourceOverrideBehavior%']]

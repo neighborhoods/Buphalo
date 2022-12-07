@@ -1,0 +1,37 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+error_reporting(E_ALL);
+
+$PWD = __DIR__;
+
+// Must load autoloader before including any Annotation Processors
+if (file_exists($autoloaderFilePath = dirname($PWD, 5) . '/autoload.php')) {
+    /** @noinspection PhpIncludeInspection */
+    require_once $autoloaderFilePath;
+} elseif (file_exists($autoloaderFilePath = dirname($PWD, 3) . '/vendor/autoload.php')) {
+    /** @noinspection PhpIncludeInspection */
+    require_once $autoloaderFilePath;
+} else {
+    throw new RuntimeException('Unable to find the Composer autoloader.');
+}
+
+// Include Annotation Processors for Buphalo
+// None for this test
+
+// Add exec envs
+putenv("Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__SourceDirectoryPath=$PWD/src");
+putenv("Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__FabricationDirectoryPath=$PWD/fab");
+putenv("Neighborhoods_Buphalo_V1_TargetApplication_BuilderInterface__NamespacePrefix=Neighborhoods\\BuphaloTest");
+putenv("Neighborhoods_Buphalo_V1_TemplateTree_Map_Builder_FactoryInterface__TemplateTreeDirectoryPaths=$PWD/templates");
+putenv("Neighborhoods_Buphalo_V1_Actor_WriterInterface__SourceOverrideBehavior=invalid");
+
+// Include Buphalo
+try {
+    require_once($PWD . '/../../../bin/v1/buphalo.php');
+} catch (LogicException $e) {
+    exit;
+}
+
+echo "Failed to catch Logic Exception" . PHP_EOL;
+die(1);
