@@ -26,12 +26,12 @@
     "php": "^7.2 || ^8.0",
     "ext-json": "*",
     "ext-mbstring": "*",
-    "symfony/config": "^4.2",
-    "symfony/dependency-injection": "^4.2",
-    "symfony/expression-language": "^4.2",
-    "symfony/filesystem": "^4.2",
-    "symfony/finder": "^4.4.30",
-    "symfony/yaml": "^4.2"
+    "symfony/config": "^4.2|^5.4|^6",
+    "symfony/dependency-injection": "^4.2|^5.4|^6",
+    "symfony/expression-language": "^4.2|^5.4|^6",
+    "symfony/filesystem": "^4.2|^5.4|^6",
+    "symfony/finder": "^4.4.30|^5.4|^6",
+    "symfony/yaml": "^4.2|^5.4|^6"
   },
   "autoload": {
     "psr-4": {
